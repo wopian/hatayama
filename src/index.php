@@ -22,11 +22,13 @@
         <div class="container nav-wrapper">
           <a href="/" class="brand-logo">ハタヤマ</a>
           <ul class="right hide-on-med-and-down">
-            <li><a href="#">National Flags</a></li>
-            <li><a href="#">Regional Flags</a></li>
-            <li><a href="#">Military Flags</a></li>
+            <li><a href="#"><? $L(">navNational") ?></a></li>
+            <li><a href="#"><? $L(">navPrefectural") ?></a></li>
+            <li><a href="#"><? $L(">navMunicipal") ?></a></li>
+            <li><a href="#"><? $L(">navMilitary") ?></a></li>
           </ul>
         </div>
+        
       </nav>
     </div>
 
