@@ -1,4 +1,15 @@
-/* This is needed for some mobile phones to display the Google Icon font properly */
+@font-face {
+    font-family: "Material Icons";
+    src: url("#{$icons-font-path}MaterialIcons-Regular.eot?#iefix") format("embedded-opentype");
+    src: local("Material Icons"),
+         local("MaterialIcons-Regular")
+         url("#{$icons-font-path}MaterialIcons-Regular.woff2") format("woff2"),
+         url("#{$icons-font-path}MaterialIcons-Regular.woff") format("woff"),
+         url("#{$icons-font-path}MaterialIcons-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
 .material-icons {
   font-family: "Material Icons";
   font-weight: normal;
@@ -15,16 +26,4 @@
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: 'liga';
-}
-
-@font-face {
-    font-family: "Material Icons";
-    src: url("#{$icons-font-path}MaterialIcons-Regular.eot?#iefix") format("embedded-opentype");
-    src: local("Material Icons"),
-         local("MaterialIcons-Regular")
-         url("#{$icons-font-path}MaterialIcons-Regular.woff2") format("woff2"),
-         url("#{$icons-font-path}MaterialIcons-Regular.woff") format("woff"),
-         url("#{$icons-font-path}MaterialIcons-Regular.ttf") format("truetype");
-    font-weight: 400;
-    font-style: normal;
 }
