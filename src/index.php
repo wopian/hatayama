@@ -28,7 +28,7 @@
             <li><a href="#"><? $L(">navMilitary") ?></a></li>
           </ul>
         </div>
-        
+
       </nav>
     </div>
 
@@ -47,23 +47,11 @@
             </div>
             <div class="card-content">
               <span class="card-title activator grey-text text-darken-4">Ōsaka<i class="material-icons right">keyboard_arrow_up</i></span>
-              <p><a href="#">More Information</a></p>
             </div>
             <div class="card-reveal">
               <span class="card-title grey-text text-darken-4">Ōsaka<i class="material-icons right">close</i></span>
               <p>Information about Ōsaka's flag.</p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="col s4">
-          <div class="card">
-            <div class="card-image">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Flag_of_Osaka_Prefecture.svg/1920px-Flag_of_Osaka_Prefecture.svg.png">
-              <span class="card-title">Ōsaka</span>
-            </div>
-            <div class="card-action">
-              <a href="#">More Information</a>
+              <p><a href="#">More Information</a></p>
             </div>
           </div>
         </div>
