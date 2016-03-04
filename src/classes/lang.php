@@ -31,7 +31,7 @@ class LangQuery
   /* All language abbreviations list : http://msdn.microsoft.com/en-us/library/ms693062(v=vs.85).aspx      */
   public $list, $data, $current;
 
-  public $language_folder = "./languages";
+  public $language_folder = "languages";
 
   public $get_parameter = "language";
 
@@ -49,7 +49,7 @@ class LangQuery
       die("LANGQUERY : No language folder /$this->language_folder/");
     }
 
-    $this->list = str_replace(".ini", "", array_slice(scandir(dirname(__FILE__) . "/$this->language_folder") , 2));
+    $this->list = str_replace(".ini", "", array_slice(scandir(dirname(__FILE__) . "./$this->language_folder") , 2));
     if (count($this->list) == 0) {
       die("LANGQUERY : No language file in /$this->language_folder/ directory. Please add at least default language $this->default.ini");
     }
