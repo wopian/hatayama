@@ -1,11 +1,4 @@
 <?
-/*
-*  LangQuery - PHP Language Class
-*  https://github.com/enesnr/langquery/
-*/
-
-// If langquery.php is called by its own, not included.
-
 if (count(get_included_files()) == 1) {
   if (isset($_GET[js])) {
     $L = new LangQuery();
