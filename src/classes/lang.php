@@ -45,12 +45,12 @@ class LangQuery
   function __construct($auto = TRUE)
   {
     if (!is_dir("$this->language_folder")) {
-      die("LANGQUERY : No language folder /$this->language_folder/");
+      die("LANG : No language folder /$this->language_folder/");
     }
 
     $this->list = str_replace(".ini", "", array_slice(scandir("$this->language_folder") , 2));
     if (count($this->list) == 0) {
-      die("LANGQUERY : No language file in /$this->language_folder/ directory. Please add at least default language $this->default.ini");
+      die("LANG : No language file in /$this->language_folder/ directory. Please add at least default language $this->default.ini");
     }
 
     if ($auto) {
@@ -131,7 +131,7 @@ class LangQuery
         $this->data[$language] = parse_ini_file("$this->language_folder/$language.ini");
       }
       else {
-        die("LANGQUERY : No such language file : $this->language_folder/$language.ini");
+        die("LANG : No such language file : $this->language_folder/$language.ini");
       }
     }
   }
@@ -146,7 +146,7 @@ class LangQuery
       $this->ini_loader($language);
     }
 
-    return isset($this->data[$language][$key]) ? vsprintf($this->data[$language][$key], $arguments) : "<script>alert('LANGQUERY : UNDEFINED_LANGUAGE_KEY[$language][$key]')</script>";
+    return isset($this->data[$language][$key]) ? vsprintf($this->data[$language][$key], $arguments) : "<script>alert('LANG : UNDEFINED_LANGUAGE_KEY[$language][$key]')</script>";
   }
 
   public
