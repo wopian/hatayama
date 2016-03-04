@@ -1,0 +1,45 @@
+{
+  "name": "hatayama",
+  "version": "0.0.1",
+  "description": "Flags",
+  "author": "James Harris",
+  "license": "GNU V3",
+  "private": true,
+  "contributors": [
+    {
+      "name" : "James Harris",
+      "email" : "wopiancitizen123@gmail.com",
+      "url" : "https://wopian.me"
+    }
+  ],
+  "main": "Gruntfile.js",
+  "homepage": "https://hatayama.wopian.me",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wopian/hatayama"
+  },
+  "bugs": {
+    "url": "https://github.com/wopian/hatayama/issues"
+  },
+  "devDependencies": {
+    "glob": "^7.0.0",
+    "grunt": "~0.4.5",
+    "load-grunt-tasks": "^3.3.0",
+    "grunt-timer": "^0.6.0",
+    "grunt-contrib-sass": "^0.9.2",
+    "grunt-autoprefixer": "^3.0.3",
+    "grunt-contrib-cssmin": "^0.14.0",
+    "grunt-contrib-copy": "^0.8.1",
+    "grunt-contrib-imagemin": "^1.0.0",
+    "grunt-contrib-uglify": "^0.11.1",
+    "grunt-contrib-concat": "^1.0.0",
+    "grunt-contrib-jshint": "^1.0.0",
+    "cwebp-bin": "^3.1.0",
+    "grunt-cwebp": "^1.0.1",
+    "phplint": "^1.7.0"
+  },
+  "scripts": {
+    "pretest": "phplint 'src/**/*php'",
+    "test": "grunt"
+  }
+}
