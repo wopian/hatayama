@@ -45,7 +45,7 @@ class LangQuery
 
   function __construct($auto = TRUE)
   {
-    if (!is_dir(dirname(__FILE__) . "/$this->language_folder")) {
+    if (!is_dir(dirname(__FILE__) . "./$this->language_folder")) {
       die("LANGQUERY : No language folder /$this->language_folder/");
     }
 
