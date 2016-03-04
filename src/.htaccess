@@ -1,12 +1,12 @@
 <IfModule mod_rewrite.c>
   Options +FollowSymLinks -MultiViews
 
-  RewriteEngine On
+  RewriteEngine on
 
-  # No 'language' key in query string
-  RewriteCond %{QUERY_STRING} !language=(en|ja|ja-hira|ja-kana) [NC]
-  # Redirect to language prefixed uri while keeping the initial uri
-  RewriteRule !^(en|ja|ja-hira|ja-kana)/ /en/%{REQUEST_URI} [L,NC,R=301]
+  RewriteCond %{REQUEST_FILENAME} -d [OR]
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^ - [L]
 
-  RewriteRule ^(en|ja|ja-hira|ja-kana)(/.*)?$ $2?language=$1 [L,NC,QSA]
+  RewriteCond %{REQUEST_URI} !^/(?:en|ja|ja-hira|ja-kana)/
+  RewriteRule ^([^/]+(/.*)?)$ /en/$1 [R=301,L]
 </IfModule>
