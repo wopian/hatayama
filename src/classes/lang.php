@@ -31,7 +31,7 @@ class LangQuery
   /* All language abbreviations list : http://msdn.microsoft.com/en-us/library/ms693062(v=vs.85).aspx      */
   public $list, $data, $current;
 
-  public $language_folder = "languages";
+  public $language_folder = "./languages";
 
   public $get_parameter = "language";
 
