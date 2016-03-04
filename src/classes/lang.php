@@ -44,8 +44,8 @@ class LangQuery
 
   function __construct($auto = TRUE)
   {
-    if (!is_dir("/$this->language_folder")) {
-      die("LANGQUERY : No language folder /$this->language_folder/" + print_r("/$this->language_folder/"));
+    if (!is_dir("$this->language_folder")) {
+      die("LANGQUERY : No language folder /$this->language_folder/");
     }
 
     $this->list = str_replace(".ini", "", array_slice(scandir("/$this->language_folder") , 2));
