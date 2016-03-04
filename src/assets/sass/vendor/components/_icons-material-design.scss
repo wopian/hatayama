@@ -1,7 +1,7 @@
 @font-face {
     font-family: "Material Icons";
     src: local("Material Icons"),
-         local("MaterialIcons-Regular")
+         local("MaterialIcons-Regular"),
          url("#{$icons-font-path}MaterialIcons-Regular.woff2") format("woff2"),
          url("#{$icons-font-path}MaterialIcons-Regular.woff") format("woff"),
          url("#{$icons-font-path}MaterialIcons-Regular.ttf") format("truetype");
