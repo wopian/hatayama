@@ -1,3 +1,7 @@
+<?
+  include("classes/lang.php");
+  $L = new LangQuery();
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -29,7 +33,7 @@
     <div class="container">
 
       <p class="flow-text">
-        Watashi ha kyou sonouchi ookina souzou kata nioite no no ue ni naru deshi nai. Choudo shourai no moujuu in mo mouko no iken na nai kamo ga chigakkara hajime ta o ha ranyou kiniiru mashi deshi de, sou ni mo e desu den mase.
+        <? $L(">introduction") ?>
       </p>
 
       <div class="row">
