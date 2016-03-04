@@ -28,7 +28,6 @@ class LangQuery
 {
   public $default = "en";
 
-  /* All language abbreviations list : http://msdn.microsoft.com/en-us/library/ms693062(v=vs.85).aspx      */
   public $list, $data, $current;
 
   public $language_folder = "languages";
@@ -46,7 +45,7 @@ class LangQuery
   function __construct($auto = TRUE)
   {
     if (!is_dir("/$this->language_folder")) {
-      die("LANGQUERY : No language folder /$this->language_folder/");
+      die("LANGQUERY : No language folder /$this->language_folder/" + print_r("/$this->language_folder/"));
     }
 
     $this->list = str_replace(".ini", "", array_slice(scandir("/$this->language_folder") , 2));
