@@ -53,6 +53,7 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" type="text/javascript" data-no-instant></script>
     <script src="/assets/js/app.min.js" type="text/javascript" data-no-instant></script>
+    <script type="text/javascript" data-no-instant>InstantClick.init();</script>
 
   </body>
 </html>
