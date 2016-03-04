@@ -12,6 +12,6 @@ module.exports = {
             cwd: 'src/assets/',
             src: ['**'],
             dest: 'dist/assets/'
-        }
+        }]
     }
 }
