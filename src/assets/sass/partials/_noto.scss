@@ -1,3 +1,4 @@
+/* japanese */
 @font-face {
    font-family: 'Noto Sans JP';
    font-style: normal;
@@ -7,11 +8,22 @@
         url(/assets/fonts/noto/NotoSansJP-Regular.otf) format('opentype');
  }
 
- @font-face {
+ /*@font-face {
   font-family: 'Noto Sans JP';
   font-style: normal;
   font-weight: 300;
   src: url(/assets/fonts/noto/NotoSansJP-Light.woff2) format('woff2'),
        url(/assets/fonts/noto/NotoSansJP-Light.woff) format('woff'),
        url(/assets/fonts/noto/NotoSansJP-Light.otf) format('opentype');
+}*/
+
+/* latin */
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Noto Sans'),
+       local('NotoSans'),
+       url(https://fonts.gstatic.com/s/notosans/v6/LeFlHvsZjXu2c3ZRgBq9nFtXRa8TVwTICgirnJhmVJw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
 }
