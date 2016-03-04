@@ -45,11 +45,11 @@ class LangQuery
 
   function __construct($auto = TRUE)
   {
-    if (!is_dir(dirname(__FILE__) . "./$this->language_folder")) {
+    if (!is_dir(dirname(__FILE__) . "../$this->language_folder")) {
       die("LANGQUERY : No language folder /$this->language_folder/");
     }
 
-    $this->list = str_replace(".ini", "", array_slice(scandir(dirname(__FILE__) . "./$this->language_folder") , 2));
+    $this->list = str_replace(".ini", "", array_slice(scandir(dirname(__FILE__) . "../$this->language_folder") , 2));
     if (count($this->list) == 0) {
       die("LANGQUERY : No language file in /$this->language_folder/ directory. Please add at least default language $this->default.ini");
     }
