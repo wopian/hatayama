@@ -15,7 +15,7 @@
 
     <div class="navbar-fixed">
       <nav>
-        <div class="nav-wrapper">
+        <div class="container nav-wrapper">
           <a href="/" class="brand-logo">ハタヤマ</a>
           <ul class="right hide-on-med-and-down">
             <li><a href="#">National Flags</a></li>
@@ -29,7 +29,7 @@
     <div class="container">
 
       <p class="flow-text">
-        The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex! Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy veldt fox. Bright vixens jump; dozy fowl quack. Quick wafting zephyrs vex bold Jim. Quick zephyrs blow, vexing daft Jim. Sex-charged fop blew my junk TV quiz. How quickly daft jumping zebras vex. Two driven jocks help fax my big quiz. Quick, Baz, get my woven flax jodhpurs!
+        Watashi ha kyou sonouchi ookina souzou kata nioite no no ue ni naru deshi nai. Choudo shourai no moujuu in mo mouko no iken na nai kamo ga chigakkara hajime ta o ha ranyou kiniiru mashi deshi de, sou ni mo e desu den mase.
       </p>
 
       <div class="row">
@@ -48,6 +48,11 @@
         </div>
 
       </div>
+
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" type="text/javascript" data-no-instant></script>
+    <script src="/assets/js/app.min.js" type="text/javascript" data-no-instant></script>
 
   </body>
 </html>
