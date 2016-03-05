@@ -6,31 +6,27 @@
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
 
-  RewriteRule ^~/encoding /assets/php/routes/encoding.php [NC,L]
-
-  #RewriteRule ^sitemap.xml$ sitemap.php [L]
-
   RewriteRule ^en/national/([A-Za-z-0-9_-]+)/?$ /index.php?language=en&view=national&query=$1 [NC,L]
   RewriteRule ^en/prefecture/([A-Za-z-0-9_-]+)/?$ /index.php?language=en&view=prefecture&query=$1 [NC,L]
   RewriteRule ^en/municipal/([A-Za-z-0-9_-]+)/?$ /index.php?language=en&view=municipal&query=$1 [NC,L]
   RewriteRule ^en/military/([A-Za-z-0-9_-]+)/?$ /index.php?language=en&view=military&query=$1 [NC,L]
-  RewriteRule ^en /index.php?language=en [NC,L]
+  RewriteRule ^en/ /index.php?language=en [NC,L]
 
   RewriteRule ^ja/national/([A-Za-z-0-9_-]+)/?$ /index.php?language=ja-Jpan&view=national&query=$1 [NC,L]
   RewriteRule ^ja/prefecture/([A-Za-z-0-9_-]+)/?$ /index.php?language=ja-Jpan&view=prefecture&query=$1 [NC,L]
   RewriteRule ^ja/municipal/([A-Za-z-0-9_-]+)/?$ /index.php?language=ja-Jpan&view=municipal&query=$1 [NC,L]
   RewriteRule ^ja/military/([A-Za-z-0-9_-]+)/?$ /index.php?language=ja-Jpan&view=military&query=$1 [NC,L]
-  RewriteRule ^ja /index.php?language=ja-Jpan [NC,L]
+  RewriteRule ^ja/ /index.php?language=ja-Jpan [NC,L]
 
   RewriteRule ^ja-hira/national/([A-Za-z-0-9_-]+)/?$ /index.php?language=ja-Hira&view=national&query=$1 [NC,L]
   RewriteRule ^ja-hira/prefecture/([A-Za-z-0-9_-]+)/?$ /index.php?language=ja-Hira&view=prefecture&query=$1 [NC,L]
   RewriteRule ^ja-hira/municipal/([A-Za-z-0-9_-]+)/?$ /index.php?language=ja-Hira&view=municipal&query=$1 [NC,L]
   RewriteRule ^ja-hira/military/([A-Za-z-0-9_-]+)/?$ /index.php?language=ja-Hira&view=military&query=$1 [NC,L]
-  RewriteRule ^ja-hira /index.php?language=ja-Hira [NC,L]
+  RewriteRule ^ja-hira/ /index.php?language=ja-Hira [NC,L]
 
   RewriteRule ^ja-kana/national/([A-Za-z-0-9_-]+)/?$ /index.php?language=ja-Kana&view=national&query=$1 [NC,L]
   RewriteRule ^ja-kana/prefecture/([A-Za-z-0-9_-]+)/?$ /index.php?language=ja-Kana&view=prefecture&query=$1 [NC,L]
   RewriteRule ^ja-kana/municipal/([A-Za-z-0-9_-]+)/?$ /index.php?language=ja-Kana&view=municipal&query=$1 [NC,L]
   RewriteRule ^ja-kana/military/([A-Za-z-0-9_-]+)/?$ /index.php?language=ja-Kana&view=military&query=$1 [NC,L]
-  RewriteRule ^ja-kana /index.php?language=ja-Kana [NC,L]
+  RewriteRule ^ja-kana/ /index.php?language=ja-Kana [NC,L]
 </IfModule>
