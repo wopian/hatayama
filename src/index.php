@@ -17,7 +17,7 @@
 
   <body>
 
-    <div class="navbar-fixed">
+    <header class="navbar-fixed">
       <nav>
         <div class="container nav-wrapper">
           <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -35,9 +35,9 @@
         </ul>
 
       </nav>
-    </div>
+    </header>
 
-    <div class="container">
+    <main class="container">
 
       <p class="flow-text">
         <? $L(">introduction") ?>
@@ -64,7 +64,25 @@
 
       </div>
 
-    </div>
+    </main>
+    
+    <footer class="page-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col 16 s12">
+            <h5>Hatayama</h5>
+            <p>Hello world.</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+          Made with love by <a href="//github.com/wopian">wopian</a>
+          <a class="right" href="/en">EN</a>
+          <a class="right" href="/ja">JA</a>
+        </div>
+      </div>
+    </footer>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" type="text/javascript" data-no-instant></script>
     <script src="/assets/js/app.min.js" type="text/javascript" data-no-instant></script>
