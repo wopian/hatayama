@@ -30,8 +30,11 @@
           </ul>
         </div>
         
-        <ul id="slide-out" class="side-nav fixed">
-          <li><a href="#!">Link</a></li>
+        <ul id="slide-out" class="side-nav">
+          <li><a href="#"><? $L(">navNational") ?></a></li>
+          <li><a href="#"><? $L(">navPrefectural") ?></a></li>
+          <li><a href="#"><? $L(">navMunicipal") ?></a></li>
+          <li><a href="#"><? $L(">navMilitary") ?></a></li>
         </ul>
 
       </nav>
