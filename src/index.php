@@ -70,16 +70,16 @@
       <div class="container">
         <div class="row">
           <div class="col 16 s12">
-            <h5>Hatayama</h5>
-            <p>Hello world.</p>
+            <h5 class="white-text">Hatayama</h5>
+            <p class="grey-text text-lighten-4">Hello world.</p>
           </div>
         </div>
       </div>
       <div class="footer-copyright">
         <div class="container">
           Made with love by <a href="//github.com/wopian">wopian</a>
-          <a class="right" href="/en">EN</a>
-          <a class="right" href="/ja">JA</a>
+          <a class="grey-text text-lighten-4 right" href="/en">EN</a>&nbsp;
+          <a class="grey-text text-lighten-4 right" href="/ja">JA</a>
         </div>
       </div>
     </footer>
