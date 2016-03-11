@@ -20,6 +20,7 @@
     <div class="navbar-fixed">
       <nav>
         <div class="container nav-wrapper">
+          <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
           <a href="/" class="brand-logo">ハタヤマ</a>
           <ul class="right hide-on-med-and-down">
             <li><a href="#"><? $L(">navNational") ?></a></li>
@@ -32,8 +33,6 @@
         <ul id="slide-out" class="side-nav fixed">
           <li><a href="#!">Link</a></li>
         </ul>
-        
-        <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
 
       </nav>
     </div>
