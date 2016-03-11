@@ -28,6 +28,12 @@
             <li><a href="#"><? $L(">navMilitary") ?></a></li>
           </ul>
         </div>
+        
+        <ul id="slide-out" class="side-nav fixed">
+          <li><a href="#!">Link</a></li>
+        </ul>
+        
+        <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
 
       </nav>
     </div>
@@ -64,6 +70,10 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" type="text/javascript" data-no-instant></script>
     <script src="/assets/js/app.min.js" type="text/javascript" data-no-instant></script>
     <script type="text/javascript" data-no-instant>InstantClick.init();</script>
+    <script data-no-instant>
+      // Initialize collapse button
+      $(".button-collapse").sideNav();
+    </script>
 
   </body>
 </html>
