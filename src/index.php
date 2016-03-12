@@ -29,7 +29,7 @@
             <li><a href="#"><? $L(">navMilitary") ?></a></li>
           </ul>
         </div>
-        
+
         <ul id="slide-out" class="side-nav">
           <li><a href="#"><? $L(">navNational") ?></a></li>
           <li><a href="#"><? $L(">navPrefectural") ?></a></li>
@@ -48,7 +48,7 @@
 
       <div class="row">
 
-        <div class="col s4">
+        <div class="col s12 m6 l4">
           <div class="card">
             <div class="card-image waves-effect waves-block waves-light">
               <img class="activator" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Flag_of_Osaka_Prefecture.svg/1920px-Flag_of_Osaka_Prefecture.svg.png">
@@ -68,7 +68,7 @@
       </div>
 
     </main>
-    
+
     <footer class="page-footer">
       <div class="container">
         <div class="row">
