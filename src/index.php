@@ -81,8 +81,8 @@
       <div class="footer-copyright">
         <div class="container">
           Made with love by <a href="//github.com/wopian">wopian</a>
-          <a class="grey-text text-lighten-4 right" href="/en">EN</a>&nbsp;
-          <a class="grey-text text-lighten-4 right" href="/ja">JA</a>
+          <a class="grey-text text-lighten-4 right" href="/en/">EN</a>&nbsp;
+          <a class="grey-text text-lighten-4 right" href="/ja/">JA</a>
         </div>
       </div>
     </footer>
