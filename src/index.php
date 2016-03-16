@@ -1,4 +1,5 @@
 <?
+  require_once("config/db.php");
   require_once("partials/header.php");
 
   if (isset($_GET['view'])) {
@@ -7,7 +8,7 @@
     switch ($view) {
       case 'nation':
         // Goto Nation page
-        echo "Nation";
+        require_once("views/nation.php");
         break;
       case 'prefecture':
         // Goto Prefecture page
