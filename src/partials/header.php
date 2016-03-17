@@ -20,7 +20,6 @@
     <header class="navbar-fixed">
       <nav>
         <div class="container nav-wrapper">
-          <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
           <a href="/" class="brand-logo">ハタヤマ</a>
           <ul class="right hide-on-med-and-down">
             <li><a href="#"><? $L(">navNational") ?></a></li>
@@ -29,14 +28,12 @@
             <li><a href="#"><? $L(">navMilitary") ?></a></li>
           </ul>
         </div>
-
-        <ul id="slide-out" class="side-nav">
-          <li><a href="#"><? $L(">navNational") ?></a></li>
-          <li><a href="#"><? $L(">navPrefectural") ?></a></li>
-          <li><a href="#"><? $L(">navMunicipal") ?></a></li>
-          <li><a href="#"><? $L(">navMilitary") ?></a></li>
+        <ul class="tabs hide-on-med-and-up">
+          <li class="tab"><a href="#"><? $L(">navNational") ?></a></li>
+          <li class="tab"><a href="#"><? $L(">navPrefectural") ?></a></li>
+          <li class="tab"><a href="#"><? $L(">navMunicipal") ?></a></li>
+          <li class="tab"><a href="#"><? $L(">navMilitary") ?></a></li>
         </ul>
-
       </nav>
     </header>
 
