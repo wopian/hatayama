@@ -1,3 +1,3 @@
 <p class="flow-text">
-  <? $L(">introduction") ?>
+  <?= INTRODUCTION ?>
 </p>
