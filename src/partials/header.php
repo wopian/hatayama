@@ -28,7 +28,7 @@
             <li><a href="#"><? $L(">navMilitary") ?></a></li>
           </ul>
         </div>
-        <ul class="tabs hide-on-med-and-up">
+        <ul class="tabs hide-on-large-only">
           <li class="tab"><a href="#"><? $L(">navNational") ?></a></li>
           <li class="tab"><a href="#"><? $L(">navPrefectural") ?></a></li>
           <li class="tab"><a href="#"><? $L(">navMunicipal") ?></a></li>
