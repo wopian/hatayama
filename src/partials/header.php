@@ -18,7 +18,7 @@
     <header class="navbar-fixed">
       <nav>
         <div class="container nav-wrapper">
-          <a href="/" class="brand-logo">ハタヤマ</a>
+          <a href="/<?=$lang?>/" class="brand-logo">ハタヤマ</a>
           <ul class="right hide-on-med-and-down">
             <li><a class="waves-effect waves-block" href="#"><?= NAV_NATION ?></a></li>
             <li><a class="waves-effect waves-block" href="#"><?= NAV_PREFECTURE ?></a></li>
