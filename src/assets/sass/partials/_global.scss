@@ -4,7 +4,7 @@ html {
 
 @media only screen and (max-width: 600px) {
   // Extend header to provide space for scrollable tabs
-  header {
-    height: 112px;
+  .navbar-fixed {
+    height: 112px !important;
   }
 }
