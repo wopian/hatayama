@@ -18,6 +18,9 @@
             <? include("partials/langSwitcher.php"); ?>
             <a class="grey-text text-lighten-4 waves-effect btn-flat" href="<?=langSwitcher('en');?>" >English</a>
             <a class="grey-text text-lighten-4 waves-effect btn-flat" href="<?=langSwitcher('ja');?>">Japanese</a>
+            <?=$_SERVER['REQUEST_URI'];?>
+            <br>
+            <?=preg_replace('/^(en|ja)/', '', $url);?>
           </div>
         </div>
       </div>
