@@ -20,7 +20,7 @@
             <a class="grey-text text-lighten-4 waves-effect btn-flat" href="<?=langSwitcher('ja');?>">Japanese</a>
             <?=$_SERVER['REQUEST_URI'];?>
             <br>
-            <?=preg_replace('(en|ja)', '', $_SERVER['REQUEST_URI']);?>
+            <?=preg_replace('\/(en|ja)\/', '', $_SERVER['REQUEST_URI']);?>
           </div>
         </div>
       </div>
