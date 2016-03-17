@@ -1,7 +1,7 @@
 <div class="row">
 
   <div class="col s12 m6 l4">
-    <div class="card">
+    <div class="card hoverable">
       <div class="card-image waves-effect waves-block waves-light">
         <img class="activator" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Flag_of_Osaka_Prefecture.svg/1920px-Flag_of_Osaka_Prefecture.svg.png">
       </div>
