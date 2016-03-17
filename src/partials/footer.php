@@ -25,8 +25,7 @@
     <script type="text/javascript" data-no-instant>
       InstantClick.init();
 
-      // Initialize collapse button
-      $(".button-collapse").sideNav();
+      $('ul.tabs').tabs();
     </script>
 
   </body>
