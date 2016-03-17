@@ -6,7 +6,7 @@
         <img class="activator" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Flag_of_Osaka_Prefecture.svg/1920px-Flag_of_Osaka_Prefecture.svg.png">
       </div>
       <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4"><? $L(">osaka") ?><i class="material-icons right">keyboard_arrow_up</i></span>
+        <span class="card-title activator grey-text text-darken-4">Osaka<i class="material-icons right">keyboard_arrow_up</i></span>
       </div>
       <div class="card-reveal">
         <span class="card-title grey-text text-darken-4">Osaka<i class="material-icons right">close</i></span>
