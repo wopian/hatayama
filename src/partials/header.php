@@ -20,7 +20,7 @@
         <div class="container nav-wrapper">
           <a href="/" class="brand-logo">ハタヤマ</a>
           <ul class="right hide-on-med-and-down">
-            <li><a class="waves-effect waves-block" href="#"><?= NAV_NATIONAL ?></a></li>
+            <li><a class="waves-effect waves-block" href="#"><?= NAV_NATION ?></a></li>
             <li><a class="waves-effect waves-block" href="#"><?= NAV_PREFECTURE ?></a></li>
             <li><a class="waves-effect waves-block" href="#"><?= NAV_MUNICIPAL ?></a></li>
             <li><a class="waves-effect waves-block" href="#"><?= NAV_MILITARY ?></a></li>
@@ -28,7 +28,7 @@
           </ul>
         </div>
         <ul class="tabs hide-on-large-only">
-          <li class="tab waves-effect waves-block"><a href="#"><?= NAV_NATIONAL ?></a></li>
+          <li class="tab waves-effect waves-block"><a href="#"><?= NAV_NATION ?></a></li>
           <li class="tab waves-effect waves-block"><a href="#"><?= NAV_PREFECTURE ?></a></li>
           <li class="tab waves-effect waves-block"><a href="#"><?= NAV_MUNICIPAL ?></a></li>
           <li class="tab waves-effect waves-block"><a href="#"><?= NAV_MILITARY ?></a></li>

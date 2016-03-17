@@ -16,8 +16,8 @@
           Made with love by <a href="//github.com/wopian">wopian</a>
           <div class="right">
             <? include("partials/langSwitcher.php"); ?>
-            <a class="grey-text text-lighten-4 waves-effect btn-flat" href="<?=langSwitcher('en')?>" >English</a>
-            <a class="grey-text text-lighten-4 waves-effect btn-flat" href="<?=langSwitcher('ja')?>">Japanese</a>
+            <a class="grey-text text-lighten-4 waves-effect btn-flat" href="<?=langSwitcher('en');?>" >English</a>
+            <a class="grey-text text-lighten-4 waves-effect btn-flat" href="<?=langSwitcher('ja');?>">Japanese</a>
           </div>
         </div>
       </div>
