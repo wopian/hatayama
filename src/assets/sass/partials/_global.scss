@@ -3,7 +3,8 @@ html {
 }
 
 nav {
-  a:hover {
+  a:hover,
+  li:hover {
     background: transparent;
   }
 }
