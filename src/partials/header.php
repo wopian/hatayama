@@ -1,7 +1,4 @@
-<?
-  include("classes/lang.php");
-  $L = new LangQuery();
-?>
+<? include("classes/lang.php"); ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -23,17 +20,19 @@
         <div class="container nav-wrapper">
           <a href="/" class="brand-logo">ハタヤマ</a>
           <ul class="right hide-on-med-and-down">
-            <li><a class="waves-effect waves-block" href="#"><? $L(">navNational") ?></a></li>
-            <li><a class="waves-effect waves-block" href="#"><? $L(">navPrefectural") ?></a></li>
-            <li><a class="waves-effect waves-block" href="#"><? $L(">navMunicipal") ?></a></li>
-            <li><a class="waves-effect waves-block" href="#"><? $L(">navMilitary") ?></a></li>
+            <li><a class="waves-effect waves-block" href="#"><?= NAV_NATIONAL ?></a></li>
+            <li><a class="waves-effect waves-block" href="#"><?= NAV_PREFECTURE ?></a></li>
+            <li><a class="waves-effect waves-block" href="#"><?= NAV_MUNICIPAL ?></a></li>
+            <li><a class="waves-effect waves-block" href="#"><?= NAV_MILITARY ?></a></li>
+            <li><a class="waves-effect waves-block" href="#"><?= NAV_MISC ?></a></li>
           </ul>
         </div>
         <ul class="tabs hide-on-large-only">
-          <li class="tab waves-effect waves-block"><a href="#"><? $L(">navNational") ?></a></li>
-          <li class="tab waves-effect waves-block"><a href="#"><? $L(">navPrefectural") ?></a></li>
-          <li class="tab waves-effect waves-block"><a href="#"><? $L(">navMunicipal") ?></a></li>
-          <li class="tab waves-effect waves-block"><a href="#"><? $L(">navMilitary") ?></a></li>
+          <li class="tab waves-effect waves-block"><a href="#"><?= NAV_NATIONAL ?></a></li>
+          <li class="tab waves-effect waves-block"><a href="#"><?= NAV_PREFECTURE ?></a></li>
+          <li class="tab waves-effect waves-block"><a href="#"><?= NAV_MUNICIPAL ?></a></li>
+          <li class="tab waves-effect waves-block"><a href="#"><?= NAV_MILITARY ?></a></li>
+          <li class="tab waves-effect waves-block"><a href="#"><?= NAV_MISC ?></a></li>
         </ul>
       </nav>
     </header>

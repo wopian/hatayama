@@ -3,9 +3,11 @@ html {
 }
 
 nav {
-  a:hover,
-  li:hover {
-    background-color: rgba(0,0,0,0);
+  ul {
+    a:hover,
+    li:hover {
+      background-color: rgba(0,0,0,0);
+    }
   }
 }
 
