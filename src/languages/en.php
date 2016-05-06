@@ -12,5 +12,6 @@
   define("NAV_NATION_ABBR", "Nat'l");
   define("NAV_PREFECTURE_ABBR", "Pref");
   define("NAV_MUNICIPAL_ABBR", "Muni");
-  define("NAV_MILITARY_ABBR", "Military");
+  define("NAV_MILITARY_ABBR", "Mili");
+  define("NAV_MISC_ABBR", "Misc");
   
