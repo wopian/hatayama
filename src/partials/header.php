@@ -28,11 +28,26 @@
           </ul>
         </div>
         <ul class="tabs hide-on-large-only">
-          <li class="tab waves-effect waves-block"><a href="#"><?= NAV_NATION ?></a></li>
-          <li class="tab waves-effect waves-block"><a href="#"><?= NAV_PREFECTURE ?></a></li>
-          <li class="tab waves-effect waves-block"><a href="#"><?= NAV_MUNICIPAL ?></a></li>
-          <li class="tab waves-effect waves-block"><a href="#"><?= NAV_MILITARY ?></a></li>
-          <li class="tab waves-effect waves-block"><a href="#"><?= NAV_MISC ?></a></li>
+          <li class="tab waves-effect waves-block">
+            <a class="hide-on-small-only" href="#"><?= NAV_NATION ?></a>
+            <a class="hide-on-med-and-up" href="#"><?= NAV_NATION_ABBR ?></a>
+          </li>
+          <li class="tab waves-effect waves-block">
+            <a class="hide-on-small-only" href="#"><?= NAV_PREFECTURE ?></a>
+            <a class="hide-on-med-and-up" href="#"><?= NAV_PREFECTURE_ABBR ?></a>
+          </li>
+          <li class="tab waves-effect waves-block">
+            <a class="hide-on-small-only" href="#"><?= NAV_MUNICIPAL ?></a>
+            <a class="hide-on-med-and-up" href="#"><?= NAV_MUNICIPAL_ABBR ?></a>
+          </li>
+          <li class="tab waves-effect waves-block">
+            <a class="hide-on-small-only" href="#"><?= NAV_MILITARY ?></a>
+            <a class="hide-on-med-and-up" href="#"><?= NAV_MILITARY_ABBR ?></a>
+          </li>
+          <li class="tab waves-effect waves-block">
+            <a class="hide-on-small-only" href="#"><?= NAV_MISC ?></a>
+            <a class="hide-on-med-and-up" href="#"><?= NAV_MISC_ABBR ?></a>
+          </li>
         </ul>
       </nav>
     </header>
