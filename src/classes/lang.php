@@ -12,7 +12,5 @@
   } else if ($_GET['language'] !== ('en' || 'ja')) {
     $lang = 'en';
   }
-  
-  //fallback to English if strings don't exist in language file
-  include_once "languages/en.php";
+
   include_once "languages/$lang.php";
