@@ -31,11 +31,11 @@
     "grunt-contrib-cssmin": "^1.0.1",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-imagemin": "^1.0.0",
-    "grunt-contrib-uglify": "^1.0.1",
+    "grunt-contrib-uglify": "^2.0.0",
     "grunt-contrib-concat": "^1.0.0",
     "grunt-contrib-jshint": "^1.0.0",
     "cwebp-bin": "^3.1.0",
-    "grunt-cwebp": "^1.0.1",
+    "grunt-cwebp": "^2.1.0",
     "phplint": "^1.7.0"
   },
   "scripts": {
