@@ -175,11 +175,11 @@ gulp.task('selenium', function(done) {
     logger: function(message) {}
   }, function(err) {
     if (err) return done(err);
-    if (process.env.TRAVIS) {
+    /*if (process.env.TRAVIS) {
       child.stderr.on('data', function(data) {
         console.log(data.toString());
       });
-    }
+    }*/
     selenium.start(function(err, child) {
       if (err) return done(err);
       selenium.child = child;
