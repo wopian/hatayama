@@ -1,0 +1,37 @@
+//Hatayama 1
+//A6CFE2
+//2B303A
+//F1FFFA
+//F6F7EB
+//134074
+
+//Hatayama 2
+//1B1D1C
+//53A2BE
+//1D84B5
+//176087
+//191D32
+
+body {
+  // Sticky footer
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  
+  // Fixed header offset
+  //padding-top: 54px;
+  
+  height: 300vh;
+}
+
+main {
+  @extend .container;
+  
+  // Sticky footer
+  flex: 1;
+}
+
+footer {  
+  div { @extend .container; }
+  span { @extend .text-muted; }
+}

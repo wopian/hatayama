@@ -1,0 +1,18 @@
+[
+   {
+      "page": "prefecture",
+      "prefecture": [{
+         "slug": "wiltshire",
+         "flag": "Wiltshire"
+      },
+      {
+          "slug": "somerset",
+          "flag": "Somerset"
+      },
+      {
+          "slug": "devon",
+          "flag": "Devon",
+          "party": "yo"
+      }]
+   }
+]

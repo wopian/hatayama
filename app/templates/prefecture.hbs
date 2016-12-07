@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hatayama</title>
+
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+        
+    <!--build:css assets/css/app.min.css-->
+    <link href='/assets/css/app.css' rel='stylesheet' type='text/css'>
+    <!--endbuild-->
+</head>
+<body>
+
+    <header>
+    <nav>
+        <h1><!--<span>Hata</span>yama --><span>ハタ</span>ヤマ</h1>
+        <!-- Links -->
+        <a href="#">Home</a>
+        <a href="#">National</a>
+        <a href="#">Prefecture</a>
+        <a href="#">Municipal</a>
+        <a href="#">Military</a>
+        <a href="#">Other</a>
+    </nav>
+    </header>
+
+    <!--<nav class="breadcrumb">
+    <div class="container">
+        <a class="breadcrumb-item" href="#">Home</a>
+        <a class="breadcrumb-item" href="#">United Kingdom</a>
+        <a class="breadcrumb-item" href="#">England</a>
+        <a class="breadcrumb-item active" href="#">Wiltshire</a>
+    </div>
+    </nav>-->
+
+    <section class="cover">
+    <div id="map">
+    </div>
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="cover-info">
+        <h2>{{flag}}</h2>
+        <a>South West</a>
+        <a>England</a>
+        <a>United Kingdom</a>
+        </div>
+    </div>
+    </section>
+
+    <main class="flag">
+    
+    <aside>
+        <div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/County_Flag_of_Wiltshire.svg/350px-County_Flag_of_Wiltshire.svg.png">
+            <p class="sidebar-header">Flag Specifications</p>
+            <p><span>Name</span>Bustard Flag</p>
+            <p><span>Adopted</span>2009</p>
+            <p><span>Flag ratio</span>3:5</p>
+            <p class="sidebar-header">Prefecture Details</p>
+            <p><span>Area</span>1,346 sq mi</p>
+            <p><span>Population</span>684,000</p>
+            <p><span>Density</span>510/sq mi</p>
+        </div>
+    </aside>
+    
+    <section>
+        <h3>About The Flag</h3>
+        <p>The "Bustard Flag" was created by Mike Prior and designed by Helen Pocock, a graphic designer, in 2007. It is partly based on the flag of the Wiltshire County Council, including the alternating stripes of green and white that represent the grassy downs of the county and their chalk underlay. The colours can represent hope, joy and safety (green) and peace (white). Although distinct, the complicated and irregular design has been met with some criticism by flag designers and heraldists.</p>
+
+        <p>An image of the great bustard (Otis tarda) stands at the centre of the flag. This bird had been extinct in England since 1832, but is now part of an intensive ten-year breeding programme on Salisbury Plain. Salisbury Plain, at the heart of the county, is one of only two areas in Great Britain in which the great bustard originally lived. On the flag, the male great bustard is depicted in gold on a solid green circle to represent the open grassland. The border of the circle, in six sections alternating green and white, represents the stone circles of Stonehenge and Avebury in the county. The six portions also represent the six surrounding counties of Gloucestershire, Oxfordshire, Berkshire, Hampshire, Dorset and Somerset.</p>
+
+        <p>The technical specification of the flag is that it is a 3:5 ratio, and is manufactured in green and gold onto a white material.</p>
+    </section>
+    </main>
+
+    <footer>
+    <div>
+        <span>Hello world.</span>
+    </div>
+    </footer>
+
+    <!--build:js /assets/js/app.min.js-->
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.js"></script>
+    <script src="/assets/js/vendor/bootstrap.min.js"></script>
+    <script src="/assets/js/nav.js"></script>
+    <script src="/assets/js/sidebar.js"></script>
+    <script src="/assets/js/map.js"></script>
+    <!--endbuild-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCF0qq_0eu2iw2WvUwCheypcjl6pmugNQ4&amp;sensor=false&callback=initialize"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+@font-face {
+    font-family: 'NSJPR';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Noto Sans CJK JP');
+}
+@font-face {
+    font-family: 'NSJPL';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Noto Sans CJK JP');
+}
+@font-face {
+    font-family: 'NSJPB';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Noto Sans CJK JP');
+}
+body {
+    font-family: 'NSJPL';
+    font-size: 14px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'NSJPB';
+}
+h2 {
+    font-size: 1.5rem;
+}
+h3 {
+    font-size: 1.15rem;
+}

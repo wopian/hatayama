@@ -1,0 +1,45 @@
+header {
+  @extend .navbar;
+  @extend .navbar-dark;
+  @extend .bg-faded;
+  @extend .navbar-fixed-top;
+
+  background: transparent;
+  
+  nav {
+    @extend .container;
+    @extend .nav;
+    @extend .navbar-nav;
+  }
+  
+  h1 {
+    @extend .navbar-brand;
+    @extend .mb-0;
+    font-size: 1rem;
+  }
+  
+  h1 span {
+    color: $poppy;
+  }
+  
+  a {
+    @extend .nav-item;
+    @extend .nav-link;
+  }
+}
+
+header.not-transparent,
+header:not(.not-transparent):hover {
+  background: #fff;
+  box-shadow: 0 0 1px 0 rgba(0,0,0,.25);
+  
+  h1,
+  a {
+    color: $metal;
+  }
+  
+  h1 span,
+  a:hover {
+    color: $poppy;
+  }
+}

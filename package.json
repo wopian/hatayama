@@ -7,9 +7,9 @@
   "private": true,
   "contributors": [
     {
-      "name" : "James Harris",
-      "email" : "wopiancitizen123@gmail.com",
-      "url" : "https://wopian.me"
+      "name": "James Harris",
+      "email": "wopiancitizen123@gmail.com",
+      "url": "https://wopian.me"
     }
   ],
   "main": "Gruntfile.js",
@@ -22,24 +22,25 @@
     "url": "https://github.com/wopian/hatayama/issues"
   },
   "devDependencies": {
-    "glob": "^7.0.0",
-    "grunt": "~1.0.1",
-    "load-grunt-tasks": "^3.3.0",
-    "grunt-timer": "^0.6.0",
-    "grunt-contrib-sass": "^1.0.0",
-    "grunt-autoprefixer": "^3.0.3",
-    "grunt-contrib-cssmin": "^1.0.1",
-    "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-imagemin": "^1.0.0",
-    "grunt-contrib-uglify": "^1.0.1",
-    "grunt-contrib-concat": "^1.0.0",
-    "grunt-contrib-jshint": "^1.0.0",
-    "cwebp-bin": "^3.1.0",
-    "grunt-cwebp": "^1.0.1",
-    "phplint": "^1.7.0"
+    "browser-sync": "^2.18.2",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-cache": "^0.4.5",
+    "gulp-compile-handlebars": "^0.6.1",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-if": "^2.0.2",
+    "gulp-imagemin": "^3.1.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.2",
+    "gulp-uglify": "^2.0.0",
+    "gulp-useref": "^3.1.2",
+    "gulp-util": "^3.0.7",
+    "handlebars": "^4.0.6",
+    "run-sequence": "^1.2.2"
   },
   "scripts": {
-    "pretest": "phplint 'src/**/*php'",
     "test": "grunt"
   }
 }
