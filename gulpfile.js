@@ -164,7 +164,8 @@ gulp.task('serve:test', function(done) {
     open: false,
     port: 9000,
     server: {
-      baseDir: ['test']
+      baseDir: ['test'],
+      directory: true
     },
     ui: false
   }, done);

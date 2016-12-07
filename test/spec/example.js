@@ -8,7 +8,7 @@ var client = require('webdriverio').remote({
 
 describe('example', function() {
     before(function(done) {
-        client.url('http://localhost:9000/index.html', done);
+        client.url('http://localhost:9000/fixture/index.html', done);
     });
 
     it('tests a feature', function(done) {
