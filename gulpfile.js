@@ -164,8 +164,7 @@ gulp.task('serve:test', function(done) {
     open: false,
     port: 9000,
     server: {
-      baseDir: ['test'],
-      directory: true
+      baseDir: ['test']
     },
     ui: false
   }, done);
@@ -173,7 +172,7 @@ gulp.task('serve:test', function(done) {
 
 gulp.task('selenium', function(done) {
   selenium.install({
-    logger: function(message) {}
+    logger: function(message) { }
   }, function(err) {
     if (err) return done(err);
     /*if (process.env.TRAVIS) {
@@ -190,7 +189,7 @@ gulp.task('selenium', function(done) {
 });
 
 gulp.task('integration', ['serve:test', 'selenium'], function () {
-  return gulp.src('test/spec/**/*.js', {read: false})
+  gulp.src('test/spec/**/*.js', {read: false})
     .pipe(mocha());
 });
 
