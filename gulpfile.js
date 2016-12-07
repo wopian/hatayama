@@ -97,22 +97,6 @@ gulp.task('handlebars', function() {
       }
     }
   }
-
-  /*gulp.src('app/templates/*.hbs')
-    .pipe(handlebars(template))
-    .pipe(rename("index.html"))
-    .pipe(gulp.dest('dist'))
-    .pipe(browserSync.reload({
-      stream: true
-    }));*/
-
-  //gulp.src('app/templates/index.hbs')
-  //  .pipe(handlebars())
-  //  .pipe(rename('index.html'))
-  //  .pipe(gulp.dest('dist'))
-  //  .pipe(browserSync.reload({
-  //    stream: true
-  //  }));
 })
 
 gulp.task('htmlmin', function() {
@@ -189,21 +173,11 @@ gulp.task('watch', function(callback) {
   gulp.watch('app/**/*.js', ['useref', 'js'], browserSync.reload);
 });
 
-gulp.task('default', function(callback) {
-  runSequence(
-    'watch',
-    ['sass', 'browserSync'],
-    ['useref'],
-    ['htmlmin'],
-    callback
-  );
-});
-
 gulp.task('build', function(callback) {
   runSequence(
     'clean:dist',
-    'sass',
-    ['useref', 'images', 'fonts'],
+    ['handlebars', 'sass', 'js'],
+    'useref',
     callback
   );
 });

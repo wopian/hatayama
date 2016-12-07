@@ -15,7 +15,6 @@ matrix:
 before_script:
   - npm i -g gulp
 
-install: travis_retry npm install --save-dev
+install: travis_retry npm i --save-dev
 
-
-script: gulp
+script: gulp build
