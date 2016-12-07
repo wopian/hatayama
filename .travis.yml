@@ -25,6 +25,7 @@ before_install:
 
 before_script:
   - npm i -g gulp
+  - npm test
 
 install: travis_retry npm i --save-dev
 
