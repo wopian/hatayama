@@ -25,7 +25,7 @@ var paths = {
 };
 
 gulp.task('sass', function() {
-  gulp.src(paths.sass)
+  return gulp.src(paths.sass)
     .pipe(sass())
     .pipe(gulp.dest('dist/assets/css'))
     .pipe(browserSync.reload({
@@ -34,7 +34,7 @@ gulp.task('sass', function() {
 });
 
 gulp.task('autoprefixer', function() {
-  gulp.src('dist/assets/css/app.css')
+  return gulp.src('dist/assets/css/app.css')
     .pipe(autoprefixer({
       browsers: ['last 2 versions'],
       cascade: false
@@ -43,7 +43,7 @@ gulp.task('autoprefixer', function() {
 });
 
 gulp.task('useref', function() {
-  gulp.src('app/*.hbs')
+  return gulp.src('app/*.hbs')
     .pipe(useref())
     .pipe(gulpIf('*.js', uglify()))
     .pipe(gulpIf('*.css', cssnano()))
@@ -81,7 +81,7 @@ gulp.task('handlebars', function() {
           var flags = hbs[i][j].prefecture[k],
           flag = flags.slug.replace(/ +/gm, '-').toLowerCase();
 
-          gulp.src('app/templates/prefecture.hbs')
+          return gulp.src('app/templates/prefecture.hbs')
             .pipe(handlebars(flags))
             .pipe(rename(flag + ".html"))
             .pipe(gulp.dest('dist/prefecture'))
@@ -91,7 +91,7 @@ gulp.task('handlebars', function() {
         }
       } else {
 
-      gulp.src('app/templates/index.hbs')
+      return gulp.src('app/templates/index.hbs')
       .pipe(handlebars(template))
       .pipe(rename(page + ".html"))
       .pipe(gulp.dest('dist'))
@@ -104,7 +104,7 @@ gulp.task('handlebars', function() {
 })
 
 gulp.task('htmlmin', function() {
-  gulp.src('app/**/*.html')
+  return gulp.src('app/**/*.html')
     .pipe(htmlmin({
       collapseWhitespace: true
     }))
@@ -115,23 +115,23 @@ gulp.task('htmlmin', function() {
 });
 
 gulp.task('images', function() {
-  gulp.src('app/images/**.*.+(png|jpeg|jpg|gif|svg)')
+  return gulp.src('app/images/**.*.+(png|jpeg|jpg|gif|svg)')
     .pipe(cache(imagemin()))
     .pipe(gulp.dest('dist/images'))
 });
 
 gulp.task('fonts', function() {
-  gulp.src('app/fonts/**/*')
+  return gulp.src('app/fonts/**/*')
     .pipe(gulp.dest('dist/fonts'))
 });
 
 gulp.task('js', function() {
-  gulp.src('app/models/**/*')
+  return gulp.src('app/models/**/*')
     .pipe(gulp.dest('dist/assets/js'))
     .pipe(browserSync.reload({
       stream: true
     }));
-  gulp.src('app/vendor/**/*.js')
+  return gulp.src('app/vendor/**/*.js')
     .pipe(gulp.dest('dist/assets/js/vendor/'))
     .pipe(browserSync.reload({
       stream: true
@@ -189,7 +189,7 @@ gulp.task('selenium', function(done) {
 });
 
 gulp.task('integration', ['serve:test', 'selenium'], function () {
-  gulp.src('test/spec/**/*.js', {read: false})
+  return gulp.src('test/spec/**/*.js', {read: false})
     .pipe(mocha());
 });
 
