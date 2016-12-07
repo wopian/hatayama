@@ -15,10 +15,6 @@ var runSequence  = require('run-sequence');
 var gutil        = require('gulp-util');
 var browserSync  = require('browser-sync').create();
 
-var selenium     = require('selenium-standalone');
-var mocha        = require('gulp-mocha');
-
-
 // Paths to build from
 var paths = {
   sass: "app/styles/**/*.scss",
@@ -155,47 +151,6 @@ gulp.task('browserSync', function() {
       baseDir: './dist',
     },
   });
-});
-
-gulp.task('serve:test', function(done) {
-  browserSync.init({
-    logLevel: 'silent',
-    notify: false,
-    open: false,
-    port: 9000,
-    server: {
-      baseDir: ['test']
-    },
-    ui: false
-  }, done);
-});
-
-gulp.task('selenium', function(done) {
-  selenium.install({
-    logger: function(message) { }
-  }, function(err) {
-    if (err) return done(err);
-    /*if (process.env.TRAVIS) {
-      child.stderr.on('data', function(data) {
-        console.log(data.toString());
-      });
-    }*/
-    selenium.start(function(err, child) {
-      if (err) return done(err);
-      selenium.child = child;
-      done();
-    });
-  });
-});
-
-gulp.task('integration', ['serve:test', 'selenium'], function () {
-  return gulp.src('test/spec/**/*.js', {read: false})
-    .pipe(mocha());
-});
-
-gulp.task('test', ['integration'], function() {
-  selenium.child.kill();
-  browserSync.exit();
 });
 
 gulp.task('watch', function(callback) {
