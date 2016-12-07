@@ -22,7 +22,6 @@
     "url": "https://github.com/wopian/hatayama/issues"
   },
   "devDependencies": {
-    "assert": "^1.4.1",
     "browser-sync": "^2.18.2",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
