@@ -158,7 +158,7 @@ gulp.task('browserSync', function() {
 });
 
 gulp.task('serve:test', function(done) {
-  browserSync({
+  browserSync.init({
     logLevel: 'silent',
     notify: false,
     open: false,
