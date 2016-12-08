@@ -57,7 +57,6 @@
     "run-sequence": "^1.2.2"
   },
   "scripts": {
-    "test": "gulp test",
-    "lint": "gulp lint"
+    "test": "gulp test"
   }
 }
