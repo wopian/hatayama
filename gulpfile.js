@@ -74,7 +74,7 @@ gulp.task('handlebars', function() {
   for (var i = 0; i < hbs.length; i++) {
 
     // Debug
-    gutil.log(hbs.length);
+    gutil.log(gutil.colors.cyan(hbs.length));
 
     for (var j = 0; j < hbs[i].length; j++) {
 
