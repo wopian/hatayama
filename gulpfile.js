@@ -14,14 +14,11 @@ const gulp         = require('gulp'),
       retabber     = require('retabber'),
       browserSync  = require('browser-sync').create(), // Watch
       Server       = require('karma').Server, // Unit Tests
-      //browserify   = require('browserify'),
+      //browserify = require('browserify'),
       eslint       = require('gulp-eslint'),
       hbs          = [],
       options      = {
         ignorePartials: true,
-        //partials: {
-        //  footer: '</body></html>'
-        //},
         batch: ['./app/templates/components'],
         helpers: {
           if_eq: function(a, b, opts) {
