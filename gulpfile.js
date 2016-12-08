@@ -13,10 +13,24 @@ var gulp         = require('gulp'),
     del          = require('del'),
     runSequence  = require('run-sequence'),
     gutil        = require('gulp-util'),
-    browserSync  = require('browser-sync').create(),
-    browserify   = require('browserify'),
-    source       = require('vinyl-source-stream'),
-    mochaPhantomJS = require('gulp-mocha-phantomjs');
+    browserSync  = require('browser-sync').create();
+
+// Unit Tests
+var Server       = require('karma').Server,
+    browserify   = require('browserify');
+
+gulp.task('test', function(done) {
+  return new Server({
+    configFile: __dirname + '/karma.conf.js',
+    singleRun: true
+  }, done).start();
+});
+
+gulp.task('watch:test', function(done) {
+  new Server({
+    configFile: __dirname + '/karma.conf.js',
+  }, done).start();
+});
 
 // Paths to build from
 var paths = {
@@ -181,42 +195,6 @@ gulp.task('browserSync', function() {
       baseDir: './dist',
     },
   });
-});
-
-gulp.task('browserSync:test', function() {
-  'use strict';
-  browserSync.init({
-    server: {
-      baseDir: ['./tests'],
-      index: 'tests.html'
-    }
-  });
-});
-
-gulp.task('browserify', function() {
-  'use strict';
-  return browserify('./tests/tests.js')
-    .bundle()
-    .on('error', function(err) {
-      console.log(err.toString());
-      this.emit('end');
-    })
-    .pipe(source('tests-browserify.js'))
-    .pipe(gulp.dest('tests/'))
-    .pipe(browserSync.reload({
-      stream: true
-    }));
-});
-
-gulp.task('test', function() {
-  'use strict';
-  return gulp.src('./tests/tests.html')
-    .pipe(mochaPhantomJS());
-});
-
-gulp.task('serve', ['browserify', 'browserSync:test'], function() {
-  'use strict';
-  gulp.watch(['tests/tests.js', 'tests/fixtures/text-changer.js'], ['browserify', 'test']);
 });
 
 gulp.task('watch', function(callback) {
