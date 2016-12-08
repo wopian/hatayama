@@ -20,7 +20,7 @@ const gulp         = require('gulp'),                                 // Gulp
         ignorePartials: true,
         batch: ['./app/templates/components'],
         helpers: {
-          if_eq: function(a, b, opts) {                               // Check if values equal
+          if_eq(a, b, opts) {                               // Check if values equal
             if (a === b) {                                              // Or === depending on need
               return opts.fn(this);
             }
