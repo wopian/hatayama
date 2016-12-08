@@ -29,7 +29,7 @@ const gulp         = require('gulp'),                                 // Gulp
         }
       };
 
-gulp.task('sass', function() {
+gulp.task('sass', () => {
   gulp.src('app/styles/**/*.scss')
     .pipe(sass())
     .pipe(gulp.dest('dist/assets/css'))
@@ -38,7 +38,7 @@ gulp.task('sass', function() {
     }));
 });
 
-gulp.task('autoprefixer', function() {
+gulp.task('autoprefixer', () => {
   gulp.src('dist/assets/css/app.css')
     .pipe(autoprefixer({
       browsers: ['last 2 versions'],
@@ -47,7 +47,7 @@ gulp.task('autoprefixer', function() {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('useref', function() {
+gulp.task('useref', () => {
   gulp.src('app/*.hbs')
     .pipe(useref())
     .pipe(gulpIf('*.js', uglify()))
@@ -61,7 +61,7 @@ gulp.task('useref', function() {
 hbs[0] = require('./app/components/index.json');
 hbs[1] = require('./app/components/prefecture.json');
 
-gulp.task('handlebars', function() {
+gulp.task('handlebars', () => {
 
   // Debug: Get total amount of components
   total = hbs.length;
@@ -114,9 +114,9 @@ gulp.task('handlebars', function() {
       }
     }
   }
-})
+});
 
-gulp.task('htmlmin', function() {
+gulp.task('htmlmin', () => {
   gulp.src('app/**/*.html')
     .pipe(htmlmin({
       collapseWhitespace: true
@@ -127,18 +127,18 @@ gulp.task('htmlmin', function() {
     }));
 });
 
-gulp.task('images', function() {
+gulp.task('images', () => {
   gulp.src('app/images/**.*.+(png|jpeg|jpg|gif|svg)')
     .pipe(cache(imagemin()))
     .pipe(gulp.dest('dist/images'))
 });
 
-gulp.task('fonts', function() {
+gulp.task('fonts', () => {
   gulp.src('app/fonts/**/*')
     .pipe(gulp.dest('dist/fonts'))
 });
 
-gulp.task('js', function() {
+gulp.task('js', () => {
   gulp.src('app/models/**/*')
     .pipe(gulp.dest('dist/assets/js'))
     .pipe(browserSync.reload({
@@ -152,17 +152,17 @@ gulp.task('js', function() {
 
 });
 
-gulp.task('clean:dist', function() {
+gulp.task('clean:dist', () => {
   del.sync('dist/**/*', '!dist/images', '!dist/images/**/*');
 });
 
-gulp.task('clean', function() {
+gulp.task('clean', () => {
   del.sync('dist').then(function(cb) {
     return cache.clearAll(cb);
   });
 });
 
-gulp.task('browserSync', function() {
+gulp.task('browserSync', () => {
   browserSync.init({
     server: {
       baseDir: './dist',
@@ -170,7 +170,7 @@ gulp.task('browserSync', function() {
   });
 });
 
-gulp.task('watch', function(callback) {
+gulp.task('watch', (callback) => {
   runSequence(
     'browserSync',
     ['handlebars', 'sass', 'js'],
@@ -183,7 +183,7 @@ gulp.task('watch', function(callback) {
   gulp.watch('app/**/*.js', ['useref', 'js'], browserSync.reload);
 });
 
-gulp.task('build', function(callback) {
+gulp.task('build', (callback) => {
   runSequence(
     'clean:dist',
     ['handlebars', 'sass', 'js'],
@@ -204,14 +204,14 @@ gulp.task('lint', () => {
     .pipe(eslint.failAfterError());
 });
 
-gulp.task('test', function(done) {
+gulp.task('test', (done) => {
   return new Server({
     configFile: __dirname + '/karma.conf.js',
     singleRun: true
   }, done).start();
 });
 
-gulp.task('watch:test', function(done) {
+gulp.task('watch:test', (done) => {
   new Server({
     configFile: __dirname + '/karma.conf.js',
   }, done).start();
