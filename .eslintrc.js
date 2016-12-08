@@ -25,6 +25,8 @@ module.exports = {
     'space-before-function-paren': 'off',
     'prefer-rest-params': 'off',
     'func-names': 'off',
-    'no-useless-escape': 'off'
+    'no-useless-escape': 'off',
+    'linebreak-style': 'off'
+    //'no-unused-vars': 'off'
   }
 };
