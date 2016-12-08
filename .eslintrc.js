@@ -10,8 +10,9 @@ module.exports = {
     'curly': 'error',
     'one-var': ['error', 'always'],
     'no-multi-spaces': ['error', { exceptions: { 'VariableDeclarator': true } }],
-    'key-spacing': ['error', { align: 'value' }],
+    'key-spacing': ['error', { 'beforeColon': true, 'afterColon': true, 'align': 'colon' }],
     'indent': ['error', 2, { 'VariableDeclarator': { 'var': 2, 'let': 2, 'const': 3 } }],
+    'spaced': ['error', 'always'],
     // disable
     'no-console': 'off',
     'comma-dangle': 'off',
