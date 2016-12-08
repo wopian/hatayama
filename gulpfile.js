@@ -78,7 +78,7 @@ gulp.task('handlebars', function() {
   for (var i = 0; i < hbs.length; i++) {
 
     // Debug
-    gutil.log('Building \'' + gutil.colors.yellow(i + ' of ' + total) + '\' components');
+    gutil.log('Building \'' + gutil.colors.yellow((i + 1) + ' of ' + total) + '\' components');
 
     for (var j = 0; j < hbs[i].length; j++) {
 
@@ -96,7 +96,7 @@ gulp.task('handlebars', function() {
         for (var k = 0; k < hbs[i][j].prefecture.length; k++) {
 
           // Debug
-          gutil.log('Building \'' + gutil.colors.yellow(hbs[i][j].prefecture[k].slug) + '\'');
+          gutil.log('Building \'prefecture/' + gutil.colors.yellow(hbs[i][j].prefecture[k].slug) + '\'');
 
           var flags = hbs[i][j].prefecture[k],
           flag = flags.slug.replace(/ +/gm, '-').toLowerCase();
@@ -108,9 +108,6 @@ gulp.task('handlebars', function() {
             .pipe(browserSync.reload({
               stream: true
             }));
-
-            // Debug
-            gutil.log('Finished \'' + gutil.colors.yellow(hbs[i][j].prefecture[k].slug) + '\'');
         }
       } else {
 
