@@ -205,8 +205,8 @@ gulp.task('browserify', function() {
     .pipe(gulp.dest('tests/'))
     .pipe(browserSync.reload({
       stream: true
-    }))
-})
+    }));
+});
 
 gulp.task('test', function() {
   'use strict';
