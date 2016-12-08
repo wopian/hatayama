@@ -58,7 +58,15 @@ options = {
   //partials: {
   //  footer: '</body></html>'
   //},
-  batch: ['./app/templates/components']
+  batch: ['./app/templates/components'],
+  helpers: {
+    if_eq: function(a, b, opts) {
+      if(a == b) // Or === depending on your needs
+        return opts.fn(this);
+      else
+        return opts.inverse(this);
+    }
+  }
 };
 
 gulp.task('handlebars', function() {

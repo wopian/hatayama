@@ -18,20 +18,25 @@ body {
   min-height: 100vh;
   flex-direction: column;
   
-  // Fixed header offset
-  //padding-top: 54px;
-  
   height: 300vh;
+
+  &:not(#flag) {
+    // Fixed header offset
+    padding-top: 54px;
+  }
 }
+
+
 
 main {
   @extend .container;
   
   // Sticky footer
-  flex: 1;
+  flex: 3;
 }
 
 footer {  
+  height: 54px;
   div { @extend .container; }
   span { @extend .text-muted; }
 }

@@ -10,6 +10,11 @@
     <link href='/assets/css/app.css' rel='stylesheet' type='text/css'>
     <!--endbuild-->
 </head>
-<body>
 
-    {{> app/anav }}
+{{#if_eq top 'flag' }}
+    <body id="flag">
+{{else}}
+    <body>
+{{/if_eq}}
+
+{{> app/appNav }}
