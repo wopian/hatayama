@@ -71,15 +71,19 @@ options = {
 
 gulp.task('handlebars', function() {
 
+  // Debug
+  gutil.log('Indexing \'' + gutil.colors.cyan(hbs.length) + '\' components');
+  total = hbs.length;
+
   for (var i = 0; i < hbs.length; i++) {
 
     // Debug
-    gutil.log(gutil.colors.cyan(hbs.length));
+    gutil.log('Building \'' + gutil.colors.cyan(i + ' of ' + total) + '\' components');
 
     for (var j = 0; j < hbs[i].length; j++) {
 
       // Debug
-      gutil.log(hbs[i].length + ": " + hbs[i]);
+      gutil.log('Indexing \'' + gutil.colors.cyan(hbs[i][j].page) + '\'');
       
       // Store standard template data
       var template = hbs[i][j],
@@ -90,6 +94,10 @@ gulp.task('handlebars', function() {
       // If page is for prefectures, loop through the prefecture JSON file
       if (hbs[i][j].page == 'prefecture') {
         for (var k = 0; k < hbs[i][j].prefecture.length; k++) {
+
+          // Debug
+          gutil.log('Building \'' + gutil.colors.cyan(hbs[i][j].prefecture[k].slug) + '\'');
+
           var flags = hbs[i][j].prefecture[k],
           flag = flags.slug.replace(/ +/gm, '-').toLowerCase();
 
@@ -100,16 +108,25 @@ gulp.task('handlebars', function() {
             .pipe(browserSync.reload({
               stream: true
             }));
+
+            // Debug
+            gutil.log('Finished \'' + gutil.colors.cyan(hbs[i][j].prefecture[k].slug) + '\'');
         }
       } else {
 
-      gulp.src('app/templates/index.hbs')
-      .pipe(handlebars(template, options))
-      .pipe(rename(page + ".html"))
-      .pipe(gulp.dest('dist'))
-      .pipe(browserSync.reload({
-        stream: true
-      }));
+        // Debug
+        gutil.log('Building \'' + gutil.colors.cyan(hbs[i][j].page) + '\'');
+
+        gulp.src('app/templates/index.hbs')
+          .pipe(handlebars(template, options))
+          .pipe(rename(page + ".html"))
+          .pipe(gulp.dest('dist'))
+          .pipe(browserSync.reload({
+            stream: true
+        }));
+
+        // Debug
+        gutil.log('Finished \'' + gutil.colors.cyan(hbs[i][j].page) + '\'');
       }
     }
   }
