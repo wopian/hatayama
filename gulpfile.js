@@ -72,13 +72,13 @@ options = {
 gulp.task('handlebars', function() {
 
   // Debug
-  gutil.log('Indexing \'' + gutil.colors.green(hbs.length) + '\' components');
+  gutil.log('Indexing \'' + gutil.colors.blue(hbs.length) + '\' components');
   total = hbs.length;
 
   for (var i = 0; i < hbs.length; i++) {
 
     // Debug
-    gutil.log('Building \'' + gutil.colors.green(i + ' of ' + total) + '\' components');
+    gutil.log('Building \'' + gutil.colors.yellow(i + ' of ' + total) + '\' components');
 
     for (var j = 0; j < hbs[i].length; j++) {
 
