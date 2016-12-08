@@ -11,6 +11,7 @@ module.exports = {
     'one-var': ['error', 'always'],
     'no-multi-spaces': ['error', { exceptions: { 'VariableDeclarator': true } }],
     'key-spacing': ['error', { align: 'value' }],
+    'indent': ['error', 2, { 'VariableDeclarator': { 'var': 2, 'let': 2, 'const': 3 } }],
     // disable
     'no-console': 'off',
     'comma-dangle': 'off',
