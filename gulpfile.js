@@ -1,22 +1,25 @@
 var gulp         = require('gulp'),
+    // CSS
     sass         = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
     cssnano      = require('gulp-cssnano'),
+    // JS
     useref       = require('gulp-useref'),
     uglify       = require('gulp-uglify'),
     gulpIf       = require('gulp-if'),
-    imagemin     = require('gulp-imagemin'),
-    htmlmin      = require('gulp-htmlmin'),
+    // Handlebars
     handlebars   = require('gulp-compile-handlebars'),
     rename       = require('gulp-rename'),
+    // Misc
     cache        = require('gulp-cache'),
     del          = require('del'),
     runSequence  = require('run-sequence'),
     gutil        = require('gulp-util'),
-    browserSync  = require('browser-sync').create();
-
-// Unit Tests
-var Server       = require('karma').Server,
+    retabber     = require('retabber'),
+    // Watch
+    browserSync  = require('browser-sync').create(),
+    // Unit Tests
+    Server       = require('karma').Server,
     browserify   = require('browserify');
 
 gulp.task('test', function(done) {
@@ -88,32 +91,30 @@ options = {
 
 gulp.task('handlebars', function() {
 
-  // Debug
-  gutil.log('Indexing \'' + gutil.colors.yellow(hbs.length) + '\' components');
+  // Debug: Get total amount of components
   total = hbs.length;
 
   for (var i = 0; i < hbs.length; i++) {
 
-    // Debug
-    gutil.log('Building \'' + gutil.colors.yellow((i + 1) + ' of ' + total) + '\' components');
-
     for (var j = 0; j < hbs[i].length; j++) {
 
       // Debug
-      //gutil.log('Indexing \'' + gutil.colors.yellow(hbs[i][j].page) + '\'');
+      gutil.log(retabber.smart('Populate \'' + gutil.colors.yellow(hbs[i][j].page) + '\'\t(' + (i + 1) + '/' + total + ')', 16));
       
       // Store standard template data
-      var template = hbs[i][j],
+      var template = hbs[i][j];
 
       // Get page type
-      page = template.page.replace(/ +/gm, '-').toLowerCase();
+      var page = template.page.replace(/ +/gm, '-').toLowerCase();
 
       // If page is for prefectures, loop through the prefecture JSON file
       if (hbs[i][j].page == 'prefecture') {
+        // Debug: Get total amount of components
+        var totalFlags = hbs[i][j].prefecture.length;
         for (var k = 0; k < hbs[i][j].prefecture.length; k++) {
 
           // Debug
-          gutil.log('Building \'' + gutil.colors.yellow('prefecture/' + hbs[i][j].prefecture[k].slug) + '\'');
+          gutil.log(retabber.smart('Building \'' + gutil.colors.yellow('prefecture/' + hbs[i][j].prefecture[k].slug) + '\'\t(' + (k + 1) + '/' + totalFlags + ')', 8));
 
           var flags = hbs[i][j].prefecture[k],
           flag = flags.slug.replace(/ +/gm, '-').toLowerCase();

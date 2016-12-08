@@ -22,6 +22,7 @@
     "url": "https://github.com/wopian/hatayama/issues"
   },
   "devDependencies": {
+    "ansi-align": "^1.1.0",
     "browser-sync": "^2.18.2",
     "browserify": "^13.1.1",
     "del": "^2.2.2",
@@ -45,6 +46,7 @@
     "karma-jasmine": "^1.0.2",
     "karma-phantomjs-launcher": "^1.0.2",
     "karma-spec-reporter": "0.0.26",
+    "retabber": "^4.0.0",
     "run-sequence": "^1.2.2"
   },
   "scripts": {
