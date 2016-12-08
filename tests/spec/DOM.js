@@ -9,7 +9,7 @@ describe("DOM Checks", function() {
 
     beforeEach(function() {
         jasmine.getFixtures().fixturesPath = 'base/tests/fixtures';
-        loadFixtures('checkDOM.html');
+        loadFixtures('DOM.html');
     });
 
     it('checks if an element is in DOM', function() {
