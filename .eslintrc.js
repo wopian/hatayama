@@ -4,7 +4,11 @@ module.exports = {
     ecmaVersion: 6,
     sourceType: 'module'
   },
-  extends: 'airbnb-base',
+  plugins: ['jasmine'],
+  extends: ['airbnb-base', 'plugin:jasmin/recommended'],
+  env: {
+    'jasmine': true,
+  },
   rules: {
     // enable
     'curly': 'error',

@@ -1,4 +1,1 @@
-exports.multiply = function(x, y) {
-    "use strict";
-    return x * y;
-};
+exports.multiply = (x, y) => x * y;
