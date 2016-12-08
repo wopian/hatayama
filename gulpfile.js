@@ -1,28 +1,27 @@
-const gulp         = require('gulp'),
-      sass         = require('gulp-sass'), //CSS
+const gulp         = require('gulp'),                                           // Gulp
+      sass         = require('gulp-sass'),                                      // CSS
       autoprefixer = require('gulp-autoprefixer'),
       cssnano      = require('gulp-cssnano'),
-      useref       = require('gulp-useref'), // JS
+      useref       = require('gulp-useref'),                                    // JavaScript
       uglify       = require('gulp-uglify'),
       gulpIf       = require('gulp-if'),
-      handlebars   = require('gulp-compile-handlebars'), // Handlebars
+      handlebars   = require('gulp-compile-handlebars'),                        // Handlebars
       rename       = require('gulp-rename'),
-      cache        = require('gulp-cache'), // Misc
+      cache        = require('gulp-cache'),                                     // Misc
       del          = require('del'),
       runSequence  = require('run-sequence'),
       gutil        = require('gulp-util'),
       retabber     = require('retabber'),
-      browserSync  = require('browser-sync').create(), // Watch
-      Server       = require('karma').Server, // Unit Tests
-      //browserify = require('browserify'),
+      browserSync  = require('browser-sync').create(),                          // Watch
+      Server       = require('karma').Server,                                   // Unit Tests
       eslint       = require('gulp-eslint'),
-      hbs          = [],
-      options      = {
+      hbs          = [],                                                        // Routes Storage
+      options      = {                                                          // Handlebars Partials
         ignorePartials: true,
         batch: ['./app/templates/components'],
         helpers: {
-          if_eq: function(a, b, opts) {
-            if(a == b) // Or === depending on your needs
+          if_eq: function(a, b, opts) {                                         // Check if values equal
+            if(a == b)                                                          // Or === depending on need needs
               return opts.fn(this);
             else
               return opts.inverse(this);
