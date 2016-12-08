@@ -72,18 +72,18 @@ options = {
 gulp.task('handlebars', function() {
 
   // Debug
-  gutil.log('Indexing \'' + gutil.colors.cyan(hbs.length) + '\' components');
+  gutil.log('Indexing \'' + gutil.colors.magenta(hbs.length) + '\' components');
   total = hbs.length;
 
   for (var i = 0; i < hbs.length; i++) {
 
     // Debug
-    gutil.log('Building \'' + gutil.colors.cyan(i + ' of ' + total) + '\' components');
+    gutil.log('Building \'' + gutil.colors.magenta(i + ' of ' + total) + '\' components');
 
     for (var j = 0; j < hbs[i].length; j++) {
 
       // Debug
-      gutil.log('Indexing \'' + gutil.colors.cyan(hbs[i][j].page) + '\'');
+      gutil.log('Indexing \'' + gutil.colors.magenta(hbs[i][j].page) + '\'');
       
       // Store standard template data
       var template = hbs[i][j],
@@ -96,7 +96,7 @@ gulp.task('handlebars', function() {
         for (var k = 0; k < hbs[i][j].prefecture.length; k++) {
 
           // Debug
-          gutil.log('Building \'' + gutil.colors.cyan(hbs[i][j].prefecture[k].slug) + '\'');
+          gutil.log('Building \'' + gutil.colors.magenta(hbs[i][j].prefecture[k].slug) + '\'');
 
           var flags = hbs[i][j].prefecture[k],
           flag = flags.slug.replace(/ +/gm, '-').toLowerCase();
@@ -110,12 +110,12 @@ gulp.task('handlebars', function() {
             }));
 
             // Debug
-            gutil.log('Finished \'' + gutil.colors.cyan(hbs[i][j].prefecture[k].slug) + '\'');
+            gutil.log('Finished \'' + gutil.colors.magenta(hbs[i][j].prefecture[k].slug) + '\'');
         }
       } else {
 
         // Debug
-        gutil.log('Building \'' + gutil.colors.cyan(hbs[i][j].page) + '\'');
+        gutil.log('Building \'' + gutil.colors.magenta(hbs[i][j].page) + '\'');
 
         gulp.src('app/templates/index.hbs')
           .pipe(handlebars(template, options))
@@ -126,7 +126,7 @@ gulp.task('handlebars', function() {
         }));
 
         // Debug
-        gutil.log('Finished \'' + gutil.colors.cyan(hbs[i][j].page) + '\'');
+        gutil.log('Finished \'' + gutil.colors.magenta(hbs[i][j].page) + '\'');
       }
     }
   }
