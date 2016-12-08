@@ -23,7 +23,7 @@ install: travis_retry npm i --save-dev
 
 before_script:
   - npm i -g gulp
-  #- gulp lint
+  - gulp lint
   - npm test
 
 script: gulp build
