@@ -4,10 +4,11 @@ module.exports = {
     ecmaVersion: 6,
     sourceType: 'module'
   },
-  plugins: ['jasmine'],
-  extends: ['airbnb-base', 'plugin:jasmin/recommended'],
+  plugins: ['jasmine', 'jasmine-jquery'],
+  extends: ['airbnb-base', 'plugin:jasmine/recommended', 'plugin:jasmine-jquery/recommended'],
   env: {
-    'jasmine': true,
+    'jquery': true,
+    'jasmine': true
   },
   rules: {
     // enable
@@ -31,6 +32,5 @@ module.exports = {
     'func-names': 'off',
     'no-useless-escape': 'off',
     'linebreak-style': 'off'
-    //'no-unused-vars': 'off'
   }
 };

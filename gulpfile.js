@@ -239,9 +239,9 @@ gulp.task('build', (callback) => {
 gulp.task('lint', () => {
   gulp.src([
     '**/*.js',
-    '!node_modules/**',
-    '!dist/**',
-    '!app/vendor/**',
+    '!node_modules/**',                                             // Ignore npm packages
+    '!dist/**',                                                     // Ignore built JavaScript
+    '!app/vendor/**',                                               // Ignore vendor JavaScript
   ])
     .pipe(eslint())
     .pipe(eslint.format())
