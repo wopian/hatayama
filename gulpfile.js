@@ -1,19 +1,22 @@
-var gulp         = require('gulp');
-var sass         = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
-var cssnano      = require('gulp-cssnano');
-var useref       = require('gulp-useref');
-var uglify       = require('gulp-uglify');
-var gulpIf       = require('gulp-if');
-var imagemin     = require('gulp-imagemin');
-var htmlmin      = require('gulp-htmlmin');
-var handlebars   = require('gulp-compile-handlebars');
-var rename       = require('gulp-rename');
-var cache        = require('gulp-cache');
-var del          = require('del');
-var runSequence  = require('run-sequence');
-var gutil        = require('gulp-util');
-var browserSync  = require('browser-sync').create();
+var gulp         = require('gulp'),
+    sass         = require('gulp-sass'),
+    autoprefixer = require('gulp-autoprefixer'),
+    cssnano      = require('gulp-cssnano'),
+    useref       = require('gulp-useref'),
+    uglify       = require('gulp-uglify'),
+    gulpIf       = require('gulp-if'),
+    imagemin     = require('gulp-imagemin'),
+    htmlmin      = require('gulp-htmlmin'),
+    handlebars   = require('gulp-compile-handlebars'),
+    rename       = require('gulp-rename'),
+    cache        = require('gulp-cache'),
+    del          = require('del'),
+    runSequence  = require('run-sequence'),
+    gutil        = require('gulp-util'),
+    browserSync  = require('browser-sync').create(),
+    browserify   = require('browserify'),
+    source       = require('vinyl-source-stream'),
+    mochaPhantomJS = require('gulp-mocha-phantomjs');
 
 // Paths to build from
 var paths = {
@@ -121,9 +124,6 @@ gulp.task('handlebars', function() {
           .pipe(browserSync.reload({
             stream: true
         }));
-
-        // Debug
-        gutil.log('Finished \'' + gutil.colors.yellow(hbs[i][j].page) + '\'');
       }
     }
   }
@@ -181,6 +181,42 @@ gulp.task('browserSync', function() {
       baseDir: './dist',
     },
   });
+});
+
+gulp.task('browserSync:test', function() {
+  'use strict';
+  browserSync.init({
+    server: {
+      baseDir: ['./tests'],
+      index: 'tests.html'
+    }
+  });
+});
+
+gulp.task('browserify', function() {
+  'use strict';
+  return browserify('./tests/tests.js')
+    .bundle()
+    .on('error', function(err) {
+      console.log(err.toString());
+      this.emit('end');
+    })
+    .pipe(source('tests-browserify.js'))
+    .pipe(gulp.dest('tests/'))
+    .pipe(browserSync.reload({
+      stream: true
+    }))
+})
+
+gulp.task('test', function() {
+  'use strict';
+  return gulp.src('./tests/tests.html')
+    .pipe(mochaPhantomJS());
+});
+
+gulp.task('serve', ['browserify', 'browserSync:test'], function() {
+  'use strict';
+  gulp.watch(['tests/tests.js', 'tests/fixtures/text-changer.js'], ['browserify', 'test']);
 });
 
 gulp.task('watch', function(callback) {
