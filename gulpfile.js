@@ -21,7 +21,7 @@ var paths = {
 };
 
 gulp.task('sass', function() {
-  return gulp.src(paths.sass)
+  gulp.src(paths.sass)
     .pipe(sass())
     .pipe(gulp.dest('dist/assets/css'))
     .pipe(browserSync.reload({
@@ -30,7 +30,7 @@ gulp.task('sass', function() {
 });
 
 gulp.task('autoprefixer', function() {
-  return gulp.src('dist/assets/css/app.css')
+  gulp.src('dist/assets/css/app.css')
     .pipe(autoprefixer({
       browsers: ['last 2 versions'],
       cascade: false
@@ -39,7 +39,7 @@ gulp.task('autoprefixer', function() {
 });
 
 gulp.task('useref', function() {
-  return gulp.src('app/*.hbs')
+  gulp.src('app/*.hbs')
     .pipe(useref())
     .pipe(gulpIf('*.js', uglify()))
     .pipe(gulpIf('*.css', cssnano()))
@@ -52,6 +52,14 @@ gulp.task('useref', function() {
 var hbs = [];
 hbs[0] = require('./app/components/index.json');
 hbs[1] = require('./app/components/prefecture.json');
+
+options = {
+  ignorePartials: true,
+  //partials: {
+  //  footer: '</body></html>'
+  //},
+  batch: ['./app/templates/components']
+};
 
 gulp.task('handlebars', function() {
 
@@ -77,8 +85,8 @@ gulp.task('handlebars', function() {
           var flags = hbs[i][j].prefecture[k],
           flag = flags.slug.replace(/ +/gm, '-').toLowerCase();
 
-          return gulp.src('app/templates/prefecture.hbs')
-            .pipe(handlebars(flags))
+          gulp.src('app/templates/prefecture.hbs')
+            .pipe(handlebars(flags, options))
             .pipe(rename(flag + ".html"))
             .pipe(gulp.dest('dist/prefecture'))
             .pipe(browserSync.reload({
@@ -87,8 +95,8 @@ gulp.task('handlebars', function() {
         }
       } else {
 
-      return gulp.src('app/templates/index.hbs')
-      .pipe(handlebars(template))
+      gulp.src('app/templates/index.hbs')
+      .pipe(handlebars(template, options))
       .pipe(rename(page + ".html"))
       .pipe(gulp.dest('dist'))
       .pipe(browserSync.reload({
@@ -100,7 +108,7 @@ gulp.task('handlebars', function() {
 })
 
 gulp.task('htmlmin', function() {
-  return gulp.src('app/**/*.html')
+  gulp.src('app/**/*.html')
     .pipe(htmlmin({
       collapseWhitespace: true
     }))
@@ -111,23 +119,23 @@ gulp.task('htmlmin', function() {
 });
 
 gulp.task('images', function() {
-  return gulp.src('app/images/**.*.+(png|jpeg|jpg|gif|svg)')
+  gulp.src('app/images/**.*.+(png|jpeg|jpg|gif|svg)')
     .pipe(cache(imagemin()))
     .pipe(gulp.dest('dist/images'))
 });
 
 gulp.task('fonts', function() {
-  return gulp.src('app/fonts/**/*')
+  gulp.src('app/fonts/**/*')
     .pipe(gulp.dest('dist/fonts'))
 });
 
 gulp.task('js', function() {
-  return gulp.src('app/models/**/*')
+  gulp.src('app/models/**/*')
     .pipe(gulp.dest('dist/assets/js'))
     .pipe(browserSync.reload({
       stream: true
     }));
-  return gulp.src('app/vendor/**/*.js')
+  gulp.src('app/vendor/**/*.js')
     .pipe(gulp.dest('dist/assets/js/vendor/'))
     .pipe(browserSync.reload({
       stream: true

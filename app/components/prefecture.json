@@ -11,8 +11,12 @@
       },
       {
           "slug": "devon",
-          "flag": "Devon",
-          "party": "yo"
-      }]
+          "flag": "Devon"
+      },
+      {
+          "slug": "abc",
+          "flag": "Abc"
+      }
+      ]
    }
 ]
