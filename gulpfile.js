@@ -20,28 +20,11 @@ var gulp         = require('gulp'),
     browserSync  = require('browser-sync').create(),
     // Unit Tests
     Server       = require('karma').Server,
-    browserify   = require('browserify');
-
-gulp.task('test', function(done) {
-  return new Server({
-    configFile: __dirname + '/karma.conf.js',
-    singleRun: true
-  }, done).start();
-});
-
-gulp.task('watch:test', function(done) {
-  new Server({
-    configFile: __dirname + '/karma.conf.js',
-  }, done).start();
-});
-
-// Paths to build from
-var paths = {
-  sass: "app/styles/**/*.scss",
-};
+    browserify   = require('browserify'),
+    eslint       = require('gulp-eslint');
 
 gulp.task('sass', function() {
-  gulp.src(paths.sass)
+  gulp.src('app/styles/**/*.scss')
     .pipe(sass())
     .pipe(gulp.dest('dist/assets/css'))
     .pipe(browserSync.reload({
@@ -218,4 +201,29 @@ gulp.task('build', function(callback) {
     'useref',
     callback
   );
+});
+
+gulp.task('lint', () => {
+  gulp.src([
+    '**/*.js',
+    '!node_modules/**',
+    '!dist/**',
+    '!app/vendor/**',
+    ])
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
+});
+
+gulp.task('test', function(done) {
+  return new Server({
+    configFile: __dirname + '/karma.conf.js',
+    singleRun: true
+  }, done).start();
+});
+
+gulp.task('watch:test', function(done) {
+  new Server({
+    configFile: __dirname + '/karma.conf.js',
+  }, done).start();
 });
