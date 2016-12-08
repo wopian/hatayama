@@ -1,27 +1,37 @@
-var gulp         = require('gulp'),
-    // CSS
-    sass         = require('gulp-sass'),
-    autoprefixer = require('gulp-autoprefixer'),
-    cssnano      = require('gulp-cssnano'),
-    // JS
-    useref       = require('gulp-useref'),
-    uglify       = require('gulp-uglify'),
-    gulpIf       = require('gulp-if'),
-    // Handlebars
-    handlebars   = require('gulp-compile-handlebars'),
-    rename       = require('gulp-rename'),
-    // Misc
-    cache        = require('gulp-cache'),
-    del          = require('del'),
-    runSequence  = require('run-sequence'),
-    gutil        = require('gulp-util'),
-    retabber     = require('retabber'),
-    // Watch
-    browserSync  = require('browser-sync').create(),
-    // Unit Tests
-    Server       = require('karma').Server,
-    browserify   = require('browserify'),
-    eslint       = require('gulp-eslint');
+const gulp         = require('gulp'),
+      sass         = require('gulp-sass'), //CSS
+      autoprefixer = require('gulp-autoprefixer'),
+      cssnano      = require('gulp-cssnano'),
+      useref       = require('gulp-useref'), // JS
+      uglify       = require('gulp-uglify'),
+      gulpIf       = require('gulp-if'),
+      handlebars   = require('gulp-compile-handlebars'), // Handlebars
+      rename       = require('gulp-rename'),
+      cache        = require('gulp-cache'), // Misc
+      del          = require('del'),
+      runSequence  = require('run-sequence'),
+      gutil        = require('gulp-util'),
+      retabber     = require('retabber'),
+      browserSync  = require('browser-sync').create(), // Watch
+      Server       = require('karma').Server, // Unit Tests
+      browserify   = require('browserify'),
+      eslint       = require('gulp-eslint'),
+      hbs          = [],
+      options      = {
+        ignorePartials: true,
+        //partials: {
+        //  footer: '</body></html>'
+        //},
+        batch: ['./app/templates/components'],
+        helpers: {
+          if_eq: function(a, b, opts) {
+            if(a == b) // Or === depending on your needs
+              return opts.fn(this);
+            else
+              return opts.inverse(this);
+            }
+          }
+        };
 
 gulp.task('sass', function() {
   gulp.src('app/styles/**/*.scss')
@@ -52,25 +62,8 @@ gulp.task('useref', function() {
     }));
 });
 
-var hbs = [];
 hbs[0] = require('./app/components/index.json');
 hbs[1] = require('./app/components/prefecture.json');
-
-options = {
-  ignorePartials: true,
-  //partials: {
-  //  footer: '</body></html>'
-  //},
-  batch: ['./app/templates/components'],
-  helpers: {
-    if_eq: function(a, b, opts) {
-      if(a == b) // Or === depending on your needs
-        return opts.fn(this);
-      else
-        return opts.inverse(this);
-    }
-  }
-};
 
 gulp.task('handlebars', function() {
 

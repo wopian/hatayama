@@ -8,6 +8,9 @@ module.exports = {
   rules: {
     // enable
     'curly': 'error',
+    'one-var': ['error', 'always'],
+    'no-multi-spaces': ['error', { exceptions: { 'VariableDeclarator': true } }],
+    'key-spacing': ['error', { align: 'value' }],
     // disable
     'no-console': 'off',
     'comma-dangle': 'off',
