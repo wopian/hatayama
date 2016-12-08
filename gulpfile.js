@@ -83,7 +83,7 @@ gulp.task('handlebars', function() {
     for (var j = 0; j < hbs[i].length; j++) {
 
       // Debug
-      gutil.log('Indexing \'' + gutil.colors.yellow(hbs[i][j].page) + '\'');
+      //gutil.log('Indexing \'' + gutil.colors.yellow(hbs[i][j].page) + '\'');
       
       // Store standard template data
       var template = hbs[i][j],
@@ -96,7 +96,7 @@ gulp.task('handlebars', function() {
         for (var k = 0; k < hbs[i][j].prefecture.length; k++) {
 
           // Debug
-          gutil.log('Building \'prefecture/' + gutil.colors.yellow(hbs[i][j].prefecture[k].slug) + '\'');
+          gutil.log('Building \'' + gutil.colors.yellow('prefecture/' + hbs[i][j].prefecture[k].slug) + '\'');
 
           var flags = hbs[i][j].prefecture[k],
           flag = flags.slug.replace(/ +/gm, '-').toLowerCase();
