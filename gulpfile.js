@@ -58,22 +58,21 @@ gulp.task('useref', () => {
     }));
 });
 
-hbs[0] = require('./app/components/index.json');
+hbs[0] = require('./app/components/index.json');                    // Prepare data for Handlebars
 hbs[1] = require('./app/components/prefecture.json');
 
 gulp.task('handlebars', () => {
   // Debug: Get total amount of components
   var total = hbs.length;
 
-  for (let i = 0; i < hbs.length; i++) {
-    for (let j = 0; j < hbs[i].length; j++) {
-      // Debug
-      gutil.log(
-        retabber.smart(
-          'Populate \'' +
-          gutil.colors.yellow(hbs[i][j].page) +
-          '\'\t(' + (i + 1) + '/' + total + ')', 16)
-      );
+  for (let i = 0; i < hbs.length; i++) {                            // Loop declared JSON
+    for (let j = 0; j < hbs[i].length; j++) {                       // Loop root of JSON
+      gutil.log(                                                    // # DEBUG START
+        retabber.smart(                                             // # Print to terminal current
+          'Populate \'' +                                           // # page being populated
+          gutil.colors.yellow(hbs[i][j].page) +                     // #
+          '\'\t(' + (i + 1) + '/' + total + ')', 16)                // #
+      );                                                            // # DEBUG END
       
       var template = hbs[i][j],                                     // Store standard template data
           page = template.page.replace(/ +/gm, '-').toLowerCase();  // Get page type
@@ -82,11 +81,17 @@ gulp.task('handlebars', () => {
         // Debug: Get total amount of components                    // through prefecture.json file
         var totalFlags = hbs[i][j].prefecture.length;
         for (var k = 0; k < hbs[i][j].prefecture.length; k++) {
-          // Debug
-          gutil.log(retabber.smart('Building \'' + gutil.colors.yellow('prefecture/' + hbs[i][j].prefecture[k].slug) + '\'\t(' + (k + 1) + '/' + totalFlags + ')', 8));
+          gutil.log(                                                // # DEBUG START
+            retabber.smart(                                         // # Print to terminal current
+              'Building \'' +                                       // # prefecture flag being
+              gutil.colors.yellow(                                  // # built
+                'prefecture/' +                                     // #
+                hbs[i][j].prefecture[k].slug) +                     // #
+              '\'\t(' + (k + 1) + '/' + totalFlags + ')', 8)        // #
+          );                                                        // # DEBUG END
 
-          var flags = hbs[i][j].prefecture[k],
-          flag = flags.slug.replace(/ +/gm, '-').toLowerCase();
+          var flags = hbs[i][j].prefecture[k],                      // Store prefecture flag data
+          flag = flags.slug.replace(/ +/gm, '-').toLowerCase();     // Store & escape flag slug
 
           gulp.src('app/templates/prefecture.hbs')
             .pipe(handlebars(flags, options))
