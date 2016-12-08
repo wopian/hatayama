@@ -1,27 +1,27 @@
-const gulp         = require('gulp'),                                 // Gulp
-      sass         = require('gulp-sass'),                            // CSS
+const gulp         = require('gulp'),                               // Gulp
+      sass         = require('gulp-sass'),                          // CSS
       autoprefixer = require('gulp-autoprefixer'),
       cssnano      = require('gulp-cssnano'),
-      useref       = require('gulp-useref'),                          // JavaScript
+      useref       = require('gulp-useref'),                        // JavaScript
       uglify       = require('gulp-uglify'),
       gulpIf       = require('gulp-if'),
-      handlebars   = require('gulp-compile-handlebars'),              // Handlebars
+      handlebars   = require('gulp-compile-handlebars'),            // Handlebars
       rename       = require('gulp-rename'),
-      cache        = require('gulp-cache'),                           // Misc
+      cache        = require('gulp-cache'),                         // Misc
       del          = require('del'),
       runSequence  = require('run-sequence'),
       gutil        = require('gulp-util'),
       retabber     = require('retabber'),
-      browserSync  = require('browser-sync').create(),                // Watch
-      Server       = require('karma').Server,                         // Unit Tests
+      browserSync  = require('browser-sync').create(),              // Watch
+      Server       = require('karma').Server,                       // Unit Tests
       eslint       = require('gulp-eslint'),
-      hbs          = [],                                              // Routes Storage
-      options      = {                                                // Handlebars Partials
+      hbs          = [],                                            // Routes Storage
+      options      = {                                              // Handlebars Partials
         ignorePartials: true,
         batch: ['./app/templates/components'],
         helpers: {
-          if_eq(a, b, opts) {                               // Check if values equal
-            if (a === b) {                                              // Or === depending on need
+          if_eq(a, b, opts) {                                       // Check if values equal
+            if (a === b) {                                          // Or === depending on need
               return opts.fn(this);
             }
             return opts.inverse(this);
@@ -62,29 +62,26 @@ hbs[0] = require('./app/components/index.json');
 hbs[1] = require('./app/components/prefecture.json');
 
 gulp.task('handlebars', () => {
-
   // Debug: Get total amount of components
-  total = hbs.length;
+  var total = hbs.length;
 
-  for (var i = 0; i < hbs.length; i++) {
-
-    for (var j = 0; j < hbs[i].length; j++) {
-
+  for (let i = 0; i < hbs.length; i++) {
+    for (let j = 0; j < hbs[i].length; j++) {
       // Debug
-      gutil.log(retabber.smart('Populate \'' + gutil.colors.yellow(hbs[i][j].page) + '\'\t(' + (i + 1) + '/' + total + ')', 16));
+      gutil.log(
+        retabber.smart(
+          'Populate \'' +
+          gutil.colors.yellow(hbs[i][j].page) +
+          '\'\t(' + (i + 1) + '/' + total + ')', 16)
+      );
       
-      // Store standard template data
-      var template = hbs[i][j];
+      var template = hbs[i][j],                                     // Store standard template data
+          page = template.page.replace(/ +/gm, '-').toLowerCase();  // Get page type
 
-      // Get page type
-      var page = template.page.replace(/ +/gm, '-').toLowerCase();
-
-      // If page is for prefectures, loop through the prefecture JSON file
-      if (hbs[i][j].page == 'prefecture') {
-        // Debug: Get total amount of components
+      if (hbs[i][j].page == 'prefecture') {                         // If page for prefectures, loop
+        // Debug: Get total amount of components                    // through prefecture.json file
         var totalFlags = hbs[i][j].prefecture.length;
         for (var k = 0; k < hbs[i][j].prefecture.length; k++) {
-
           // Debug
           gutil.log(retabber.smart('Building \'' + gutil.colors.yellow('prefecture/' + hbs[i][j].prefecture[k].slug) + '\'\t(' + (k + 1) + '/' + totalFlags + ')', 8));
 
@@ -100,7 +97,6 @@ gulp.task('handlebars', () => {
             }));
         }
       } else {
-
         // Debug
         gutil.log('Building \'' + gutil.colors.yellow(hbs[i][j].page) + '\'');
 
