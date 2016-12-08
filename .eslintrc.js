@@ -7,8 +7,14 @@ module.exports = {
   plugins: ['jasmine', 'jasmine-jquery'],
   extends: ['airbnb-base', 'plugin:jasmine/recommended', 'plugin:jasmine-jquery/recommended'],
   env: {
+    'browser': true,
+    'node': true,
     'jquery': true,
     'jasmine': true
+  },
+  globals: {
+    'google': true,
+    'map': true,
   },
   rules: {
     // enable
