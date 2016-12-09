@@ -27,3 +27,7 @@ before_script:
   - npm test
 
 script: gulp build
+
+addons:
+    code_climate:
+        repo_token: accabe6f460082ce8ed6343d6197cf3f738cf8e6e0eade0f20c3686e91415879
