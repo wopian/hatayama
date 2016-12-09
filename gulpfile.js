@@ -55,7 +55,7 @@ const gulp         = require('gulp'),                               // Gulp
           a = 'Generate';
           e = `${page.split('/')[0]}/`;
           f = page.split('/')[1];
-          b = gutil.colors.black(e + gutil.colors.yellow(f));
+          b = gutil.colors.black(e + gutil.colors.dim(f));
           c = gutil.colors.black(t);
           d = 8;
           break;
