@@ -26,6 +26,7 @@ before_install:
 install: travis_retry npm i --save-dev
 
 before_script:
+  - npm i -g codeclimate-test-reporter
   - npm i -g gulp
   - gulp lint
   - npm test
