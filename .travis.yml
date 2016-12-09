@@ -32,4 +32,5 @@ before_script:
 
 script: gulp build
 
-after_script: cat ./coverage/frontend/lcov.info | codeclimate
+after_script:
+  - codeclimate < test/coverage/**/lcov.info
