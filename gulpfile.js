@@ -40,7 +40,9 @@ const gulp         = require('gulp'),                               // Gulp
         let a,
             b,
             c,
-            d;
+            d,
+            e,
+            f;
         switch (type) {
         case 1: {                                                   // If Populate task then:
           a = 'Populate';
@@ -51,7 +53,9 @@ const gulp         = require('gulp'),                               // Gulp
         }
         case 2: {                                                   // If Generate task then:
           a = 'Generate';
-          b = gutil.colors.bgYellow(page);
+          e = `${page.split('/')[0]}/`;
+          f = page.split('/')[1];
+          b = gutil.colors.black(e + gutil.colors.yellow(f));
           c = gutil.colors.black(t);
           d = 8;
           break;
