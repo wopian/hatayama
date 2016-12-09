@@ -46,7 +46,7 @@ const gulp         = require('gulp'),                               // Gulp
         switch (type) {
         case 1: {                                                   // If Populate task then:
           a = 'Populate';
-          b = gutil.colors.cyan.dim(page);
+          b = gutil.colors.cyan(page);
           c = gutil.colors.white(t);                                // Set to yellow text
           d = 16;                                                   // Tab width
           break;
@@ -55,7 +55,7 @@ const gulp         = require('gulp'),                               // Gulp
           a = 'Generate';
           e = `${page.split('/')[0]}/`;
           f = page.split('/')[1];
-          b = gutil.colors.black(e + gutil.colors.dim(f));
+          b = gutil.colors.black(e + gutil.colors.cyan(f));
           c = gutil.colors.black(t);
           d = 8;
           break;
