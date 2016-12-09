@@ -7,10 +7,14 @@ engines:
       - javascript
   eslint:
     enabled: true
+    config: .eslintrc.js
+  scss-lint:
+    enabled: true
   fixme:
     enabled: true
 ratings:
   paths:
+  - "**.scss"
   - "**.js"
   - "**.hbs"
 exclude_paths:
