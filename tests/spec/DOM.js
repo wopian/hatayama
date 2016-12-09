@@ -1,6 +1,6 @@
 // const fs       = require('fs');
 
-describe('DOM Checks', () => {
+describe('Basic DOM Checks', () => {
   beforeEach(() => {
     jasmine.getFixtures().fixturesPath = 'base/tests/fixtures';
     loadFixtures('DOM.html');

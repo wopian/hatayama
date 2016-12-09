@@ -4,7 +4,23 @@
         "prefecture":[
             {
                 "slug":"wiltshire",
-                "flag":"Wiltshire"
+                "flag":"Wiltshire",
+                "map":[
+                    {
+                        
+                    }
+                ],
+                "location":[
+                    {
+                        "pos":"South West",
+                        "nation":[
+                            {
+                                "England": "hi",
+                                "United Kingdom": "boo"
+                            }
+                        ]
+                    }
+                ]
             },
             {
                 "slug":"somerset",

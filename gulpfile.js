@@ -47,8 +47,8 @@ const gulp         = require('gulp'),                               // Gulp
         case 1: {                                                   // If Populate task then:
           a = 'Populate';
           b = gutil.colors.cyan(page);
-          c = gutil.colors.white(t);                                // Set to yellow text
-          d = 16;                                                   // Tab width
+          c = gutil.colors.magenta(t);                                // Set to yellow text
+          d = 32;                                                   // Tab width
           break;
         }
         case 2: {                                                   // If Generate task then:
@@ -57,7 +57,7 @@ const gulp         = require('gulp'),                               // Gulp
           f = page.split('/')[1];
           b = gutil.colors.black(e + gutil.colors.cyan(f));
           c = gutil.colors.black(t);
-          d = 8;
+          d = 16;
           break;
         }
         default: { break; }
