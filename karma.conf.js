@@ -1,8 +1,9 @@
 module.exports = function(config) {
   config.set({
     basePath:      './',
-    frameworks:    ['browserify', 'jasmine-jquery', 'jasmine'],
+    frameworks:    ['browserify', 'jasmine-jquery', 'jasmine', 'es6-shim'],
     colors:        true,
+    logLevel:      config.LOG_INFO,
     reporters:     ['spec'],
     browsers:      ['PhantomJS'],
     preprocessors: {
@@ -17,6 +18,7 @@ module.exports = function(config) {
       'karma-jasmine-jquery',
       'karma-phantomjs-launcher',
       'karma-spec-reporter',
+      'karma-es6-shim',
       'karma-browserify',
       'brfs'
     ],

@@ -1,6 +1,6 @@
                                                                     // ########################## //
                                                                     // #                        # //
-                                                                    // #       Variables        # //
+                                                                    // #       Initialise       # //
                                                                     // #                        # //
                                                                     // ########################## //
 
@@ -123,7 +123,7 @@ gulp.task('handlebars', () => {
             }));
         }
       } else {
-        _log(2, page, 1, 0);                                              // # DEBUG: Generate
+        _log(2, page, 1, 0);                                        // # DEBUG: Generate
 
         gulp.src('app/templates/index.hbs')
           .pipe(handlebars(template, options))
