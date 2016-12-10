@@ -113,7 +113,7 @@ gulp.task('handlebars', () => {
             }));
         }
       } else {
-        _log(2, page, undefined, undefined);                                        // # DEBUG: Generate
+        _log(2, page, undefined, undefined);                        // # DEBUG: Generate
 
         gulp.src('app/templates/index.hbs')
           .pipe(handlebars(template, options))
