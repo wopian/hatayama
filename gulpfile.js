@@ -42,8 +42,7 @@ const gulp         = require('gulp'),                               // Gulp
             b,
             c,
             r,
-            e,
-            f;
+            e;
         switch (type) {
         case 1: {                                                   // If Populate task then:
           a = 'Populate ';                                           // Set type string
