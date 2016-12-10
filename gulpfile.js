@@ -37,7 +37,8 @@ const gulp         = require('gulp'),                               // Gulp     
       _log = (type, page, total = 0, counter = 0) => {              // CLI Formatter for HBS      //
         const a = zeroFill(2, counter + 1),                         // Zero fill progress i.e, 01 //
               b = zeroFill(2, total),                               // Zerp fill total     '   '  //
-              c = `${a}/${b}`;                                    // Format total i.e, |01/02|  //
+              c = `￤${a}/${b}￤`,                                      // Format total i.e, |01/02|  //
+              k = 40;
         let d,                                                      //                            //
             e,                                                      //                            //
             f,                                                      //                            //
@@ -51,7 +52,7 @@ const gulp         = require('gulp'),                               // Gulp     
           e = '';                                                   // Set child delimiter   NULL //
           f = gutil.colors.cyan(page);                              // Set page + cyan text       //
           g = `${gutil.colors.magenta(c)}`;                         // Set progress + magenta txt //
-          h = 40 - stringWidth(d + e + f);                      // Set smart tab width        //
+          h = k - stringWidth(d + e + f);                      // Set smart tab width        //
           for (i = 0; i < h; i++) {                                 //                            //
             j = `${j} `;                                            //                            //
           }
@@ -63,7 +64,7 @@ const gulp         = require('gulp'),                               // Gulp     
           e = ' ↪ ';                                           // Set child delimiter        //
           f = gutil.colors.cyan(page);                              // Set page + cyan text       //
           g = `${gutil.colors.black(c)}`;                           // Set progress + black text  //
-          h = 40 - stringWidth(d + e + f);                      // Set smart tab width        //
+          h = k - stringWidth(d + e + f);                      // Set smart tab width        //
           for (i = 0; i < h; i++) {                                 //                            //
             j = `${j} `;                                            //                            //
           }                                                         //                            //
