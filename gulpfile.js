@@ -54,7 +54,8 @@ const gulp         = require('gulp'),                               // Gulp     
           h = 40 - stringWidth(d + e + f + g);                      // Set smart tab width        //
           for (i = 0; i < h; i++) {                                 //                            //
             j = `${j} `;                                            //                            //
-          }                                                         //                            //
+          }
+          j = `${j}\u2009`;                                                         //                            //
           break;                                                    //                            //
         }                                                           //                            //
         case 2: {                                                   // Generate:                  //
