@@ -19,6 +19,7 @@ const gulp         = require('gulp'),                               // Gulp     
       browserSync  = require('browser-sync').create(),              // Watch -> Build Server      //
       Server       = require('karma').Server,                       // Tests -> Test Server       //
       eslint       = require('gulp-eslint'),                        // Tests -> JS Quality        //
+      coveralls    = require('gulp-coveralls'),
       runSequence  = require('run-sequence'),                       // Tasks -> Queue             //
       handlebars   = require('gulp-compile-handlebars'),            // HBS   -> HTML              //
       hbs          = [],                                            // HBS   -> Routes            //
@@ -37,8 +38,8 @@ const gulp         = require('gulp'),                               // Gulp     
       _log = (type, page, total = 0, counter = 0) => {              // CLI Formatter for HBS      //
         const a = zeroFill(2, counter + 1),                         // Zero fill progress i.e, 01 //
               b = zeroFill(2, total),                               // Zerp fill total     '   '  //
-              c = `（${a}/${b}）`,                                      // Format total i.e, |01/02|  //
-              k = 40;
+              c = `${a}/${b}`,                                   // Format total i.e, |01/02|  //
+              k = 40;                                               //                            //
         let d,                                                      //                            //
             e,                                                      //                            //
             f,                                                      //                            //
@@ -52,27 +53,27 @@ const gulp         = require('gulp'),                               // Gulp     
           e = '';                                                   // Set child delimiter   NULL //
           f = gutil.colors.cyan(page);                              // Set page + cyan text       //
           g = `${gutil.colors.magenta(c)}`;                         // Set progress + magenta txt //
-          h = k - stringWidth(d + e + f + g);                      // Set smart tab width        //
+          h = k - stringWidth(d + e + f + g);                       // Set smart tab width        //
           for (i = 0; i < h; i++) {                                 //                            //
-            j = `${j}\u200A`;                                            //                            //
-          }
-          j = `${j}`;                                                         //                            //
+            j = `${j}\u200A`;                                       //                            //
+          }                                                         //                            //
+          j = `${j}`;                                               //                            //
           break;                                                    //                            //
         }                                                           //                            //
         case 2: {                                                   // Generate:                  //
           d = 'Generate ';                                          // Set type                   //
-          e = ' ↪ ';                                           // Set child delimiter        //
+          e = ' ↪ ';                                                // Set child delimiter        //
           f = gutil.colors.cyan(page);                              // Set page + cyan text       //
           g = `${gutil.colors.black(c)}`;                           // Set progress + black text  //
-          h = k - stringWidth(d + e + f + g);                      // Set smart tab width        //
+          h = k - stringWidth(d + e + f + g);                       // Set smart tab width        //
           for (i = 0; i < h; i++) {                                 //                            //
-            j = `${j}\u200A`;                                            //                            //
+            j = `${j}\u200A`;                                       //                            //
           }                                                         //                            //
           break;                                                    //                            //
         }                                                           //                            //
         default: { break; }                                         //                            //
         }                                                           //                            //
-        return gutil.log(`${d}${e}\'${f}\'${j}${g}`);// Output formatted string    //
+        return gutil.log(`${d}${e}\'${f}\'${j}${g}`);               // Output formatted string    //
       };                                                            //                            //
                                                                     // ########################## //
                                                                     // #                        # //
@@ -267,7 +268,9 @@ gulp.task('test', (done) => {                                       // ╓╌> T
   new Server({                                                      // ║
     configFile: `${__dirname}/karma.conf.js`,                       // ║
     singleRun:  true                                                // ║
-  }, done).start();                                                 // ║
+  }, done).start();
+  gulp.src('coverage/**/lcov.info')
+  .pipe(coveralls());                                                 // ║
 });                                                                 // ╨
                                                                     //
 gulp.task('watch:test', (done) => {                                 // ╓╌> Watch Test             //
