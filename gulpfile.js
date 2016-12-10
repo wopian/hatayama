@@ -20,7 +20,9 @@ const gulp         = require('gulp'),                               // Gulp     
       Server       = require('karma').Server,                       // Tests  -> Test Server      //
       eslint       = require('gulp-eslint'),                        // Tests  -> JS Quality       //
       coveralls    = require('gulp-coveralls'),                     // Tests  -> Test Coverage    //
-      connect      = require('gulp-connect'),                       // Deploy -> Heroku           //
+      gzippo       = require('gzippo'),                             // Deploy -> Heroku           //
+      express      = require('express'),                            // Deploy -> Heroku           //
+      app          = express(),                                     // Deploy -> Heroku           //
       runSequence  = require('run-sequence'),                       // Tasks  -> Queue            //
       handlebars   = require('gulp-compile-handlebars'),            // HBS    -> HTML             //
       hbs          = [],                                            // HBS    -> Routes           //
@@ -290,20 +292,11 @@ gulp.task('watch:test', (done) => {                                 // ╓╌> W
   }, done).start();                                                 // ║
 });                                                                 // ╨
 
-gulp.task('build:deploy', (callback) => {
+gulp.task('heroku:staging', (callback) => {
   runSequence(
     'clean:dist',
     ['handlebars', 'sass:build', 'javascript'],
     'autoprefixer',
-    'serveprod',
     callback
   );
-});
-
-gulp.task('serveprod', () => {
-  connect.server({
-    root:       'dist',
-    port:       process.env.PORT || 5000,
-    livereload: false
-  });
 });
