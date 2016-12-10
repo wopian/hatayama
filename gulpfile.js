@@ -55,12 +55,12 @@ const gulp         = require('gulp'),                               // Gulp     
           for (i = 0; i < h; i++) {                                 //                            //
             j = `${j} `;                                            //                            //
           }
-          j = `${j}\u200A`;                                                         //                            //
+          j = `${j}`;                                                         //                            //
           break;                                                    //                            //
         }                                                           //                            //
         case 2: {                                                   // Generate:                  //
           d = 'Generate ';                                          // Set type                   //
-          e = ' \u21AA ';                                           // Set child delimiter        //
+          e = ' \u21AA\u200A ';                                           // Set child delimiter        //
           f = gutil.colors.cyan(page);                              // Set page + cyan text       //
           g = `${gutil.colors.black(c)}`;                           // Set progress + black text  //
           h = 40 - stringWidth(d + e + f + g);                      // Set smart tab width        //
