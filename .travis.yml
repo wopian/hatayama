@@ -34,4 +34,4 @@ script: gulp build:tidy
 
 after_success:
   - npm i codeclimate-test-reporter
-  - codeclimate-test-reporter < 'coverage/PhantomJS 2.1.1 (Linux 0.0.0)/lcov.info'
+  - codeclimate-test-reporter < coverage/**/lcov.info

@@ -49,15 +49,15 @@ const gulp         = require('gulp'),                               // Gulp     
           e = '';                                                   // Set child delimiter   NULL //
           f = gutil.colors.cyan(page);                              // Set page + cyan text       //
           g = `\t\t${gutil.colors.magenta(c)}`;                       // Set progress + magenta txt //
-          h = 4;                                                   // Set smart tab width        //
+          h = 8;                                                   // Set smart tab width        //
           break;                                                    //                            //
         }                                                           //                            //
         case 2: {                                                   // Generate:                  //
           d = 'Generate ';                                          // Set type                   //
           e = ' ↪ ';                                              // Set child delimiter   NULL //
           f = gutil.colors.cyan(page);                              // Set page + cyan text       //
-          g = `\t${gutil.colors.black(c)}`;                       // Set progress + black text  //
-          h = 4;                                                   // Set smart tab width        //
+          g = `\t\t${gutil.colors.black(c)}`;                       // Set progress + black text  //
+          h = 8;                                                   // Set smart tab width        //
           break;                                                    //                            //
         }                                                           //                            //
         default: { break; }                                         //                            //
