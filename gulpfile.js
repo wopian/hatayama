@@ -16,6 +16,7 @@ const gulp         = require('gulp'),                               // Gulp     
       gutil        = require('gulp-util'),                          // CLI   -> Write & Colours   //
       retabber     = require('retabber'),                           // CLI   -> Smart Tabs        //
       zeroFill     = require('zero-fill'),                          // CLI   -> Number Padding    //
+      stringWidth  = require('string-width'),                       // CLI   -> String Width      //
       browserSync  = require('browser-sync').create(),              // Watch -> Build Server      //
       Server       = require('karma').Server,                       // Tests -> Test Server       //
       eslint       = require('gulp-eslint'),                        // Tests -> JS Quality        //
@@ -48,21 +49,21 @@ const gulp         = require('gulp'),                               // Gulp     
           d = 'Populate ';                                          // Set type                   //
           e = '';                                                   // Set child delimiter   NULL //
           f = gutil.colors.cyan(page);                              // Set page + cyan text       //
-          g = `\t\t${gutil.colors.magenta(c)}`;                       // Set progress + magenta txt //
-          h = 8;                                                   // Set smart tab width        //
+          g = `${gutil.colors.magenta(c)}`;                         // Set progress + magenta txt //
+          h = stringWidth(d + e + f + g);                           // Set smart tab width        //
           break;                                                    //                            //
         }                                                           //                            //
         case 2: {                                                   // Generate:                  //
           d = 'Generate ';                                          // Set type                   //
-          e = ' ↪ ';                                              // Set child delimiter   NULL //
+          e = ' ↪ ';                                                // Set child delimiter   NULL //
           f = gutil.colors.cyan(page);                              // Set page + cyan text       //
-          g = `\t\t${gutil.colors.black(c)}`;                       // Set progress + black text  //
-          h = 8;                                                   // Set smart tab width        //
+          g = `${gutil.colors.black(c)}`;                           // Set progress + black text  //
+          h = stringWidth(d + e + f + g);                                                    // Set smart tab width        //
           break;                                                    //                            //
         }                                                           //                            //
         default: { break; }                                         //                            //
         }                                                           //                            //
-        return gutil.log(retabber.smart(`${d}${e}\'${f}\'${g}`, h));// Output formatted string    //
+        return gutil.log(`${d}${e}\'${f}\'${g} (${h})`);// Output formatted string    //
       };                                                            //                            //
                                                                     // ########################## //
                                                                     // #                        # //
