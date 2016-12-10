@@ -3,7 +3,7 @@ module.exports = function(config) {
     basePath:         './',
     frameworks:       ['browserify', 'jasmine-jquery', 'jasmine'],
     colors:           true,
-    logLevel:         config.LOG_DEBUG,
+    logLevel:         config.LOG_WARN,
     reportSlowerThan: 500,
     // reporters:     ['spec', 'coverage'],
     reporters:        ['mocha', 'coverage'],
