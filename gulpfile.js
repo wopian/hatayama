@@ -3,92 +3,69 @@
                                                                     // #       Initialise       # //
                                                                     // #                        # //
                                                                     // ########################## //
-
-const gulp         = require('gulp'),                               // Gulp
-      sass         = require('gulp-sass'),                          // CSS
-      autoprefixer = require('gulp-autoprefixer'),
-      cssnano      = require('gulp-cssnano'),
-      useref       = require('gulp-useref'),                        // JavaScript
-      uglify       = require('gulp-uglify'),
-      gulpIf       = require('gulp-if'),
-      handlebars   = require('gulp-compile-handlebars'),            // Handlebars
-      rename       = require('gulp-rename'),
-      cache        = require('gulp-cache'),                         // Misc
-      imagemin     = require('gulp-imagemin'),
-      del          = require('del'),
-      runSequence  = require('run-sequence'),
-      gutil        = require('gulp-util'),
-      retabber     = require('retabber'),
-      zeroFill     = require('zero-fill'),
-      browserSync  = require('browser-sync').create(),              // Watch
-      Server       = require('karma').Server,                       // Unit Tests
-      eslint       = require('gulp-eslint'),
-      hbs          = [],                                            // Routes Storage
-      options      = {                                              // Handlebars Partials
-        ignorePartials: true,
-        batch:          ['./app/templates/components'],
-        helpers:        {
-          if_eq(a, b, opts) {                                       // Check if values equal
-            if (a === b) {                                          // Or === depending on need
-              return opts.fn(this);
-            }
-            return opts.inverse(this);
-          }
-        }
-      },
-      _log = (type, page, total = 0, counter = 0) => {
-        const t = `${zeroFill(2, counter + 1)}/${zeroFill(2, total)}`;// Calculate current progress
-        let a,
-            b,
-            c,
-            r,
-            e;
-        switch (type) {
-        case 1: {                                                   // If Populate task then:
-          a = 'Populate ';                                           // Set type string
-          b = gutil.colors.cyan(page);
-          c = `\t|${gutil.colors.magenta(t)}|`;
-          e = '';                              // Set to yellow text
-          r = 32;                                                   // Tab width
-          break;
-        }
-        case 2: {                                                   // If Generate task then:
-          a = 'Generate ';
-          b = gutil.colors.cyan(page);
-          c = `\t|${gutil.colors.black(t)}|`;
-          e = ' └-> ';
-          r = 16;
-          break;
-        }
-        default: { break; }
-        }
-        return gutil.log(retabber.smart(`${a}${e}\'${b}\'${c}`, r));  // Output
-      };
-
-                                                                    // ########################## //
-                                                                    // #                        # //
-                                                                    // #          SASS          # //
-                                                                    // #                        # //
-                                                                    // ########################## //
-
-gulp.task('sass:build', () => {
-  gulp.src('app/styles/**/*.scss')
-    .pipe(sass())
-    .pipe(gulp.dest('dist/assets/css'))
-    .pipe(browserSync.reload({
-      stream: true
-    }));
-});
-
-gulp.task('autoprefixer', () => {
-  gulp.src('dist/assets/css/app.css')
-    .pipe(autoprefixer({
-      browsers: ['last 2 versions'],
-      cascade:  false
-    }))
-    .pipe(gulp.dest('dist'));
-});
-
+                                                                    //                            //
+const gulp         = require('gulp'),                               // Gulp                       //
+      sass         = require('gulp-sass'),                          // SCSS  -> CSS               //
+      autoprefixer = require('gulp-autoprefixer'),                  // CSS   -> Vendor Prefixes   //
+      cssnano      = require('gulp-cssnano'),                       // CSS   -> Minify            //
+      useref       = require('gulp-useref'),                        // JS    -> Concat            //
+      uglify       = require('gulp-uglify'),                        // JS    -> Minify            //
+      gulpIf       = require('gulp-if'),                            //                            //
+      rename       = require('gulp-rename'),                        // Files -> Rename            //
+      del          = require('del'),                                // Files -> Delete            //
+      cache        = require('gulp-cache'),                         // Cache -> Images            //
+      imagemin     = require('gulp-imagemin'),                      // Image -> Minify            //
+      gutil        = require('gulp-util'),                          // CLI   -> Write & Colours   //
+      retabber     = require('retabber'),                           // CLI   -> Smart Tabs        //
+      zeroFill     = require('zero-fill'),                          // CLI   -> Number Padding    //
+      browserSync  = require('browser-sync').create(),              // Watch -> Build Server      //
+      Server       = require('karma').Server,                       // Tests -> Test Server       //
+      eslint       = require('gulp-eslint'),                        // Tests -> JS Quality        //
+      runSequence  = require('run-sequence'),                       // Tasks -> Queue             //
+      handlebars   = require('gulp-compile-handlebars'),            // HBS   -> HTML              //
+      hbs          = [],                                            // HBS   -> Routes            //
+      options      = {                                              // HBS   -> Options           //
+        ignorePartials: true,                                       //                            //
+        batch:          ['./app/templates/components'],             // HBS   -> Partials          //
+        helpers:        {                                           // HBS   -> Helpers:          //
+          if_eq(a, b, opts) {                                       // ╓╌> {{#if_eq a 'b'}}       //
+            if (a === b) {                                          // ║                          //
+              return opts.fn(this);                                 // ║   Check if both values   //
+            }                                                       // ║    are equal             //
+            return opts.inverse(this);                              // ║                          //
+          }                                                         // ╨                          //
+        }                                                           //                            //
+      },                                                            //                            //
+      _log = (type, page, total = 0, counter = 0) => {              // CLI Formatter for HBS      //
+        const a = zeroFill(2, counter + 1),                         // Zero fill progress i.e, 01 //
+              b = zeroFill(2, total),                               // Zerp fill total     '   '  //
+              c = `|${a}/${b}|`;                                    // Format total i.e, |01/02|  //
+        let d,                                                      //                            //
+            e,                                                      //                            //
+            f,                                                      //                            //
+            g,                                                      //                            //
+            h;                                                      //                            //
+        switch (type) {                                             //                            //
+        case 1: {                                                   // Populate:                  //
+          d = 'Populate ';                                          // Set type                   //
+          e = '';                                                   // Set child delimiter   NULL //
+          f = gutil.colors.cyan(page);                              // Set page + cyan text       //
+          g = `\t${gutil.colors.magenta(c)}`;                       // Set progress + magenta txt //
+          h = 32;                                                   // Set smart tab width        //
+          break;                                                    //                            //
+        }                                                           //                            //
+        case 2: {                                                   // Generate:                  //
+          d = 'Generate ';                                          // Set type                   //
+          e = ' └-> ';                                              // Set child delimiter   NULL //
+          f = gutil.colors.cyan(page);                              // Set page + cyan text       //
+          g = `\t|${gutil.colors.black(c)}|`;                       // Set progress + black text  //
+          h = 16;                                                   // Set smart tab width        //
+          break;                                                    //                            //
+        }                                                           //                            //
+        default: { break; }                                         //                            //
+        }                                                           //                            //
+        return gutil.log(retabber.smart(`${d}${e}\'${f}\'${c}`, h));// Output formatted string    //
+      };                                                            //                            //
                                                                     // ########################## //
                                                                     // #                        # //
                                                                     // #       Handlebars       # //
@@ -140,70 +117,100 @@ gulp.task('handlebars', () => {
     }
   }
 });
-
+                                                                    // ########################## //
+                                                                    // #                        # //
+                                                                    // #          SCSS          # //
+                                                                    // #                        # //
+                                                                    // ########################## //
+                                                                    //                            //
+gulp.task('sass:build', () => {                                     // ╓╌> SASS                   //
+  gulp.src('app/styles/**/*.scss')                                  // ║                          //
+    .pipe(sass())                                                   // ║   Compiles .scss files   //
+    .pipe(cssnano())                                                // ║    to .css files         //
+    .pipe(gulp.dest('dist/assets/css'))                             // ║   Reloads page if run    //
+    .pipe(browserSync.reload({                                      // ║    from watch task       //
+      stream: true                                                  // ║                          //
+    }));                                                            // ║                          //
+});                                                                 // ╨                          //
+                                                                    //                            //
+gulp.task('autoprefixer', () => {                                   // ╓╌> Autoprefixer           //
+  gulp.src('dist/assets/css/app.css')                               // ║                          //
+    .pipe(autoprefixer({                                            // ║   Add vendor prefixes    //
+      browsers: ['last 2 versions'],                                // ║    to fully support      //
+      cascade:  false                                               // ║    last 2 versions of    //
+    }))                                                             // ║    major browsers        //
+    .pipe(gulp.dest('dist'));                                       // ║                          //
+});                                                                 // ╨                          //
                                                                     // ########################## //
                                                                     // #                        # //
                                                                     // #       JavaScript       # //
                                                                     // #                        # //
                                                                     // ########################## //
-
-gulp.task('useref:htm', () => {
-  gulp.src('dist/**/*.html')
-    .pipe(useref())
-    .pipe(gulpIf('*.js', uglify()))
-    .pipe(gulpIf('*.css', cssnano()))
-    .pipe(gulp.dest('dist'))
-    .pipe(browserSync.reload({
-      stream: true
-    }));
-});
-
-gulp.task('javascript', () => {
-  gulp.src('app/models/**/*')
-    .pipe(gulp.dest('dist/assets/js'))
-    .pipe(browserSync.reload({
-      stream: true
-    }));
-  gulp.src('app/vendor/**/*.js')
-    .pipe(gulp.dest('dist/assets/js/vendor/'))
-    .pipe(browserSync.reload({
-      stream: true
-    }));
-});
-
+                                                                    //                            //
+gulp.task('javascript', () => {                                     // ╓╌> JavaScript             //
+  gulp.src('app/models/**/*')                                       // ║                          //
+    .pipe(uglify())                                                 // ║   Move and minify        //
+    .pipe(gulp.dest('dist/assets/js'))                              // ║    JavaScript            //
+    .pipe(browserSync.reload({                                      // ║   Reloads page if run    //
+      stream: true                                                  // ║    from watch task       //
+    }));                                                            // ╨                          //
+  gulp.src('app/vendor/**/*.js')                                    // ╓╌> JavaScript Vendor      //
+    .pipe(uglify())                                                 // ║                          //
+    .pipe(gulp.dest('dist/assets/js/vendor/'))                      // ║   Move and minify        //
+    .pipe(browserSync.reload({                                      // ║    vendor JavaScript     //
+      stream: true                                                  // ║   Reloads page if run    //
+    }));                                                            // ║    from watch task       //
+});                                                                 // ╨                          //
                                                                     // ########################## //
                                                                     // #                        # //
                                                                     // #          Misc          # //
                                                                     // #                        # //
                                                                     // ########################## //
-
-gulp.task('images', () => {
-  gulp.src('app/images/**.*.+(png|jpeg|jpg|gif|svg)')
-    .pipe(cache(imagemin()))
-    .pipe(gulp.dest('dist/images'));
-});
-
-gulp.task('fonts', () => {
-  gulp.src('app/fonts/**/*')
-    .pipe(gulp.dest('dist/fonts'));
-});
-
-gulp.task('clean:dist', () => {
-  del.sync('dist/**/*', '!dist/images', '!dist/images/**/*');
-});
-
-gulp.task('clean', () => {
-  del.sync('dist').then((cb) => {
-    cache.clearAll(cb);
-  });
-});
-
+                                                                    //                            //
+gulp.task('images', () => {                                         // ╓╌> Images                 //
+  gulp.src('app/images/**.*.+(png|jpeg|jpg|gif|svg)')               // ║                          //
+    .pipe(cache(imagemin()))                                        // ║   Move and cache images  //
+    .pipe(gulp.dest('dist/images'));                                // ║                          //
+});                                                                 // ╨                          //
+                                                                    //                            //
+gulp.task('fonts', () => {                                          // ╓╌> Fonts                  //
+  gulp.src('app/fonts/**/*')                                        // ║                          //
+    .pipe(gulp.dest('dist/fonts'));                                 // ║   Move fonts             //
+});                                                                 // ╨                          //
+                                                                    //                            //
+gulp.task('clean:dist', () => {                                     // ╓╌> Clean                  //
+  del.sync('dist/**/*', '!dist/images', '!dist/images/**/*');       // ║                          //
+});                                                                 // ╨   Deletes uncached files //
+                                                                    //                            //
+gulp.task('clean', () => {                                          // ╓╌> Clean Cache            //
+  del.sync('dist').then((cb) => {                                   // ║                          //
+    cache.clearAll(cb);                                             // ║   Deletes cached files   //
+  });                                                               // ║                          //
+});                                                                 // ╨                          //
+                                                                    // ########################## //
+                                                                    // #                        # //
+                                                                    // #        Linters         # //
+                                                                    // #                        # //
+                                                                    // ########################## //
+                                                                    //                            //
+gulp.task('lint', () => {                                           // ╓╌> EsLint                 //
+  gulp.src([                                                        // ║                          //
+    '**/*.js',                                                      // ║   Check JavaScript       //
+    '!node_modules/**',                                             // ║    against ruleset       //
+    '!dist/**',                                                     // ║    and validate syntax   //
+    '!app/vendor/**',                                               // ║                          //
+  ])                                                                // ║                          //
+    .pipe(eslint())                                                 // ║                          //
+    .pipe(eslint.format())                                          // ║                          //
+    .pipe(eslint.failAfterError());                                 // ║                          //
+});                                                                 // ╨                          //
+                                                                    //                            //
                                                                     // ########################## //
                                                                     // #                        # //
                                                                     // #         Build          # //
                                                                     // #                        # //
                                                                     // ########################## //
-
+                                                                    
 gulp.task('browserSync', () => {
   browserSync.init({
     server: {
@@ -214,22 +221,22 @@ gulp.task('browserSync', () => {
 
 gulp.task('watch', (callback) => {
   runSequence(
-    'build:clean',
+    'build:tidy',
     'browserSync',
     ['handlebars', 'sass:build', 'javascript'],
-    'useref:htm',
+    'autoprefixer',
     callback
   );
-  gulp.watch('app/**/*.scss', ['sass:build'], ['autoprefixer']);
+  gulp.watch('app/**/*.scss', ['sass:build', 'autoprefixer']);
   gulp.watch('app/**/*.hbs', ['handlebars'], browserSync.reload);
   gulp.watch('app/**/*.json', ['handlebars'], browserSync.reload);
-  gulp.watch('app/**/*.js', ['useref:htm', 'javascript'], browserSync.reload);
+  gulp.watch('app/**/*.js', ['javascript'], browserSync.reload);
 });
 
 gulp.task('build', (callback) => {
   runSequence(
     ['handlebars', 'sass:build', 'javascript'],
-    'useref:htm',
+    'autoprefixer',
     callback
   );
 });
@@ -238,44 +245,25 @@ gulp.task('build:tidy', (callback) => {
   runSequence(
     'clean:dist',
     ['handlebars', 'sass:build', 'javascript'],
-    'useref:htm',
+    'autoprefixer',
     callback
   );
 });
-
-                                                                    // ########################## //
-                                                                    // #                        # //
-                                                                    // #        Linters         # //
-                                                                    // #                        # //
-                                                                    // ########################## //
-
-gulp.task('lint', () => {
-  gulp.src([
-    '**/*.js',
-    '!node_modules/**',                                             // Ignore npm packages
-    '!dist/**',                                                     // Ignore built JavaScript
-    '!app/vendor/**',                                               // Ignore vendor JavaScript
-  ])
-    .pipe(eslint())
-    .pipe(eslint.format())
-    .pipe(eslint.failAfterError());
-});
-
                                                                     // ########################## //
                                                                     // #                        # //
                                                                     // #      Unit Testing      # //
                                                                     // #                        # //
                                                                     // ########################## //
-
-gulp.task('test', (done) => {
-  new Server({
-    configFile: `${__dirname}/karma.conf.js`,
-    singleRun:  true
-  }, done).start();
-});
-
-gulp.task('watch:test', (done) => {
-  new Server({
-    configFile: `${__dirname}/karma.conf.js`,
-  }, done).start();
-});
+                                                                    //
+gulp.task('test', (done) => {                                       // ╓╌> Test                   //
+  new Server({                                                      // ║
+    configFile: `${__dirname}/karma.conf.js`,                       // ║
+    singleRun:  true                                                // ║
+  }, done).start();                                                 // ║
+});                                                                 // ╨
+                                                                    //
+gulp.task('watch:test', (done) => {                                 // ╓╌> Watch Test             //
+  new Server({                                                      // ║
+    configFile: `${__dirname}/karma.conf.js`,                       // ║
+  }, done).start();                                                 // ║
+});                                                                 // ╨
