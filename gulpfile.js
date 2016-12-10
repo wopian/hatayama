@@ -38,7 +38,7 @@ const gulp         = require('gulp'),                               // Gulp     
       _log = (type, page, total = 0, counter = 0) => {              // CLI Formatter for HBS      //
         const a = zeroFill(2, counter + 1),                         // Zero fill progress i.e, 01 //
               b = zeroFill(2, total),                               // Zerp fill total     '   '  //
-              c = `${a}/${b}`,                                   // Format total i.e, |01/02|  //
+              c = `${a}/${b}`,                                      // Format total i.e, |01/02|  //
               k = 40;                                               //                            //
         let d,                                                      //                            //
             e,                                                      //                            //
@@ -264,14 +264,25 @@ gulp.task('build:tidy', (callback) => {
                                                                     // #                        # //
                                                                     // ########################## //
                                                                     //
-gulp.task('test', (done) => {                                       // ╓╌> Test                   //
+gulp.task('test', (callback) => {                                   // ╓╌> Test                   //
+  runSequence(
+    'test:server',
+    'test:coverage',
+    callback
+  );
+});
+
+gulp.task('test:server', (done) => {                                // ╓╌> Test                   //
   new Server({                                                      // ║
     configFile: `${__dirname}/karma.conf.js`,                       // ║
     singleRun:  true                                                // ║
-  }, done).start();
-  gulp.src('coverage/**/lcov.info')
-  .pipe(coveralls());                                                 // ║
+  }, done).start();                                                 // ║
 });                                                                 // ╨
+
+gulp.task('test:coverage', () => {                                           // ╓╌> EsLint                 //
+  gulp.src(`${__dirname}/coverage/**/lcov.info`)
+    .pipe(coveralls());
+});
                                                                     //
 gulp.task('watch:test', (done) => {                                 // ╓╌> Watch Test             //
   new Server({                                                      // ║

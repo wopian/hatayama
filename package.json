@@ -62,6 +62,7 @@
     "retabber": "^4.0.0",
     "run-sequence": "^1.2.2",
     "string-width": "^2.0.0",
+    "watchify": "^3.7.0",
     "zero-fill": "^2.2.3"
   },
   "scripts": {

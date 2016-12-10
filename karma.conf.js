@@ -7,9 +7,8 @@ module.exports = function(config) {
     reporters:     ['spec', 'coverage'],
     browsers:      ['PhantomJS'],
     preprocessors: {
-      'tests/**/*.js':     ['browserify'],
-      'tests/fixtures/js': ['babel'],
-      'app/**.*.js':       ['coverage']
+      'tests/**/*.js':     ['browserify', 'coverage'],
+      'tests/fixtures/js': ['babel', 'coverage']
     },
     browserify: {
       debug:     true,
