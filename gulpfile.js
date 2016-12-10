@@ -211,7 +211,12 @@ gulp.task('lint', () => {                                           // ╓╌> E
   ])                                                                // ║                          //
     .pipe(eslint())                                                 // ║                          //
     .pipe(eslint.format())                                          // ║                          //
-    .pipe(eslint.failAfterError());                                 // ║                          //
+    .pipe(eslint.result((result) => {
+      console.log(`ESLint result: ${result.filePath}`);
+      console.log(`# Messages: ${result.messages.length}`);
+      console.log(`# Warnings: ${result.warningCount}`);
+      console.log(`# Errors: ${result.errorCount}`);
+    }));                                                            // ║                          //
 });                                                                 // ╨                          //
                                                                     //                            //
                                                                     // ########################## //
