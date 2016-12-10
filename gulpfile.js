@@ -42,27 +42,35 @@ const gulp         = require('gulp'),                               // Gulp     
             e,                                                      //                            //
             f,                                                      //                            //
             g,                                                      //                            //
-            h;                                                      //                            //
+            h,                                                      //                            //
+            i,                                                      //                            //
+            j = '';                                                 //                            //
         switch (type) {                                             //                            //
         case 1: {                                                   // Populate:                  //
           d = 'Populate ';                                          // Set type                   //
           e = '';                                                   // Set child delimiter   NULL //
           f = gutil.colors.cyan(page);                              // Set page + cyan text       //
           g = `${gutil.colors.magenta(c)}`;                         // Set progress + magenta txt //
-          h = stringWidth(d + e + f + g);                           // Set smart tab width        //
+          h = 40 - stringWidth(d + e + f + g);                      // Set smart tab width        //
+          for (i = 0; i < h; i++) {                                 //                            //
+            j = `${j} `;                                            //                            //
+          }                                                         //                            //
           break;                                                    //                            //
         }                                                           //                            //
         case 2: {                                                   // Generate:                  //
           d = 'Generate ';                                          // Set type                   //
-          e = ' ↪ ';                                                // Set child delimiter   NULL //
+          e = ' \u21AA ';                                           // Set child delimiter        //
           f = gutil.colors.cyan(page);                              // Set page + cyan text       //
           g = `${gutil.colors.black(c)}`;                           // Set progress + black text  //
-          h = stringWidth(d + e + f + g);                           // Set smart tab width        //
+          h = 40 - stringWidth(d + e + f + g);                      // Set smart tab width        //
+          for (i = 0; i < h; i++) {                                 //                            //
+            j = `${j} `;                                            //                            //
+          }                                                         //                            //
           break;                                                    //                            //
         }                                                           //                            //
         default: { break; }                                         //                            //
         }                                                           //                            //
-        return gutil.log(`${d}${e}\'${f}\'${g} (${h})`);// Output formatted string    //
+        return gutil.log(`${d}${e}\'${f}\'${j}${g}`);// Output formatted string    //
       };                                                            //                            //
                                                                     // ########################## //
                                                                     // #                        # //
