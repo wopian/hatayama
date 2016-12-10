@@ -35,7 +35,7 @@ const gulp         = require('gulp'),                               // Gulp     
           }                                                         // ╨                          //
         }                                                           //                            //
       },                                                            //                            //
-      _log = (type, page, total = 0, counter = 0) => {              // CLI Formatter for HBS      //
+      _log = (type, page, total = 1, counter = 0) => {              // CLI Formatter for HBS      //
         const a = zeroFill(2, counter + 1),                         // Zero fill progress i.e, 01 //
               b = zeroFill(2, total),                               // Zerp fill total     '   '  //
               c = `${a}/${b}`,                                      // Format total i.e, |01/02|  //
@@ -113,7 +113,7 @@ gulp.task('handlebars', () => {
             }));
         }
       } else {
-        _log(2, page, 1, 0);                                        // # DEBUG: Generate
+        _log(2, page, undefined, undefined);                                        // # DEBUG: Generate
 
         gulp.src('app/templates/index.hbs')
           .pipe(handlebars(template, options))

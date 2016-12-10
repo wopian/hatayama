@@ -1,0 +1,21 @@
+general:
+    artifacts:
+        - coverage
+
+dependencies:
+    cache_directories:
+        - node_modules
+        - app/vendor
+        - app/styles/vendor
+    override:
+        - npm prune && npm install
+
+test:
+    override:
+        - npm test && gulp build:tidy
+
+deployment:
+    production:
+        branch: master
+        commands:
+            lftp -c "open -u $FTP_USER,$FTP_PASSWORD ftp.bobstudios.org; set ssl:verify-certificate no; mirror -R ~/clone/ /hatayama/"
