@@ -1,3 +1,7 @@
+machine:
+    node:
+        version: stable
+
 general:
     artifacts:
         - coverage
@@ -7,12 +11,14 @@ dependencies:
         - node_modules
         - app/vendor
         - app/styles/vendor
+    pre:
+        - npm i -g gulp
     override:
-        - npm prune && npm i --save-dev && npm i -g gulp
+        - npm prune
 
 test:
-    override:
-        - gulp lint && npm test && gulp build:tidy
+    pre:
+        - gulp lint
 
 deployment:
     production:
