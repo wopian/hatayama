@@ -14,7 +14,7 @@ dependencies:
     pre:
         - npm i -g gulp
     override:
-        - npm prune && npm install & npm update
+        - npm update && npm prune && npm rebuild
 
 test:
     pre:
