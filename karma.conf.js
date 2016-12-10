@@ -17,9 +17,9 @@ module.exports = function(config) {
       transform: ['babelify']
     },
     coverageReporter: {
-      type:                'lcovonly',
+      type:                'lcov',
       // specify a common output directory
-      dir:                 'coverage',
+      dir:                 'coverage/',
       instrumenterOptions: {
         istanbul: { noCompact: true }
       }
