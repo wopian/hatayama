@@ -8,11 +8,11 @@ dependencies:
         - app/vendor
         - app/styles/vendor
     override:
-        - npm prune && npm install
+        - npm prune && npm i --save-dev && npm i -g gulp
 
 test:
     override:
-        - npm test && gulp build:tidy
+        - gulp lint && npm test && gulp build:tidy
 
 deployment:
     production:
