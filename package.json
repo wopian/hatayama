@@ -67,7 +67,9 @@
     "zero-fill": "^2.2.3"
   },
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp test",
+    "start": "node app",
+    "postinstall": "gulp build:deploy"
   },
   "dependencies": {
     "gulp-connect": "^5.0.0"
