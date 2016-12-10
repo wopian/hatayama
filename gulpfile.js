@@ -14,7 +14,6 @@ const gulp         = require('gulp'),                               // Gulp     
       cache        = require('gulp-cache'),                         // Cache -> Images            //
       imagemin     = require('gulp-imagemin'),                      // Image -> Minify            //
       gutil        = require('gulp-util'),                          // CLI   -> Write & Colours   //
-      retabber     = require('retabber'),                           // CLI   -> Smart Tabs        //
       zeroFill     = require('zero-fill'),                          // CLI   -> Number Padding    //
       stringWidth  = require('string-width'),                       // CLI   -> String Width      //
       browserSync  = require('browser-sync').create(),              // Watch -> Build Server      //
@@ -58,7 +57,7 @@ const gulp         = require('gulp'),                               // Gulp     
           e = ' ↪ ';                                                // Set child delimiter   NULL //
           f = gutil.colors.cyan(page);                              // Set page + cyan text       //
           g = `${gutil.colors.black(c)}`;                           // Set progress + black text  //
-          h = stringWidth(d + e + f + g);                                                    // Set smart tab width        //
+          h = stringWidth(d + e + f + g);                           // Set smart tab width        //
           break;                                                    //                            //
         }                                                           //                            //
         default: { break; }                                         //                            //
