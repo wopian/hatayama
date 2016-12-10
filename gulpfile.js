@@ -210,13 +210,7 @@ gulp.task('lint', () => {                                           // ╓╌> E
     '!app/vendor/**',                                               // ║                          //
   ])                                                                // ║                          //
     .pipe(eslint())                                                 // ║                          //
-    .pipe(eslint.format())                                          // ║                          //
-    .pipe(eslint.result((result) => {
-      console.log(`ESLint result: ${result.filePath}`);
-      console.log(`# Messages: ${result.messages.length}`);
-      console.log(`# Warnings: ${result.warningCount}`);
-      console.log(`# Errors: ${result.errorCount}`);
-    }));                                                            // ║                          //
+    .pipe(eslint.format());                                         // ║                          //
 });                                                                 // ╨                          //
                                                                     //                            //
                                                                     // ########################## //
