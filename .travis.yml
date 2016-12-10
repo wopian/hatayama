@@ -33,5 +33,5 @@ before_script:
 
 script: gulp build:tidy
 
-after_script:
-  - codeclimate-test-reporter < **/*lcov.info
+after_success:
+  - codeclimate-test-reporter < lcov.info
