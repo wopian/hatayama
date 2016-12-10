@@ -26,7 +26,6 @@ before_install:
 install: travis_retry npm i --save-dev
 
 before_script:
-  - npm i -g codeclimate-test-reporter
   - npm i -g gulp
   - gulp lint
   - npm test
@@ -34,4 +33,5 @@ before_script:
 script: gulp build:tidy
 
 after_success:
+  - npm i codeclimate-test-reporter
   - codeclimate-test-reporter < 'coverage/PhantomJS 2.1.1 (Linux 0.0.0)/lcov.info'

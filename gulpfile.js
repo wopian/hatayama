@@ -56,7 +56,7 @@ const gulp         = require('gulp'),                               // Gulp     
           d = 'Generate ';                                          // Set type                   //
           e = ' ↪ ';                                              // Set child delimiter   NULL //
           f = gutil.colors.cyan(page);                              // Set page + cyan text       //
-          g = `\t|${gutil.colors.black(c)}|`;                       // Set progress + black text  //
+          g = `\t${gutil.colors.black(c)}`;                       // Set progress + black text  //
           h = 16;                                                   // Set smart tab width        //
           break;                                                    //                            //
         }                                                           //                            //
