@@ -21,7 +21,7 @@ test:
         - gulp lint
 
 deployment:
-    production:
+    staging:
         branch: master
-        commands:
-            - lftp -c "open -u $FTP_USER,$FTP_PASSWORD ftp.bobstudios.org; set ssl:verify-certificate no; mirror -R ~/clone/ /hatayama/"
+        heroku:
+            appname: hatayama
