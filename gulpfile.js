@@ -60,7 +60,7 @@ const gulp         = require('gulp'),                               // Gulp     
         }                                                           //                            //
         case 2: {                                                   // Generate:                  //
           d = 'Generate ';                                          // Set type                   //
-          e = ' \u21AA\u200A ';                                           // Set child delimiter        //
+          e = ' \u21AA　';                                           // Set child delimiter        //
           f = gutil.colors.cyan(page);                              // Set page + cyan text       //
           g = `${gutil.colors.black(c)}`;                           // Set progress + black text  //
           h = 40 - stringWidth(d + e + f + g);                      // Set smart tab width        //
