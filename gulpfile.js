@@ -55,7 +55,7 @@ const gulp         = require('gulp'),                               // Gulp     
           for (i = 0; i < h; i++) {                                 //                            //
             j = `${j} `;                                            //                            //
           }
-          j = `${j}\u2009`;                                                         //                            //
+          j = `${j}\u200A`;                                                         //                            //
           break;                                                    //                            //
         }                                                           //                            //
         case 2: {                                                   // Generate:                  //
