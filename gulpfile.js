@@ -19,6 +19,7 @@ const gulp         = require('gulp'),                               // Gulp
       runSequence  = require('run-sequence'),
       gutil        = require('gulp-util'),
       retabber     = require('retabber'),
+      zeroFill     = require('zero-fill'),
       browserSync  = require('browser-sync').create(),              // Watch
       Server       = require('karma').Server,                       // Unit Tests
       eslint       = require('gulp-eslint'),
@@ -36,33 +37,33 @@ const gulp         = require('gulp'),                               // Gulp
         }
       },
       _log = (type, page, total = 0, counter = 0) => {
-        const t = `${counter + 1}/${total}`;                        // Calculate current progress
+        const t = `${zeroFill(2, counter + 1)}/${zeroFill(2, total)}`;// Calculate current progress
         let a,
             b,
             c,
-            d,
+            r,
             e,
             f;
         switch (type) {
         case 1: {                                                   // If Populate task then:
-          a = 'Populate';
+          a = 'Populate ';                                           // Set type string
           b = gutil.colors.cyan(page);
-          c = gutil.colors.magenta(t);                                // Set to yellow text
-          d = 32;                                                   // Tab width
+          c = `\t|${gutil.colors.magenta(t)}|`;
+          e = '';                              // Set to yellow text
+          r = 32;                                                   // Tab width
           break;
         }
         case 2: {                                                   // If Generate task then:
-          a = 'Generate';
-          e = `${page.split('/')[0]}/`;
-          f = page.split('/')[1];
-          b = gutil.colors.black(e + gutil.colors.cyan(f));
-          c = gutil.colors.black(t);
-          d = 16;
+          a = 'Generate ';
+          b = gutil.colors.cyan(page);
+          c = `\t|${gutil.colors.black(t)}|`;
+          e = ' └-> ';
+          r = 16;
           break;
         }
         default: { break; }
         }
-        return gutil.log(retabber.smart(`${a} \'${b}\'\t${c}`, d)); // Output
+        return gutil.log(retabber.smart(`${a}${e}\'${b}\'${c}`, r));  // Output
       };
 
                                                                     // ########################## //
@@ -71,7 +72,7 @@ const gulp         = require('gulp'),                               // Gulp
                                                                     // #                        # //
                                                                     // ########################## //
 
-gulp.task('sass', () => {
+gulp.task('sass:build', () => {
   gulp.src('app/styles/**/*.scss')
     .pipe(sass())
     .pipe(gulp.dest('dist/assets/css'))
@@ -112,7 +113,7 @@ gulp.task('handlebars', () => {
         // Debug: Get total amount of components                    // through prefecture.json file
         const totalFlags = hbs[i][j].prefecture.length;
         for (let k = 0; k < hbs[i][j].prefecture.length; k++) {
-          const slug  = `prefecture/${hbs[i][j].prefecture[k].slug}`,
+          const slug  = `${hbs[i][j].prefecture[k].slug}`,
                 flags = hbs[i][j].prefecture[k],                    // Store prefecture flag data
                 flag = flags.slug.replace(/ +/gm, '-').toLowerCase();// Store & escape flag slug
 
@@ -147,8 +148,8 @@ gulp.task('handlebars', () => {
                                                                     // #                        # //
                                                                     // ########################## //
 
-gulp.task('useref', () => {
-  gulp.src('app/*.hbs')
+gulp.task('useref:htm', () => {
+  gulp.src('dist/**/*.html')
     .pipe(useref())
     .pipe(gulpIf('*.js', uglify()))
     .pipe(gulpIf('*.css', cssnano()))
@@ -158,7 +159,7 @@ gulp.task('useref', () => {
     }));
 });
 
-gulp.task('js', () => {
+gulp.task('javascript', () => {
   gulp.src('app/models/**/*')
     .pipe(gulp.dest('dist/assets/js'))
     .pipe(browserSync.reload({
@@ -214,22 +215,31 @@ gulp.task('browserSync', () => {
 
 gulp.task('watch', (callback) => {
   runSequence(
+    'build:clean',
     'browserSync',
-    ['handlebars', 'sass', 'js'],
-    'useref',
+    ['handlebars', 'sass:build', 'javascript'],
+    'useref:htm',
     callback
   );
-  gulp.watch('app/**/*.scss', ['sass'], ['autoprefixer']);
+  gulp.watch('app/**/*.scss', ['sass:build'], ['autoprefixer']);
   gulp.watch('app/**/*.hbs', ['handlebars'], browserSync.reload);
   gulp.watch('app/**/*.json', ['handlebars'], browserSync.reload);
-  gulp.watch('app/**/*.js', ['useref', 'js'], browserSync.reload);
+  gulp.watch('app/**/*.js', ['useref:htm', 'javascript'], browserSync.reload);
 });
 
 gulp.task('build', (callback) => {
   runSequence(
+    ['handlebars', 'sass:build', 'javascript'],
+    'useref:htm',
+    callback
+  );
+});
+
+gulp.task('build:tidy', (callback) => {
+  runSequence(
     'clean:dist',
-    ['handlebars', 'sass', 'js'],
-    'useref',
+    ['handlebars', 'sass:build', 'javascript'],
+    'useref:htm',
     callback
   );
 });

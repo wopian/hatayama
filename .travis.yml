@@ -31,7 +31,7 @@ before_script:
   - gulp lint
   - npm test
 
-script: gulp build
+script: gulp build:tidy
 
 after_script:
   - codeclimate-test-reporter < **/*lcov.info
