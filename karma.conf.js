@@ -1,14 +1,14 @@
 module.exports = function(config) {
   config.set({
-    basePath:      './',
-    frameworks:    ['browserify', 'jasmine-jquery', 'jasmine'],
-    colors:        true,
-    logLevel:      config.LOG_DEBUG,
+    basePath:         './',
+    frameworks:       ['browserify', 'jasmine-jquery', 'jasmine'],
+    colors:           true,
+    logLevel:         config.LOG_DEBUG,
     reportSlowerThan: 500,
     // reporters:     ['spec', 'coverage'],
-    reporters:     ['mocha', 'coverage'],
-    browsers:      ['PhantomJS'],
-    preprocessors: {
+    reporters:        ['mocha', 'coverage'],
+    browsers:         ['PhantomJS'],
+    preprocessors:    {
       'tests/**/*.js':     ['browserify', 'coverage'],
       'tests/fixtures/js': ['babel', 'coverage']
     },
