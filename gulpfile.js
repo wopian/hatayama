@@ -5,28 +5,29 @@
                                                                     // ########################## //
                                                                     //                            //
 const gulp         = require('gulp'),                               // Gulp                       //
-      sass         = require('gulp-sass'),                          // SCSS  -> CSS               //
-      autoprefixer = require('gulp-autoprefixer'),                  // CSS   -> Vendor Prefixes   //
-      cssnano      = require('gulp-cssnano'),                       // CSS   -> Minify            //
-      uglify       = require('gulp-uglify'),                        // JS    -> Minify            //
-      rename       = require('gulp-rename'),                        // Files -> Rename            //
-      del          = require('del'),                                // Files -> Delete            //
-      cache        = require('gulp-cache'),                         // Cache -> Images            //
-      imagemin     = require('gulp-imagemin'),                      // Image -> Minify            //
-      gutil        = require('gulp-util'),                          // CLI   -> Write & Colours   //
-      zeroFill     = require('zero-fill'),                          // CLI   -> Number Padding    //
-      stringWidth  = require('string-width'),                       // CLI   -> String Width      //
-      browserSync  = require('browser-sync').create(),              // Watch -> Build Server      //
-      Server       = require('karma').Server,                       // Tests -> Test Server       //
-      eslint       = require('gulp-eslint'),                        // Tests -> JS Quality        //
-      coveralls    = require('gulp-coveralls'),
-      runSequence  = require('run-sequence'),                       // Tasks -> Queue             //
-      handlebars   = require('gulp-compile-handlebars'),            // HBS   -> HTML              //
-      hbs          = [],                                            // HBS   -> Routes            //
-      options      = {                                              // HBS   -> Options           //
+      sass         = require('gulp-sass'),                          // SCSS   -> CSS              //
+      autoprefixer = require('gulp-autoprefixer'),                  // CSS    -> Vendor Prefixes  //
+      cssnano      = require('gulp-cssnano'),                       // CSS    -> Minify           //
+      uglify       = require('gulp-uglify'),                        // JS     -> Minify           //
+      rename       = require('gulp-rename'),                        // Files  -> Rename           //
+      del          = require('del'),                                // Files  -> Delete           //
+      cache        = require('gulp-cache'),                         // Cache  -> Images           //
+      imagemin     = require('gulp-imagemin'),                      // Image  -> Minify           //
+      gutil        = require('gulp-util'),                          // CLI    -> Write & Colours  //
+      zeroFill     = require('zero-fill'),                          // CLI    -> Number Padding   //
+      stringWidth  = require('string-width'),                       // CLI    -> String Width     //
+      browserSync  = require('browser-sync').create(),              // Watch  -> Build Server     //
+      Server       = require('karma').Server,                       // Tests  -> Test Server      //
+      eslint       = require('gulp-eslint'),                        // Tests  -> JS Quality       //
+      coveralls    = require('gulp-coveralls'),                     // Tests  -> Test Coverage    //
+      connect      = require('gulp-connect'),                       // Deploy -> Heroku           //
+      runSequence  = require('run-sequence'),                       // Tasks  -> Queue            //
+      handlebars   = require('gulp-compile-handlebars'),            // HBS    -> HTML             //
+      hbs          = [],                                            // HBS    -> Routes           //
+      options      = {                                              // HBS    -> Options          //
         ignorePartials: true,                                       //                            //
-        batch:          ['./app/templates/components'],             // HBS   -> Partials          //
-        helpers:        {                                           // HBS   -> Helpers:          //
+        batch:          ['./app/templates/components'],             // HBS    -> Partials         //
+        helpers:        {                                           // HBS    -> Helpers:         //
           if_eq(a, b, opts) {                                       // ╓╌> {{#if_eq a 'b'}}       //
             if (a === b) {                                          // ║                          //
               return opts.fn(this);                                 // ║   Check if both values   //
@@ -288,3 +289,21 @@ gulp.task('watch:test', (done) => {                                 // ╓╌> W
     configFile: `${__dirname}/karma.conf.js`,                       // ║
   }, done).start();                                                 // ║
 });                                                                 // ╨
+
+gulp.task('build:deploy', (callback) => {
+  runSequence(
+    'clean:dist',
+    ['handlebars', 'sass:build', 'javascript'],
+    'autoprefixer',
+    'serveprod',
+    callback
+  );
+});
+
+gulp.task('serveprod', () => {
+  connect.server({
+    root:       'dist',
+    port:       process.env.PORT || 5000,
+    livereload: false
+  });
+});

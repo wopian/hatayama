@@ -68,5 +68,8 @@
   },
   "scripts": {
     "test": "gulp test"
+  },
+  "dependencies": {
+    "gulp-connect": "^5.0.0"
   }
 }
