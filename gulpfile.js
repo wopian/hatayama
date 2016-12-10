@@ -8,9 +8,7 @@ const gulp         = require('gulp'),                               // Gulp     
       sass         = require('gulp-sass'),                          // SCSS  -> CSS               //
       autoprefixer = require('gulp-autoprefixer'),                  // CSS   -> Vendor Prefixes   //
       cssnano      = require('gulp-cssnano'),                       // CSS   -> Minify            //
-      useref       = require('gulp-useref'),                        // JS    -> Concat            //
       uglify       = require('gulp-uglify'),                        // JS    -> Minify            //
-      gulpIf       = require('gulp-if'),                            //                            //
       rename       = require('gulp-rename'),                        // Files -> Rename            //
       del          = require('del'),                                // Files -> Delete            //
       cache        = require('gulp-cache'),                         // Cache -> Images            //
@@ -64,7 +62,7 @@ const gulp         = require('gulp'),                               // Gulp     
         }                                                           //                            //
         default: { break; }                                         //                            //
         }                                                           //                            //
-        return gutil.log(retabber.smart(`${d}${e}\'${f}\'${c}`, h));// Output formatted string    //
+        return gutil.log(retabber.smart(`${d}${e}\'${f}\'${g}`, h));// Output formatted string    //
       };                                                            //                            //
                                                                     // ########################## //
                                                                     // #                        # //
@@ -210,7 +208,7 @@ gulp.task('lint', () => {                                           // ╓╌> E
                                                                     // #         Build          # //
                                                                     // #                        # //
                                                                     // ########################## //
-                                                                    
+
 gulp.task('browserSync', () => {
   browserSync.init({
     server: {
