@@ -18,4 +18,4 @@ deployment:
     production:
         branch: master
         commands:
-            lftp -c "open -u $FTP_USER,$FTP_PASSWORD ftp.bobstudios.org; set ssl:verify-certificate no; mirror -R ~/clone/ /hatayama/"
+            - lftp -c "open -u $FTP_USER,$FTP_PASSWORD ftp.bobstudios.org; set ssl:verify-certificate no; mirror -R ~/clone/ /hatayama/"
