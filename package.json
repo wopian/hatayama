@@ -25,7 +25,7 @@
   "scripts": {
     "test": "gulp test",
     "after_test": "gulp build:tidy",
-    "start": "node web.js"
+    "start": "gulp heroku:serve"
   },
   "dependencies": {
     "babel": "^6.5.2",

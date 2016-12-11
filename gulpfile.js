@@ -23,6 +23,7 @@ const gulp         = require('gulp'),                               // Gulp     
       gzippo       = require('gzippo'),                             // Deploy -> Heroku           //
       express      = require('express'),                            // Deploy -> Heroku           //
       app          = express(),                                     // Deploy -> Heroku           //
+      morgan       = require('morgan'),
       runSequence  = require('run-sequence'),                       // Tasks  -> Queue            //
       handlebars   = require('gulp-compile-handlebars'),            // HBS    -> HTML             //
       hbs          = [],                                            // HBS    -> Routes           //
@@ -299,4 +300,10 @@ gulp.task('heroku:staging', (callback) => {
     'autoprefixer',
     callback
   );
+});
+
+gulp.task('heroku:serve', () => {
+  app.use(express.morgan('dev'));
+  app.use(gzippo.staticGzip(`${__dirname}/dist`));
+  app.listen(process.env.PORT || 5000);
 });
