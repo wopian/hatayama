@@ -20,10 +20,7 @@ const gulp         = require('gulp'),                               // Gulp     
       Server       = require('karma').Server,                       // Tests  -> Test Server      //
       eslint       = require('gulp-eslint'),                        // Tests  -> JS Quality       //
       coveralls    = require('gulp-coveralls'),                     // Tests  -> Test Coverage    //
-      gzippo       = require('gzippo'),                             // Deploy -> Heroku           //
-      express      = require('express'),                            // Deploy -> Heroku           //
-      app          = express(),                                     // Deploy -> Heroku           //
-      morgan       = require('morgan'),
+      webserver    = require('gulp-webserver'),
       runSequence  = require('run-sequence'),                       // Tasks  -> Queue            //
       handlebars   = require('gulp-compile-handlebars'),            // HBS    -> HTML             //
       hbs          = [],                                            // HBS    -> Routes           //
@@ -293,7 +290,7 @@ gulp.task('watch:test', (done) => {                                 // ╓╌> W
   }, done).start();                                                 // ║
 });                                                                 // ╨
 
-gulp.task('heroku:staging', (callback) => {
+gulp.task('heroku:production', (callback) => {
   runSequence(
     'clean:dist',
     ['handlebars', 'sass:build', 'javascript'],
@@ -302,8 +299,14 @@ gulp.task('heroku:staging', (callback) => {
   );
 });
 
-gulp.task('heroku:serve', () => {
-  app.use(express.morgan('dev'));
-  app.use(gzippo.staticGzip(`${__dirname}/dist`));
-  app.listen(process.env.PORT || 5000);
+gulp.task('heroku:serve', 'build:tidy', () => {
+  gulp.src('dist')
+    .pipe(webserver({
+      host:       '0.0.0.0',
+      port:       process.env || 8000,
+      fallback:   'index.html',
+      livereload: false,
+      open:       true,
+      https:      true
+    }));
 });

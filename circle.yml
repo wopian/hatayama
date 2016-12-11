@@ -21,7 +21,7 @@ test:
         - gulp lint
 
 deployment:
-    staging:
+    production:
         branch: master
         heroku:
             appname: hatayama

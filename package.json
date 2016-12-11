@@ -27,8 +27,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "gulp test",
-    "after_test": "gulp build:tidy",
+    "test": "npm test",
     "start": "gulp heroku:serve"
   },
   "dependencies": {
@@ -60,6 +59,7 @@
     "gulp-sass": "^3.0.0",
     "gulp-uglify": "^2.0.0",
     "gulp-util": "^3.0.7",
+    "gulp-webserver": "^0.9.1",
     "gzippo": "^0.2.0",
     "handlebars": "^4.0.6",
     "jasmine-core": "^2.5.2",
