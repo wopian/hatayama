@@ -303,7 +303,7 @@ gulp.task('heroku:serve', () => {
     }));
 });
 
-gulp.task('heroku:deploy', (callback) => {
+gulp.task('heroku:production', (callback) => {
   runSequence(
     'build:tidy',
     'heroku:serve',
