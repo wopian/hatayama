@@ -27,8 +27,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "npm test",
-    "start": "gulp heroku:serve"
+    "test": "npm test"
   },
   "dependencies": {
     "babel": "^6.5.2",

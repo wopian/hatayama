@@ -299,7 +299,7 @@ gulp.task('heroku:production', (callback) => {
   );
 });
 
-gulp.task('heroku:serve', 'build:tidy', () => {
+gulp.task('heroku:serve', ['build:tidy'], () => {
   gulp.src('dist')
     .pipe(webserver({
       host:       '0.0.0.0',
