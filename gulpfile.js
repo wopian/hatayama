@@ -149,7 +149,8 @@ gulp.task('autoprefixer', () => {                                   // ╓╌> A
       browsers: ['last 2 versions'],                                // ║    to fully support      //
       cascade:  false                                               // ║    last 2 versions of    //
     }))                                                             // ║    major browsers        //
-    .pipe(gulp.dest('dist'));                                       // ║                          //
+    .pipe(gulp.dest('dist'))                                        // ║                          //
+    .pipe(connect.reload());
 });                                                                 // ╨                          //
                                                                     // ########################## //
                                                                     // #                        # //
@@ -163,13 +164,15 @@ gulp.task('javascript', () => {                                     // ╓╌> J
     .pipe(gulp.dest('dist/assets/js'))                              // ║    JavaScript            //
     .pipe(browserSync.reload({                                      // ║   Reloads page if run    //
       stream: true                                                  // ║    from watch task       //
-    }));                                                            // ╨                          //
+    }))                                                             // ╨                          //
+    .pipe(connect.reload());
   gulp.src('app/vendor/**/*.js')                                    // ╓╌> JavaScript Vendor      //
     .pipe(uglify())                                                 // ║                          //
     .pipe(gulp.dest('dist/assets/js/vendor/'))                      // ║   Move and minify        //
     .pipe(browserSync.reload({                                      // ║    vendor JavaScript     //
       stream: true                                                  // ║   Reloads page if run    //
-    }));                                                            // ║    from watch task       //
+    }))                                                             // ║    from watch task       //
+    .pipe(connect.reload());
 });                                                                 // ╨                          //
                                                                     // ########################## //
                                                                     // #                        # //
@@ -295,7 +298,7 @@ gulp.task('heroku:serve', () => {
   connect.server({
     name:       'Heroku App',
     root:       `${__dirname}/dist`,
-    livereload: false,
+    livereload: true,
     port:       process.env.PORT || 8000
   });
 });
