@@ -8,13 +8,15 @@
     <script src="/assets/js/vendor/jquery-2.2.0.min.js"></script>
     <script src="/assets/js/vendor/tether.js"></script>
     <script src="/assets/js/vendor/bootstrap.min.js"></script>
-    <script src="/assets/js/nav.js"></script>
     <script src="/assets/js/sidebar.js"></script>
     <script src="/assets/js/map.js"></script>
+    {{#if_eq header 'transparent'}}
+        <script src="/assets/js/nav.js"></script>
+    {{/if_eq}}
     <!--endbuild-->
     
     {{! Embed Google Maps on flag pages }}
-    {{#if googleMaps }}
+    {{#if googleMaps}}
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCF0qq_0eu2iw2WvUwCheypcjl6pmugNQ4&amp;sensor=false&callback=initialize"></script>
     {{/if}}
 </body>

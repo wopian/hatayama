@@ -20,7 +20,7 @@ body {
   
   height: 300vh;
 
-  &:not(#flag) {
+  &:not(#transparent) {
     // Fixed header offset
     padding-top: 54px;
   }
@@ -30,7 +30,6 @@ body {
 
 main {
   @extend .container;
-  
   // Sticky footer
   flex: 3;
 }

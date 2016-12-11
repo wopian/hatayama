@@ -1,7 +1,6 @@
 aside {
   width: 295px;
   top: -91px;
-  padding-right: 15px;
   float: left;
   z-index: 301;
   position: sticky;
@@ -20,6 +19,7 @@ aside {
   
   div {
     position: relative;
+    right: 15px;
     top: -99px;
 
     p {

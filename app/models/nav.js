@@ -1,7 +1,7 @@
 $(window).on('scroll', function () {
-  if ($(this).scrollTop() > 250) {
-    $('header').addClass('not-transparent');
+  if ($(this).scrollTop() < 250) {
+    $('header').addClass('transparent');
   } else {
-    $('header').removeClass('not-transparent');
+    $('header').removeClass('transparent');
   }
 });

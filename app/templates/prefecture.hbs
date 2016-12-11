@@ -1,10 +1,12 @@
-{{> app/appHead top='flag'}}
-{{> flags/map }}
+{{>app/appHead header='transparent'}}
+{{>flags/map}}
 
 <main class="flag">
-    {{> flags/sidebar }}
-    {{> flags/symbolism }}
-    {{> flags/about }}
+    {{>flag/sidebar}}
+    <section>
+        {{>flag/symbolism}}
+        {{>flag/about}}
+    </section>
 </main>
 
-{{> app/appFooter googleMaps=1}}
+{{>app/appFooter googleMaps=1 header='transparent'}}
