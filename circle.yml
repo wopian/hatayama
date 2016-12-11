@@ -17,8 +17,8 @@ dependencies:
         - npm update && npm prune && gulp build:tidy
 
 test:
-    pre:
-        - gulp lint
+    override:
+        - gulp test
 
 deployment:
     production:

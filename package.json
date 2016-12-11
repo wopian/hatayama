@@ -27,7 +27,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "npm test"
+    "test": "gulp test"
   },
   "dependencies": {
     "babel": "^6.5.2",

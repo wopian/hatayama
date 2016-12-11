@@ -27,8 +27,7 @@ install: travis_retry npm i
 
 before_script:
   - npm i -g gulp
-  - gulp lint
-  - npm test
+  - gulp test
 
 script: gulp build:tidy
 

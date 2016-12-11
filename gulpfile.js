@@ -266,7 +266,7 @@ gulp.task('build:tidy', (callback) => {
                                                                     //
 gulp.task('test', (callback) => {                                   // ╓╌> Test                   //
   runSequence(
-    'test:server',
+    ['lint', 'test:server'],
     'test:coverage',
     callback
   );
