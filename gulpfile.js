@@ -20,7 +20,7 @@ const gulp         = require('gulp'),                               // Gulp     
       Server       = require('karma').Server,                       // Tests  -> Test Server      //
       eslint       = require('gulp-eslint'),                        // Tests  -> JS Quality       //
       coveralls    = require('gulp-coveralls'),                     // Tests  -> Test Coverage    //
-      webserver    = require('gulp-webserver'),
+      connect      = require('gulp-connect'),
       runSequence  = require('run-sequence'),                       // Tasks  -> Queue            //
       handlebars   = require('gulp-compile-handlebars'),            // HBS    -> HTML             //
       hbs          = [],                                            // HBS    -> Routes           //
@@ -292,15 +292,14 @@ gulp.task('watch:test', (done) => {                                 // ╓╌> W
 });                                                                // ╨
 
 gulp.task('heroku:serve', () => {
-  gulp.src('dist')
-    .pipe(webserver({
-      host:       '0.0.0.0',
-      port:       process.env || 8000,
-      fallback:   'index.html',
-      livereload: false,
-      open:       true,
-      https:      true
-    }));
+  connect.server({
+    name:       'Heroku App',
+    root:       'dist',
+    livereload: false,
+    port:       process.env || 8000,
+    https:      true,
+    fallback:   'index.html',
+  });
 });
 
 gulp.task('heroku:production', (callback) => {
