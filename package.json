@@ -23,7 +23,9 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp test",
+    "after_test": "gulp build:tidy",
+    "start": "node web.js"
   },
   "dependencies": {
     "babel": "^6.5.2",
