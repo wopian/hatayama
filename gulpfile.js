@@ -297,15 +297,8 @@ gulp.task('heroku:serve', () => {
     root:       'dist',
     livereload: false,
     port:       process.env.PORT || 8000,
-    https:      true,
     fallback:   'index.html',
   });
 });
 
-gulp.task('heroku:production', (callback) => {
-  runSequence(
-    'build:tidy',
-    'heroku:serve',
-    callback
-  );
-});
+gulp.task('heroku:production', ['build:tidy']);
