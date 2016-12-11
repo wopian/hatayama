@@ -288,18 +288,9 @@ gulp.task('watch:test', (done) => {                                 // ╓╌> W
   new Server({                                                      // ║
     configFile: `${__dirname}/karma.conf.js`,                       // ║
   }, done).start();                                                 // ║
-});                                                                 // ╨
+});                                                                // ╨
 
-gulp.task('heroku:production', (callback) => {
-  runSequence(
-    'clean:dist',
-    ['handlebars', 'sass:build', 'javascript'],
-    'autoprefixer',
-    callback
-  );
-});
-
-gulp.task('heroku:serve', ['build:tidy'], () => {
+gulp.task('heroku:serve', () => {
   gulp.src('dist')
     .pipe(webserver({
       host:       '0.0.0.0',
@@ -309,4 +300,12 @@ gulp.task('heroku:serve', ['build:tidy'], () => {
       open:       true,
       https:      true
     }));
+});
+
+gulp.task('heroku:deploy', (callback) => {
+  runSequence(
+    'build:tidy',
+    'heroku:serve',
+    callback
+  );
 });
