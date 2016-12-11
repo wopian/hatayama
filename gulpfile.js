@@ -294,10 +294,9 @@ gulp.task('watch:test', (done) => {                                 // ╓╌> W
 gulp.task('heroku:serve', () => {
   connect.server({
     name:       'Heroku App',
-    root:       'dist',
+    root:       `${__dirname}/dist`,
     livereload: false,
-    port:       process.env.PORT || 8000,
-    fallback:   'index.html',
+    port:       process.env.PORT || 8000
   });
 });
 
