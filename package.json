@@ -2,6 +2,10 @@
   "name": "hatayama",
   "version": "0.0.1",
   "description": "Flags",
+  "engines": {
+    "node": "7.2.1",
+    "npm": "3.10.10"
+  },
   "author": "James Harris",
   "license": "GNU V3",
   "private": true,
