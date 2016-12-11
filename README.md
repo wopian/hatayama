@@ -5,4 +5,4 @@
 [![Issue Count](https://codeclimate.com/github/wopian/hatayama/badges/issue_count.svg)](https://codeclimate.com/github/wopian/hatayama)
 [![Test Coverage](https://codeclimate.com/github/wopian/hatayama/badges/coverage.svg)](https://codeclimate.com/github/wopian/hatayama/coverage)
 [![Coverage Status](https://coveralls.io/repos/github/wopian/hatayama/badge.svg?branch=master)](https://coveralls.io/github/wopian/hatayama?branch=master)
-[![Heroku](https://heroku-badge.herokuapp.com/?app=hatayama&style=flat)
+![Heroku](https://heroku-badge.herokuapp.com/?app=hatayama&style=flat)
