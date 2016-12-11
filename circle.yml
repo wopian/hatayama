@@ -14,7 +14,8 @@ dependencies:
     pre:
         - npm i -g gulp
     override:
-        - npm update && npm prune && gulp build:tidy
+#       - npm update && npm prune
+        - gulp build:tidy
 
 test:
     override:
