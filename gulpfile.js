@@ -19,11 +19,10 @@ const gulp         = require('gulp'),                               // Gulp     
       browserSync  = require('browser-sync').create(),              // Watch  -> Build Server     //
       Server       = require('karma').Server,                       // Tests  -> Test Server      //
       eslint       = require('gulp-eslint'),                        // Tests  -> JS Quality       //
-      coveralls    = require('gulp-coveralls'),                     // Tests  -> Test Coverage    //
-      connect      = require('gulp-connect'),
+      connect      = require('gulp-connect'),                       // Heroku -> Deploy Server    //
       runSequence  = require('run-sequence'),                       // Tasks  -> Queue            //
       handlebars   = require('gulp-compile-handlebars'),            // HBS    -> HTML             //
-      hbs          = [],                                            // HBS    -> Routes           //
+      hbs          = [],                                            // HBS    -> Data             //
       options      = {                                              // HBS    -> Options          //
         ignorePartials: true,                                       //                            //
         batch:          ['./app/templates/components'],             // HBS    -> Partials         //
@@ -81,17 +80,17 @@ const gulp         = require('gulp'),                               // Gulp     
                                                                     // #       Handlebars       # //
                                                                     // #                        # //
                                                                     // ########################## //
-
-hbs[0] = require('./app/components/index.json');                    // Prepare data for Handlebars
-hbs[1] = require('./app/components/prefecture.json');
-
-gulp.task('handlebars', () => {
-  const total = hbs.length;                                         // Get total no of components
-
-  for (let i = 0; i < hbs.length; i++) {                            // Loop declared JSON
-    for (let j = 0; j < hbs[i].length; j++) {                       // Loop root of JSON
-      const template = hbs[i][j],                                   // Store standard template data
-            page     = template.page;                                 // Store page type
+                                                                    //                            //
+hbs[0] = require('./app/data/index.json');                          // Prepare data for           //
+hbs[1] = require('./app/data/prefecture.json');                     //  Handlebars                //
+                                                                    //                            //
+gulp.task('handlebars', () => {                                     //                            //
+  const total = hbs.length;                                         //                            //
+                                                                    //                            //
+  for (let i = 0; i < hbs.length; i++) {                            // Loop hbs array             //
+    for (let j = 0; j < hbs[i].length; j++) {                       // Loop hbs[i] array          //
+      const template = hbs[i][j],                                   // Store data as template     //
+            page     = template.page;                               // Store page
 
       _log(1, page, total, i);                                      // # DEBUG: Populate
 
@@ -149,8 +148,7 @@ gulp.task('autoprefixer', () => {                                   // ╓╌> A
       browsers: ['last 2 versions'],                                // ║    to fully support      //
       cascade:  false                                               // ║    last 2 versions of    //
     }))                                                             // ║    major browsers        //
-    .pipe(gulp.dest('dist'))                                        // ║                          //
-    .pipe(connect.reload());
+    .pipe(gulp.dest('dist'));                                        // ║                          //
 });                                                                 // ╨                          //
                                                                     // ########################## //
                                                                     // #                        # //
@@ -164,15 +162,13 @@ gulp.task('javascript', () => {                                     // ╓╌> J
     .pipe(gulp.dest('dist/assets/js'))                              // ║    JavaScript            //
     .pipe(browserSync.reload({                                      // ║   Reloads page if run    //
       stream: true                                                  // ║    from watch task       //
-    }))                                                             // ╨                          //
-    .pipe(connect.reload());
+    }));                                                             // ╨                          //
   gulp.src('app/vendor/**/*.js')                                    // ╓╌> JavaScript Vendor      //
     .pipe(uglify())                                                 // ║                          //
     .pipe(gulp.dest('dist/assets/js/vendor/'))                      // ║   Move and minify        //
     .pipe(browserSync.reload({                                      // ║    vendor JavaScript     //
       stream: true                                                  // ║   Reloads page if run    //
-    }))                                                             // ║    from watch task       //
-    .pipe(connect.reload());
+    }));                                                            // ║    from watch task       //
 });                                                                 // ╨                          //
                                                                     // ########################## //
                                                                     // #                        # //
@@ -271,7 +267,6 @@ gulp.task('test', (callback) => {                                   // ╓╌> T
   runSequence(
     'lint',
     'test:server',
-    'test:coverage',
     callback
   );
 });
@@ -282,11 +277,6 @@ gulp.task('test:server', (done) => {                                // ╓╌> T
     singleRun:  true                                                // ║
   }, done).start();                                                 // ║
 });                                                                 // ╨
-
-gulp.task('test:coverage', () => {                                           // ╓╌> EsLint                 //
-  gulp.src(`${__dirname}/coverage/**/lcov.info`)
-    .pipe(coveralls());
-});
                                                                     //
 gulp.task('watch:test', (done) => {                                 // ╓╌> Watch Test             //
   new Server({                                                      // ║
@@ -298,7 +288,7 @@ gulp.task('heroku:serve', () => {
   connect.server({
     name:       'Heroku App',
     root:       `${__dirname}/dist`,
-    livereload: true,
+    livereload: false,
     port:       process.env.PORT || 8000
   });
 });

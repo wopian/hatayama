@@ -6,6 +6,7 @@ engines:
       - javascript
   eslint:
     enabled: true
+    channel: "eslint-3"
     config: .eslintrc.js
   scss-lint:
     enabled: true
@@ -17,6 +18,5 @@ ratings:
   - "**.js"
   - "**.hbs"
 exclude_paths:
-- app/styles/vendor/
-- app/vendor/
-- tests/
+- "**/vendor/**/*"
+- tests
