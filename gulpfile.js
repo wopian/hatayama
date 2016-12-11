@@ -296,7 +296,7 @@ gulp.task('heroku:serve', () => {
     name:       'Heroku App',
     root:       'dist',
     livereload: false,
-    port:       process.env || 8000,
+    port:       process.env.PORT || 8000,
     https:      true,
     fallback:   'index.html',
   });
