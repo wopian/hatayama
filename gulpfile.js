@@ -188,8 +188,13 @@ gulp.task('fonts', () => {                                          // ╓╌> F
     .pipe(gulp.dest('dist/fonts'));                                 // ║   Move fonts             //
 });                                                                 // ╨                          //
                                                                     //                            //
+gulp.task('favicon', () => {                                        // ╓╌> Favicon                //
+  gulp.src('app/public/**/*')                                       // ║                          //
+    .pipe(gulp.dest('dist/'));                                      // ║   Move favicons to root  //
+});                                                                 // ╨                          //
+                                                                    //                            //
 gulp.task('clean:dist', () => {                                     // ╓╌> Clean                  //
-  del.sync('dist/**/*');       // ║                          //
+  del.sync('dist/**/*');                                            // ║                          //
 });                                                                 // ║   Deletes uncached files //
                                                                     // ╨                          //
                                                                     //                            //
@@ -314,7 +319,7 @@ gulp.task('heroku:serve', () => {                                   // ╓╌> H
   });                                                               // ║                          //
 });                                                                 // ╨                          //
                                                                     //                            //
-gulp.task('heroku:production', ['build:tidy']);                     // ╓╌> Heroku Build           //
+gulp.task('heroku:production', ['build:tidy', 'favicon']);          // ╓╌> Heroku Build           //
                                                                     // ║                          //
                                                                     // ║   Runs main build task   //
                                                                     // ╨                          //
