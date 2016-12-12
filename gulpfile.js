@@ -89,20 +89,19 @@ gulp.task('handlebars', () => {                                     //          
                                                                     //                            //
   for (let i = 0; i < hbs.length; i++) {                            // Loop hbs array             //
     for (let j = 0; j < hbs[i].length; j++) {                       // Loop hbs[i] array          //
-      const template = hbs[i][j],                                   // Store data as template     //
-            page     = template.page;                               // Store page
-
-      _log(1, page, total, i);                                      // # DEBUG: Populate
-
-      if (hbs[i][j].page === 'prefecture') {                        // If page for prefectures, loop
+      const hbsData = hbs[i][j];                                    //                            //
+                                                                    //                            //
+      _log(1, hbsData.page, total, i);                              // Output state to CLI        //
+                                                                    //                            //
+      if (hbsData.page === 'prefecture') {                          // If page for prefectures, loop
         // Debug: Get total amount of components                    // through prefecture.json file
-        const totalFlags = hbs[i][j].prefecture.length;
-        for (let k = 0; k < hbs[i][j].prefecture.length; k++) {
+        const totalFlags = hbsData.prefecture.length;
+        for (let k = 0; k < hbsData.prefecture.length; k++) {
           const slug  = `${hbs[i][j].prefecture[k].slug}`,
                 flags = hbs[i][j].prefecture[k],                    // Store prefecture flag data
                 flag = flags.slug.replace(/ +/gm, '-').toLowerCase();// Store & escape flag slug
 
-          _log(2, slug, totalFlags, k);                             // # DEBUG: Generate
+          _log(2, slug, totalFlags, k);
 
           gulp.src('app/templates/prefecture.hbs')
             .pipe(handlebars(flags, options))
@@ -113,7 +112,7 @@ gulp.task('handlebars', () => {                                     //          
             }));
         }
       } else {
-        _log(2, page, undefined, undefined);                        // # DEBUG: Generate
+        _log(2, hbsData.page, undefined, undefined);
 
         gulp.src('app/templates/index.hbs')
           .pipe(handlebars(template, options))
@@ -148,7 +147,7 @@ gulp.task('autoprefixer', () => {                                   // ╓╌> A
       browsers: ['last 2 versions'],                                // ║    to fully support      //
       cascade:  false                                               // ║    last 2 versions of    //
     }))                                                             // ║    major browsers        //
-    .pipe(gulp.dest('dist'));                                        // ║                          //
+    .pipe(gulp.dest('dist'));                                       // ║                          //
 });                                                                 // ╨                          //
                                                                     // ########################## //
                                                                     // #                        # //
@@ -162,7 +161,7 @@ gulp.task('javascript', () => {                                     // ╓╌> J
     .pipe(gulp.dest('dist/assets/js'))                              // ║    JavaScript            //
     .pipe(browserSync.reload({                                      // ║   Reloads page if run    //
       stream: true                                                  // ║    from watch task       //
-    }));                                                             // ╨                          //
+    }));                                                            // ╨                          //
   gulp.src('app/vendor/**/*.js')                                    // ╓╌> JavaScript Vendor      //
     .pipe(uglify())                                                 // ║                          //
     .pipe(gulp.dest('dist/assets/js/vendor/'))                      // ║   Move and minify        //
@@ -189,7 +188,8 @@ gulp.task('fonts', () => {                                          // ╓╌> F
                                                                     //                            //
 gulp.task('clean:dist', () => {                                     // ╓╌> Clean                  //
   del.sync('dist/**/*', '!dist/images', '!dist/images/**/*');       // ║                          //
-});                                                                 // ╨   Deletes uncached files //
+});                                                                 // ║   Deletes uncached files //
+                                                                    // ╨                          //
                                                                     //                            //
 gulp.task('clean', () => {                                          // ╓╌> Clean Cache            //
   del.sync('dist').then((cb) => {                                   // ║                          //
@@ -212,85 +212,83 @@ gulp.task('lint', () => {                                           // ╓╌> E
     .pipe(eslint())                                                 // ║                          //
     .pipe(eslint.format());                                         // ║                          //
 });                                                                 // ╨                          //
+                                                                    // ########################## //
+                                                                    // #                        # //
+                                                                    // #          Dev           # //
+                                                                    // #                        # //
+                                                                    // ########################## //
                                                                     //                            //
+gulp.task('browserSync', () => {                                    // ╓╌> BrowserSync            //
+  browserSync.init({                                                // ║                          //
+    server: {                                                       // ║   Starts server          //
+      baseDir: './dist',                                            // ║                          //
+    },                                                              // ║                          //
+  });                                                               // ║                          //
+});                                                                 // ╨                          //
+                                                                    //                            //
+gulp.task('watch', (callback) => {                                  // ╓╌> Watch                  //
+  runSequence(                                                      // ║                          //
+    'build:tidy',                                                   // ║   Builds app and         //
+    'browserSync',                                                  // ║    watches files for     //
+    ['handlebars', 'sass:build', 'javascript'],                     // ║    changes & rebuilds    //
+    'autoprefixer',                                                 // ║    them                  //
+    callback                                                        // ║                          //
+  );                                                                // ║                          //
+  gulp.watch('app/**/*.scss', ['sass:build', 'autoprefixer']);      // ║                          //
+  gulp.watch('app/**/*.hbs', ['handlebars'], browserSync.reload);   // ║                          //
+  gulp.watch('app/**/*.json', ['handlebars'], browserSync.reload);  // ║                          //
+  gulp.watch('app/**/*.js', ['javascript'], browserSync.reload);    // ║                          //
+});                                                                 // ╨                          //
                                                                     // ########################## //
                                                                     // #                        # //
                                                                     // #         Build          # //
                                                                     // #                        # //
                                                                     // ########################## //
-
-gulp.task('browserSync', () => {
-  browserSync.init({
-    server: {
-      baseDir: './dist',
-    },
-  });
-});
-
-gulp.task('watch', (callback) => {
-  runSequence(
-    'build:tidy',
-    'browserSync',
-    ['handlebars', 'sass:build', 'javascript'],
-    'autoprefixer',
-    callback
-  );
-  gulp.watch('app/**/*.scss', ['sass:build', 'autoprefixer']);
-  gulp.watch('app/**/*.hbs', ['handlebars'], browserSync.reload);
-  gulp.watch('app/**/*.json', ['handlebars'], browserSync.reload);
-  gulp.watch('app/**/*.js', ['javascript'], browserSync.reload);
-});
-
-gulp.task('build', (callback) => {
-  runSequence(
-    ['handlebars', 'sass:build', 'javascript'],
-    'autoprefixer',
-    callback
-  );
-});
-
-gulp.task('build:tidy', (callback) => {
-  runSequence(
-    'clean:dist',
-    ['handlebars', 'sass:build', 'javascript'],
-    'autoprefixer',
-    callback
-  );
-});
+                                                                    //                            //
+gulp.task('build:tidy', (callback) => {                             // ╓╌> Build                  //
+  runSequence(                                                      // ║                          //
+    'clean:dist',                                                   // ║   Main task that builds  //
+    ['handlebars', 'sass:build', 'javascript'],                     // ║    the app               //
+    'autoprefixer',                                                 // ║                          //
+    callback                                                        // ║                          //
+  );                                                                // ║                          //
+});                                                                 // ╨                          //
                                                                     // ########################## //
                                                                     // #                        # //
                                                                     // #      Unit Testing      # //
                                                                     // #                        # //
                                                                     // ########################## //
-                                                                    //
+                                                                    //                            //
 gulp.task('test', (callback) => {                                   // ╓╌> Test                   //
-  runSequence(
-    'lint',
-    'test:server',
-    callback
-  );
-});
-
-gulp.task('test:server', (done) => {                                // ╓╌> Test                   //
-  new Server({                                                      // ║
-    configFile: `${__dirname}/karma.conf.js`,                       // ║
-    singleRun:  true                                                // ║
-  }, done).start();                                                 // ║
-});                                                                 // ╨
-                                                                    //
-gulp.task('watch:test', (done) => {                                 // ╓╌> Watch Test             //
-  new Server({                                                      // ║
-    configFile: `${__dirname}/karma.conf.js`,                       // ║
-  }, done).start();                                                 // ║
-});                                                                // ╨
-
-gulp.task('heroku:serve', () => {
-  connect.server({
-    name:       'Heroku App',
-    root:       `${__dirname}/dist`,
-    livereload: false,
-    port:       process.env.PORT || 8000
-  });
-});
-
-gulp.task('heroku:production', ['build:tidy']);
+  runSequence(                                                      // ║                          //
+    'lint',                                                         // ║   Runs lint task then    //
+    'test:unit',                                                    // ║    starts unit tests     //
+    callback                                                        // ║                          //
+  );                                                                // ║                          //
+});                                                                 // ╨                          //
+                                                                    //                            //
+gulp.task('test:unit', (done) => {                                  // ╓╌> Unit Tests             //
+  new Server({                                                      // ║                          //
+    configFile: `${__dirname}/karma.conf.js`,                       // ║   Performs unit tests    //
+    singleRun:  true                                                // ║    using Karma & Jasmine //
+  }, done).start();                                                 // ║                          //
+});                                                                 // ╨                          //
+                                                                    // ########################## //
+                                                                    // #                        # //
+                                                                    // #         Heroku         # //
+                                                                    // #                        # //
+                                                                    // ########################## //
+                                                                    //                            //
+gulp.task('heroku:serve', () => {                                   // ╓╌> Heroku Serve           //
+  connect.server({                                                  // ║                          //
+    name:       'Heroku App',                                       // ║   Starts server running  //
+    root:       `${__dirname}/dist`,                                // ║    when built in Heroku  //
+    livereload: false,                                              // ║                          //
+    port:       process.env.PORT || 8000                            // ║                          //
+  });                                                               // ║                          //
+});                                                                 // ╨                          //
+                                                                    //                            //
+gulp.task('heroku:production', ['build:tidy']);                     // ╓╌> Heroku Build           //
+                                                                    // ║                          //
+                                                                    // ║   Runs main build task   //
+                                                                    // ╨                          //

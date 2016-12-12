@@ -4,8 +4,9 @@ engines:
     config:
       languages:
       - javascript
+  # eslint disabled until CodeClimate supports Jasmine & Jasmine-jQuery plugins
   eslint:
-    enabled: true
+    enabled: false
     channel: "eslint-3"
     config: .eslintrc.js
   scss-lint:
