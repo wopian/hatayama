@@ -12,6 +12,7 @@ dependencies:
         - app/vendor
         - app/styles/vendor
     pre:
+        - npm i
         - npm i -g gulp
     override:
 #       - npm update && npm prune

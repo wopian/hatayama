@@ -8,6 +8,9 @@ cache:
 node_js:
   - node
 
+rvm:
+  - 2.2
+
 sudo: false
 
 addons:
