@@ -271,8 +271,9 @@ gulp.task('build:tidy', (callback) => {                             // ╓╌> B
                                                                     //                            //
 gulp.task('test', (callback) => {                                   // ╓╌> Test                   //
   runSequence(                                                      // ║                          //
-    'eslint',                                                         // ║   Runs lint task then    //
-    'test:unit',                                                    // ║    starts unit tests     //
+    'scsslint',                                                         // ║   Runs lint task then    //
+    'eslint',                                                    // ║    starts unit tests     //
+    'test:unit',
     callback                                                        // ║                          //
   );                                                                // ║                          //
 });                                                                 // ╨                          //

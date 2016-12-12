@@ -4,7 +4,8 @@ cache:
   directories:
     - node_modules
     - "travis_phantomjs"
-
+  - bundler
+  
 node_js:
   - node
 
