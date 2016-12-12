@@ -277,13 +277,28 @@ gulp.task('test', (callback) => {                                   // ╓╌> T
     callback                                                        // ║                          //
   );                                                                // ║                          //
 });                                                                 // ╨                          //
+
+gulp.task('test:unit', (done) => {
+  const karma = new Server({
+    configFile: `${__dirname}/karma.conf.js`,
+    singleRun:  true
+  }, (errorCode) => {
+    if (errorCode !== 0) {
+      console.log(`Karma exited with error code ${errorCode}`);
+      done();
+      return process.exit(errorCode);
+    }
+    done();
+  });
+  karma.start();
+});
                                                                     //                            //
-gulp.task('test:unit', (done) => {                                  // ╓╌> Unit Tests             //
+/* gulp.task('test:unit', (done) => {                               // ╓╌> Unit Tests             //
   new Server({                                                      // ║                          //
     configFile: `${__dirname}/karma.conf.js`,                       // ║   Performs unit tests    //
     singleRun:  true                                                // ║    using Karma & Jasmine //
   }, done).start();                                                 // ║                          //
-});                                                                 // ╨                          //
+});*/                                                               // ╨                          //
                                                                     // ########################## //
                                                                     // #                        # //
                                                                     // #         Heroku         # //

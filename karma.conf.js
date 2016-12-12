@@ -44,7 +44,7 @@ module.exports = function(config) {
     files: [
       'app/vendor/jquery-2.2.0.min.js',
       'https://maps.googleapis.com/maps/api/js?sensor=false',
-      'app/models/**/*.js',
+      //'app/models/**/*.js',
       'tests/**/*.js',
       {
         pattern:  'tests/fixtures/*.html',
