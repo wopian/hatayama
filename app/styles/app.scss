@@ -3,25 +3,25 @@
 
 // Base
 // Boilerplate code - typographic rules, colours, resets
-@import 
-  'base/_colours',
-  'base/_base',
-  'base/_shame',
-  'base/_typography';
+@import
+'base/colours',
+'base/base',
+'base/shame',
+'base/typography';
 
 // Utilities
 // Gathers Sass tools and helpers used across the project. Global variables,
 // functions, mixins and placeholders should be placed here.
 @import
-  'utilities/_mixins'; // CSS Mixins used site-wide
+'utilities/mixins'; // CSS Mixins used site-wide
 
 // Layout
 // Contains everything that takes part in laying out Kitsu. Things such as the
 // header, footer, forms, etc.
 @import
-  'layout/_cover-images',
-  'layout/_navbar',
-  'layout/_sidebar.scss';
+'layout/cover-images',
+'layout/navbar',
+'layout/sidebar';
 
 // Components
 // While layout/ is macro (defining the global wireframe), components/ is more
@@ -31,4 +31,4 @@
 // Pages
 // Page-specific styles, in a file named after the page.
 @import
-  'pages/_flag.scss';
+'pages/flag';

@@ -19,6 +19,8 @@ const gulp         = require('gulp'),                               // Gulp     
       browserSync  = require('browser-sync').create(),              // Watch  -> Build Server     //
       Server       = require('karma').Server,                       // Tests  -> Test Server      //
       eslint       = require('gulp-eslint'),                        // Tests  -> JS Quality       //
+      scsslint     = require('gulp-scss-lint'),
+      scsslintstylish = require('gulp-scss-lint-stylish'),
       connect      = require('gulp-connect'),                       // Heroku -> Deploy Server    //
       runSequence  = require('run-sequence'),                       // Tasks  -> Queue            //
       handlebars   = require('gulp-compile-handlebars'),            // HBS    -> HTML             //
@@ -202,7 +204,7 @@ gulp.task('clean', () => {                                          // ╓╌> C
                                                                     // #                        # //
                                                                     // ########################## //
                                                                     //                            //
-gulp.task('lint', () => {                                           // ╓╌> EsLint                 //
+gulp.task('eslint', () => {                                         // ╓╌> EsLint                 //
   gulp.src([                                                        // ║                          //
     '**/*.js',                                                      // ║   Check JavaScript       //
     '!node_modules/**',                                             // ║    against ruleset       //
@@ -211,6 +213,14 @@ gulp.task('lint', () => {                                           // ╓╌> E
   ])                                                                // ║                          //
     .pipe(eslint())                                                 // ║                          //
     .pipe(eslint.format());                                         // ║                          //
+});                                                                 // ╨                          //
+                                                                    //                            //
+gulp.task('scsslint', () => {                                       // ╓╌> SCSS Lint              //
+  gulp.src([                                                        // ║                          //
+    'app/styles/**/*.scss',                                         //
+    '!app/styles/vendor/**'                                         //
+  ])                                                                // ║                          //
+    .pipe(scsslint({ customReport: scsslintstylish }));             // ║                          //
 });                                                                 // ╨                          //
                                                                     // ########################## //
                                                                     // #                        # //
@@ -261,7 +271,7 @@ gulp.task('build:tidy', (callback) => {                             // ╓╌> B
                                                                     //                            //
 gulp.task('test', (callback) => {                                   // ╓╌> Test                   //
   runSequence(                                                      // ║                          //
-    'lint',                                                         // ║   Runs lint task then    //
+    'eslint',                                                         // ║   Runs lint task then    //
     'test:unit',                                                    // ║    starts unit tests     //
     callback                                                        // ║                          //
   );                                                                // ║                          //

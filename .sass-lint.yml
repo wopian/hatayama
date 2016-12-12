@@ -1,0 +1,10 @@
+options:
+    max-warnings: 50
+    formatter: stylish
+    merge-default-rules: true
+
+files:
+    include: 'app/**/*.scss'
+    ignore: 'app/**/vendor/*.*'
+
+rules:

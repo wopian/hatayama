@@ -13,12 +13,11 @@
 //191D32
 
 body {
-  // Sticky footer
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-  color: $metal;
   background: $white;
+  color: $metal;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   
   height: 300vh;
 

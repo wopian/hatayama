@@ -8,7 +8,7 @@ aside {
   top: 145px + 15px + 7px;
   transition: all 300ms;
   transition-timing-function: cubic-bezier(0.390,  0.575, 0.565, 1.000);
-  
+
   &:after {
     content: '';
     display: block;
@@ -16,7 +16,7 @@ aside {
     height: 0;
     clear: both;
   }
-  
+
   div {
     position: relative;
     right: 15px;
@@ -46,7 +46,7 @@ aside {
         padding-top: 10px;
       }
     }
-    
+
     img {
       border-radius: 3px;
       box-shadow: 0 0 1px 0 rgba(0,0,0,.25);

@@ -1,0 +1,20 @@
+GEM
+  specs:
+    colored (1.2)
+    gemrat (0.4.6)
+      colored (= 1.2)
+    rake (10.4.2)
+    sass (3.4.22)
+    scss_lint (0.50.3)
+      rake (>= 0.9, < 12)
+      sass (~> 3.4.20)
+
+PLATFORMS
+  x64-mingw32
+
+DEPENDENCIES
+  gemrat (= 0.4.6)
+  scss_lint (= 0.50.3)
+
+BUNDLED WITH
+   1.13.6
