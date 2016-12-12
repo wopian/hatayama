@@ -22,6 +22,8 @@ dependencies:
 test:
     override:
         - gulp test
+        - mkdir -p $CIRCLE_TEST_REPORTS/junit/
+        - cp coverage/**/cobertura-coverage.xml $CIRCLE_TEST_REPORTS/junit/
 
 deployment:
     production:
