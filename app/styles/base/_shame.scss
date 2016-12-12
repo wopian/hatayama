@@ -5,7 +5,7 @@ body {
     overflow-x: hidden;
 }
 
-// Fixes redraw issue for sidebar image on flag pages on Chrome 
+// Fixes redraw issue for sidebar image on flag pages on Chrome
 // where image shifts 1px during the transition
 aside {
     img {
