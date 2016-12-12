@@ -12,8 +12,8 @@ dependencies:
         - app/vendor
         - app/styles/vendor
     pre:
-        - npm i
-        - npm i -g gulp
+#       - npm i
+#       - npm i -g gulp
     override:
 #       - npm update && npm prune
         - gulp build:tidy
@@ -23,7 +23,10 @@ test:
     override:
         - gulp test
         - mkdir -p $CIRCLE_TEST_REPORTS/junit/
+        - ls coverage && ls coverage/**
+        - ls $CIRCLE_TEST_REPORTS
         - cp coverage/**/cobertura-coverage.xml $CIRCLE_TEST_REPORTS/junit/
+        - ls $CIRCLE_TEST_REPORTS/junit
 
 deployment:
     production:
