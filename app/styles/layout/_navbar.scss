@@ -1,8 +1,27 @@
 header {
     @extend .navbar;
     @extend .navbar-dark;
-    @extend .bg-faded;
     @extend .navbar-fixed-top;
+    transition: all 300ms ease-in-out;
+
+    h1,
+    a {
+        transition: all 200ms ease-in-out;
+    }
+
+    .transparent {
+        background: transparent;
+        box-shadow: none;
+
+        h1,
+        a {
+            color: $white;
+        }
+
+        a {
+            opacity: .6;
+        }
+    }
 
     &:not(.transparent),
     &:hover {
@@ -23,24 +42,6 @@ header {
         }
     }
 
-    .transparent {
-        &:not(:hover) {
-            background: transparent;
-            box-shadow: none;
-            transition: all 300ms ease-in-out;
-
-            h1,
-            a {
-                color: $white;
-                transition: all 200ms ease-in-out;
-            }
-
-            a {
-                opacity: .6;
-            }
-        }
-    }
-
     nav {
         @extend .container;
         @extend .nav;
@@ -53,6 +54,7 @@ header {
         font-family: 'NSJPB';
         font-size: 1rem;
         line-height: 1.65rem;
+        pointer-events: none;
 
         span {
             color: $poppy;

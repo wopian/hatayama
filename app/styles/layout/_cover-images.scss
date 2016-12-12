@@ -6,8 +6,9 @@
     padding: 0;
     position: relative;
 
-    .map {
+    #map {
         height: 400px;
+        pointer-events: none;
     }
 
     .overlay {

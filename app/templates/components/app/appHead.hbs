@@ -11,10 +11,6 @@
     <!--endbuild-->
 </head>
 
-{{#if_eq header 'transparent'}}
-    <body class="transparent">
-{{else}}
-    <body>
-{{/if_eq}}
+<body {{#if_eq header 'transparent'}}class="offset"{{/if_eq}}>
 
-{{>app/appNav}}
+{{>app/appNav header=header}}

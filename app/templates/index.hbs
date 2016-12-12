@@ -1,6 +1,13 @@
 {{>app/appHead}}
 
-{{abcdef}} World.
-
 <a href="/prefecture/wiltshire.html">Wiltshire</a>
+
+<main>
+    <div class='row'>
+                <div class='col-md-2'>
+                    <img src='{{!flagImage}}' class='img-fluid'>
+                    <a href='/{{!type}}/{{!slug}}'>{{!name}}</a>
+                </div>
+    </div>
+</main>
 {{>app/appFooter}}

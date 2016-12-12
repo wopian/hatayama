@@ -20,7 +20,7 @@ body {
     height: 300vh;
     min-height: 100vh;
 
-    &:not(.transparent) {
+    &:not(.offset) {
         // Fixed header offset
         padding-top: 54px;
     }

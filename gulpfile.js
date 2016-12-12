@@ -189,7 +189,7 @@ gulp.task('fonts', () => {                                          // ╓╌> F
 });                                                                 // ╨                          //
                                                                     //                            //
 gulp.task('clean:dist', () => {                                     // ╓╌> Clean                  //
-  del.sync('dist/**/*', '!dist/images', '!dist/images/**/*');       // ║                          //
+  del.sync('dist/**/*');       // ║                          //
 });                                                                 // ║   Deletes uncached files //
                                                                     // ╨                          //
                                                                     //                            //
