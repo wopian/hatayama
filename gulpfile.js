@@ -115,8 +115,8 @@ gulp.task('handlebars', () => {                                     //          
         _log(2, hbsData.page, undefined, undefined);
 
         gulp.src('app/templates/index.hbs')
-          .pipe(handlebars(template, options))
-          .pipe(rename(`${page}.html`))
+          .pipe(handlebars(hbsData, options))
+          .pipe(rename(`${hbsData.page}.html`))
           .pipe(gulp.dest('dist'))
           .pipe(browserSync.reload({
             stream: true
