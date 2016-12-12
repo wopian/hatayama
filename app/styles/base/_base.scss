@@ -13,30 +13,32 @@
 //191D32
 
 body {
-  background: $white;
-  color: $metal;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  
-  height: 300vh;
+    background: $white;
+    color: $metal;
+    display: flex;
+    flex-direction: column;
+    height: 300vh;
+    min-height: 100vh;
 
-  &:not(#transparent) {
-    // Fixed header offset
-    padding-top: 54px;
-  }
+    &:not(.transparent) {
+        // Fixed header offset
+        padding-top: 54px;
+    }
 }
 
-
+%base {
+    flex: 3;
+}
 
 main {
-  @extend .container;
-  // Sticky footer
-  flex: 3;
+    @extend .container;
+    @extend %base;
+    // Sticky footer
+    flex: 3;
 }
 
-footer {  
-  height: 54px;
-  div { @extend .container; }
-  span { @extend .text-muted; }
+footer {
+    height: 54px;
+    div { @extend .container; }
+    span { @extend .text-muted; }
 }

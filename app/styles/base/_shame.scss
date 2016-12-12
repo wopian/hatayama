@@ -7,6 +7,8 @@ body {
 
 // Fixes redraw issue for sidebar image on flag pages on Chrome 
 // where image shifts 1px during the transition
-aside img {
-    width: 99.99999%;
+aside {
+    img {
+        width: 99.99999%;
+    }
 }

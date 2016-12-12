@@ -2,48 +2,53 @@
     //@extend .jumbotron;
     @extend .jumbotron-fluid;
     margin-bottom: 0;
+    min-height: 400px;
     padding: 0;
     position: relative;
-    min-height: 400px;
-    #map {
+
+    .map {
         height: 400px;
     }
+
     .overlay {
-        background: linear-gradient(to bottom,transparent 0,rgba(0,0,0,.35) 100%);
-        position: absolute;
+        background: linear-gradient(to bottom, transparent 0, rgba($metal, .35) 100%);
         bottom: 0;
+        box-shadow: 0 1px 0 0 rgba($metal, .1);
+        position: absolute;
         top: 0;
         width: 100%;
-        box-shadow: 0 1px 0 0 rgba(0,0,0,.1)
     }
+
     .cover-info {
-        position: absolute;
-        width: 100%;
-        top: 300px;
-        height: 100px;
-        z-index: 400;
-        padding-left: 295px;
         color: $white;
+        height: 100px;
+        padding-left: 295px;
+        position: absolute;
+        top: 300px;
+        width: 100%;
+        z-index: 400;
 
         h2 {
             font-size: 2rem;
             padding-bottom: .3rem;
         }
+
         a {
-            font-size: .65rem;
-            line-height: 0;
-            margin-right: .5rem;
-            padding: .25rem .5rem;
             border: 1px solid rgba($white, .2);
             border-radius: 3px;
             color: rgba($white, .8);
             cursor: pointer;
+            font-size: .65rem;
+            line-height: 0;
+            margin-right: .5rem;
+            padding: .25rem .5rem;
+
             &:hover {
                 background: rgba($white, .05);
             }
-            
+
             &:last-of-type {
-            margin-right: 0;
+                margin-right: 0;
             }
         }
     }
@@ -51,6 +56,6 @@
 
 // Hide map overlays
 .gm-style > div:not(:first-of-type)  {
-  display: none;
-  visibility: hidden;
+    display: none;
+    visibility: hidden;
 }

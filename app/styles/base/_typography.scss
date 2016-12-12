@@ -16,10 +16,12 @@
     font-weight: 600;
     src: local('Noto Sans CJK JP');
 }
+
 body {
     font-family: 'NSJPR';
     font-size: 14px;
 }
+
 h1,
 h2,
 h3,
@@ -28,9 +30,11 @@ h5,
 h6 {
     font-family: 'NSJPB';
 }
+
 h2 {
     font-size: 1.5rem;
 }
+
 h5 {
     font-size: 1.25rem;
 }

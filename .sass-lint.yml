@@ -8,3 +8,10 @@ files:
     ignore: 'app/**/vendor/*.*'
 
 rules:
+    placeholder-in-extend: 0
+    indentation:
+        - 2
+        - size: 4
+    hex-notation:
+        - 2
+        - style: uppercase

@@ -4,6 +4,9 @@ engines:
     config:
       languages:
       - javascript
+    checks:
+      Similar code:
+        enabled: false
   # eslint disabled until CodeClimate supports Jasmine & Jasmine-jQuery plugins
   eslint:
     enabled: false

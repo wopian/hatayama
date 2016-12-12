@@ -1,56 +1,66 @@
 header {
-  @extend .navbar;
-  @extend .navbar-dark;
-  @extend .bg-faded;
-  @extend .navbar-fixed-top;
-  nav {
-    @extend .container;
-    @extend .nav;
-    @extend .navbar-nav;
-  }
-  h1 {
-    @extend .navbar-brand;
-    @extend .mb-0;
-    font-size: 1rem;
-    line-height: 1.65rem;
-    font-family: 'NSJPB';
-    span {
-      color: $poppy;
+    @extend .navbar;
+    @extend .navbar-dark;
+    @extend .bg-faded;
+    @extend .navbar-fixed-top;
+
+    &:not(.transparent),
+    &:hover {
+        background: $white;
+        box-shadow: 0 0 1px 0 rgba(0,0,0,.25);
+        transition: all 100ms ease-in-out;
+
+        h1,
+        //h1:hover,
+        a {
+            color: $metal;
+            transition: all 100ms ease-in-out;
+        }
+
+        h1 span,
+        a:hover {
+            color: $poppy;
+        }
     }
-  }
-  a {
-    @extend .nav-item;
-    @extend .nav-link;
-  }
-}
 
-header:not(.transparent),
-header.transparent:hover {
-  background: $white;
-  box-shadow: 0 0 1px 0 rgba(0,0,0,.25);
-  transition: all 100ms ease-in-out;
-  h1,
-  h1:hover,
-  a {
-    color: $metal;
-    transition: all 100ms ease-in-out;
-  }
-  h1 span,
-  a:hover {
-    color: $poppy;
-  }
-}
+    .transparent {
+        &:not(:hover) {
+            background: transparent;
+            box-shadow: none;
+            transition: all 300ms ease-in-out;
 
-header.transparent:not(:hover) {
-  background: transparent;
-  box-shadow: none;
-  transition: all 300ms ease-in-out;
-  h1,
-  a {
-    color: $white;
-    transition: all 200ms ease-in-out;
-  }
-  a {
-    opacity: .6;
-  }
+            h1,
+            a {
+                color: $white;
+                transition: all 200ms ease-in-out;
+            }
+
+            a {
+                opacity: .6;
+            }
+        }
+    }
+
+    nav {
+        @extend .container;
+        @extend .nav;
+        @extend .navbar-nav;
+    }
+
+    h1 {
+        @extend .navbar-brand;
+        @extend .mb-0;
+        font-family: 'NSJPB';
+        font-size: 1rem;
+        line-height: 1.65rem;
+
+        span {
+            color: $poppy;
+        }
+    }
+
+    a {
+        @extend .nav-item;
+        @extend .nav-link;
+    }
 }
