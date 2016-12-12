@@ -9,9 +9,8 @@ module.exports = function(config) {
     reporters:        ['mocha', 'coverage'],
     browsers:         ['PhantomJS'],
     preprocessors:    {
-      'app/models/**/*.js': ['browserify', 'coverage'],
-      'tests/**/*.js':      ['browserify', 'coverage'],
-      'tests/fixtures/js':  ['babel', 'coverage']
+      'app/models/**/*.js': ['babel', 'coverage'],
+      'tests/**/*.js':      ['babel', 'browserify', 'coverage']
     },
     browserify: {
       debug:     true,
@@ -42,16 +41,17 @@ module.exports = function(config) {
       // 'brfs',
     ],
     files: [
+      // Serve html fixtures
+      { pattern: 'tests/fixtures/*.html', watched: true, included: false, served: true },
+      // Dependencies
       'app/vendor/jquery-2.2.0.min.js',
       'https://maps.googleapis.com/maps/api/js?sensor=false',
-      //'app/models/**/*.js',
-      'tests/**/*.js',
-      {
-        pattern:  'tests/fixtures/*.html',
-        watched:  true,
-        served:   true,
-        included: false
-      }
+      // Set Jasmine Fixtures Path
+      'tests/helpers/fixtures.js',
+      // Code to test
+      'app/models/*.js',
+      // Test Code
+      'tests/spec/*_spec.*'
     ]
   });
 };

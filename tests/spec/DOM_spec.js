@@ -1,8 +1,5 @@
-// const fs       = require('fs');
-
 describe('Basic DOM Checks', () => {
   beforeEach(() => {
-    jasmine.getFixtures().fixturesPath = 'base/tests/fixtures';
     loadFixtures('DOM.html');
   });
 
@@ -16,5 +13,10 @@ describe('Basic DOM Checks', () => {
 
   it('checks if a class is in DOM', () => {
     expect($('.test')).toBeInDOM();
+  });
+
+  it('will change header text', () => {
+    const $title = $('title');
+    expect($title.text()).toBe('Test');
   });
 });
