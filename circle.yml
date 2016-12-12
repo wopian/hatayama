@@ -13,7 +13,7 @@ dependencies:
         - app/styles/vendor
     pre:
 #       - npm i
-#       - npm i -g gulp
+       - npm i -g gulp
     override:
 #       - npm update && npm prune
         - gulp build:tidy
