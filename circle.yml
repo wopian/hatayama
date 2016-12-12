@@ -13,10 +13,10 @@ dependencies:
         - app/styles/vendor
     pre:
         - npm i -g gulp
-        - gem install
     override:
 #       - npm update && npm prune
         - gulp build:tidy
+        - bundle install
 
 test:
     override:
