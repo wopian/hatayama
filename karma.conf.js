@@ -9,8 +9,9 @@ module.exports = function(config) {
     reporters:        ['mocha', 'coverage'],
     browsers:         ['PhantomJS'],
     preprocessors:    {
-      'tests/**/*.js':     ['browserify', 'coverage'],
-      'tests/fixtures/js': ['babel', 'coverage']
+      'app/models/**/*.js': ['browserify', 'coverage'],
+      'tests/**/*.js':      ['browserify', 'coverage'],
+      'tests/fixtures/js':  ['babel', 'coverage']
     },
     browserify: {
       debug:     true,
@@ -18,12 +19,12 @@ module.exports = function(config) {
       transform: ['babelify']
     },
     coverageReporter: {
-      //type:                ['lcovonly', 'cobertura'],
+      // type:                ['lcovonly', 'cobertura'],
       // specify a common output directory
-      dir:                 'coverage/',
+      dir:       'coverage/',
       reporters: [
-        {type: 'lcovonly'},
-        {type: 'cobertura'}
+        { type: 'lcovonly' },
+        { type: 'cobertura' }
       ],
       instrumenterOptions: {
         istanbul: { noCompact: true }
@@ -41,8 +42,10 @@ module.exports = function(config) {
       // 'brfs',
     ],
     files: [
-      'tests/**/*.js',
       'app/vendor/jquery-2.2.0.min.js',
+      'https://maps.googleapis.com/maps/api/js?sensor=false',
+      'app/models/**/*.js',
+      'tests/**/*.js',
       {
         pattern:  'tests/fixtures/*.html',
         watched:  true,

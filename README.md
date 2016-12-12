@@ -4,5 +4,6 @@
 [![Code Climate](https://codeclimate.com/github/wopian/hatayama/badges/gpa.svg)](https://codeclimate.com/github/wopian/hatayama)
 [![Issue Count](https://codeclimate.com/github/wopian/hatayama/badges/issue_count.svg)](https://codeclimate.com/github/wopian/hatayama)
 [![Test Coverage](https://codeclimate.com/github/wopian/hatayama/badges/coverage.svg)](https://codeclimate.com/github/wopian/hatayama/coverage)
+[![codecov](https://codecov.io/gh/wopian/hatayama/branch/master/graph/badge.svg)](https://codecov.io/gh/wopian/hatayama)
 
 Derived from the reading of 「旗の山」

@@ -12,21 +12,17 @@ dependencies:
         - app/vendor
         - app/styles/vendor
     pre:
-#       - npm i
-       - npm i -g gulp
+        - npm i -g gulp:
+        - bundle install:
     override:
 #       - npm update && npm prune
         - gulp build:tidy
-        - bundle install
 
 test:
     override:
         - gulp test
         - mkdir -p $CIRCLE_TEST_REPORTS/junit/
-        - ls coverage && ls coverage/**
-        - ls $CIRCLE_TEST_REPORTS
         - cp coverage/**/cobertura-coverage.xml $CIRCLE_TEST_REPORTS/junit/test-results.xml
-        - ls $CIRCLE_TEST_REPORTS/junit
     post:
         - bash <(curl -s https://codecov.io/bash)
 
