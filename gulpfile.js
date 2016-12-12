@@ -283,13 +283,12 @@ gulp.task('test:unit', (done) => {
     configFile: `${__dirname}/karma.conf.js`,
     singleRun:  true
   }, (errorCode) => {
-    /* if (errorCode !== 0) {
+    if (errorCode !== 0) {
       console.log(`Karma exited with error code ${errorCode}`);
       done();
       return process.exit(errorCode);
-    } */
+    }
     done();
-    return process.exit(0);
   });
   karma.start();
 });

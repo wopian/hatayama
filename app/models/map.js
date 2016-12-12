@@ -52,6 +52,6 @@ function initialize() {
           ]
         },
         // eslint-disable-next-line no-unused-vars
-        map = new google.maps.Map(document.getElementById('map'), options);
+        map = new google.maps.Map(document.getElementByClass('map'), options);
 }
 google.maps.event.addDomListener(window, 'load', initialize);
