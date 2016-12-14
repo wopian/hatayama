@@ -15,3 +15,19 @@ rules:
     hex-notation:
         - 2
         - style: uppercase
+
+# Rules for gulp-scss-lint
+severity: warning 
+linters:
+    PlaceholderInExtend:
+        enabled: false
+    Indentation:
+        enabled: true
+        character: space
+        width: 4
+    HexNotation:
+        enabled: true
+        style: uppercase
+    NestingDepth:
+        enabled: true
+        max_depth: 5

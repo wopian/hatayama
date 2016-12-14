@@ -8,7 +8,7 @@ const gulp         = require('gulp'),                               // Gulp     
       sass         = require('gulp-sass'),                          // SCSS   -> CSS              //
       autoprefixer = require('gulp-autoprefixer'),                  // CSS    -> Vendor Prefixes  //
       cssnano      = require('gulp-cssnano'),                       // CSS    -> Minify           //
-      uglify       = require('gulp-uglify'),                        // JS     -> Minify           //
+   // uglify       = require('gulp-uglify'),                        // JS     -> Minify           //
       rename       = require('gulp-rename'),                        // Files  -> Rename           //
       del          = require('del'),                                // Files  -> Delete           //
       cache        = require('gulp-cache'),                         // Cache  -> Images           //
@@ -225,7 +225,10 @@ gulp.task('scsslint', () => {                                       // ╓╌> S
     'app/styles/**/*.scss',                                         //
     '!app/styles/vendor/**'                                         //
   ])                                                                // ║                          //
-    .pipe(scsslint({ customReport: scsslintstylish }));             // ║                          //
+    .pipe(scsslint({
+      customReport: scsslintstylish,
+      config:       '.sass-lint.yml'
+    }));             // ║                          //
 });                                                                 // ╨                          //
                                                                     // ########################## //
                                                                     // #                        # //

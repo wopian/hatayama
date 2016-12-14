@@ -28,9 +28,7 @@ aside {
             &:not(:nth-of-type(4n)) {
                 border-bottom: 1px dashed lighten($metal, 85);
             }
-        }
 
-        p {
             span {
                 float: left;
                 text-align: left;

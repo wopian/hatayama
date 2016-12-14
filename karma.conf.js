@@ -4,8 +4,7 @@ module.exports = function(config) {
     frameworks:       ['browserify', 'jasmine-jquery', 'jasmine'],
     colors:           true,
     logLevel:         config.LOG_WARN,
-    reportSlowerThan: 500,
-    // reporters:     ['spec', 'coverage'],
+    reportSlowerThan: 100,
     reporters:        ['mocha', 'coverage'],
     browsers:         ['PhantomJS'],
     preprocessors:    {
@@ -33,7 +32,6 @@ module.exports = function(config) {
       'karma-jasmine',
       'karma-jasmine-jquery',
       'karma-phantomjs-launcher',
-      'karma-spec-reporter',
       'karma-mocha-reporter',
       'karma-babel-preprocessor',
       'karma-browserify',
