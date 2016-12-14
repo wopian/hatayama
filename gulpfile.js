@@ -159,13 +159,13 @@ gulp.task('autoprefixer', () => {                                   // ╓╌> A
                                                                     //                            //
 gulp.task('javascript', () => {                                     // ╓╌> JavaScript             //
   gulp.src('app/models/**/*')                                       // ║                          //
-    .pipe(uglify())                                                 // ║   Move and minify        //
+    // .pipe(uglify())                                              // ║   Move and minify        //
     .pipe(gulp.dest('dist/assets/js'))                              // ║    JavaScript            //
     .pipe(browserSync.reload({                                      // ║   Reloads page if run    //
       stream: true                                                  // ║    from watch task       //
     }));                                                            // ╨                          //
   gulp.src('app/vendor/**/*.js')                                    // ╓╌> JavaScript Vendor      //
-    .pipe(uglify())                                                 // ║                          //
+    // .pipe(uglify())                                              // ║                          //
     .pipe(gulp.dest('dist/assets/js/vendor/'))                      // ║   Move and minify        //
     .pipe(browserSync.reload({                                      // ║    vendor JavaScript     //
       stream: true                                                  // ║   Reloads page if run    //
@@ -276,34 +276,27 @@ gulp.task('build:tidy', (callback) => {                             // ╓╌> B
                                                                     //                            //
 gulp.task('test', (callback) => {                                   // ╓╌> Test                   //
   runSequence(                                                      // ║                          //
-    'scsslint',                                                         // ║   Runs lint task then    //
-    'eslint',                                                    // ║    starts unit tests     //
-    'test:unit',
+    'scsslint',                                                     // ║   Runs lint task then    //
+    'eslint',                                                       // ║    starts unit tests     //
+    'test:unit',                                                    // ║                          //
     callback                                                        // ║                          //
   );                                                                // ║                          //
 });                                                                 // ╨                          //
-
-gulp.task('test:unit', (done) => {
-  const karma = new Server({
-    configFile: `${__dirname}/karma.conf.js`,
-    singleRun:  true
-  }, (errorCode) => {
-    if (errorCode !== 0) {
-      console.log(`Karma exited with error code ${errorCode}`);
-      done();
-      return process.exit(errorCode);
-    }
-    done();
-  });
-  karma.start();
-});
                                                                     //                            //
-/* gulp.task('test:unit', (done) => {                               // ╓╌> Unit Tests             //
-  new Server({                                                      // ║                          //
+gulp.task('test:unit', (done) => {                                  // ╓╌> Unit Tests             //
+  const karma = new Server({                                        // ║                          //
     configFile: `${__dirname}/karma.conf.js`,                       // ║   Performs unit tests    //
     singleRun:  true                                                // ║    using Karma & Jasmine //
-  }, done).start();                                                 // ║                          //
-});*/                                                               // ╨                          //
+  }, (errorCode) => {                                               // ║                          //
+    if (errorCode !== 0) {                                          // ║                          //
+      console.log(`Karma exited with error code ${errorCode}`);     // ║                          //
+      done();                                                       // ║                          //
+      return process.exit(errorCode);                               // ║                          //
+    }                                                               // ║                          //
+    done();                                                         // ║                          //
+  });                                                               // ║                          //
+  karma.start();                                                    // ║                          //
+});                                                                 // ╨                          //
                                                                     // ########################## //
                                                                     // #                        # //
                                                                     // #         Heroku         # //
