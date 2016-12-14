@@ -1,4 +1,4 @@
-.vscode
+.vscode/GitHubIssue
 node_modules
 dist
 coverage

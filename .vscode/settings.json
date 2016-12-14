@@ -1,0 +1,29 @@
+{
+
+// Fira Code
+    "editor.fontFamily": "Fira Code",
+    "editor.fontSize": 13,
+    "editor.fontLigatures": true,
+    "workbench.statusBar.visible": true,
+
+// Editor
+    "editor.rulers": [68, 100],
+    "editor.renderWhitespace": "boundary",
+    "editor.renderControlCharacters": true,
+    "editor.renderIndentGuides": true,
+    "editor.wordWrap": true,
+
+// HTML 
+    "html.format.indentHandlebars": true,
+    "html.format.endWithNewline": true,
+
+    "files.autoSave": "off",
+    "files.exclude": {
+        "**/.DS_Store": true,
+        "node_modules": true
+    },
+
+    "sasslint.enable": true,
+    "sasslint.configFile": ".scss-lint.yml",
+    "css.validate": false
+}

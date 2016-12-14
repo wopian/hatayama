@@ -3,9 +3,8 @@ options:
     formatter: stylish
     merge-default-rules: true
 
-files:
-    include: 'app/**/*.scss'
-    ignore: 'app/**/vendor/*.*'
+scss_files: 'app/**/*.scss'
+exclude: 'app/**/vendor/*.*'
 
 rules:
     placeholder-in-extend: 0

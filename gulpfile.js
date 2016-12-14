@@ -227,7 +227,7 @@ gulp.task('scsslint', () => {                                       // ╓╌> S
   ])                                                                // ║                          //
     .pipe(scsslint({
       customReport: scsslintstylish,
-      config:       '.sass-lint.yml'
+      config:       '.scss-lint.yml'
     }));             // ║                          //
 });                                                                 // ╨                          //
                                                                     // ########################## //
