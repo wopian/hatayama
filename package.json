@@ -39,7 +39,7 @@
     "browser-sync": "^2.18.2",
     "browserify": "^13.1.1",
     "del": "^2.2.2",
-    "eslint": "^3.11.1",
+    "eslint": "^3.12.1",
     "eslint-config-airbnb-base": "^11.0.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jasmine": "^2.2.0",
