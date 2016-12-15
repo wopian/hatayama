@@ -23,6 +23,8 @@ const gulp         = require('gulp'),                               // Gulp     
       scsslintstylish = require('gulp-scss-lint-stylish'),
       connect      = require('gulp-connect'),                       // Heroku -> Deploy Server    //
       runSequence  = require('run-sequence'),                       // Tasks  -> Queue            //
+      jsonConcat   = require('gulp-json-concat'),
+      jsonFormat   = require('gulp-json-format'),
       handlebars   = require('gulp-compile-handlebars'),            // HBS    -> HTML             //
       hbs          = [],                                            // HBS    -> Data             //
       options      = {                                              // HBS    -> Options          //
@@ -130,6 +132,20 @@ gulp.task('handlebars', () => {                                     //          
     }
   }
 });
+
+gulp.task('json', (callback) => {
+  runSequence(
+    'json:index',
+    callback
+  );
+});
+
+gulp.task('json:index', () =>
+  gulp.src(['app/data/index.json', 'app/data/prefecture.json'])
+    .pipe(jsonConcat('indexOutput.json', data => new Buffer(JSON.stringify(data))))
+    .pipe(jsonFormat(2))
+    .pipe(gulp.dest('app/data'))
+);
                                                                     // ########################## //
                                                                     // #                        # //
                                                                     // #          SCSS          # //
@@ -269,6 +285,7 @@ gulp.task('watch', (callback) => {                                  // ╓╌> W
 gulp.task('default', (callback) => {                             // ╓╌> Build                  //
   runSequence(                                                      // ║                          //
     'clean:dist',                                                   // ║   Main task that builds  //
+    'json',
     ['handlebars', 'sass:build', 'javascript'],                     // ║    the app               //
     'autoprefixer',                                                 // ║                          //
     callback                                                        // ║                          //
