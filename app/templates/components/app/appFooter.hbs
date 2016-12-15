@@ -6,7 +6,7 @@
 
     <!--build:js /assets/js/app.min.js-->
     <script src="/assets/js/vendor/jquery-2.2.0.min.js"></script>
-    <script src="/assets/js/vendor/tether.js"></script>
+    <script src="/assets/js/vendor/tether.min.js"></script>
     <script src="/assets/js/vendor/bootstrap.min.js"></script>
     <script src="/assets/js/sidebar.js"></script>
     <script src="/assets/js/map.js"></script>
@@ -17,7 +17,7 @@
     
     {{! Embed Google Maps on flag pages }}
     {{#if googleMaps}}
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCF0qq_0eu2iw2WvUwCheypcjl6pmugNQ4&amp;sensor=false&callback=initialize"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCF0qq_0eu2iw2WvUwCheypcjl6pmugNQ4&callback=initialize"></script>
     {{/if}}
 </body>
 </html>

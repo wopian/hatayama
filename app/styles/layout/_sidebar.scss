@@ -1,19 +1,9 @@
 aside {
     float: left;
-    position: sticky;
     top: 145px + 15px + 7px;
     transition: all 300ms;
     transition-timing-function: cubic-bezier(.39, .575, .565, 1);
     width: 295px;
-    z-index: 301;
-
-    &::after {
-        clear: both;
-        content: '';
-        display: block;
-        height: 0;
-        visibility: hidden;
-    }
 
     div {
         position: relative;
@@ -58,5 +48,6 @@ aside {
         transition: all 100ms;
         transition-timing-function: cubic-bezier(.39, .575, .565, 1);
         width: calc(295px / 1.25);
+        position: sticky;
     }
 }

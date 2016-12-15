@@ -2,13 +2,14 @@
     //@extend .jumbotron;
     @extend .jumbotron-fluid;
     margin-bottom: 0;
-    min-height: 400px;
     padding: 0;
     position: relative;
 
     #map {
-        height: 400px;
+        max-height: 400px;
+        min-height: 400px;
         pointer-events: none;
+        background: #F3F1ED;
     }
 
     .overlay {

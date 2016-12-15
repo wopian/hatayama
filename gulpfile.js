@@ -222,13 +222,13 @@ gulp.task('eslint', () => {                                         // ╓╌> E
                                                                     //                            //
 gulp.task('scsslint', () => {                                       // ╓╌> SCSS Lint              //
   gulp.src([                                                        // ║                          //
-    'app/styles/**/*.scss',                                         //
-    '!app/styles/vendor/**'                                         //
+    'app/styles/**/*.scss',                                         // ║                          //
+    '!app/styles/vendor/**'                                         // ║                          //
   ])                                                                // ║                          //
-    .pipe(scsslint({
-      customReport: scsslintstylish,
-      config:       '.scss-lint.yml'
-    }));             // ║                          //
+    .pipe(scsslint({                                                // ║                          //
+      customReport: scsslintstylish,                                // ║                          //
+      config:       '.scss-lint.yml'                                // ║                          //
+    }));                                                            // ║                          //
 });                                                                 // ╨                          //
                                                                     // ########################## //
                                                                     // #                        # //
