@@ -16,7 +16,7 @@ dependencies:
         - bundle install
     override:
         - npm update && npm prune
-        - gulp build:tidy
+        - gulp
 
 test:
     override:

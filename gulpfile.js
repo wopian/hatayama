@@ -246,7 +246,7 @@ gulp.task('browserSync', () => {                                    // ╓╌> B
                                                                     //                            //
 gulp.task('watch', (callback) => {                                  // ╓╌> Watch                  //
   runSequence(                                                      // ║                          //
-    'build:tidy',                                                   // ║   Builds app and         //
+    'default',                                                   // ║   Builds app and         //
     'browserSync',                                                  // ║    watches files for     //
     ['handlebars', 'sass:build', 'javascript'],                     // ║    changes & rebuilds    //
     'autoprefixer',                                                 // ║    them                  //
@@ -263,7 +263,7 @@ gulp.task('watch', (callback) => {                                  // ╓╌> W
                                                                     // #                        # //
                                                                     // ########################## //
                                                                     //                            //
-gulp.task('build:tidy', (callback) => {                             // ╓╌> Build                  //
+gulp.task('default', (callback) => {                             // ╓╌> Build                  //
   runSequence(                                                      // ║                          //
     'clean:dist',                                                   // ║   Main task that builds  //
     ['handlebars', 'sass:build', 'javascript'],                     // ║    the app               //
@@ -291,12 +291,9 @@ gulp.task('test:unit', (done) => {                                  // ╓╌> U
     configFile: `${__dirname}/karma.conf.js`,                       // ║   Performs unit tests    //
     singleRun:  true                                                // ║    using Karma & Jasmine //
   }, (errorCode) => {                                               // ║                          //
-    if (errorCode !== 0) {                                          // ║                          //
-      console.log(`Karma exited with error code ${errorCode}`);     // ║                          //
-      done();                                                       // ║                          //
-      return process.exit(errorCode);                               // ║                          //
-    }                                                               // ║                          //
+    console.log(`Karma finished with error code ${errorCode}`);     // ║                          //
     done();                                                         // ║                          //
+    return process.exit(errorCode);                                 // ║                          //
   });                                                               // ║                          //
   karma.start();                                                    // ║                          //
 });                                                                 // ╨                          //
@@ -315,7 +312,7 @@ gulp.task('heroku:serve', () => {                                   // ╓╌> H
   });                                                               // ║                          //
 });                                                                 // ╨                          //
                                                                     //                            //
-gulp.task('heroku:production', ['build:tidy', 'favicon']);          // ╓╌> Heroku Build           //
+gulp.task('heroku:production', ['default', 'favicon']);          // ╓╌> Heroku Build           //
                                                                     // ║                          //
                                                                     // ║   Runs main build task   //
                                                                     // ╨                          //

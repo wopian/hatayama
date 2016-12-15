@@ -24,10 +24,15 @@ $ gulp watch
 
 ### Building
 ```
-$ gulp build
+$ gulp
 ```
 
 ### Updating
 ```
 $ npm update && npm prune
 ```
+
+### Visual Studio Code
+This repo makes use of the Debug feature `(Ctrl + Shift + D)`
+
+From here you can start debug sessions for testing, watching and building without needing to use a shell
