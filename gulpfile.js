@@ -24,6 +24,7 @@ const gulp         = require('gulp'),                               // Gulp     
       connect      = require('gulp-connect'),                       // Heroku -> Deploy Server    //
       runSequence  = require('run-sequence'),                       // Tasks  -> Queue            //
       handlebars   = require('gulp-compile-handlebars'),            // HBS    -> HTML             //
+      handlebarsIntl = require('handlebars-intl'),
       hbs          = [],                                            // HBS    -> Data             //
       options      = {                                              // HBS    -> Options          //
         ignorePartials: true,                                       //                            //

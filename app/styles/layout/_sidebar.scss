@@ -14,6 +14,7 @@ aside {
             margin: 5px 0 0;
             padding-bottom: 5px;
             text-align: right;
+            font-family: Open Sans;
 
             &:not(:nth-of-type(4n)) {
                 border-bottom: 1px dashed lighten($metal, 85);
@@ -31,6 +32,7 @@ aside {
             font-size: .75rem;
             font-weight: 500;
             text-align: left;
+            font-family: NSJPR;
 
             &:first-of-type {
                 padding-top: 10px;
