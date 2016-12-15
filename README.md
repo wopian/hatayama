@@ -33,6 +33,6 @@ $ npm update && npm prune
 ```
 
 ### Visual Studio Code
-This repo makes use of the Debug feature `(Ctrl + Shift + D)`
+This repo makes use of the Debug feature (<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd>)
 
-From here you can start debug sessions for testing, watching and building without needing to use a shell
+From there you can start debug sessions for testing, watching and building without the need of a shell
