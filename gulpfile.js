@@ -24,7 +24,6 @@ const gulp         = require('gulp'),                               // Gulp     
       connect      = require('gulp-connect'),                       // Heroku -> Deploy Server    //
       runSequence  = require('run-sequence'),                       // Tasks  -> Queue            //
       handlebars   = require('gulp-compile-handlebars'),            // HBS    -> HTML             //
-      handlebarsIntl = require('handlebars-intl'),
       hbs          = [],                                            // HBS    -> Data             //
       options      = {                                              // HBS    -> Options          //
         ignorePartials: true,                                       //                            //
@@ -35,8 +34,11 @@ const gulp         = require('gulp'),                               // Gulp     
               return opts.fn(this);                                 // ║   Check if both values   //
             }                                                       // ║    are equal             //
             return opts.inverse(this);                              // ║                          //
+          },
+          formatNumber(a) {
+            return String(a).replace(/(.)(?=(\d{3})+$)/g, '$1,');
           }                                                         // ╨                          //
-        }                                                           //                            //
+        }                                                          //                            //
       },                                                            //                            //
       _log = (type, page, total = 1, counter = 0) => {              // CLI Formatter for HBS      //
         const a = zeroFill(2, counter + 1),                         // Zero fill progress i.e, 01 //
@@ -102,13 +104,13 @@ gulp.task('handlebars', () => {                                     //          
         for (let k = 0; k < hbsData.prefecture.length; k++) {
           const slug  = `${hbs[i][j].prefecture[k].slug}`,
                 flags = hbs[i][j].prefecture[k],                    // Store prefecture flag data
-                flag = flags.slug.replace(/ +/gm, '-').toLowerCase();// Store & escape flag slug
+                flag = flags.flag.replace(/ +/gm, '-').toLowerCase();// Store & escape flag slug
 
           _log(2, slug, totalFlags, k);
 
           gulp.src('app/templates/prefecture.hbs')
             .pipe(handlebars(flags, options))
-            .pipe(rename(`${flag}.html`))
+            .pipe(rename(`${flag}/index.html`))
             .pipe(gulp.dest('dist/prefecture'))
             .pipe(browserSync.reload({
               stream: true

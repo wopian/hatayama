@@ -1,17 +1,39 @@
 {{! Flag sidebar }}
 <aside>
     <div>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/County_Flag_of_Wiltshire.svg/350px-County_Flag_of_Wiltshire.svg.png">
+        <img src="{{image}}">
         {{! Details }}
-        <p class="sidebar-header">Flag Specifications</p>
-        <p><span>Name</span>{{detail.name}}</p>
-        <p><span>Adopted</span>{{detail.adopted}}</p>
-        <p><span>Flag ratio</span>{{detail.ratio}}</p>
-        <p><span>Designer</span>{{detail.designer}}</p>
-        <p><span>UK Design Code</span>{{detail.designCode}}</p>
-        <p class="sidebar-header">Prefecture Details</p>
-        <p><span>Area</span>{{detail.area}} sq mi</p>
-        <p><span>Population</span>{{detail.population}}</p>
-        <p><span>Density</span>{{detail.density}}/sq mi</p>
+        {{#with detail}}
+            {{#with flag}}
+                <p class="sidebar-header">Flag Specifications</p>
+                {{#if name}}
+                    <p><span>Name</span>{{name}}</p>
+                {{/if}}
+                {{#if adopted}}
+                    <p><span>Adopted</span>{{adopted}}</p>
+                {{/if}}
+                {{#if ratio}}
+                    <p><span>Flag ratio</span>{{ratio}}</p>
+                {{/if}}
+                {{#if designer}}
+                    <p><span>Designer</span>{{designer}}</p>
+                {{/if}}
+                {{#if designCode}}
+                    <p><span>UK Design Code</span>{{designCode}}</p>
+                {{/if}}
+            {{/with}}
+            {{#with other}}
+                <p class="sidebar-header">Prefecture Details</p>
+                {{#if area}}
+                    <p><span>Area</span>{{formatNumber area}} sq mi</p>
+                {{/if}}
+                {{#if population}}
+                    <p><span>Population</span>{{formatNumber population}}</p>
+                {{/if}}
+                {{#if density}}
+                    <p><span>Density</span>{{formatNumber density}}/sq mi</p>
+                {{/if}}
+            {{/with}}
+        {{/with}}
     </div>
 </aside>
