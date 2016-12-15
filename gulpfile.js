@@ -104,11 +104,10 @@ gulp.task('handlebars', () => {                                     //          
         // Debug: Get total amount of components                    // through prefecture.json file
         const totalFlags = hbsData.prefecture.length;
         for (let k = 0; k < hbsData.prefecture.length; k++) {
-          const slug  = `${hbs[i][j].prefecture[k].slug}`,
-                flags = hbs[i][j].prefecture[k],                    // Store prefecture flag data
-                flag = flags.flag.replace(/ +/gm, '-').toLowerCase();// Store & escape flag slug
+          const flags = hbs[i][j].prefecture[k],                    // Store prefecture flag data
+                flag = flags.name.en.replace(/ +/gm, '-').toLowerCase();// Store & escape flag slug
 
-          _log(2, slug, totalFlags, k);
+          _log(2, flag, totalFlags, k);
 
           gulp.src('app/templates/prefecture.hbs')
             .pipe(handlebars(flags, options))
@@ -144,7 +143,7 @@ gulp.task('json:index', () =>
   gulp.src(['app/data/index.json', 'app/data/prefecture.json'])
     .pipe(jsonConcat('indexOutput.json', data => new Buffer(JSON.stringify(data))))
     .pipe(jsonFormat(2))
-    .pipe(gulp.dest('app/data'))
+    .pipe(gulp.dest('app/data/generated'))
 );
                                                                     // ########################## //
                                                                     // #                        # //

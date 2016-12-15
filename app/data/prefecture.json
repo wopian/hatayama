@@ -3,7 +3,9 @@
         "page":"prefecture",
         "prefecture":[
             {
-                "flag":"Wiltshire",
+                "name":{
+                    "en":"Wiltshire"
+                },
                 "image":"https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/County_Flag_of_Wiltshire.svg/1280px-County_Flag_of_Wiltshire.svg.png",
                 "map":[
                     {
@@ -37,7 +39,9 @@
                 }
             },
             {
-                "flag":"Somerset",
+                "name":{
+                    "en":"Somerset"
+                },
                 "image":"https://upload.wikimedia.org/wikipedia/commons/6/6d/Somnew.png",
                 "detail":{
                     "flag":{
@@ -46,7 +50,9 @@
                 }
             },
             {
-                "flag":"Devon",
+                "name":{
+                    "en":"Devon"
+                },
                 "image":"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Flag_of_Devon.svg/516px-Flag_of_Devon.svg.png",
                 "detail":{
                     "other":{
@@ -57,8 +63,21 @@
                 }
             },
             {
-                "flag":"Dalmatia",
+                "name":{
+                    "en":"Dalmatia",
+                    "hr": "Dalmacija"
+                },
+                "native":"Dalmacija",
                 "image":"https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Flag_of_the_Kingdom_of_Dalmatia.svg/800px-Flag_of_the_Kingdom_of_Dalmatia.svg.png"
+            },
+            {
+                "name":{
+                    "en":"Hokkaidou",
+                    "ja_jp":"北海道",
+                    "ja_hira":"ほっかいどう",
+                    "ja_kana":"ホッカイドウ"
+                },
+                "image":"https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Flag_of_Hokkaido_Prefecture.svg/1200px-Flag_of_Hokkaido_Prefecture.svg.png"
             }
         ]
     }
