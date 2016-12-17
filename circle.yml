@@ -7,8 +7,6 @@ machine:
 #      - coverage/**/lcov.info
 
 dependencies:
-    cache_directories:
-        - node_modules
     pre:
 #       - npm i -g gulp
         - bundle install
