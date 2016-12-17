@@ -12,15 +12,15 @@ dependencies:
         - app/vendor
         - app/styles/vendor
     pre:
-        - npm i -g gulp
+#       - npm i -g gulp
         - bundle install
     override:
         - npm update && npm prune
-        - gulp
+        - ./node_modules/gulp/bin/gulp.js
 
 test:
     override:
-        - gulp test
+        - ./node_modules/gulp/bin/gulp.js test
         - mkdir -p $CIRCLE_TEST_REPORTS/junit/
         - cp coverage/**/cobertura-coverage.xml $CIRCLE_TEST_REPORTS/junit/test-results.xml
     post:
