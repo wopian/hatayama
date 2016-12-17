@@ -19,8 +19,6 @@ dependencies:
 test:
     override:
         - ./node_modules/gulp/bin/gulp.js test
-        - mkdir -p $CIRCLE_TEST_REPORTS/junit/
-        - cp coverage/**/cobertura-coverage.xml $CIRCLE_TEST_REPORTS/junit/test-results.xml
     post:
         - bash <(curl -s https://codecov.io/bash)
 
