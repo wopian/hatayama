@@ -2,15 +2,13 @@ machine:
     node:
         version: stable
 
-general:
-    artifacts:
-        - coverage/**/lcov.info
+#general:
+#   artifacts:
+#      - coverage/**/lcov.info
 
 dependencies:
     cache_directories:
         - node_modules
-        - app/vendor
-        - app/styles/vendor
     pre:
 #       - npm i -g gulp
         - bundle install
