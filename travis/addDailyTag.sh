@@ -40,4 +40,6 @@ RESULT=$?
 if [[ $RESULT -gt 0 ]]; then
     echo "$0 error: git push failed. Returned $RESULT"
     exit 1
+    else
+    exit 1
 fi
