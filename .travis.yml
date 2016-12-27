@@ -24,7 +24,7 @@ before_deploy:
     - chmod +x ./travis/addDailyTag.sh
     - "./travis/addDailyTag.sh"
     - "./node_modules/gulp/bin/gulp.js zip"
-    - mv "hatayama.zip" "$TRAVIS_TAG"-hatayama.zip"
+    - mv "hatayama.zip" "$TRAVIS_TAG-hatayama.zip"
 
 deploy:
     provider: releases
