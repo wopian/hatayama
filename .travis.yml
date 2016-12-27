@@ -20,9 +20,13 @@ before_install:
 
 script: "./node_modules/gulp/bin/gulp.js"
 
-before_deploy:
+after_success:
     - chmod +x ./travis/addDailyTag.sh
+    - chmod +x ./travis/updateRelease.sh
     - "./travis/addDailyTag.sh"
+    - "./travis/updateRelease.sh"
+
+before_deploy:
     - "./node_modules/gulp/bin/gulp.js zip"
     - mv "hatayama.zip" "$TRAVIS_TAG-hatayama.zip"
 
@@ -34,4 +38,5 @@ deploy:
     skip_cleanup: true
     on:
         tags: true
+        all_branches: true
         repo: wopian/hatayama
