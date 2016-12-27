@@ -4,30 +4,30 @@
                                                                     // #                        # //
                                                                     // ########################## //
                                                                     //                            //
-const gulp         = require('gulp'),                               // Gulp                       //
-      sass         = require('gulp-sass'),                          // SCSS   -> CSS              //
-      autoprefixer = require('gulp-autoprefixer'),                  // CSS    -> Vendor Prefixes  //
-      cssnano      = require('gulp-cssnano'),                       // CSS    -> Minify           //
-   // uglify       = require('gulp-uglify'),                        // JS     -> Minify           //
-      rename       = require('gulp-rename'),                        // Files  -> Rename           //
-      del          = require('del'),                                // Files  -> Delete           //
-      cache        = require('gulp-cache'),                         // Cache  -> Images           //
-      imagemin     = require('gulp-imagemin'),                      // Image  -> Minify           //
-      gutil        = require('gulp-util'),                          // CLI    -> Write & Colours  //
-      zeroFill     = require('zero-fill'),                          // CLI    -> Number Padding   //
-      stringWidth  = require('string-width'),                       // CLI    -> String Width     //
-      browserSync  = require('browser-sync').create(),              // Watch  -> Build Server     //
-      Server       = require('karma').Server,                       // Tests  -> Test Server      //
-      eslint       = require('gulp-eslint'),                        // Tests  -> JS Quality       //
-      scsslint     = require('gulp-scss-lint'),
-      scsslintstylish = require('gulp-scss-lint-stylish'),
-      connect      = require('gulp-connect'),                       // Heroku -> Deploy Server    //
-      runSequence  = require('run-sequence'),                       // Tasks  -> Queue            //
-      jsonConcat   = require('gulp-json-concat'),
-      jsonFormat   = require('gulp-json-format'),
-      handlebars   = require('gulp-compile-handlebars'),            // HBS    -> HTML             //
-      hbs          = [],                                            // HBS    -> Data             //
-      options      = {                                              // HBS    -> Options          //
+const gulp            = require('gulp'),                            // Gulp                       //
+      sass            = require('gulp-sass'),                       // SCSS   -> CSS              //
+      autoprefixer    = require('gulp-autoprefixer'),               // CSS    -> Vendor Prefixes  //
+      cssnano         = require('gulp-cssnano'),                    // CSS    -> Minify           //
+      rename          = require('gulp-rename'),                     // Files  -> Rename           //
+      del             = require('del'),                             // Files  -> Delete           //
+      cache           = require('gulp-cache'),                      // Cache  -> Images           //
+      imagemin        = require('gulp-imagemin'),                   // Image  -> Minify           //
+      gutil           = require('gulp-util'),                       // CLI    -> Write & Colours  //
+      zeroFill        = require('zero-fill'),                       // CLI    -> Number Padding   //
+      stringWidth     = require('string-width'),                    // CLI    -> String Width     //
+      browserSync     = require('browser-sync').create(),           // Watch  -> Build Server     //
+      Server          = require('karma').Server,                    // Tests  -> Test Server      //
+      eslint          = require('gulp-eslint'),                     // Tests  -> JS Quality       //
+      scsslint        = require('gulp-scss-lint'),
+      scsslintstylish = require('gulp-scss-lint-stylish'), 
+      connect         = require('gulp-connect'),                    // Heroku -> Deploy Server    //
+      runSequence     = require('run-sequence'),                    // Tasks  -> Queue            //
+      jsonConcat      = require('gulp-json-concat'),
+      jsonFormat      = require('gulp-json-format'),
+      archiver        = require('gulp-archiver'),                   // Travis -> ZIP Dist         //
+      handlebars      = require('gulp-compile-handlebars'),         // HBS    -> HTML             //
+      hbs             = [],                                         // HBS    -> Data             //
+      options         = {                                           // HBS    -> Options          //
         ignorePartials: true,                                       //                            //
         batch:          ['./app/templates/components'],             // HBS    -> Partials         //
         helpers:        {                                           // HBS    -> Helpers:         //
@@ -40,7 +40,7 @@ const gulp         = require('gulp'),                               // Gulp     
           formatNumber(a) {
             return String(a).replace(/(.)(?=(\d{3})+$)/g, '$1,');
           }                                                         // ╨                          //
-        }                                                          //                            //
+        }                                                           //                            //
       },                                                            //                            //
       _log = (type, page, total = 1, counter = 0) => {              // CLI Formatter for HBS      //
         const a = zeroFill(2, counter + 1),                         // Zero fill progress i.e, 01 //
