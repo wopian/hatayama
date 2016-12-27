@@ -40,6 +40,10 @@ RESULT=$?
 if [[ $RESULT -gt 0 ]]; then
     echo "$0 error: git push failed. Returned $RESULT"
     exit 1
-else
+fi
+
+# Exit doesn't needlessly carry on building'
+if [[ "$TRAVIS_EVENT_TYPE" === "cron" ]]; then
+    echo "Daily build has started  in " + ($TRAVIS_BUILD_ID + 1)
     exit 1
 fi
