@@ -5,8 +5,7 @@
 [![Issue Count](https://codeclimate.com/github/wopian/hatayama/badges/issue_count.svg)](https://codeclimate.com/github/wopian/hatayama)
 [![codecov](https://codecov.io/gh/wopian/hatayama/branch/master/graph/badge.svg)](https://codecov.io/gh/wopian/hatayama)
 
-Derived from the reading of 「旗の山」
-
+Derived from the reading of 「<ruby>旗<rt>hata</rt>の<rt>no</rt>山<rt>yama</rt></ruby>」
 ### Installation
 
 - Install  [Node.js](https://nodejs.org/en/) (v7+)
