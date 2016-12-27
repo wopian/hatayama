@@ -14,6 +14,8 @@ set +x
 # Exit without error when this build is not a cron job
 if [[ "$TRAVIS_EVENT_TYPE" != "cron" ]]; then
     exit 0
+else
+    $TRAVIS_TAG='Daily'
 fi
 
 # Get the GitHub remote origin URL
