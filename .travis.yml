@@ -30,4 +30,4 @@ script: ./node_modules/gulp/bin/gulp.js
 
 after_success: 
     - ./travis/addDailyTag.sh
-    - ./travis/updateRelease.sh "$TRAVIS_REPO_SLUG" "`head -1 app/VERSION`" dist/*
+    - ./travis/updateRelease.sh "$TRAVIS_REPO_SLUG" "`head -1 app/VERSION`" ./dist/*
