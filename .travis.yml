@@ -28,7 +28,8 @@ before_deploy:
 
 deploy:
     provider: releases
-    api_key: $GITHUB_OAUTH_TOKEN
+    api_key: 
+        secure: onv19Xhqp4H31eJ6tNO+rMTWr0Qom2AN0saboF3h1Hz8cMkEkSb52khQuOz8g+Swk6CBeZtM/eGmNXOZjHOeg9tbPk0vKIl72g6st0sgXT8IkP7QK3ssnQxe8BcxgfzhUxB//wyPYYkulNpd+U6InJfFqhEK53cUQ4qzOT+2OKytUB2gnLCuoW5x1oHZaUqsq+UDqobuoDaJC3IYED7jxaBzH3FU7Gia4hNzBqhJ5UKHlTMzkon1vMvRWoQ1XAeQdtygJsCjVPvnEt2yKbs72+RvmOAQZBAk15BuAftVFYP3PmuyQqLE9vT8g6UxoIRCxqpnbm/pHKS5i99dgM10gJgHDOjDsmNADM9/oMS+rQ2DiXIFCGOi7gtezGuMIXzA2naBf+f0B2J82ZX58pDE9v5AEUspA0GrYLNWtsig3W0z0k61yhv5eP8XEd4Rhmdm/0b64UEXAcet8vTSP+OkZE2TF+DCoRDLC66qgw85PsLIWtNEfYGSwjbnSFbyYlUHndD5kN85Mx17YNrIpG6+jmodJKJZXfoVih9SMy8g/1LqMnxAyjmpgwbD306LOou8xxURfKicGff6CEfHKtBuXAWxkx6JnCNLnxOQ2PQ2KJAk4lRRHElicEV/ODdHvOm9xs2Ead+F1Fnd+mm4YLtgqdbQVSbA3HaX6UfE8mkNoRg=
     file: "./dist.zip"
     skip_cleanup: true
     on:
