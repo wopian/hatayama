@@ -12,18 +12,18 @@ sudo: false
 matrix:
     fast_finish: true
 
-install: travis_retry npm i
-
 before_install: 
+    - chmod +x "./travis/addDailyTag.sh"
+    - "./travis/addDailyTag.sh"
     - npm update
     - npm prune
+
+install: travis_retry npm i
 
 script: "./node_modules/gulp/bin/gulp.js"
 
 after_success:
-    - chmod +x "./travis/addDailyTag.sh"
     - chmod +x "./travis/updateRelease.sh"
-    - "./travis/addDailyTag.sh"
 
 before_deploy:
     - "./node_modules/gulp/bin/gulp.js zip"
