@@ -96,6 +96,7 @@ fi
 if [[ "${TRAVIS_TAG}" != "daily"* ]]; then
     echo "This is not a daily build"
     exit 0
+fi
 
 if [ "$TRAVIS" = "true" ] && [ "$TRAVIS_TAG" != "$RELEASE" ]; then
   echo "Error: TRAVIS_TAG ($TRAVIS_TAG) does not match the indicated release ($RELEASE)"
