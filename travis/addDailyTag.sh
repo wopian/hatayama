@@ -28,7 +28,7 @@ fi
 # Add the tag "daily/YYYYMMDD" tag to the HEAD. Delimiting the date with a slash allows Git tools to collect daily tags in a folder
 # RELEASE_DATE=$(date '+%Y%m%d-%H%M%Z') # add time for testing
 RELEASE_DATE=$(date '+%Y.%m.%d')
-DAILY_TAG="daily/${RELEASE_DATE}"
+DAILY_TAG="daily-${RELEASE_DATE}"
 
 # Create a lightweight tag (vs an annotated tag) and push it to the remote
 echo "Pushing daily tag ${DAILY_TAG}"

@@ -27,8 +27,8 @@ after_success:
 
 before_deploy:
     - "./node_modules/gulp/bin/gulp.js zip"
-    - mv "hatayama.zip" "$TRAVIS_TAG-hatayama.zip"
     - "./travis/updateRelease.sh"
+    - mv "hatayama.zip" "$TRAVIS_TAG-hatayama.zip"
 
 deploy:
     provider: releases
