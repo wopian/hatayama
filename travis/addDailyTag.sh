@@ -44,7 +44,6 @@ fi
 
 # Exit doesn't needlessly carry on building'
 if [[ "$TRAVIS_EVENT_TYPE" == "cron" ]]; then
-    NEXT_BUILD = $TRAVIS_BUILD_ID + 1
-    echo "Daily build has started in $NEXT_BUILD"
+    echo "Daily build has started in $(($TRAVIS_BUILD_ID + 1))"
     exit 1
 fi
