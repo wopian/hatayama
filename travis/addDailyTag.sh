@@ -22,7 +22,7 @@ REMOTE_URL=$(git config --get remote.origin.url) > /dev/null
 if [[ $REMOTE_URL != *"@"* ]]; then
     # Use the stream editor to inject the GitHub authentication token into the remote url after the protocol
     # Example:  https://github.com/.../repo.git -> https://<token>@github.com/.../repo.git
-    REMOTE_URL=$(echo $REMOTE_URL | sed -e "s#://#://$GITHUB_API_KEY@#g") > /dev/null
+    REMOTE_URL=$(echo $REMOTE_URL | sed -e "s#://#://$GITHUB_OAUTH_TOKEN@#g") > /dev/null
 fi
 
 # Add the tag "daily/YYYYMMDD" tag to the HEAD. Delimiting the date with a slash allows Git tools to collect daily tags in a folder
