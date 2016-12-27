@@ -1,24 +1,29 @@
-[//]: # (Thank you for taking the time to open an issue!)
-[//]: # (----------------------------------------------------------)
-[//]: # (For bug reports, please include the following section)
-[//]: # (in your issue details.)
+<!-- ┌─────────────────────────────────────────────────────────┐ -->
+<!-- │     Thank you for taking the time to open an issue!     │ -->
+<!-- └─────────────────────────────────────────────────────────┘ -->
 
-[//]: # (1. Description of the bug)
+<!-- ┌─────────────────────────────────────────────────────────┐ -->
+<!-- │      For bug reports please include the following       │ -->
+<!-- │             section in your issue details               │ -->
+<!-- └─────────────────────────────────────────────────────────┘ -->
 
-[//]: # (2. Steps to reproduce the bug)
+<!-- 1. Description of bug                                       -->
 
-[//]: # (3. Screenshots [if applicable])
+<!-- 2. Steps to reproduce bug                                   -->
 
-[//]: # (4. OS and Browser versions)
-[//]: # (   e.g Windows 10, Chrome 58)
+<!-- 3. Screenshots (if applicable)                              -->
 
-[//]: # (5. Release version [if applicable])
-[//]: # (   e.g v1.2.5)
+<!-- 4. OS and Browser versions                                  -->
+<!--    e.g Windows 10, Chrome 58                                -->
 
-[//]: # (----------------------------------------------------------)
-[//]: # (For feature requests, please include the following section)
-[//]: # (in your issue details.)
+<!-- 5. Release version (if applicable)                          -->
+<!--    e.g v1.2.3                                               -->
 
-[//]: # (1. Describe the feature)
+<!-- ┌─────────────────────────────────────────────────────────┐ -->
+<!-- │    For feature requests please include the following    │ -->
+<!-- │             section in your issue details               │ -->
+<!-- └─────────────────────────────────────────────────────────┘ -->
 
-[//]: # (2. Screenshots [if applicable])
+<!-- 1. Description of proposed feature                          -->
+
+<!-- 2. Screenshots (if applicable)                              -->
