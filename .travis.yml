@@ -22,12 +22,14 @@ script: "./node_modules/gulp/bin/gulp.js"
 
 before_deploy:
     - chmod +x ./travis/addDailyTag.sh
-     "./travis/addDailyTag.sh"
+    - "./travis/addDailyTag.sh"
+    - "./node_modules/gulp/bin/gulp.js zip"
+
 
 deploy:
     provider: releases
     api_key: $GITHUB_OAUTH_TOKEN
-    file: "./dist/"
+    file: "./dist.zip"
     skip_cleanup: true
     on:
         tags: true

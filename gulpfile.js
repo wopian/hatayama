@@ -335,3 +335,14 @@ gulp.task('heroku:production', ['default', 'favicon']);          // ╓╌> Hero
                                                                     // ║                          //
                                                                     // ║   Runs main build task   //
                                                                     // ╨                          //
+                                                                    // ########################## //
+                                                                    // #                        # //
+                                                                    // #         Release        # //
+                                                                    // #                        # //
+                                                                    // ########################## //
+                                                                    //                            //
+gulp.task('zip', () => {
+  gulp.src('dist/**')
+    .pipe(archiver('dist.zip'))
+    .pipe(gulp.dest('./'));
+});
