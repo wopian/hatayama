@@ -343,6 +343,6 @@ gulp.task('heroku:production', ['default', 'favicon']);          // ╓╌> Hero
                                                                     //                            //
 gulp.task('zip', () => {
   gulp.src('dist/**')
-    .pipe(archiver('dist.zip'))
+    .pipe(archiver('$TAG-hatayama.zip'))
     .pipe(gulp.dest('./'));
 });
