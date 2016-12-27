@@ -14,7 +14,7 @@ matrix:
     fast_finish: true
 
 before_install:
-    - rvm install 2.3.3
+#   - rvm install 2.3.3
     - mkdir travis-phantomjs
     - wget https://s3.amazonaws.com/travis-phantomjs/phantomjs-2.0.0-ubuntu-12.04.tar.bz2 -O $PWD/travis-phantomjs/phantomjs-2.0.0-ubuntu-12.04.tar.bz2
     - tar -xvf $PWD/travis-phantomjs/phantomjs-2.0.0-ubuntu-12.04.tar.bz2 -C $PWD/travis-phantomjs
@@ -30,4 +30,4 @@ script: ./node_modules/gulp/bin/gulp.js
 
 after_success: 
     - ./travis/addDailyTag.sh
-    - ./travis/updateRelease.sh "$TRAVIS_REPO_SLUG" "`head -1 app/VERSION`" ./dist/*
+    - ./travis/updateRelease.sh "$TRAVIS_REPO_SLUG" "`head -1`" ./dist/*
