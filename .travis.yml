@@ -1,7 +1,6 @@
 language: node_js
 
 cache:
-    bundler: true
     directories:
         - node_modules
         - travis_phantomjs
@@ -16,9 +15,6 @@ matrix:
 install: travis_retry npm i
 
 after_install: npm update && npm prune
-
-before_script:
-    - bundle install
 
 script: "./node_modules/gulp/bin/gulp.js"
 
