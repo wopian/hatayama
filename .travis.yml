@@ -21,8 +21,8 @@ before_install:
 script: "./node_modules/gulp/bin/gulp.js"
 
 after_success:
-    - chmod +x ./travis/addDailyTag.sh
-    - chmod +x ./travis/updateRelease.sh
+    - chmod +x "./travis/addDailyTag.sh"
+    - chmod +x "./travis/updateRelease.sh"
     - "./travis/addDailyTag.sh"
 
 before_deploy:
