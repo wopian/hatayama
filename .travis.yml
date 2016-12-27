@@ -24,11 +24,11 @@ after_success:
     - chmod +x ./travis/addDailyTag.sh
     - chmod +x ./travis/updateRelease.sh
     - "./travis/addDailyTag.sh"
-    - "./travis/updateRelease.sh"
 
 before_deploy:
     - "./node_modules/gulp/bin/gulp.js zip"
     - mv "hatayama.zip" "$TRAVIS_TAG-hatayama.zip"
+    - "./travis/updateRelease.sh"
 
 deploy:
     provider: releases
