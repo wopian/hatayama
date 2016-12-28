@@ -1,11 +1,15 @@
 # ハタヤマ [![CircleCI](https://circleci.com/gh/wopian/hatayama/tree/master.svg?style=svg&circle-token=6efd1e4aa42d920a90e3d86330d77293424d6800)](https://circleci.com/gh/wopian/hatayama/tree/master)
 
-![Heroku](https://heroku-badge.herokuapp.com/?app=hatayama&style=flat)
-[![Code Climate](https://codeclimate.com/github/wopian/hatayama/badges/gpa.svg)](https://codeclimate.com/github/wopian/hatayama)
-[![Issue Count](https://codeclimate.com/github/wopian/hatayama/badges/issue_count.svg)](https://codeclimate.com/github/wopian/hatayama)
-[![codecov](https://codecov.io/gh/wopian/hatayama/branch/master/graph/badge.svg)](https://codecov.io/gh/wopian/hatayama)
+[![Website](https://img.shields.io/website-up-down-green-red/https/hatayama.wopian.me.svg)](//hatayama.wopian.me)
+[![GitHub release](https://img.shields.io/github/release/wopian/hatayama.svg)](/wopian/hatayama/releases)
+[![GitHub commits](https://img.shields.io/github/commits-since/wopian/hatayama/v0.0.2.svg)]()
+[![Code Climate](https://img.shields.io/codeclimate/github/wopian/hatayama.svg)](//codeclimate.com/github/wopian/hatayama)
+[![Code Climate](https://img.shields.io/codeclimate/issues/github/wopian/hatayama.svg)](//codeclimate.com/github/wopian/hatayama/issues)
+[![Codecov](https://img.shields.io/codecov/c/github/wopian/hatayama.svg)](//codecov.io/gh/wopian/hatayama)
+[![license](https://img.shields.io/github/license/wopian/hatayama.svg)](LICENSE.md)
 
 Derived from the reading of 「<ruby>旗<rt>hata</rt>の<rt>no</rt>山<rt>yama</rt></ruby>」
+
 ### Installation
 
 - Install  [Node.js](https://nodejs.org/en/) (v7+)
