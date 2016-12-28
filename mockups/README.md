@@ -1,13 +1,13 @@
 # Mockups
 
-## Index
+### Index
 
 ![](index@2x.png)
 
-## National Flags
+### National Flags
 
 ![](national@2x.png)
 
-## Flag 
+### Flag 
 
 ![](flag@2x.png)
