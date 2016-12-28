@@ -1,29 +1,30 @@
-<!-- ┌─────────────────────────────────────────────────────────┐ -->
-<!-- │     Thank you for taking the time to open an issue!     │ -->
-<!-- └─────────────────────────────────────────────────────────┘ -->
+[/]:# (Thank you for taking the time to open an issue!)
+[/]:# (———————————————————————————————————————————)
+[/]:# (For feature requests please include the following section in)
+[/]:# (your issue details)
+[/]:# (———————————————————————————————————————————)
+[/]:# (1. Description of proposed feature)
 
-<!-- ┌─────────────────────────────────────────────────────────┐ -->
-<!-- │      For bug reports please include the following       │ -->
-<!-- │             section in your issue details               │ -->
-<!-- └─────────────────────────────────────────────────────────┘ -->
 
-<!-- 1. Description of bug                                       -->
+[/]:# (2. Screenshots—if applicable)
 
-<!-- 2. Steps to reproduce bug                                   -->
 
-<!-- 3. Screenshots (if applicable)                              -->
+[/]:# (———————————————————————————————————————————)
+[/]:# (For bug reports please include the following section in your)
+[/]:# (issue details)
+[/]:# (———————————————————————————————————————————)
+[/]:# (1. Description of bug)
 
-<!-- 4. OS and Browser versions                                  -->
-<!--    e.g Windows 10, Chrome 58                                -->
 
-<!-- 5. Release version (if applicable)                          -->
-<!--    e.g v1.2.3                                               -->
+[/]:# (2. Steps to reproduce bug)
 
-<!-- ┌─────────────────────────────────────────────────────────┐ -->
-<!-- │    For feature requests please include the following    │ -->
-<!-- │             section in your issue details               │ -->
-<!-- └─────────────────────────────────────────────────────────┘ -->
 
-<!-- 1. Description of proposed feature                          -->
+[/]:# (3. Screenshots—if applicable)
 
-<!-- 2. Screenshots (if applicable)                              -->
+
+[/]:# (4. OS and Browser versions)
+[/]:# (   e.g Windows 10, Chrome 58)
+
+
+[/]:# (5. Release version—if applicable)
+[/]:# (   e.g v1.2.3)
