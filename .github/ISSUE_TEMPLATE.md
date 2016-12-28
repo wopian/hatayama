@@ -1,7 +1,6 @@
 [/]:# (Thank you for taking the time to open an issue!)
 [/]:# (———————————————————————————————————————————)
-[/]:# (For feature requests please fill the following section in)
-[/]:# (your issue details)
+[/]:# (For feature requests please fill the following section in your issue details)
 [/]:# (———————————————————————————————————————————)
 [/]:# (1. Description of proposed feature)
 
@@ -10,8 +9,7 @@
 
 
 [/]:# (———————————————————————————————————————————)
-[/]:# (For bug reports please fill the following section in your)
-[/]:# (issue details)
+[/]:# (For bug reports please fill the following section in your issue details)
 [/]:# (———————————————————————————————————————————)
 [/]:# (1. Description of bug)
 
