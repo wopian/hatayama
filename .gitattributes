@@ -5,6 +5,6 @@
 
 .github/* linguist-vendored=false
 .vscode/* linguist-vendored=false
-app/styles/vendor/* linguist-vendored=false
-app/vendor/* linguist-vendored=false
+app/styles/vendor/* linguist-vendored
+app/vendor/* linguist-vendored
 vendor/* linguist-vendored
