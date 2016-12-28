@@ -2,7 +2,7 @@
 
 [![Website](https://img.shields.io/website-up-down-green-red/https/hatayama.wopian.me.svg)](//hatayama.wopian.me)
 [![GitHub release](https://img.shields.io/github/release/wopian/hatayama.svg)](../../wopian/hatayama/releases)
-[![GitHub commits](https://img.shields.io/github/commits-since/wopian/hatayama/v0.0.2.svg)]()
+[![GitHub commits](https://img.shields.io/github/commits-since/wopian/hatayama/v0.0.2.svg)](../../wopian/hatayama/releases)
 [![Code Climate](https://img.shields.io/codeclimate/github/wopian/hatayama.svg)](//codeclimate.com/github/wopian/hatayama)
 [![Code Climate](https://img.shields.io/codeclimate/issues/github/wopian/hatayama.svg)](//codeclimate.com/github/wopian/hatayama/issues)
 [![Codecov](https://img.shields.io/codecov/c/github/wopian/hatayama.svg)](//codecov.io/gh/wopian/hatayama)
