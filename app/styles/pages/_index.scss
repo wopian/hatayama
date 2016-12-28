@@ -1,0 +1,43 @@
+/*.flickity {
+    height: 200px;
+    .flickity-cell {
+        height: 200px;
+    }
+}*/
+
+main.index {
+    margin-top: 1rem;
+
+    h2 {
+        margin-bottom: 1.25rem;
+    }
+
+    .flickity {
+        position: absolute;
+        left: 0;
+        width: 100vw;
+        .flickity-cell {
+            min-height: 14rem;
+            max-height: 14rem;
+            overflow: hidden;
+            margin-right: 1.5rem;
+            width: auto;
+        }
+        .previous {
+            display: none;
+        }
+        img {
+            display: block;
+            height: 12.5rem;
+            width: auto;
+            border-radius: 3px;
+            box-shadow: 0 0 1px 0 rgba($metal, .25);
+        }
+        a {
+            font-size: 1rem;
+            font-family: 'NSJPB';
+            color: rgba($metal, .8);
+            text-decoration: none;
+        }
+    }
+}

@@ -259,6 +259,7 @@ gulp.task('browserSync', () => {                                    // ╓╌> B
     server: {                                                       // ║   Starts server          //
       baseDir: './dist',                                            // ║                          //
     },                                                              // ║                          //
+    open: false
   });                                                               // ║                          //
 });                                                                 // ╨                          //
                                                                     //                            //

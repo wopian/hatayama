@@ -1,17 +1,27 @@
 {{>app/appHead}}
 
+<main class='index'>
+    <h2>Recently Updated</h1>
+    <div class='flickity'>
+        <div class='flickity-cell'>
+            <img data-flickity-lazyload='https://upload.wikimedia.org/wikipedia/commons/6/6d/Somnew.png'>
+            <a href='/prefecture/wiltshire'>Wiltshire</a>
+        </div>
+        <div class='flickity-cell'>
+            <img data-flickity-lazyload='https://upload.wikimedia.org/wikipedia/commons/6/6d/Somnew.png'>
+            <a href='/prefecture/wiltshire'>Wiltshire</a>
+        </div>
+        <div class='flickity-cell'>
+            <img data-flickity-lazyload='https://upload.wikimedia.org/wikipedia/commons/6/6d/Somnew.png'>
+            <a href='/prefecture/wiltshire'>Wiltshire</a>
+        </div>
+    </div>
+</main>
+
 <a href="/prefecture/wiltshire">Wiltshire</a>
 <a href="/prefecture/somerset">Somerset</a>
 <a href="/prefecture/devon">Devon</a>
 <a href="/prefecture/dalmatia">Dalmatia</a>
 <a href="/prefecture/hokkaidou">Hokkaidou</a>
 
-<main>
-    <div class='row'>
-                <div class='col-md-2'>
-                    <img src='{{!flagImage}}' class='img-fluid'>
-                    <a href='/{{!type}}/{{!slug}}'>{{!name}}</a>
-                </div>
-    </div>
-</main>
 {{>app/appFooter}}

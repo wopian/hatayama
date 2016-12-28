@@ -1,5 +1,6 @@
 // Vendor
 @import 'vendor/bootstrap/bootstrap-flex';
+@import 'vendor/flickity';
 
 // Base
 // Boilerplate code - typographic rules, colours, resets
@@ -31,4 +32,5 @@
 // Pages
 // Page-specific styles, in a file named after the page.
 @import
+'pages/index',
 'pages/flag';
