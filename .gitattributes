@@ -1,0 +1,10 @@
+*.md   linguist-language=Markdown
+*.scss linguist-language=SCSS
+*.json linguist-language=JSON
+*.hbs  linguist-language=Handlebars
+
+.github/* linguist-vendored=false
+.vscode/* linguist-vendored=false
+app/styles/vendor/* linguist-vendored=false
+app/vendor/* linguist-vendored=false
+vendor/* linguist-vendored
