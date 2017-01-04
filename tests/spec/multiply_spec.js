@@ -1,4 +1,3 @@
-//const Multiply = require('base/models/multiply.js');
 const Multiply = require('../../app/models/multiply.js');
 
 describe('#multiply', () => {

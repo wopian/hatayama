@@ -19,7 +19,7 @@ const gulp            = require('gulp'),                            // Gulp     
       Server          = require('karma').Server,                    // Tests  -> Test Server      //
       eslint          = require('gulp-eslint'),                     // Tests  -> JS Quality       //
       scsslint        = require('gulp-scss-lint'),
-      scsslintstylish = require('gulp-scss-lint-stylish'), 
+      scsslintstylish = require('gulp-scss-lint-stylish'),
       connect         = require('gulp-connect'),                    // Heroku -> Deploy Server    //
       runSequence     = require('run-sequence'),                    // Tasks  -> Queue            //
       jsonConcat      = require('gulp-json-concat'),
@@ -265,7 +265,7 @@ gulp.task('browserSync', () => {                                    // ╓╌> B
                                                                     //                            //
 gulp.task('watch', (callback) => {                                  // ╓╌> Watch                  //
   runSequence(                                                      // ║                          //
-    'default',                                                   // ║   Builds app and         //
+    'default',                                                      // ║   Builds app and         //
     'browserSync',                                                  // ║    watches files for     //
     ['handlebars', 'sass:build', 'javascript'],                     // ║    changes & rebuilds    //
     'autoprefixer',                                                 // ║    them                  //
@@ -282,7 +282,7 @@ gulp.task('watch', (callback) => {                                  // ╓╌> W
                                                                     // #                        # //
                                                                     // ########################## //
                                                                     //                            //
-gulp.task('default', (callback) => {                             // ╓╌> Build                  //
+gulp.task('default', (callback) => {                                // ╓╌> Build                  //
   runSequence(                                                      // ║                          //
     'clean:dist',                                                   // ║   Main task that builds  //
     'json',
