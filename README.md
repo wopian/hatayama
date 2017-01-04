@@ -1,41 +1,62 @@
-# ハタヤマ [![CircleCI](https://circleci.com/gh/wopian/hatayama/tree/master.svg?style=svg&circle-token=6efd1e4aa42d920a90e3d86330d77293424d6800)](https://circleci.com/gh/wopian/hatayama/tree/master)
-
-[![Website](https://img.shields.io/website-up-down-green-red/https/hatayama.wopian.me.svg)](//hatayama.wopian.me)
-[![GitHub release](https://img.shields.io/github/release/wopian/hatayama.svg)](../..//releases)
-[![GitHub commits](https://img.shields.io/github/commits-since/wopian/hatayama/v0.0.2.svg)](../../releases)
-[![Code Climate](https://img.shields.io/codeclimate/github/wopian/hatayama.svg)](//codeclimate.com/github/wopian/hatayama)
-[![Code Climate](https://img.shields.io/codeclimate/issues/github/wopian/hatayama.svg)](//codeclimate.com/github/wopian/hatayama/issues)
-[![Codecov](https://img.shields.io/codecov/c/github/wopian/hatayama.svg)](//codecov.io/gh/wopian/hatayama)
-[![license](https://img.shields.io/github/license/wopian/hatayama.svg)](LICENSE.md)
-
+# ハタヤマ
 Derived from the reading of 「<ruby>旗<rt>hata</rt>の<rt>no</rt>山<rt>yama</rt></ruby>」
 
-### Installation
+## Development
+[![CircleCI]][1]
+[![Website]][2]
+[![GitHub Release]][3]
+[![Code Climate Score]][4]
+[![Code Climate Issues]][5]
+[![CodeCov]][6]
 
-- Install  [Node.js](https://nodejs.org/en/) (v7+)
-- Install [npm](https://www.npmjs.com/) (v4+ required)
-
-```
-$ npm i
-```
-
-### Developing
-```
-$ gulp test 
-$ gulp watch
+### Setup
+```bash
+# Check you're using NodeJS 7.0.0 or above
+node -v
+# Check you're using npm 4.0.0 or above
+npm -v
+# Download source code
+git clone https://github.com/wopian/hatayama.git
+cd hatayama
+# Install dependencies
+npm i
 ```
 
 ### Building
+```bash
+# Build and watch for changes
+gulp watch
+# Build
+gulp
 ```
-$ gulp
+
+### Testing
+```bash
+gulp test
 ```
 
 ### Updating
-```
-$ npm update && npm prune
+```bash
+npm update && npm prune
 ```
 
-### Visual Studio Code
-This repo makes use of the Debug feature (<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd>)
+## Known Issues
+No known issus
 
-From there you can start debug sessions for testing, watching and building without the need of a shell
+## Releases
+See [Changelog][0]
+
+[CircleCI]: https://img.shields.io/circleci/project/github/wopian/hatayama/master.svg?style=flat-square
+[Website]: https://img.shields.io/website-up-down-green-red/https/hatayama.wopian.me.svg
+[GitHub Release]: https://img.shields.io/github/release/wopian/hatayama.svg
+[Code Climate Score]: https://img.shields.io/codeclimate/github/wopian/hatayama.svg
+[Code Climate Issues]: https://img.shields.io/codeclimate/issues/github/wopian/hatayama.svg
+[CodeCov]: https://img.shields.io/codecov/c/github/wopian/hatayama.svg
+
+[0]: https://github.com/wopian/hatayama/blob/master/CHANGELOG.md
+[1]: https://circleci.com/gh/wopian/hatayama/tree/master
+[2]: https://hatayama.wopian.me
+[3]: https://github.com/wopian/hatayama/releases
+[4]: https://codeclimate.com/github/wopian/hatayama
+[5]: https://codeclimate.com/github/wopian/hatayama/issues
+[6]: https://codecov.io/gh/wopian/hatayama
