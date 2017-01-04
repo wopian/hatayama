@@ -47,11 +47,11 @@ No known issues
 See [Changelog][0]
 
 [CircleCI]: https://img.shields.io/circleci/project/github/wopian/hatayama/master.svg?style=flat-square
-[Website]: https://img.shields.io/website-up-down-green-red/https/hatayama.wopian.me.svg
-[GitHub Release]: https://img.shields.io/github/release/wopian/hatayama.svg
-[Code Climate Score]: https://img.shields.io/codeclimate/github/wopian/hatayama.svg
-[Code Climate Issues]: https://img.shields.io/codeclimate/issues/github/wopian/hatayama.svg
-[CodeCov]: https://img.shields.io/codecov/c/github/wopian/hatayama.svg
+[Website]: https://img.shields.io/website-up-down-green-red/https/hatayama.wopian.me.svg?style=flat-square
+[GitHub Release]: https://img.shields.io/github/release/wopian/hatayama.svg?style=flat-square
+[Code Climate Score]: https://img.shields.io/codeclimate/github/wopian/hatayama.svg?style=flat-square
+[Code Climate Issues]: https://img.shields.io/codeclimate/issues/github/wopian/hatayama.svg?style=flat-square
+[CodeCov]: https://img.shields.io/codecov/c/github/wopian/hatayama.svg?style=flat-square
 
 [0]: https://github.com/wopian/hatayama/blob/master/CHANGELOG.md
 [1]: https://circleci.com/gh/wopian/hatayama/tree/master
