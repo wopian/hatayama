@@ -41,7 +41,7 @@ npm update && npm prune
 ```
 
 ## Known Issues
-No known issus
+No known issues
 
 ## Releases
 See [Changelog][0]
