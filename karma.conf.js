@@ -44,10 +44,14 @@ module.exports = function(config) {
       // Dependencies
       'app/vendor/jquery-2.2.0.min.js',
       'https://maps.googleapis.com/maps/api/js?sensor=false',
+      'app/vendor/tether.min.js',
+      'app/vendor/bootstrap.min.js',
+      'app/vendor/flickity.pkgd.min.js',
+      'app/vendor/instantclick.min.js',
       // Set Jasmine Fixtures Path
       'tests/helpers/fixtures.js',
       // Code to test
-      'app/models/*.js',
+      'app/models/**/*.js',
       // Test Code
       'tests/spec/*_spec.*'
     ]
