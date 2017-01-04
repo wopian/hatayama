@@ -1,6 +1,7 @@
 language: node_js
 
 cache:
+    - bundler
     directories:
         - node_modules
         - travis_phantomjs
