@@ -20,7 +20,9 @@ before_install:
 
 install: travis_retry npm i
 
-script: "./node_modules/gulp/bin/gulp.js"
+script:
+    - "./node_modules/gulp/bin/gulp.js"
+    - "./node_modules/gulp/bin/gulp.js test"
 
 after_success:
     - chmod +x "./travis/updateRelease.sh"
