@@ -18,7 +18,9 @@ before_install:
     - npm update
     - npm prune
 
-install: travis_retry npm i
+install:
+    - travis_retry npm i
+    - bundle i
 
 script:
     - "./node_modules/gulp/bin/gulp.js"
