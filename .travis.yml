@@ -16,8 +16,7 @@ matrix:
 before_install:
     - chmod +x "./travis/addDailyTag.sh"
     - "./travis/addDailyTag.sh"
-    - npm update
-    - npm prune
+    - npm update && npm prune && npm dedupe
     - gem update bundler
 
 install:
