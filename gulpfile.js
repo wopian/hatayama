@@ -148,22 +148,22 @@ gulp.task('json', (callback) => {
 gulp.task('yaml', () => {
   gulp.src('app/data/**/*.yml')
     .pipe(yaml({ space: 2 }))
-    .pipe(gulp.dest('app/dataJSON'));
+    .pipe(gulp.dest('app/data/JSON'));
 });
 
 gulp.task('json:prefecture', () => {
   gulp.src('app/dataJSON/prefecture/*.json')
     .pipe(jsonConcat('prefecture.json', data => new Buffer(JSON.stringify(data))))
     .pipe(jsonFormat(2))
-    .pipe(gulp.dest('app/dataJSON/generated'));
+    .pipe(gulp.dest('app/data/JSON/generated'));
 });
 
 // TODO: Remove
 gulp.task('json:index', () => {
   gulp.src(['app/data/index.json', 'app/data/prefecture.json'])
-    .pipe(jsonConcat('indexOutput.json', data => new Buffer(JSON.stringify(data))))
+    .pipe(jsonConcat('index.json', data => new Buffer(JSON.stringify(data))))
     .pipe(jsonFormat(2))
-    .pipe(gulp.dest('app/dataJSON/generated'));
+    .pipe(gulp.dest('app/data/JSON/generated'));
 });
                                                                     // ########################## //
                                                                     // #                        # //

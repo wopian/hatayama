@@ -1,4 +1,5 @@
 .vscode/GitHubIssue
+app/data/JSON
 app/dataJSON
 node_modules
 dist
