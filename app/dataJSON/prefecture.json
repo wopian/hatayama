@@ -7,10 +7,9 @@
       "name": {
         "en": "Wiltshire"
       },
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/County_Flag_of_Wiltshire.svg/1280px-County_Flag_of_Wiltshire.svg.png",
       "map": null,
       "location": {
-        "pos": "South West",
+        "position": "South West",
         "nation": [
           "England",
           "United Kingdom"

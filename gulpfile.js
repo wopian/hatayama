@@ -11,6 +11,9 @@ const gulp            = require('gulp'),                            // Gulp     
       rename          = require('gulp-rename'),                     // Files  -> Rename           //
       del             = require('del'),                             // Files  -> Delete           //
       cache           = require('gulp-cache'),                      // Cache  -> Images           //
+      mkdirp          = require('mkdirp'),
+      fs              = require('fs'),
+      jimp            = require('jimp'),
       imagemin        = require('gulp-imagemin'),                   // Image  -> Minify           //
       gutil           = require('gulp-util'),                       // CLI    -> Write & Colours  //
       zeroFill        = require('zero-fill'),                       // CLI    -> Number Padding   //
@@ -136,15 +139,23 @@ gulp.task('handlebars', () => {                                     //          
 gulp.task('json', (callback) => {
   runSequence(
     'yaml',
+    'json:prefecture',
     'json:index',
     callback
   );
 });
 
 gulp.task('yaml', () => {
-  gulp.src('app/data/*.yaml')
+  gulp.src('app/data/**/*.yml')
     .pipe(yaml({ space: 2 }))
     .pipe(gulp.dest('app/dataJSON'));
+});
+
+gulp.task('json:prefecture', () => {
+  gulp.src('app/dataJSON/prefecture/*.json')
+    .pipe(jsonConcat('prefecture.json', data => new Buffer(JSON.stringify(data))))
+    .pipe(jsonFormat(2))
+    .pipe(gulp.dest('app/dataJSON/generated'));
 });
 
 gulp.task('json:index', () => {
@@ -203,10 +214,49 @@ gulp.task('javascript', () => {                                     // ╓╌> J
                                                                     // #                        # //
                                                                     // ########################## //
                                                                     //                            //
-gulp.task('images', () => {                                         // ╓╌> Images                 //
-  gulp.src('app/images/**.*.+(png|jpeg|jpg|gif|svg)')               // ║                          //
+gulp.task('images', (callback) => {
+  runSequence(
+    'image:resize',
+    'image:min',
+    callback
+  );
+});
+
+gulp.task('image:resize', () => {
+  // Create img folder on build
+  mkdirp('dist/assets/img', (err) => {
+    if (err) console.error(err);
+  });
+  // Generate images
+  fs.readdir('app/images/', (err, files) => {
+    files.forEach((file) => {
+      // console.log(file);
+      jimp.read(`app/images/${file}`).then((img) => {
+        const fileName = file.replace(/\.[^/.]+$/, '');
+        img.resize(300, jimp.AUTO)
+          .write(`dist/assets/img/${fileName}-large.png`)
+          .resize(200, jimp.AUTO)
+          .write(`dist/assets/img/${fileName}-medium.png`)
+          .resize(100, jimp.AUTO)
+          .write(`dist/assets/img/${fileName}-small.png`);
+      }).catch((err2) => {
+        console.error(err2);
+      });
+    });
+  });
+  // gulp.src('app/images/*.+(jpg,png)')
+    // .pipe(parallel(
+    //   imageResize({ width: 100, imageMagick: true }),
+    //   rename((path) => { path.basename += '-small'; }),
+    //   os.cpus().length
+    // ))
+    // .pipe(gulp.dest('dist/assets/img'));
+});
+                                                                    //                            //
+gulp.task('image:min', () => {                                         // ╓╌> Images                 //
+  gulp.src('dist/assets/img/*.+(png|jpeg|jpg|gif|svg)')               // ║                          //
     .pipe(cache(imagemin()))                                        // ║   Move and cache images  //
-    .pipe(gulp.dest('dist/images'));                                // ║                          //
+    .pipe(gulp.dest('dist/assets/img'));                                // ║                          //
 });                                                                 // ╨                          //
                                                                     //                            //
 gulp.task('fonts', () => {                                          // ╓╌> Fonts                  //
@@ -296,6 +346,7 @@ gulp.task('default', (callback) => {                                // ╓╌> B
     'json',
     ['handlebars', 'sass:build', 'javascript'],                     // ║    the app               //
     'autoprefixer',                                                 // ║                          //
+    'images',
     callback                                                        // ║                          //
   );                                                                // ║                          //
 });                                                                 // ╨                          //

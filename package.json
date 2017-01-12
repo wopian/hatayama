@@ -27,7 +27,9 @@
   },
   "devDependencies": {
     "git-labelmaker": "^0.8.1",
-    "gulp-yaml": "^1.0.1"
+    "gulp-yaml": "^1.0.1",
+    "jimp": "^0.2.27",
+    "mkdirp": "^0.5.1"
   },
   "scripts": {
     "test": "gulp test"
