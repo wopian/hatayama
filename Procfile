@@ -1,1 +1,1 @@
-web: npm update && npm prune && npm dedupe & gulp heroku:serve
+web: gulp heroku:serve
