@@ -22,6 +22,7 @@ const gulp            = require('gulp'),                            // Gulp     
       scsslintstylish = require('gulp-scss-lint-stylish'),
       connect         = require('gulp-connect'),                    // Heroku -> Deploy Server    //
       runSequence     = require('run-sequence'),                    // Tasks  -> Queue            //
+      yaml            = require('gulp-yaml'),
       jsonConcat      = require('gulp-json-concat'),
       jsonFormat      = require('gulp-json-format'),
       archiver        = require('gulp-archiver'),                   // Travis -> ZIP Dist         //
@@ -88,8 +89,8 @@ const gulp            = require('gulp'),                            // Gulp     
                                                                     // #                        # //
                                                                     // ########################## //
                                                                     //                            //
-hbs[0] = require('./app/data/index.json');                          // Prepare data for           //
-hbs[1] = require('./app/data/prefecture.json');                     //  Handlebars                //
+hbs[0] = require('./app/dataJSON/index.json');                          // Prepare data for           //
+hbs[1] = require('./app/dataJSON/prefecture.json');                     //  Handlebars                //
                                                                     //                            //
 gulp.task('handlebars', () => {                                     //                            //
   const total = hbs.length;                                         //                            //
@@ -134,17 +135,24 @@ gulp.task('handlebars', () => {                                     //          
 
 gulp.task('json', (callback) => {
   runSequence(
+    'yaml',
     'json:index',
     callback
   );
 });
 
-gulp.task('json:index', () =>
-  gulp.src(['app/data/index.json', 'app/data/prefecture.json'])
+gulp.task('yaml', () => {
+  gulp.src('app/data/*.yaml')
+    .pipe(yaml({ space: 2 }))
+    .pipe(gulp.dest('app/dataJSON'));
+});
+
+gulp.task('json:index', () => {
+  gulp.src(['app/dataJSON/index.json', 'app/dataJSON/prefecture.json'])
     .pipe(jsonConcat('indexOutput.json', data => new Buffer(JSON.stringify(data))))
     .pipe(jsonFormat(2))
-    .pipe(gulp.dest('app/data/generated'))
-);
+    .pipe(gulp.dest('app/dataJSON/generated'));
+});
                                                                     // ########################## //
                                                                     // #                        # //
                                                                     // #          SCSS          # //

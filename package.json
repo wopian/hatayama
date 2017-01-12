@@ -26,7 +26,8 @@
     "url": "https://github.com/wopian/hatayama/issues"
   },
   "devDependencies": {
-    "git-labelmaker": "^0.8.1"
+    "git-labelmaker": "^0.8.1",
+    "gulp-yaml": "^1.0.1"
   },
   "scripts": {
     "test": "gulp test"
