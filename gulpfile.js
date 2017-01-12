@@ -92,10 +92,10 @@ const gulp            = require('gulp'),                            // Gulp     
                                                                     // #                        # //
                                                                     // ########################## //
                                                                     //                            //
-hbs[0] = require('./app/dataJSON/index.json');                          // Prepare data for           //
-hbs[1] = require('./app/dataJSON/prefecture.json');                     //  Handlebars                //
                                                                     //                            //
 gulp.task('handlebars', () => {                                     //                            //
+  hbs[0] = require('./app/dataJSON/index.json');                    // Prepare data for           //
+  hbs[1] = require('./app/dataJSON/prefecture.json');               //  Handlebars                //
   const total = hbs.length;                                         //                            //
                                                                     //                            //
   for (let i = 0; i < hbs.length; i++) {                            // Loop hbs array             //
@@ -158,6 +158,7 @@ gulp.task('json:prefecture', () => {
     .pipe(gulp.dest('app/dataJSON/generated'));
 });
 
+// TODO: Remove
 gulp.task('json:index', () => {
   gulp.src(['app/dataJSON/index.json', 'app/dataJSON/prefecture.json'])
     .pipe(jsonConcat('indexOutput.json', data => new Buffer(JSON.stringify(data))))
