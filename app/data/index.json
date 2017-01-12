@@ -1,4 +1,4 @@
-[{
-    "page": "index",
-    "abcdef": "Hello"
-}]
+{
+  "page": "index",
+  "abcdef": "Hello World"
+}
