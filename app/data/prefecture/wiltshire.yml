@@ -1,4 +1,3 @@
-id: 1
 slug: wiltshire
 name:
   en: Wiltshire
@@ -10,12 +9,12 @@ location:
     - United Kingdom
 detail:
   flag:
-  name: Bustard Flag
-  adopted: 1 Dec 2009
-  ratio: 3:5
-  designer: Mike Prior
-  designCode: UNKG7419
+    name: Bustard Flag
+    adopted: 1 Dec 2009
+    ratio: 3:5
+    designer: Mike Prior
+    designCode: UNKG7419
   other:
-  area: 1346
-  population: 684000
-  density: 510
+    area: 1346
+    population: 684000
+    density: 510
