@@ -2,10 +2,9 @@ slug: dalmatia
 name:
   en: Dalmatia
   hr: Dalmacija
-map:
+location:
   latitude: 43.948571
   longitude: 15.567323
-location:
   position: South
   nation:
     - Croatia
