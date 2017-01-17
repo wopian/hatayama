@@ -31,6 +31,7 @@ const gulp            = require('gulp'),                            // Gulp     
       archiver        = require('gulp-archiver'),                   // Travis -> ZIP Dist         //
       handlebars      = require('gulp-compile-handlebars'),         // HBS    -> HTML             //
       hbs             = [],                                         // HBS    -> Data             //
+      hbsOmitted      = [],                                         // HBBS   -> Omitted info
       options         = {                                           // HBS    -> Options          //
         ignorePartials: true,                                       //                            //
         batch:          ['./app/templates/components'],             // HBS    -> Partials         //
@@ -91,79 +92,110 @@ const gulp            = require('gulp'),                            // Gulp     
                                                                     // #       Handlebars       # //
                                                                     // #                        # //
                                                                     // ########################## //
-                                                                    //                            //
-                                                                    //                            //
-gulp.task('handlebars', () => {                                     //                            //
-  hbs[0] = require('./app/data/index.json');                    // Prepare data for           //
-  hbs[1] = require('./app/data/prefecture.json');               //  Handlebars                //
-  const total = hbs.length;                                         //                            //
-                                                                    //                            //
-  for (let i = 0; i < hbs.length; i++) {                            // Loop hbs array             //
-    for (let j = 0; j < hbs[i].length; j++) {                       // Loop hbs[i] array          //
-      const hbsData = hbs[i][j];                                    //                            //
-                                                                    //                            //
-      _log(1, hbsData.page, total, i);                              // Output state to CLI        //
-                                                                    //                            //
-      if (hbsData.page === 'prefecture') {                          // If page for prefectures, loop
-        // Debug: Get total amount of components                    // through prefecture.json file
-        const totalFlags = hbsData.prefecture.length;
-        for (let k = 0; k < hbsData.prefecture.length; k++) {
-          const flags = hbs[i][j].prefecture[k],                    // Store prefecture flag data
-                flag = flags.name.en.replace(/ +/gm, '-').toLowerCase();// Store & escape flag slug
+gulp.task('hbs', (callback) => {
+  runSequence(
+    'hbs:read',
+    'hbs:generate',
+    'hbs:omitted',
+    callback
+  );
+});
 
-          _log(2, flag, totalFlags, k);
+gulp.task('hbs:read', () => {
+  hbs[0] = require('./tmp/data/index.json');
+  hbs[1] = require('./tmp/data/prefecture.json');
+});
 
-          gulp.src('app/templates/prefecture.hbs')
-            .pipe(handlebars(flags, options))
-            .pipe(rename(`${flag}/index.html`))
-            .pipe(gulp.dest('dist/prefecture'))
-            .pipe(browserSync.reload({
-              stream: true
-            }));
-        }
-      } else {
-        _log(2, hbsData.page, undefined, undefined);
+gulp.task('hbs:generate', () => {
+  const hbsTotal = hbs.length;
+  hbs.forEach((item, i) => {
+    // Index Page
+    // TODO: Properly implement Index page
+    if (item.index) {
+      // Build log
+      _log(1, 'index');
 
-        gulp.src('app/templates/index.hbs')
-          .pipe(handlebars(hbsData, options))
-          .pipe(rename(`${hbsData.page}.html`))
+      // Generate HTML
+      gulp.src('app/templates/index.hbs')
+          .pipe(handlebars(item, options))
+          .pipe(rename(`${item.index.page}.html`))
           .pipe(gulp.dest('dist'))
           .pipe(browserSync.reload({
             stream: true
           }));
-      }
+    // Prefecture Page
+    // TODO: Support nation, city etc.
+    //       ^ May require changing design of YAML sources
+    } else {
+      _log(1, 'prefecture', hbsTotal, i);
+      const itemTotal = Object.keys(item).length;
+      Object.values(item).forEach((flag, j) => {
+        _log(2, flag.slug, itemTotal, j);
+
+        // Log missing information
+        /*
+        if (typeof flag.location === 'undefined') {
+          hbsOmitted.push([flag.slug, 'no location']);
+        } else if (typeof flag.location.position === 'undefined') {
+          hbsOmitted.push([flag.slug, 'no location->position']);
+        } else if (typeof flag.location.nation === 'undefined') {
+          hbsOmitted.push([flag.slug, 'no location->nation']);
+        }
+        */
+
+        // Generate HTML
+        gulp.src('app/templates/prefecture.hbs')
+            .pipe(handlebars(flag, options))
+            .pipe(rename(`${flag.slug}/index.html`))
+            .pipe(gulp.dest('dist/prefecture'))
+            .pipe(browserSync.reload({
+              stream: true
+            }));
+      });
     }
+  });
+});
+
+gulp.task('hbs:omitted', () => {
+  hbsOmitted.forEach((item) => {
+    gutil.log(` Omitted '${item[0]}' ${item[1]}`);
+  });
+
+  // Fail the travis build if there were any omissions
+  if (hbsOmitted.length > 0) {
+    console.log('Generation finished with error code 1');
+    return process.exit(1);
   }
 });
 
 gulp.task('json', (callback) => {
   runSequence(
-    'yaml',
+    'json:yaml',
     'json:prefecture',
     'json:index',
     callback
   );
 });
 
-gulp.task('yaml', () => {
+gulp.task('json:yaml', () => {
   gulp.src('app/data/**/*.yml')
     .pipe(yaml({ space: 2 }))
-    .pipe(gulp.dest('app/data/JSON'));
+    .pipe(gulp.dest('tmp/data'));
 });
 
 gulp.task('json:prefecture', () => {
-  gulp.src('app/dataJSON/prefecture/*.json')
+  gulp.src('tmp/data/prefecture/*.json')
     .pipe(jsonConcat('prefecture.json', data => new Buffer(JSON.stringify(data))))
     .pipe(jsonFormat(2))
-    .pipe(gulp.dest('app/data/JSON/generated'));
+    .pipe(gulp.dest('tmp/data'));
 });
 
 // TODO: Remove
 gulp.task('json:index', () => {
-  gulp.src(['app/data/index.json', 'app/data/prefecture.json'])
+  gulp.src(['tmp/data/index/index.json', 'tmp/data/prefecture.json'])
     .pipe(jsonConcat('index.json', data => new Buffer(JSON.stringify(data))))
     .pipe(jsonFormat(2))
-    .pipe(gulp.dest('app/data/JSON/generated'));
+    .pipe(gulp.dest('tmp/data'));
 });
                                                                     // ########################## //
                                                                     // #                        # //
@@ -326,13 +358,13 @@ gulp.task('watch', (callback) => {                                  // ╓╌> W
   runSequence(                                                      // ║                          //
     'default',                                                      // ║   Builds app and         //
     'browserSync',                                                  // ║    watches files for     //
-    ['handlebars', 'sass:build', 'javascript'],                     // ║    changes & rebuilds    //
+    ['hbs', 'sass:build', 'javascript'],                     // ║    changes & rebuilds    //
     'autoprefixer',                                                 // ║    them                  //
     callback                                                        // ║                          //
   );                                                                // ║                          //
   gulp.watch('app/**/*.scss', ['sass:build', 'autoprefixer']);      // ║                          //
-  gulp.watch('app/**/*.hbs', ['handlebars'], browserSync.reload);   // ║                          //
-  gulp.watch('app/**/*.json', ['handlebars'], browserSync.reload);  // ║                          //
+  gulp.watch('app/**/*.hbs', ['hbs'], browserSync.reload);   // ║                          //
+  gulp.watch('app/**/*.json', ['hbs'], browserSync.reload);  // ║                          //
   gulp.watch('app/**/*.js', ['javascript'], browserSync.reload);    // ║                          //
 });                                                                 // ╨                          //
                                                                     // ########################## //
@@ -345,7 +377,7 @@ gulp.task('default', (callback) => {                                // ╓╌> B
   runSequence(                                                      // ║                          //
     'clean:dist',                                                   // ║   Main task that builds  //
     'json',
-    ['handlebars', 'sass:build', 'javascript'],                     // ║    the app               //
+    ['hbs', 'sass:build', 'javascript'],                     // ║    the app               //
     'autoprefixer',                                                 // ║                          //
     'images',
     callback                                                        // ║                          //
