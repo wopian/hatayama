@@ -11,7 +11,7 @@ location:
 detail:
   flag:
     adopted: 1 Dec 2009
-    ratio: 3:5
+    ratio: '3:5'
     designer: Mike Prior
     UKDesignCode: UNKG7419
   other:

@@ -11,7 +11,7 @@ location:
 detail:
   flag:
     adopted: 1822
-    ratio: 2:3
+    ratio: '2:3'
   other:
     area: 4694
     population: 852068

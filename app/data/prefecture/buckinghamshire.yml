@@ -11,7 +11,7 @@ location:
 detail:
   flag:
     adopted: 12th Century
-    ratio: 3:5
+    ratio: '3:5'
     UKDesignCode: UNKG7423
   other:
     area: 724
