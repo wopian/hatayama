@@ -2,6 +2,8 @@ slug: somerset
 name:
   en: Somerset
 map:
+  latitude: 40.529210
+  longitude: -74.640043
 location:
   position: South West
   nation:

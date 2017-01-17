@@ -104,6 +104,7 @@ gulp.task('hbs', callback =>
 gulp.task('hbs:read', () => {
   hbs[0] = require('./tmp/data/index.json');
   hbs[1] = require('./tmp/data/prefecture.json');
+  return true;
 });
 
 gulp.task('hbs:generate', () => {
@@ -154,6 +155,7 @@ gulp.task('hbs:generate', () => {
       });
     }
   });
+  return true;
 });
 
 gulp.task('hbs:omitted', () => {
@@ -166,6 +168,7 @@ gulp.task('hbs:omitted', () => {
     console.log('Generation finished with error code 1');
     return process.exit(1);
   }
+  return true;
 });
 
 gulp.task('json', callback =>

@@ -22,6 +22,12 @@
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCF0qq_0eu2iw2WvUwCheypcjl6pmugNQ4&callback=initialize" data-no-instant></script>
     {{/if}}
 
+    {{#if latitude}}
+        <script data-no-instant>
+            google.maps.event.addDomListener(window, 'load', initialize({{latitude}}, {{longitude}}));
+        </script>
+    {{/if}}
+
     <script src="/assets/js/vendor/flickity.pkgd.min.js"></script>
     <script src="/assets/js/flickityOptions.js"></script>
 </body>
