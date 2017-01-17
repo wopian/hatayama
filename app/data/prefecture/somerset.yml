@@ -1,6 +1,19 @@
 slug: somerset
 name:
   en: Somerset
+map:
+location:
+  position: South West
+  nation:
+    - England
+    - United Kingdom
 detail:
   flag:
+    adopted: 2013
     ratio: 3:5
+    designer: Ed Woods
+    UKDesignCode: UNKG7437
+  other:
+    area: 1610
+    population: 910200
+    density: 560

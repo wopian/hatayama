@@ -4,3 +4,13 @@ name:
   ja_jp: 北海道
   ja_hira: ほっかいどう
   ja_kana: ホッカイドウ
+map:
+location:
+  position: North East
+  nation:
+    - Japan
+detail:
+  other:
+    area: 32221
+    population: 5381711
+    density: 167

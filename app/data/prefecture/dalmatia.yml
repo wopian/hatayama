@@ -2,3 +2,17 @@ slug: dalmatia
 name:
   en: Dalmatia
   hr: Dalmacija
+map:
+location:
+  position: South
+  nation:
+    - Croatia
+detail:
+  flag:
+    adopted: 1822
+    ratio: 2:3
+    designer: Traditional
+  other:
+    area: 4694
+    population: 852068
+    density: 180

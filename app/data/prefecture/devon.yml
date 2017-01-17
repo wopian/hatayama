@@ -1,8 +1,19 @@
 slug: devon
 name:
   en: Devon
+map:
+location:
+  position: South West
+  nation:
+    - England
+    - United Kingdom
 detail:
+  flag:
+    adopted: 2006
+    ratio: 3:5
+    designer: Ryan Sealey
+    UKDesignCode: UNKG7404
   other:
-    area: 1111
-    population: 333333
-    density: 22
+    area: 2590
+    population: 1135700
+    density: 440

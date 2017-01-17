@@ -1,0 +1,19 @@
+slug: buckinghamshire
+name:
+  en: Buckinghamshire
+map:
+location:
+  position: South East
+  nation:
+    - England
+    - United Kingdom
+detail:
+  flag:
+    adopted: 12th Century
+    ratio: 3:5
+    designer: Traditional
+    UKDesignCode: UNKG7423
+  other:
+    area: 724
+    population: 756600
+    density: 1050
