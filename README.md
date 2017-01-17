@@ -19,6 +19,8 @@ Derived from the reading of 「<ruby>旗<rt>hata</rt>の<rt>no</rt>山<rt>yama</
 [![Code Climate Score]][4]
 [![Code Climate Issues]][5]
 [![CodeCov]][6]
+[![BitHound Dep]][10]
+[![BitHound devDep]][10]
 
 ### Setup
 ```bash
@@ -66,6 +68,9 @@ See [Changelog][7]
 [Code Climate Score]: https://img.shields.io/codeclimate/github/wopian/hatayama.svg?style=flat-square
 [Code Climate Issues]: https://img.shields.io/codeclimate/issues/github/wopian/hatayama.svg?style=flat-square
 [CodeCov]: https://img.shields.io/codecov/c/github/wopian/hatayama.svg?style=flat-square
+[BitHound]: https://img.shields.io/bithound/code/github/wopian/hatayama.svg?style=flat-square
+[BitHound Dep]: https://img.shields.io/bithound/dependencies/github/wopian/hatayama.svg?style=flat-square&label=dependencies
+[BitHound devDep]: https://img.shields.io/bithound/devDependencies/github/wopian/hatayama.svg?style=flat-square&label=devDependencies
 
 [0]: https://travis-ci.org/wopian/hatayama
 [1]: https://circleci.com/gh/wopian/hatayama/tree/master
@@ -76,3 +81,5 @@ See [Changelog][7]
 [6]: https://codecov.io/gh/wopian/hatayama
 [7]: https://github.com/wopian/hatayama/blob/master/CHANGELOG.md
 [8]: https://hatayama.herokuapp.com
+[9]: https://www.bithound.io/github/wopian/hatayama/master/files#priority
+[10]: https://www.bithound.io/github/wopian/hatayama/master/dependencies/npm
