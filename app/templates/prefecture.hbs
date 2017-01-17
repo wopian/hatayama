@@ -4,8 +4,12 @@
 <main class="flag">
     {{>flag/sidebar}}
     <section>
-        {{>flag/symbolism}}
-        {{>flag/about}}
+        {{#if symbolism}}
+            {{>flag/symbolism}}
+        {{/if}}
+        {{#if about}}
+            {{>flag/about}}
+        {{/if}}
     </section>
 </main>
 
