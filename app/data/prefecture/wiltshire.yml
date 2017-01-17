@@ -1,10 +1,9 @@
 slug: wiltshire
 name:
   en: Wiltshire
-map:
+location:
   latitude: 51.349200
   longitude: -1.992710
-location:
   position: South West
   nation:
     - England

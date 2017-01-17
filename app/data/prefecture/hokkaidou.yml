@@ -4,10 +4,9 @@ name:
   ja_jp: 北海道
   ja_hira: ほっかいどう
   ja_kana: ホッカイドウ
-map:
+location:
   latitude: 43.220327
   longitude: 142.863474
-location:
   position: North East
   nation:
     - Japan
