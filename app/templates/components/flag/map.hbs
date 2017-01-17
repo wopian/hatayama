@@ -5,9 +5,14 @@
     <div class="container">
         <div class="cover-info">
             <h2>{{name.en}}</h2>
-            <a>South West</a>
-            <a>England</a>
-            <a>United Kingdom</a>
+            {{#with location}}
+                {{#if position}}
+                    <a>{{position}}</a>
+                {{/if}}
+                {{#each nation}}
+                    <a>{{this}}</a>
+                {{/each}}
+            {{/with}}
         </div>
     </div>
 </section>
