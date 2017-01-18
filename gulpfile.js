@@ -191,15 +191,18 @@ gulp.task('json:index', () => {
   const json =  JSON.parse(fs.readFileSync('./tmp/data/prefecture.json', 'utf8')),
   // lastUpdated = _.sortBy(json, { updated }),
         lastUpdatedSmall = [],
-        britishFlagsSmall = [];
+        britishFlagsSmall = [],
+        japaneseFlagsSmall = [];
 
   let lastUpdated = _.values(json),
-      britishFlags = _.filter(json, { location: { nation: ['United Kingdom'] } });
+      britishFlags = _.filter(json, { location: { nation: ['United Kingdom'] } }),
+      japaneseFlags = _.filter(json, { location: { nation: ['Japan'] } });
 
   lastUpdated = _.chain(lastUpdated).sortBy('updated').value();
   britishFlags = _.sortBy(britishFlags, 'name.en');
+  japaneseFlags = _.sortBy(japaneseFlags, 'name.en');
 
-  gutil.log(lastUpdated);
+  // gutil.log(lastUpdated);
 
   // Strip out data not needed on Index page
   lastUpdated.forEach((item) => {
@@ -208,14 +211,18 @@ gulp.task('json:index', () => {
   britishFlags.forEach((item) => {
     britishFlagsSmall.push(_.omit(item, ['location', 'detail', 'about', 'symbolism']));
   });
+  japaneseFlags.forEach((item) => {
+    japaneseFlagsSmall.push(_.omit(item, ['location', 'detail', 'about', 'symbolism']));
+  });
 
   fs.writeFileSync('./tmp/updated.json', stringify(lastUpdatedSmall.reverse()));
   fs.writeFileSync('./tmp/british.json', stringify(britishFlagsSmall));
+  fs.writeFileSync('./tmp/japanese.json', stringify(japaneseFlagsSmall));
 
-  gutil.log(lastUpdatedSmall);
+  // gutil.log(lastUpdatedSmall);
   // gutil.log(britishFlagsSmall);
 
-  gulp.src(['tmp/data/index/index.json', 'tmp/updated.json', 'tmp/british.json'])
+  gulp.src(['tmp/data/index/index.json', 'tmp/updated.json', 'tmp/british.json', 'tmp/japanese.json'])
     .pipe(jsonConcat('index.json', data => new Buffer(JSON.stringify(data))))
     .pipe(jsonFormat(2))
     .pipe(gulp.dest('tmp/data'));
