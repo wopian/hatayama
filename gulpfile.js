@@ -204,8 +204,8 @@ gulp.task('json:index', () => {
         japaneseFlagsSmall = [];
 
   // TODO: Implement latest update for all flag types
-  all.push(prefecture);
-  all.push(nation);
+  //all.push(prefecture);
+  //all.push(nation);
 
   let lastUpdated = _.values(prefecture),
       britishFlags = _.filter(prefecture, { location: { nation: ['United Kingdom'] } }),
