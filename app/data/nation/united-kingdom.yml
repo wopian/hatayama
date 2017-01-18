@@ -1,0 +1,19 @@
+slug: united-kingdom
+name:
+  en: United Kingdom
+location:
+  latitude: 53.402164
+  longitude: -2.395020
+  continent: 
+    - Europe
+detail:
+  flag:
+    adopted: 1801
+    ratio: '3:5'
+    designer: College of Arms
+    UKDesignCode: UNKG0001
+  other:
+    area: 93628
+    population: 65110000
+    density: 662
+updated: 2017-01-18T10:04+0000

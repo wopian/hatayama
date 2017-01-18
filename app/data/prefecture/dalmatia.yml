@@ -5,6 +5,7 @@ name:
 location:
   latitude: 43.948571
   longitude: 15.567323
+  zoom: 9
   position: South
   nation:
     - Croatia

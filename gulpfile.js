@@ -100,6 +100,7 @@ gulp.task('hbs', callback =>
 gulp.task('hbs:read', () => {
   hbs[0] = JSON.parse(fs.readFileSync('./tmp/data/index.json', 'utf8'));
   hbs[1] = JSON.parse(fs.readFileSync('./tmp/data/prefecture.json', 'utf8'));
+  hbs[2] = JSON.parse(fs.readFileSync('./tmp/data/nation.json', 'utf8'));
   return true;
 });
 
@@ -171,6 +172,7 @@ gulp.task('json', callback =>
   runSequence(
     'json:yaml',
     'json:prefecture',
+    'json:nation',
     'json:index',
     callback));
 
@@ -182,6 +184,12 @@ gulp.task('json:yaml', () =>
 gulp.task('json:prefecture', () =>
   gulp.src('tmp/data/prefecture/*.json')
     .pipe(jsonConcat('prefecture.json', data => new Buffer(JSON.stringify(data))))
+    .pipe(jsonFormat(2))
+    .pipe(gulp.dest('tmp/data')));
+
+gulp.task('json:nation', () =>
+  gulp.src('tmp/data/nation/*.json')
+    .pipe(jsonConcat('nation.json', data => new Buffer(JSON.stringify(data))))
     .pipe(jsonFormat(2))
     .pipe(gulp.dest('tmp/data')));
 

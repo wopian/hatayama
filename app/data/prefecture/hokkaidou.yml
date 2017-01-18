@@ -5,8 +5,9 @@ name:
   ja_hira: ほっかいどう
   ja_kana: ホッカイドウ
 location:
-  latitude: 43.220327
+  latitude: 43.620327
   longitude: 142.863474
+  zoom: 7
   position: North East
   nation:
     - Japan

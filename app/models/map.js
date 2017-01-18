@@ -1,8 +1,8 @@
-function initialize(latitude, longitude) {
+function initialize(latitude, longitude, mapZoom) {
   const pos = new google.maps.LatLng(latitude, longitude),
         options = {
           center:           pos,
-          zoom:             9,
+          zoom:             mapZoom,
           disableDefaultUI: true,
           mapTypeId:        google.maps.MapTypeId.ROADMAP,
           styles:           [

@@ -25,7 +25,7 @@
 
     {{#if latitude}}
         <script data-no-instant>
-            google.maps.event.addDomListener(window, 'load', initialize({{latitude}}, {{longitude}}));
+            google.maps.event.addDomListener(window, 'load', initialize({{latitude}}, {{longitude}}, {{zoom}}));
         </script>
     {{/if}}
 

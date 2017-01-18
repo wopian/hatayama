@@ -4,6 +4,7 @@ name:
 location:
   latitude: 51.813707
   longitude: -0.809470
+  zoom: 9
   position: South East
   nation:
     - England
