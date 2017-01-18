@@ -2,8 +2,9 @@ slug: united-kingdom
 name:
   en: United Kingdom
 location:
-  latitude: 53.402164
+  latitude: 54.702164
   longitude: -2.395020
+  zoom: 5
   continent: 
     - Europe
 detail:
