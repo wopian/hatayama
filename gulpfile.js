@@ -23,6 +23,7 @@ const gulp            = require('gulp'),                            // Gulp     
       jsonConcat      = require('gulp-json-concat'),                // JSON   -> Join JSON files  //
       jsonFormat      = require('gulp-json-format'),                // JSON   -> Format JSON      //
       _               = require('lodash'),                          // JSON   -> Filter JSON      //
+      stringify       = require('json-stable-stringify'),           // JSON   -> Stringify        //
       archiver        = require('gulp-archiver'),                   // Travis -> ZIP Dist         //
       handlebars      = require('gulp-compile-handlebars'),         // HBS    -> HTML             //
       hbs             = [],                                         // HBS    -> Data             //
@@ -188,26 +189,33 @@ gulp.task('json:prefecture', () =>
 //       e.g filter by South West nations only
 gulp.task('json:index', () => {
   const json =  JSON.parse(fs.readFileSync('./tmp/data/prefecture.json', 'utf8')),
-        lastUpdated = _.sortBy(json, 'updated'),
-        nameEnglish = _.filter(json, { location: { position: 'South West' } }),
+  // lastUpdated = _.sortBy(json, { updated }),
         lastUpdatedSmall = [],
-        nameEnglishSmall = [];
+        britishFlagsSmall = [];
+
+  let lastUpdated = _.values(json),
+      britishFlags = _.filter(json, { location: { nation: ['United Kingdom'] } });
+
+  lastUpdated = _.chain(lastUpdated).sortBy('updated').value();
+  britishFlags = _.sortBy(britishFlags, 'name.en');
+
+  gutil.log(lastUpdated);
 
   // Strip out data not needed on Index page
   lastUpdated.forEach((item) => {
-    lastUpdatedSmall.push(_.omit(item, ['location.latitude', 'location.longitude', 'location.position', 'detail', 'about', 'symbolism']));
+    lastUpdatedSmall.push(_.omit(item, ['location', 'detail', 'about', 'symbolism']));
   });
-  nameEnglish.forEach((item) => {
-    nameEnglishSmall.push(_.omit(item, ['slug', 'location.latitude', 'location.longitude', 'location.position', 'detail', 'about', 'symbolism']));
+  britishFlags.forEach((item) => {
+    britishFlagsSmall.push(_.omit(item, ['location', 'detail', 'about', 'symbolism']));
   });
 
-  fs.writeFileSync('./tmp/updated.json', JSON.stringify(lastUpdatedSmall));
-  fs.writeFileSync('./tmp/south_west.json', JSON.stringify(nameEnglishSmall));
+  fs.writeFileSync('./tmp/updated.json', stringify(lastUpdatedSmall.reverse()));
+  fs.writeFileSync('./tmp/british.json', stringify(britishFlagsSmall));
 
-  // gutil.log(nameEnglish);
-  // gutil.log(lastUpdatedSmall);
+  gutil.log(lastUpdatedSmall);
+  // gutil.log(britishFlagsSmall);
 
-  gulp.src(['tmp/data/index/index.json', 'tmp/updated.json', 'tmp/south_west.json'])
+  gulp.src(['tmp/data/index/index.json', 'tmp/updated.json', 'tmp/british.json'])
     .pipe(jsonConcat('index.json', data => new Buffer(JSON.stringify(data))))
     .pipe(jsonFormat(2))
     .pipe(gulp.dest('tmp/data'));

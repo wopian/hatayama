@@ -3,6 +3,9 @@ main.index {
 
     h2 {
         margin-bottom: 1.25rem;
+        &:not(:first-of-type) {
+            margin-top: 1.25rem;
+        }
     }
 
     .flickity {
