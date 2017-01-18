@@ -1,27 +1,45 @@
 {{>app/appHead}}
 
 <main class='index'>
-    <h2>Recently Updated</h1>
-    <div class='flickity'>
-        <div class='flickity-cell'>
-            <img data-flickity-lazyload='https://upload.wikimedia.org/wikipedia/commons/6/6d/Somnew.png'>
-            <a href='/prefecture/wiltshire'>Wiltshire</a>
+    {{! Recently Updated Flags}}
+    {{#if updated}}
+        <h2>Recently Updated</h1>
+        <div class='flickity updated'>
+        {{#each updated}}
+            <div class='flickity-cell {{slug}}'>
+                <img data-flickity-lazyload='/assets/img/{{slug}}-large.png'>
+                <a href='/prefecture/{{slug}}'>{{name.en}}</a>
+                <time datetime='{{updated}}'>
+                    <script type='text/javascript' defer='defer'>
+                        $(function() {
+                            $('.updated .{{slug}}>time').html(humanTime('{{updated}}'));
+                        });
+                    </script>
+                </time>
+            </div>
+        {{/each}}
         </div>
-        <div class='flickity-cell'>
-            <img data-flickity-lazyload='https://upload.wikimedia.org/wikipedia/commons/6/6d/Somnew.png'>
-            <a href='/prefecture/wiltshire'>Wiltshire</a>
-        </div>
-        <div class='flickity-cell'>
-            <img data-flickity-lazyload='https://upload.wikimedia.org/wikipedia/commons/6/6d/Somnew.png'>
-            <a href='/prefecture/wiltshire'>Wiltshire</a>
-        </div>
-    </div>
-</main>
+    {{/if}}
 
-<a href="/prefecture/wiltshire">Wiltshire</a>
-<a href="/prefecture/somerset">Somerset</a>
-<a href="/prefecture/devon">Devon</a>
-<a href="/prefecture/dalmatia">Dalmatia</a>
-<a href="/prefecture/hokkaidou">Hokkaidou</a>
+    {{! British Flags}}
+    {{#if british}}
+        <h2>British Flags</h1>
+        <div class='flickity british'>
+        {{#each british}}
+            <div class='flickity-cell {{slug}}'>
+                <img data-flickity-lazyload='/assets/img/{{slug}}-large.png'>
+                <a href='/prefecture/{{slug}}'>{{name.en}}</a>
+                <time datetime='{{updated}}'>
+                    <script type='text/javascript' defer='defer'>
+                        $(function() {
+                            $('.british .{{slug}}>time').html(humanTime('{{updated}}'));
+                        });
+                    </script>
+                </time>
+            </div>
+        {{/each}}
+        </div>
+    {{/if}}
+</main>
 
 {{>app/appFooter}}

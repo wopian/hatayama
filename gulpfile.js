@@ -22,6 +22,7 @@ const gulp            = require('gulp'),                            // Gulp     
       yaml            = require('gulp-yaml'),                       // YAML   -> Convert to JSON  //
       jsonConcat      = require('gulp-json-concat'),                // JSON   -> Join JSON files  //
       jsonFormat      = require('gulp-json-format'),                // JSON   -> Format JSON      //
+      _               = require('lodash'),                          // JSON   -> Filter JSON      //
       archiver        = require('gulp-archiver'),                   // Travis -> ZIP Dist         //
       handlebars      = require('gulp-compile-handlebars'),         // HBS    -> HTML             //
       hbs             = [],                                         // HBS    -> Data             //
@@ -98,8 +99,6 @@ gulp.task('hbs', callback =>
 gulp.task('hbs:read', () => {
   hbs[0] = JSON.parse(fs.readFileSync('./tmp/data/index.json', 'utf8'));
   hbs[1] = JSON.parse(fs.readFileSync('./tmp/data/prefecture.json', 'utf8'));
-  // hbs[0] = require('./tmp/data/index.json');
-  // hbs[1] = require('./tmp/data/prefecture.json');
   return true;
 });
 
@@ -185,12 +184,34 @@ gulp.task('json:prefecture', () =>
     .pipe(jsonFormat(2))
     .pipe(gulp.dest('tmp/data')));
 
-// TODO: Remove
-gulp.task('json:index', () =>
-  gulp.src(['tmp/data/index/index.json', 'tmp/data/prefecture.json'])
+// TODO: Implement sorting for Last updated, nation specific etc
+//       e.g filter by South West nations only
+gulp.task('json:index', () => {
+  const json =  JSON.parse(fs.readFileSync('./tmp/data/prefecture.json', 'utf8')),
+        lastUpdated = _.sortBy(json, 'updated'),
+        nameEnglish = _.filter(json, { location: { position: 'South West' } }),
+        lastUpdatedSmall = [],
+        nameEnglishSmall = [];
+
+  // Strip out data not needed on Index page
+  lastUpdated.forEach((item) => {
+    lastUpdatedSmall.push(_.omit(item, ['location.latitude', 'location.longitude', 'location.position', 'detail', 'about', 'symbolism']));
+  });
+  nameEnglish.forEach((item) => {
+    nameEnglishSmall.push(_.omit(item, ['slug', 'location.latitude', 'location.longitude', 'location.position', 'detail', 'about', 'symbolism']));
+  });
+
+  fs.writeFileSync('./tmp/updated.json', JSON.stringify(lastUpdatedSmall));
+  fs.writeFileSync('./tmp/south_west.json', JSON.stringify(nameEnglishSmall));
+
+  // gutil.log(nameEnglish);
+  // gutil.log(lastUpdatedSmall);
+
+  gulp.src(['tmp/data/index/index.json', 'tmp/updated.json', 'tmp/south_west.json'])
     .pipe(jsonConcat('index.json', data => new Buffer(JSON.stringify(data))))
     .pipe(jsonFormat(2))
-    .pipe(gulp.dest('tmp/data')));
+    .pipe(gulp.dest('tmp/data'));
+});
                                                                     // ########################## //
                                                                     // #                        # //
                                                                     // #          SCSS          # //
@@ -369,6 +390,7 @@ gulp.task('watch', (callback) => {                                  // ╓╌> W
   gulp.watch('app/**/*.yml', ['hbs:rebuild']);
   gulp.watch('app/**/*.hbs', ['hbs']);          // ║                          //
   gulp.watch('app/**/*.js', ['javascript'], browserSync.reload);    // ║                          //
+  gulp.watch('app/images/*.png', ['images']);
 });                                                                 // ╨                          //
                                                                     // ########################## //
                                                                     // #                        # //

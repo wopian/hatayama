@@ -6,9 +6,19 @@ main.index {
     }
 
     .flickity {
-        left: 0;
-        position: absolute;
-        width: 100vw;
+        //position: absolute;
+        //min-width: 100vw;
+        // width: 100%;
+
+        .flickity-viewport {
+            @extend .container;
+            overflow: visible;
+        }
+
+        // TODO: Properly align the slider with ## Recently Updated
+        .flickity-slider {
+            width: 100%;
+        }
 
         .flickity-cell {
             margin-right: 1.5rem;
@@ -35,6 +45,14 @@ main.index {
             font-family: 'NSJPB';
             font-size: 1rem;
             text-decoration: none;
+        }
+
+        time {
+            @extend .clearfix;
+            float: right;
+            padding-top: .3rem;
+            font-size: .75rem;
+            color: rgba($metal, .6);
         }
     }
 }
