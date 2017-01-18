@@ -196,15 +196,20 @@ gulp.task('json:nation', () =>
 // TODO: Implement sorting for Last updated, nation specific etc
 //       e.g filter by South West nations only
 gulp.task('json:index', () => {
-  const json =  JSON.parse(fs.readFileSync('./tmp/data/prefecture.json', 'utf8')),
-  // lastUpdated = _.sortBy(json, { updated }),
+  const prefecture =  JSON.parse(fs.readFileSync('./tmp/data/prefecture.json', 'utf8')),
+        nation = JSON.parse(fs.readFileSync('./tmp/data/nation.json', 'utf8')),
+        all = [],
         lastUpdatedSmall = [],
         britishFlagsSmall = [],
         japaneseFlagsSmall = [];
 
-  let lastUpdated = _.values(json),
-      britishFlags = _.filter(json, { location: { nation: ['United Kingdom'] } }),
-      japaneseFlags = _.filter(json, { location: { nation: ['Japan'] } });
+  // TODO: Implement latest update for all flag types
+  all.push(prefecture);
+  all.push(nation);
+
+  let lastUpdated = _.values(prefecture),
+      britishFlags = _.filter(prefecture, { location: { nation: ['United Kingdom'] } }),
+      japaneseFlags = _.filter(prefecture, { location: { nation: ['Japan'] } });
 
   lastUpdated = _.chain(lastUpdated).sortBy('updated').value();
   britishFlags = _.sortBy(britishFlags, 'name.en');
