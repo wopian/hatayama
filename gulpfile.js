@@ -1,49 +1,43 @@
-                                                                    // ########################## //
-                                                                    // #                        # //
-                                                                    // #       Initialise       # //
-                                                                    // #                        # //
-                                                                    // ########################## //
-                                                                    //                            //
 const gulp            = require('gulp'),                            // Gulp                       //
       sass            = require('gulp-sass'),                       // SCSS   -> CSS              //
       autoprefixer    = require('gulp-autoprefixer'),               // CSS    -> Vendor Prefixes  //
       cssnano         = require('gulp-cssnano'),                    // CSS    -> Minify           //
       rename          = require('gulp-rename'),                     // Files  -> Rename           //
       del             = require('del'),                             // Files  -> Delete           //
-      cache           = require('gulp-cache'),                      // Cache  -> Images           //
-      mkdirp          = require('mkdirp'),
-      fs              = require('fs'),
-      jimp            = require('jimp'),
+      mkdirp          = require('mkdirp'),                          // Files  -> Create Directory //
+      fs              = require('fs'),                              // Files  -> File System      //
+      jimp            = require('jimp'),                            // Image  -> Resize           //
       imagemin        = require('gulp-imagemin'),                   // Image  -> Minify           //
+      cache           = require('gulp-cache'),                      // Cache  -> Images           //
       gutil           = require('gulp-util'),                       // CLI    -> Write & Colours  //
       zeroFill        = require('zero-fill'),                       // CLI    -> Number Padding   //
       stringWidth     = require('string-width'),                    // CLI    -> String Width     //
       browserSync     = require('browser-sync').create(),           // Watch  -> Build Server     //
       Server          = require('karma').Server,                    // Tests  -> Test Server      //
       eslint          = require('gulp-eslint'),                     // Tests  -> JS Quality       //
-      scsslint        = require('gulp-scss-lint'),
-      scsslintstylish = require('gulp-scss-lint-stylish'),
+      scsslint        = require('gulp-scss-lint'),                  // Tests  -> SCSS Quality     //
+      scsslintstylish = require('gulp-scss-lint-stylish'),          // Tests  -> SCSSLint Output  //
       connect         = require('gulp-connect'),                    // Heroku -> Deploy Server    //
       runSequence     = require('run-sequence'),                    // Tasks  -> Queue            //
-      yaml            = require('gulp-yaml'),
-      jsonConcat      = require('gulp-json-concat'),
-      jsonFormat      = require('gulp-json-format'),
+      yaml            = require('gulp-yaml'),                       // YAML   -> Convert to JSON  //
+      jsonConcat      = require('gulp-json-concat'),                // JSON   -> Join JSON files  //
+      jsonFormat      = require('gulp-json-format'),                // JSON   -> Format JSON      //
       archiver        = require('gulp-archiver'),                   // Travis -> ZIP Dist         //
       handlebars      = require('gulp-compile-handlebars'),         // HBS    -> HTML             //
       hbs             = [],                                         // HBS    -> Data             //
-      hbsOmitted      = [],                                         // HBBS   -> Omitted info
+      hbsOmitted      = [],                                         // HBS   -> Omitted info      //
       options         = {                                           // HBS    -> Options          //
         ignorePartials: true,                                       //                            //
         batch:          ['./app/templates/components'],             // HBS    -> Partials         //
         helpers:        {                                           // HBS    -> Helpers:         //
           if_eq(a, b, opts) {                                       // ╓╌> {{#if_eq a 'b'}}       //
-            if (a === b) {                                          // ║                          //
-              return opts.fn(this);                                 // ║   Check if both values   //
-            }                                                       // ║    are equal             //
+            if (a === b) {                                          // ║   Check if both values   //
+              return opts.fn(this);                                 // ║    are equal             //
+            }                                                       // ║                          //
             return opts.inverse(this);                              // ║                          //
-          },
-          formatNumber(a) {
-            return String(a).replace(/(.)(?=(\d{3})+$)/g, '$1,');
+          },                                                        // ╨                          //
+          formatNumber(a) {                                         // ╓╌> {{#formatNumber a}}    //
+            return String(a).replace(/(.)(?=(\d{3})+$)/g, '$1,');   // ║   Convert 5000 to 5,000  //
           }                                                         // ╨                          //
         }                                                           //                            //
       },                                                            //                            //
@@ -102,8 +96,10 @@ gulp.task('hbs', callback =>
 );
 
 gulp.task('hbs:read', () => {
-  hbs[0] = require('./tmp/data/index.json');
-  hbs[1] = require('./tmp/data/prefecture.json');
+  hbs[0] = JSON.parse(fs.readFileSync('./tmp/data/index.json', 'utf8'));
+  hbs[1] = JSON.parse(fs.readFileSync('./tmp/data/prefecture.json', 'utf8'));
+  // hbs[0] = require('./tmp/data/index.json');
+  // hbs[1] = require('./tmp/data/prefecture.json');
   return true;
 });
 
@@ -201,7 +197,7 @@ gulp.task('json:index', () =>
                                                                     // #                        # //
                                                                     // ########################## //
                                                                     //                            //
-gulp.task('sass:build', () =>                                       // ╓╌> SASS                   //
+gulp.task('scss', () =>                                             // ╓╌> SCSS                   //
   gulp.src('app/styles/**/*.scss')                                  // ║                          //
     .pipe(sass())                                                   // ║   Compiles .scss files   //
     .pipe(cssnano())                                                // ║    to .css files         //
@@ -296,7 +292,7 @@ gulp.task('favicon', () =>                                          // ╓╌> F
     .pipe(gulp.dest('dist/'))
 );                                                                  // ╨                          //
                                                                     //                            //
-gulp.task('clean:dist', () => del.sync('dist/**/*'));
+gulp.task('clean:dist', () => del('dist/**/*'));
                                                                     //                            //
 gulp.task('clean', () => {                                          // ╓╌> Clean Cache            //
   del.sync('dist').then((cb) => {                                   // ║                          //
@@ -341,21 +337,37 @@ gulp.task('browserSync', () =>                                      // ╓╌> B
     server: {                                                       // ║   Starts server          //
       baseDir: './dist',                                            // ║                          //
     },                                                              // ║                          //
-    open: false
+    ghostMode: {
+      clicks:   true,
+      location: false,
+      forms:    true,
+      scroll:   true
+    },
+    logFileChanges: true,
+    logLevel:       'info',
+    logPrefix:      'hatayama',
+    logConnections: true,
+    notify:         true,
+    open:           false
   })                                                                // ║                          //
 );                                                                  // ╨                          //
+
+gulp.task('hbs:rebuild', callback =>
+  runSequence(
+    'json',
+    'hbs',
+    callback
+  ));
                                                                     //                            //
 gulp.task('watch', (callback) => {                                  // ╓╌> Watch                  //
   runSequence(                                                      // ║                          //
     'default',                                                      // ║   Builds app and         //
     'browserSync',                                                  // ║    watches files for     //
-    ['hbs', 'sass:build', 'javascript'],                     // ║    changes & rebuilds    //
-    'autoprefixer',                                                 // ║    them                  //
-    callback                                                        // ║                          //
+    callback                                                        // ║    changes               //
   );                                                                // ║                          //
-  gulp.watch('app/**/*.scss', ['sass:build', 'autoprefixer']);      // ║                          //
-  gulp.watch('app/**/*.hbs', ['hbs'], browserSync.reload);   // ║                          //
-  gulp.watch('app/**/*.json', ['hbs'], browserSync.reload);  // ║                          //
+  gulp.watch('app/**/*.scss', ['scss', 'autoprefixer']);      // ║                          //
+  gulp.watch('app/**/*.yml', ['hbs:rebuild']);
+  gulp.watch('app/**/*.hbs', ['hbs']);          // ║                          //
   gulp.watch('app/**/*.js', ['javascript'], browserSync.reload);    // ║                          //
 });                                                                 // ╨                          //
                                                                     // ########################## //
@@ -364,13 +376,12 @@ gulp.task('watch', (callback) => {                                  // ╓╌> W
                                                                     // #                        # //
                                                                     // ########################## //
                                                                     //                            //
-gulp.task('default', callback =>                                  // ╓╌> Build                  //
+gulp.task('default', callback =>                                    // ╓╌> Build                  //
   runSequence(                                                      // ║                          //
     'clean:dist',                                                   // ║   Main task that builds  //
     'json',
-    ['hbs', 'sass:build', 'javascript'],                            // ║    the app               //
-    'autoprefixer',                                                 // ║                          //
-    'images',
+    ['hbs', 'scss', 'javascript'],                            // ║    the app               //
+    ['autoprefixer', 'images'],                                     // ║                          //
     callback                                                        // ║                          //
   )                                                                 // ║                          //
 );                                                                  // ╨                          //
@@ -380,7 +391,7 @@ gulp.task('default', callback =>                                  // ╓╌> Bui
                                                                     // #                        # //
                                                                     // ########################## //
                                                                     //                            //
-gulp.task('test', callback =>                                     // ╓╌> Test                   //
+gulp.task('test', callback =>                                       // ╓╌> Test                   //
   runSequence(                                                      // ║                          //
     'scsslint',                                                     // ║   Runs lint task then    //
     'eslint',                                                       // ║    starts unit tests     //
