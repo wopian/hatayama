@@ -1,16 +1,30 @@
-{{>app/appHead header='transparent'}}
-{{>flag/map}}
+{{>app/appHead}}
 
-<main class="flag">
-    {{>flag/sidebar}}
-    <section>
-        {{#if symbolism}}
-            {{>flag/symbolism}}
-        {{/if}}
-        {{#if about}}
-            {{>flag/about}}
-        {{/if}}
-    </section>
+<main class="prefecture">
+    {{#each prefecture}}
+        <div class='row'>
+            {{#each this}}
+                <div class='col {{slug}}'>
+                    <figure class='figure'>
+                        <img class='figure-img' src='/assets/img/{{slug}}-large.png'>
+                        <figcaption class='figure-caption'>{{name.en}}</figcaption>
+                    </figure>
+
+                    <!--
+                    <img src='/assets/img/{{slug}}-large.png'>
+                    <a href='/prefecture/{{slug}}'>{{name.en}}</a>
+                    <time datetime='{{updated}}'>
+                        <script type='text/javascript' defer='defer'>
+                            $(function() {
+                                $('.updated .{{slug}}>time').html(humanTime('{{updated}}'));
+                            });
+                        </script>
+                    </time>
+                    -->
+                </div>
+            {{/each}}
+        </div>
+    {{/each}}
 </main>
 
-{{>app/appFooter googleMaps=1 header='transparent' latitude=location.latitude longitude=location.longitude zoom=location.zoom}}
+{{>app/appFooter}}

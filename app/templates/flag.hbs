@@ -1,0 +1,16 @@
+{{>app/appHead header='transparent'}}
+{{>flag/map}}
+
+<main class="flag">
+    {{>flag/sidebar}}
+    <section>
+        {{#if symbolism}}
+            {{>flag/symbolism}}
+        {{/if}}
+        {{#if about}}
+            {{>flag/about}}
+        {{/if}}
+    </section>
+</main>
+
+{{>app/appFooter googleMaps=1 header='transparent' latitude=location.latitude longitude=location.longitude zoom=location.zoom}}

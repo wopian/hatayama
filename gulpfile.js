@@ -142,7 +142,7 @@ gulp.task('hbs:generate', () => {
         */
 
         // Generate HTML
-        gulp.src('app/templates/prefecture.hbs')
+        gulp.src('app/templates/flag.hbs')
             .pipe(handlebars(flag, options))
             .pipe(rename(`${flag.slug}/index.html`))
             .pipe(gulp.dest('dist/prefecture'))
@@ -152,6 +152,13 @@ gulp.task('hbs:generate', () => {
       });
     }
   });
+  gulp.src('app/templates/prefecture.hbs')
+    .pipe(handlebars(JSON.parse(fs.readFileSync('./tmp/data/list/prefecture.json', 'utf8')), options))
+    .pipe(rename('index.html'))
+    .pipe(gulp.dest('dist/prefecture'))
+    .pipe(browserSync.reload({
+      stream: true
+    }));
   return true;
 });
 
@@ -174,6 +181,7 @@ gulp.task('json', callback =>
     'json:prefecture',
     'json:nation',
     'json:index',
+    'json:list:prefecture',
     callback));
 
 gulp.task('json:yaml', () =>
@@ -196,16 +204,18 @@ gulp.task('json:nation', () =>
 // TODO: Implement sorting for Last updated, nation specific etc
 //       e.g filter by South West nations only
 gulp.task('json:index', () => {
-  const prefecture =  JSON.parse(fs.readFileSync('./tmp/data/prefecture.json', 'utf8')),
+  const prefecture = JSON.parse(fs.readFileSync('./tmp/data/prefecture.json', 'utf8')),
         nation = JSON.parse(fs.readFileSync('./tmp/data/nation.json', 'utf8')),
         all = [],
         lastUpdatedSmall = [],
         britishFlagsSmall = [],
-        japaneseFlagsSmall = [];
+        japaneseFlagsSmall = [],
+        prefecturePage = [prefecture],
+        prefectureSmall = [];
 
   // TODO: Implement latest update for all flag types
-  //all.push(prefecture);
-  //all.push(nation);
+  // all.push(prefecture);
+  // all.push(nation);
 
   let lastUpdated = _.values(prefecture),
       britishFlags = _.filter(prefecture, { location: { nation: ['United Kingdom'] } }),
@@ -227,10 +237,14 @@ gulp.task('json:index', () => {
   japaneseFlags.forEach((item) => {
     japaneseFlagsSmall.push(_.omit(item, ['location', 'detail', 'about', 'symbolism']));
   });
+  prefecturePage.forEach((item) => {
+    prefectureSmall.push(_.omit(item, ['location', 'detail', 'about', 'symbolism']));
+  });
 
   fs.writeFileSync('./tmp/updated.json', stringify(lastUpdatedSmall.reverse()));
   fs.writeFileSync('./tmp/british.json', stringify(britishFlagsSmall));
   fs.writeFileSync('./tmp/japanese.json', stringify(japaneseFlagsSmall));
+  fs.writeFileSync('./tmp/prefecture.json', JSON.stringify(prefectureSmall));
 
   // gutil.log(lastUpdatedSmall);
   // gutil.log(britishFlagsSmall);
@@ -240,6 +254,12 @@ gulp.task('json:index', () => {
     .pipe(jsonFormat(2))
     .pipe(gulp.dest('tmp/data'));
 });
+
+gulp.task('json:list:prefecture', () =>
+  gulp.src(['tmp/data/index/prefecture.json', 'tmp/prefecture.json'])
+    .pipe(jsonConcat('prefecture.json', data => new Buffer(JSON.stringify(data))))
+    .pipe(jsonFormat(2))
+    .pipe(gulp.dest('tmp/data/list')));
                                                                     // ########################## //
                                                                     // #                        # //
                                                                     // #          SCSS          # //
