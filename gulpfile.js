@@ -162,11 +162,12 @@ gulp.task('json:index', () => {
     .pipe(jsonConcat('index.json', data => new Buffer(JSON.stringify(data))))
     .pipe(jsonFormat(2))
     .pipe(gulp.dest('tmp/data'));
+  return true;
 });
 
 gulp.task('json:list:prefecture', () =>
-  gulp.src(['tmp/data/index/prefecture.json', 'tmp/prefecture.json'])
-    .pipe(jsonConcat('prefecture.json', data => new Buffer(JSON.stringify(data))))
+  gulp.src(['tmp/data/prefectureList.json', 'tmp/prefecture.json'])
+    .pipe(jsonConcat('prefecture.json', data => new Buffer(stringify(data))))
     .pipe(jsonFormat(2))
     .pipe(gulp.dest('tmp/data/list')));
                                                                     // ########################## //

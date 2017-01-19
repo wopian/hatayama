@@ -2,12 +2,47 @@ main.prefecture {
     @extend .container;
     margin-top: 1rem;
 
-    figure {
-        margin: 0 -.5rem;
-        padding: 0 .5rem;
-        
+    h2 {
+        margin-bottom: 1.25rem;
+    }
+
+    // Reduce gutter width
+    .row {
+        margin: 0 -12px;
+    }
+
+    // Reduce gutter width
+    [class*="col-"] {
+        padding: 0 12px;
+    }
+
+    .col-lg-4 {
+        overflow: hidden;
+        margin-bottom: 1.25rem;
+
+        a {
+            color: rgba($metal, .8);
+            font-family: 'NSJPB';
+            font-size: 1rem;
+            text-decoration: none;
+        }
+
+        p {
+            margin: 0 0 0.5rem;
+        }
+
         img {
-            max-height: 10rem;
+            width: 100%;
+            border-radius: 3px;
+            box-shadow: 0 0 1px 0 rgba($metal, .25);
+        }
+
+        time {
+            @extend .clearfix;
+            float: right;
+            padding-top: .3rem;
+            font-size: .75rem;
+            color: rgba($metal, .6);
         }
     }
 }

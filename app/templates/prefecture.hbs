@@ -1,25 +1,22 @@
 {{>app/appHead}}
 
 <main class="prefecture">
+    <h2>Prefectures</h2>
     {{#each prefecture}}
         <div class='row'>
             {{#each this}}
-                <div class='col {{slug}}'>
-                    <figure class='figure'>
-                        <img class='figure-img' src='/assets/img/{{slug}}-large.png'>
-                        <figcaption class='figure-caption'>{{name.en}}</figcaption>
-                    </figure>
-
+                <div class='col-lg-4'>
+                    <a href='/prefecture/{{slug}}'>
+                        <p>{{name.en}}</p>
+                        <img src='/assets/img/{{slug}}-large.png' class='img-fluid'>
+                    </a>
                     <!--
-                    <img src='/assets/img/{{slug}}-large.png'>
-                    <a href='/prefecture/{{slug}}'>{{name.en}}</a>
-                    <time datetime='{{updated}}'>
-                        <script type='text/javascript' defer='defer'>
-                            $(function() {
-                                $('.updated .{{slug}}>time').html(humanTime('{{updated}}'));
-                            });
-                        </script>
-                    </time>
+                    <div class='card'>
+                        <img class='card-img-top img-fluid' src='/assets/img/{{slug}}-large.png'>
+                        <div class='card-block'>
+                            <a class='card-title' href='/prefecture/{{slug}}'>{{name.en}}</a>
+                        </div>
+                    </div>
                     -->
                 </div>
             {{/each}}
