@@ -150,15 +150,15 @@ gulp.task('json:index', () => {
     prefectureSmall.push(_.omit(item, ['location', 'detail', 'about', 'symbolism']));
   });
 
-  fs.writeFileSync('./tmp/updated.json', stringify(lastUpdatedSmall.reverse()));
-  fs.writeFileSync('./tmp/british.json', stringify(britishFlagsSmall));
-  fs.writeFileSync('./tmp/japanese.json', stringify(japaneseFlagsSmall));
+  fs.writeFileSync('./tmp/data/index/updated.json', stringify(lastUpdatedSmall.reverse()));
+  fs.writeFileSync('./tmp/data/index/british.json', stringify(britishFlagsSmall));
+  fs.writeFileSync('./tmp/data/index/japanese.json', stringify(japaneseFlagsSmall));
   fs.writeFileSync('./tmp/prefecture.json', JSON.stringify(prefectureSmall));
 
   // gutil.log(lastUpdatedSmall);
   // gutil.log(britishFlagsSmall);
 
-  gulp.src(['tmp/data/index/index.json', 'tmp/updated.json', 'tmp/british.json', 'tmp/japanese.json'])
+  gulp.src(['tmp/data/index/index.json', 'tmp/data/index/updated.json', 'tmp/data/index/british.json', 'tmp/data/index/japanese.json'])
     .pipe(jsonConcat('index.json', data => new Buffer(JSON.stringify(data))))
     .pipe(jsonFormat(2))
     .pipe(gulp.dest('tmp/data'));

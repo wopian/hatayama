@@ -1,0 +1,16 @@
+<h2>Japanese Flags</h1>
+    <div class='flickity japanese'>
+    {{#each japanese}}
+        <div class='flickity-cell {{slug}}'>
+            <img data-flickity-lazyload='/assets/img/{{slug}}-large.png'>
+            <a href='/prefecture/{{slug}}'>{{name.en}}</a>
+            <time datetime='{{updated}}'>
+                <script type='text/javascript' defer='defer'>
+                    $(function() {
+                        $('.japanese .{{slug}}>time').html(humanTime('{{updated}}'));
+                    });
+                </script>
+            </time>
+        </div>
+    {{/each}}
+</div>

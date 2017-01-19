@@ -68,7 +68,6 @@
     "eslint-plugin-import": "2.2.0",
     "eslint-plugin-jasmine": "2.2.0",
     "eslint-plugin-jasmine-jquery": "1.0.0",
-    "git-labelmaker": "0.8.1",
     "jasmine-core": "2.5.2",
     "jasmine-jquery": "2.1.1",
     "karma": "1.4.0",

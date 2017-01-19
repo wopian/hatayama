@@ -3,62 +3,17 @@
 <main class='index'>
     {{! Recently Updated Flags}}
     {{#if updated}}
-        <h2>Recently Updated</h1>
-        <div class='flickity updated'>
-        {{#each updated}}
-            <div class='flickity-cell {{slug}}'>
-                <img data-flickity-lazyload='/assets/img/{{slug}}-large.png'>
-                <a href='/prefecture/{{slug}}'>{{name.en}}</a>
-                <time datetime='{{updated}}'>
-                    <script type='text/javascript' defer='defer'>
-                        $(function() {
-                            $('.updated .{{slug}}>time').html(humanTime('{{updated}}'));
-                        });
-                    </script>
-                </time>
-            </div>
-        {{/each}}
-        </div>
+        {{>index/updated}}
     {{/if}}
 
     {{! British Flags}}
     {{#if british}}
-        <h2>British Flags</h1>
-        <div class='flickity british'>
-        {{#each british}}
-            <div class='flickity-cell {{slug}}'>
-                <img data-flickity-lazyload='/assets/img/{{slug}}-large.png'>
-                <a href='/prefecture/{{slug}}'>{{name.en}}</a>
-                <time datetime='{{updated}}'>
-                    <script type='text/javascript' defer='defer'>
-                        $(function() {
-                            $('.british .{{slug}}>time').html(humanTime('{{updated}}'));
-                        });
-                    </script>
-                </time>
-            </div>
-        {{/each}}
-        </div>
+        {{>index/british}}
     {{/if}}
 
     {{! Japanese Flags}}
     {{#if japanese}}
-        <h2>Japanese Flags</h1>
-        <div class='flickity japanese'>
-        {{#each japanese}}
-            <div class='flickity-cell {{slug}}'>
-                <img data-flickity-lazyload='/assets/img/{{slug}}-large.png'>
-                <a href='/prefecture/{{slug}}'>{{name.en}}</a>
-                <time datetime='{{updated}}'>
-                    <script type='text/javascript' defer='defer'>
-                        $(function() {
-                            $('.japanese .{{slug}}>time').html(humanTime('{{updated}}'));
-                        });
-                    </script>
-                </time>
-            </div>
-        {{/each}}
-        </div>
+        {{>index/japanese}}
     {{/if}}
 </main>
 
