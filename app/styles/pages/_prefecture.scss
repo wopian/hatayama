@@ -1,4 +1,4 @@
-main.prefecture {
+.prefecture {
     @extend .container;
     margin-top: 1rem;
 
@@ -17,8 +17,8 @@ main.prefecture {
     }
 
     .col-lg-4 {
-        overflow: hidden;
         margin-bottom: 1.25rem;
+        overflow: hidden;
 
         a {
             color: rgba($metal, .8);
@@ -28,21 +28,21 @@ main.prefecture {
         }
 
         p {
-            margin: 0 0 0.5rem;
+            margin: 0 0 .5rem;
         }
 
         img {
-            width: 100%;
             border-radius: 3px;
             box-shadow: 0 0 1px 0 rgba($metal, .25);
+            width: 100%;
         }
 
         time {
             @extend .clearfix;
-            float: right;
-            padding-top: .3rem;
-            font-size: .75rem;
             color: rgba($metal, .6);
+            float: right;
+            font-size: .75rem;
+            padding-top: .3rem;
         }
     }
 }

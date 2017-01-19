@@ -1,8 +1,9 @@
-main.index {
+.index {
     margin-top: 1rem;
 
     h2 {
         margin-bottom: 1.25rem;
+
         &:not(:first-of-type) {
             margin-top: 1.25rem;
         }
@@ -32,26 +33,31 @@ main.index {
         }
 
         .flickity-prev-next-button {
-            top: 90px;
+            background: rgba($metal, .2);
+            border-radius: 0;
+            bottom: 0;
             height: 200px;
             margin-top: 10px;
-            bottom: 0;
-            border-radius: 0;
-            background: rgba($metal,.2);
+            top: 90px;
             transition: all .2s ease-in;
+
             &:hover {
-                background: rgba($metal,.6);
+                background: rgba($metal, .6);
             }
+
             &.previous {
                 display: none;
             }
+
             &.next {
                 left: 0;
                 //left: calc(0 - 4rem);
             }
+
             &[disabled] {
                 opacity: 0;
             }
+
             .arrow {
                 fill: $white;
             }
@@ -74,10 +80,10 @@ main.index {
 
         time {
             @extend .clearfix;
-            float: right;
-            padding-top: .3rem;
-            font-size: .75rem;
             color: rgba($metal, .6);
+            float: right;
+            font-size: .75rem;
+            padding-top: .3rem;
         }
     }
 }
