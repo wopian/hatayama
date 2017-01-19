@@ -36,6 +36,10 @@ main {
     flex: 3;
 }
 
+a {
+    color: $poppy;
+}
+
 footer {
     height: 54px;
     div { @extend .container; }

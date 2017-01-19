@@ -38,6 +38,12 @@ const gulp            = require('gulp'),                            // Gulp     
             }                                                       // ║                          //
             return opts.inverse(this);                              // ║                          //
           },                                                        // ╨                          //
+          if_not_eq(a, b, opts) {
+            if (a !== b) {
+              return opts.fn(this);
+            }
+            return opts.inverse(this);
+          },
           formatNumber(a) {                                         // ╓╌> {{#formatNumber a}}    //
             return String(a).replace(/(.)(?=(\d{3})+$)/g, '$1,');   // ║   Convert 5000 to 5,000  //
           }                                                         // ╨                          //
@@ -246,6 +252,13 @@ gulp.task('hbs:generate', () => {
     .pipe(browserSync.reload({
       stream: true
     }));
+  gulp.src('app/templates/feedback.hbs')
+    .pipe(handlebars('', options))
+    .pipe(rename('index.html'))
+    .pipe(gulp.dest('dist/feedback'))
+    .pipe(browserSync.reload({
+      stream: true
+    }));
   return true;
 });
 
@@ -327,9 +340,9 @@ gulp.task('image:resize', () => {
       // console.log(file);
       jimp.read(`app/images/${file}`).then((img) => {
         const fileName = file.replace(/\.[^/.]+$/, '');
-        img.resize(300, jimp.AUTO)
+        img.resize(600, jimp.AUTO)
           .write(`dist/assets/img/${fileName}-large.png`)
-          .resize(200, jimp.AUTO)
+          .resize(300, jimp.AUTO)
           .write(`dist/assets/img/${fileName}-medium.png`)
           .resize(100, jimp.AUTO)
           .write(`dist/assets/img/${fileName}-small.png`);

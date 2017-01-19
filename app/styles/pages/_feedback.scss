@@ -1,0 +1,13 @@
+.feedback {
+    @extend .container;
+    margin-top: 1rem;
+
+    h2 {
+        margin-bottom: 1.25rem;
+    }
+
+    .btn {
+        background: $poppy;
+        color: $white;
+    }
+}

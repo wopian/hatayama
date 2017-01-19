@@ -31,6 +31,23 @@
             margin: 0 0 .5rem;
         }
 
+        .flag {
+            // Ratio for 3:5 flags
+            min-height: 212px;
+            min-width: 354px;
+            background-size: cover;
+            //background-size: 100% 100%;
+            background-position: 50% 50%;
+            background-position: center;
+            transition: background-size 2s ease-in-out;
+        }
+        .flag-scale {
+            &:hover {
+                background-size: contain;
+                background-repeat: no-repeat;
+            }
+        }
+
         img {
             border-radius: 3px;
             box-shadow: 0 0 1px 0 rgba($metal, .25);

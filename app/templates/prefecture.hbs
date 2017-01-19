@@ -7,8 +7,9 @@
             {{#each this}}
                 <div class='col-lg-4'>
                     <a href='/prefecture/{{slug}}'>
+                        <div class='flag {{#if_not_eq detail.flag.ratio '3:5'}}flag-scale{{/if_not_eq}}' style='background-image: url(/assets/img/{{slug}}-large.png)'></div>
+                        <!--<img src='/assets/img/{{slug}}-large.png' class='img-fluid'>-->
                         <p>{{name.en}}</p>
-                        <img src='/assets/img/{{slug}}-large.png' class='img-fluid'>
                     </a>
                     <!--
                     <div class='card'>
