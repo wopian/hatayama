@@ -2,8 +2,10 @@
     <div class='flickity british'>
     {{#each british}}
         <div class='flickity-cell {{slug}}'>
-            <img data-flickity-lazyload='/assets/img/{{slug}}-large.png'>
-            <a href='/prefecture/{{slug}}'>{{name.en}}</a>
+            <a href='/prefecture/{{slug}}'>
+                <img data-flickity-lazyload='/assets/img/{{slug}}-large.png'>
+                {{name.en}}
+            </a>
             <time datetime='{{updated}}'>
                 <script type='text/javascript' defer='defer'>
                     $(function() {
