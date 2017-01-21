@@ -11,17 +11,16 @@ gulp.task('images', callback =>
     'image:dir',
     'image:resize',
     'image:min',
-    'image:webp',
     callback
   )
 );
 
 // Create image directory
-gulp.task('image:dir', () => {
+gulp.task('image:dir', () =>
   mkdirp('dist/assets/img', (err) => {
     if (err) console.error(err);
-  });
-});
+  })
+);
 
 // Resize original images to save bandwidth & loading times
 gulp.task('image:resize', () =>
