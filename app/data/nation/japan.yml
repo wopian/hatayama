@@ -1,0 +1,17 @@
+updated: 2017-01-21T11:54+0000
+slug: japan
+name:
+  en: Japan
+  ja_jp: 日本国
+  ja_hira: にっぽん こく
+  ja_kana: ニッポン コク
+location:
+  latitude: 35.683333
+  longitude: 139.766667
+  continent:
+    - Asia
+detail:
+  other:
+    area: 145935.91
+    population: 127110047
+    density: 882.7
