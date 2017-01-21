@@ -69,7 +69,7 @@ const gulp            = require('gulp'),                            // Gulp     
           // e.g 40 - 23
           h = k - stringWidth(d + e + f + g);
           // Add hair spaces
-          for (i = 0; i < h; i++) {
+          for (i = 0; i <= h; i++) {
             j = `${j}\u200A`;
           }
           break;
