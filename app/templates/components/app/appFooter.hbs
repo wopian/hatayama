@@ -1,35 +1,39 @@
     <footer>
         <div>
             <a href='/feedback'>Feedback</a>
+            <a href='//github.com/wopian/hatayama' target='_blank'>GitHub</a>
         </div>
     </footer>
 
     <!--build:js /assets/js/app.min.js-->
-    <!--<script src="/assets/js/vendor/instantclick.min.js" data-no-instant></script>
+    <!--<script src='/assets/js/vendor/instantclick.min.js' data-no-instant></script>
     <script data-no-instant>InstantClick.init();</script>-->
-    <script src="/assets/js/vendor/jquery-2.2.0.min.js"></script>
-    <script src="/assets/js/vendor/tether.min.js"></script>
-    <script src="/assets/js/vendor/bootstrap.min.js"></script>
-    <script src="/assets/js/sidebar.js" data-no-instant></script>
-    <script src="/assets/js/time.js" data-no-instant></script>
+    <script src='/assets/js/vendor/jquery-2.2.0.min.js'></script>
+    <script src='/assets/js/vendor/tether.min.js'></script>
+    <script src='/assets/js/vendor/bootstrap.min.js'></script>
+    <script src='/assets/js/sidebar.js' data-no-instant></script>
+    <script src='/assets/js/time.js' data-no-instant></script>
     {{#ifEq header 'transparent'}}
-        <script src="/assets/js/nav.js" data-no-instant></script>
+        <script src='/assets/js/nav.js' data-no-instant></script>
     {{/ifEq}}
     <!--endbuild-->
     
     {{! Embed Google Maps on flag pages }}
     {{#if googleMaps}}
-        <script src="/assets/js/map.js" data-no-instant></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCF0qq_0eu2iw2WvUwCheypcjl6pmugNQ4&callback=initialize" data-no-instant></script>
+        <script src='/assets/js/map.js' data-no-instant></script>
+        <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCF0qq_0eu2iw2WvUwCheypcjl6pmugNQ4&callback=initialize' data-no-instant></script>
+        {{#if latitude}}
+            <script data-no-instant>
+                google.maps.event.addDomListener(
+                    window,
+                    'load',
+                    initialize({{latitude}}, {{longitude}}, {{zoom}})
+                );
+            </script>
+        {{/if}}
     {{/if}}
 
-    {{#if latitude}}
-        <script data-no-instant>
-            google.maps.event.addDomListener(window, 'load', initialize({{latitude}}, {{longitude}}, {{zoom}}));
-        </script>
-    {{/if}}
-
-    <script src="/assets/js/vendor/flickity.pkgd.min.js"></script>
-    <script src="/assets/js/flickityOptions.js"></script>
+    <script src='/assets/js/vendor/flickity.pkgd.min.js'></script>
+    <script src='/assets/js/flickityOptions.js'></script>
 </body>
 </html>

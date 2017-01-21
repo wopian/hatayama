@@ -37,11 +37,33 @@ main {
 }
 
 a {
-    color: $poppy;
+    //color: $poppy;
 }
 
 footer {
     height: 54px;
-    div { @extend .container; }
+    margin-top: 1rem;
+    box-shadow: 0 -1px 0 0 rgba($metal, .1);
+    background: rgba($metal, .05);
+
+    div {
+        @extend .container;
+        padding-top: 1rem;
+    }
+
+    a {
+        color: $metal;
+        transition: all 100ms ease-in-out;
+
+        &:not(:first-of-type) {
+            margin-left: 1rem;
+        }
+
+        &:hover {
+            color: $poppy;
+            text-decoration: none;
+        }
+    }
+
     span { @extend .text-muted; }
 }

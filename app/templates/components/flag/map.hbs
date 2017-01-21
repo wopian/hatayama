@@ -7,11 +7,17 @@
             <h2>{{name.en}}</h2>
             {{#with location}}
                 {{#if position}}
-                    <a>{{position}}</a>
+                    <a class='location'>{{position}}</a>
                 {{/if}}
                 {{#each nation}}
-                    <a>{{this}}</a>
+                    <a class='location'>{{this}}</a>
                 {{/each}}
+                {{#each continent}}
+                    <a class='location'>{{this}}</a>
+                {{/each}}
+                <div class='edit'>
+                    <a href='//github.com/wopian/hatayama/blob/master/app/data/{{#if nation}}prefecture{{/if}}{{#if continent}}nation{{/if}}/{{../slug}}.yml' target='_blank'>Edit</a>
+                </div>
             {{/with}}
         </div>
     </div>

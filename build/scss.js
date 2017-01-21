@@ -16,7 +16,5 @@ gulp.task('scss', () =>
       cascade:  false
     }))
     .pipe(gulp.dest('dist/assets/css'))
-    .pipe(browserSync.reload({
-      stream: true
-    }))
+    .pipe(browserSync.reload({ stream: true }))
 );

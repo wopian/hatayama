@@ -6,12 +6,13 @@ name:
   ja_hira: にっぽん こく
   ja_kana: ニッポン コク
 location:
-  latitude: 35.683333
+  latitude: 38
   longitude: 139.766667
+  zoom: 5
   continent:
     - Asia
 detail:
   other:
-    area: 145935.91
+    area: 145935
     population: 127110047
-    density: 882.7
+    density: 882

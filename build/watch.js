@@ -46,7 +46,7 @@ gulp.task('watch', callback =>
 
 // Watch for changes and run required tasks
 gulp.task('watch:files', () => {
-  gulp.watch('app/**/*.scss', ['scss', 'autoprefixer']);
+  gulp.watch('app/**/*.scss', ['scss']);
   gulp.watch('app/**/*.yml', ['watch:rebuild']);
   gulp.watch('app/**/*.hbs', ['hbs']);
   gulp.watch('app/**/*.js', ['javascript'], browserSync.reload);

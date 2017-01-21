@@ -21,12 +21,17 @@
         width: 100%;
     }
 
+    .container {
+        position: relative;
+        height: 0;
+    }
+
     .cover-info {
         color: $white;
         height: 100px;
         padding-left: 295px;
         position: absolute;
-        top: 300px;
+        top: -6.5rem;
         width: 100%;
         z-index: 400;
 
@@ -41,7 +46,7 @@
             }
         }
 
-        a {
+        .location {
             border: 1px solid rgba($white, .2);
             border-radius: 3px;
             color: rgba($white, .8);
@@ -58,6 +63,30 @@
 
             &:last-of-type {
                 margin-right: 0;
+            }
+        }
+
+        .edit {
+            position: relative;
+
+            a {
+                backdrop-filter: blur(2px);
+                border: 1px solid rgba($white, .2);
+                //background: rgba($metal, .05);
+                border-radius: 3px;
+                bottom: -.2rem;
+                color: rgba($white, .6);
+                font-family: Open Sans;
+                font-size: .65rem;
+                padding: .25rem 1rem;
+                position: absolute;
+                right: 0;
+                text-decoration: none;
+
+                &:hover {
+                    background: rgba($white, .05);
+                    text-decoration: none;
+                }
             }
         }
     }
