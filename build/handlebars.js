@@ -69,10 +69,9 @@ const gulp            = require('gulp'),                            // Gulp     
           // e.g 40 - 23
           h = k - stringWidth(d + e + f + g);
           // Add hair spaces
-          for (i = 0; i < h; i++) {
+          for (i = 0; i <= h; i++) {
             j = `${j}\u200A`;
           }
-          //j = `${j}`;
           break;
         }
         // 'Generate' layout
@@ -108,13 +107,14 @@ gulp.task('hbs', callback =>
   )
 );
 
+// Import data from generated JSON
 gulp.task('hbs:read', () => {
   hbs[0] = JSON.parse(fs.readFileSync('./tmp/data/index.json', 'utf8'));
   hbs[1] = JSON.parse(fs.readFileSync('./tmp/data/prefecture.json', 'utf8'));
   hbs[2] = JSON.parse(fs.readFileSync('./tmp/data/nation.json', 'utf8'));
-  return true;
 });
 
+// Generate pages
 gulp.task('hbs:generate', () => {
   const hbsTotal = hbs.length;
   hbs.forEach((item, i) => {
@@ -177,7 +177,6 @@ gulp.task('hbs:generate', () => {
     .pipe(browserSync.reload({
       stream: true
     }));
-  return true;
 });
 
 gulp.task('hbs:omitted', () => {
@@ -190,5 +189,4 @@ gulp.task('hbs:omitted', () => {
     console.log('Generation finished with error code 1');
     return process.exit(1);
   }
-  return true;
 });
