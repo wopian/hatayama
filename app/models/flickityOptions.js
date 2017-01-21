@@ -1,9 +1,11 @@
+// Options for flickity used on index
 $('.flickity').flickity({
-  // options
   cellSelector: '.flickity-cell',
   cellAlign:    'left',
   contain:      true,
-  groupCells:   true,
+  // Amount of cells to move by with keyboard/next button
+  groupCells:   2,
+  // Only load flag of next 4 cells
   lazyLoad:     4,
   freeScroll:   true,
   pageDots:     false

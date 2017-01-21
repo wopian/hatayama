@@ -1,8 +1,8 @@
 // Generate human-readable time stamps
-function humanTime (updated) {
+// eslint-disable-next-line no-unused-vars
+const humanTime = (updated) => {
   // TODO: Redesign object to allow proper i18n localisation
-  const locales = {
-          prefix:    '',
+  const locale = {
           sufix:     'ago',
           separator: ' ',
           seconds:   'moments',
@@ -27,21 +27,21 @@ function humanTime (updated) {
           minute: seconds / 60
         };
   let checkIfSingular,
-      output = locales.prefix + locales.separator,
-      elapsed = locales.seconds;
+      output = locale.separator,
+      elapsed = locale.seconds;
 
   for (const key in period) {
     checkIfSingular = Math.floor(period[key]);
     if (checkIfSingular > 1) {
-      elapsed = locales[`${key}s`];
+      elapsed = locale[`${key}s`];
       break;
     } else if (checkIfSingular === 1) {
-      elapsed = locales[key];
+      elapsed = locale[key];
       break;
     }
   }
 
   elapsed = elapsed.replace(/%d/i, checkIfSingular);
-  output += elapsed + locales.separator + locales.sufix;
+  output += elapsed + locale.separator + locale.sufix;
   return output.trim();
-}
+};

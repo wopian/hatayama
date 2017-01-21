@@ -197,7 +197,6 @@ gulp.task('hbs:generate', () => {
   const hbsTotal = hbs.length;
   hbs.forEach((item, i) => {
     // Index Page
-    // TODO: Properly implement Index page
     if (item.index) {
       // Build log
       _log(1, 'index');
@@ -211,8 +210,6 @@ gulp.task('hbs:generate', () => {
             stream: true
           }));
     // Prefecture Page
-    // TODO: Support nation, city etc.
-    //       ^ May require changing design of YAML sources
     } else if (i === 1) {
       _log(1, 'prefecture', hbsTotal, i);
       const itemTotal = Object.keys(item).length;
@@ -294,7 +291,7 @@ gulp.task('hbs:omitted', () => {
     const flag = `'${gutil.colors.cyan(item[0])}'`;
     let prefix = gutil.colors.yellow(' Omitted'),
         missing = gutil.colors.black(item[1]),
-        width = 39,
+        width = 37,
         space = '';
     // Check if omission is critical (1)
     if (item[2] === 1) {
