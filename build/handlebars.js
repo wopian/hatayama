@@ -67,9 +67,9 @@ const gulp            = require('gulp'),                            // Gulp     
           g = `${gutil.colors.magenta(c)}`;
           // Find width needed to align progress
           // e.g 40 - 23
-          h = k - stringWidth(d + e + f + g);
+          h = k - (stringWidth(d + e + f + g) + 1);
           // Add hair spaces
-          for (i = 0; i <= h; i++) {
+          for (i = 0; i < h; i++) {
             j = `${j}\u200A`;
           }
           break;
@@ -135,22 +135,54 @@ gulp.task('hbs:generate', () => {
     // Prefecture Page
     // TODO: Support nation, city etc.
     //       ^ May require changing design of YAML sources
-    } else {
+    } else if (i === 1) {
       _log(1, 'prefecture', hbsTotal, i);
       const itemTotal = Object.keys(item).length;
       Object.values(item).forEach((flag, j) => {
         _log(2, flag.slug, itemTotal, j);
 
         // Log missing information
-        /*
-        if (typeof flag.location === 'undefined') {
-          hbsOmitted.push([flag.slug, 'no location']);
+        if (typeof flag.name === 'undefined') {
+          hbsOmitted.push([flag.slug, 'name', 1]);
+        } else if (typeof flag.name.en === 'undefined') {
+          hbsOmitted.push([flag.slug, 'name.en', 1]);
+        } else if (typeof flag.location === 'undefined') {
+          hbsOmitted.push([flag.slug, 'location', 1]);
+        } else if (typeof flag.location.latitude === 'undefined') {
+          hbsOmitted.push([flag.slug, 'location.latitude', 0]);
+        } else if (typeof flag.location.longitude === 'undefined') {
+          hbsOmitted.push([flag.slug, 'location.longitude', 0]);
+        } else if (typeof flag.location.zoom === 'undefined') {
+          hbsOmitted.push([flag.slug, 'location.zoom', 0]);
         } else if (typeof flag.location.position === 'undefined') {
-          hbsOmitted.push([flag.slug, 'no location->position']);
+          hbsOmitted.push([flag.slug, 'location.position', 0]);
         } else if (typeof flag.location.nation === 'undefined') {
-          hbsOmitted.push([flag.slug, 'no location->nation']);
+          hbsOmitted.push([flag.slug, 'location.nation', 1]);
+        } else if (typeof flag.detail === 'undefined') {
+          hbsOmitted.push([flag.slug, 'detail', 0]);
+        } else if (typeof flag.detail.flag === 'undefined') {
+          hbsOmitted.push([flag.slug, 'detail.flag', 0]);
+        } else if (typeof flag.detail.flag.adopted === 'undefined') {
+          hbsOmitted.push([flag.slug, 'detail.flag.adopted', 0]);
+        } else if (typeof flag.detail.flag.ratio === 'undefined') {
+          hbsOmitted.push([flag.slug, 'detail.flag.ratio', 0]);
+        } else if (typeof flag.detail.flag.designer === 'undefined') {
+          hbsOmitted.push([flag.slug, 'detail.flag.designer', 0]);
+        } else if (typeof flag.detail.other === 'undefined') {
+          hbsOmitted.push([flag.slug, 'detail.other', 0]);
+        } else if (typeof flag.detail.other.area === 'undefined') {
+          hbsOmitted.push([flag.slug, 'detail.other.area', 0]);
+        } else if (typeof flag.detail.other.population === 'undefined') {
+          hbsOmitted.push([flag.slug, 'detail.other.population', 0]);
+        } else if (typeof flag.detail.other.density === 'undefined') {
+          hbsOmitted.push([flag.slug, 'detail.other.density', 0]);
+        } else if (typeof flag.symbolism === 'undefined') {
+          hbsOmitted.push([flag.slug, 'symbolism', 0]);
+        } else if (typeof flag.about === 'undefined') {
+          hbsOmitted.push([flag.slug, 'about', 0]);
+        } else if (typeof flag.updated === 'undefined') {
+          hbsOmitted.push([flag.slug, 'updated', 1]);
         }
-        */
 
         // Generate HTML
         gulp.src('app/templates/flag.hbs')
@@ -161,15 +193,77 @@ gulp.task('hbs:generate', () => {
               stream: true
             }));
       });
+    } else if (i === 2) {
+      _log(1, 'nation', hbsTotal, i);
+      const itemTotal = Object.keys(item).length;
+      Object.values(item).forEach((flag, j) => {
+        _log(2, flag.slug, itemTotal, j);
+
+        // Log missing information
+        if (typeof flag.name === 'undefined') {
+          hbsOmitted.push([flag.slug, 'name', 1]);
+        } else if (typeof flag.name.en === 'undefined') {
+          hbsOmitted.push([flag.slug, 'name.en', 1]);
+        } else if (typeof flag.location === 'undefined') {
+          hbsOmitted.push([flag.slug, 'location', 1]);
+        } else if (typeof flag.location.latitude === 'undefined') {
+          hbsOmitted.push([flag.slug, 'location.latitude', 0]);
+        } else if (typeof flag.location.longitude === 'undefined') {
+          hbsOmitted.push([flag.slug, 'location.longitude', 0]);
+        } else if (typeof flag.location.zoom === 'undefined') {
+          hbsOmitted.push([flag.slug, 'location.zoom', 0]);
+        } else if (typeof flag.location.continent === 'undefined') {
+          hbsOmitted.push([flag.slug, 'location.continent', 1]);
+        } else if (typeof flag.detail === 'undefined') {
+          hbsOmitted.push([flag.slug, 'detail', 0]);
+        } else if (typeof flag.detail.flag === 'undefined') {
+          hbsOmitted.push([flag.slug, 'detail.flag', 0]);
+        } else if (typeof flag.detail.flag.adopted === 'undefined') {
+          hbsOmitted.push([flag.slug, 'detail.flag.adopted', 0]);
+        } else if (typeof flag.detail.flag.ratio === 'undefined') {
+          hbsOmitted.push([flag.slug, 'detail.flag.ratio', 0]);
+        } else if (typeof flag.detail.flag.designer === 'undefined') {
+          hbsOmitted.push([flag.slug, 'detail.flag.designer', 0]);
+        } else if (typeof flag.detail.other === 'undefined') {
+          hbsOmitted.push([flag.slug, 'detail.other', 0]);
+        } else if (typeof flag.detail.other.area === 'undefined') {
+          hbsOmitted.push([flag.slug, 'detail.other.area', 0]);
+        } else if (typeof flag.detail.other.population === 'undefined') {
+          hbsOmitted.push([flag.slug, 'detail.other.population', 0]);
+        } else if (typeof flag.detail.other.density === 'undefined') {
+          hbsOmitted.push([flag.slug, 'detail.other.density', 0]);
+        } else if (typeof flag.symbolism === 'undefined') {
+          hbsOmitted.push([flag.slug, 'symbolism', 0]);
+        } else if (typeof flag.about === 'undefined') {
+          hbsOmitted.push([flag.slug, 'about', 0]);
+        } else if (typeof flag.updated === 'undefined') {
+          hbsOmitted.push([flag.slug, 'updated', 1]);
+        }
+
+        // Generate HTML
+        gulp.src('app/templates/flag.hbs')
+            .pipe(handlebars(flag, options))
+            .pipe(rename(`${flag.slug}/index.html`))
+            .pipe(gulp.dest('dist/nation'))
+            .pipe(browserSync.reload({
+              stream: true
+            }));
+      });
     }
   });
+
+  // Generate prefecture list
   gulp.src('app/templates/prefecture.hbs')
-    .pipe(handlebars(JSON.parse(fs.readFileSync('./tmp/data/list/prefecture.json', 'utf8')), options))
+    .pipe(handlebars(
+      JSON.parse(fs.readFileSync('./tmp/data/list/prefecture.json', 'utf8')),
+      options))
     .pipe(rename('index.html'))
     .pipe(gulp.dest('dist/prefecture'))
     .pipe(browserSync.reload({
       stream: true
     }));
+
+  // Generate feedback
   gulp.src('app/templates/feedback.hbs')
     .pipe(handlebars('', options))
     .pipe(rename('index.html'))
@@ -179,14 +273,26 @@ gulp.task('hbs:generate', () => {
     }));
 });
 
+// Output missing information
 gulp.task('hbs:omitted', () => {
+  let critical = false;
+
   hbsOmitted.forEach((item) => {
-    gutil.log(` Omitted '${item[0]}' ${item[1]}`);
+    const message = `'${item[0]}' missing ${item[1]}`;
+    if (item[2] === 1) {
+      gutil.log(`${gutil.colors.red('Critical')} ${message}`);
+      critical = true;
+    } else {
+      gutil.log(`${gutil.colors.yellow(' Omitted')} ${message}`);
+    }
   });
 
   // Fail the travis build if there were any omissions
-  if (hbsOmitted.length > 0) {
-    console.log('Generation finished with error code 1');
+  if (hbsOmitted.length > 0 && critical === true) {
+    console.log(
+      'Critical information is missing from data sources\n' +
+      'See critical errors in hbs:omitted for details'
+    );
     return process.exit(1);
   }
 });
