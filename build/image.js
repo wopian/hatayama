@@ -21,9 +21,6 @@ gulp.task('image:dir', () => {
   mkdirp('dist/assets/img', (err) => {
     if (err) console.error(err);
   });
-  mkdirp('tmp/img', (err) => {
-    if (err) console.error(err);
-  });
 });
 
 // Resize original images to save bandwidth & loading times
@@ -36,11 +33,11 @@ gulp.task('image:resize', () =>
       jimp.read(`app/images/${file}`).then(img =>
         // Resize original image
         img.resize(400, jimp.AUTO)
-          .write(`tmp/img/${file.replace(/\.[^/.]+$/, '')}-large.png`)
+          .write(`dist/assets/img/${file.replace(/\.[^/.]+$/, '')}-large.png`)
           .resize(300, jimp.AUTO)
-          .write(`tmp/img/${file.replace(/\.[^/.]+$/, '')}-medium.png`)
+          .write(`dist/assets/img/${file.replace(/\.[^/.]+$/, '')}-medium.png`)
           .resize(100, jimp.AUTO)
-          .write(`tmp/img/${file.replace(/\.[^/.]+$/, '')}-small.png`)
+          .write(`dist/assets/img/${file.replace(/\.[^/.]+$/, '')}-small.png`)
       ).catch(e =>
         console.error(e)
       )
@@ -48,15 +45,9 @@ gulp.task('image:resize', () =>
   )
 );
 
-gulp.task('image:webp', () =>
-  gulp.src('dist/assets/img/*.png')
-    .pipe(webp({ quality: 60 }))
-    .pipe(gulp.dest('dist/assets/img'))
-);
-
 // Minify resized images
 gulp.task('image:min', () =>
-  gulp.src('tmp/img/*.png')
+  gulp.src('dist/assets/img/*.png')
     .pipe(imagemin())
     .pipe(gulp.dest('dist/assets/img'))
 );
