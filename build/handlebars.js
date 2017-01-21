@@ -281,7 +281,7 @@ gulp.task('hbs:omitted', () => {
   hbsOmitted.forEach((item) => {
     // Compose message
     const flag = ` '${gutil.colors.cyan(item[0])}'`,
-          missing = `missing ${item[1]}`;
+          missing = gutil.colors.black(`missing ${item[1]}`);
     let prefix = gutil.colors.yellow(' Omitted'),
         space = '';
     // Check if omission is critical (1)
@@ -292,7 +292,7 @@ gulp.task('hbs:omitted', () => {
       critical = true;
     }
     // Align missing information column
-    const width = 37 - stringWidth(prefix + flag);
+    const width = 38 - stringWidth(prefix + flag);
     for (let i = 0; i < width; i++) {
       space = `${space}\u200A`;
     }
