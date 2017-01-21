@@ -4,11 +4,13 @@
     <h2>Prefectures</h2>
     {{#each prefecture}}
         <div class='row'>
+            {{! Iterate over each flag }}
             {{#each this}}
                 <div class='col-lg-4 col-sm-6'>
                     <a href='/prefecture/{{slug}}'>
-                            <img class='flag {{#ifNotEq detail.flag.ratio '3:5'}}flag-scale{{/ifNotEq}}'
-                                 src='/assets/img/{{slug}}-large.png'>
+                        {{! Apply .flag-scale if not 3:5 flag }}
+                        <img class='flag {{#ifNotEq detail.flag.ratio '3:5'}}flag-scale{{/ifNotEq}}'
+                             src='/assets/img/{{slug}}-large.png'>
                         <p>{{name.en}}</p>
                     </a>
                 </div>
