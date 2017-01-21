@@ -96,6 +96,84 @@ const gulp            = require('gulp'),                            // Gulp     
         }
         // Output string
         return gutil.log(`${d}${e}\'${f}\'${j}${g}`);
+      },
+      // Log missing information
+      omissions = (flag, type) => {
+        // Name
+        if (typeof flag.name === 'undefined') {
+          hbsOmitted.push([flag.slug, 'name', 1]);
+        } else if (typeof flag.name.en === 'undefined') {
+          hbsOmitted.push([flag.slug, 'name.en', 1]);
+        }
+        // Location
+        if (typeof flag.location === 'undefined') {
+          hbsOmitted.push([flag.slug, 'location', 1]);
+        } else {
+          if (typeof flag.location.latitude === 'undefined') {
+            hbsOmitted.push([flag.slug, 'location.latitude', 0]);
+          }
+          if (typeof flag.location.longitude === 'undefined') {
+            hbsOmitted.push([flag.slug, 'location.longitude', 0]);
+          }
+          if (typeof flag.location.zoom === 'undefined') {
+            hbsOmitted.push([flag.slug, 'location.zoom', 0]);
+          }
+          if (typeof flag.location.position === 'undefined' &&
+        type === 'prefecture') {
+            hbsOmitted.push([flag.slug, 'location.position', 0]);
+          }
+          if (typeof flag.location.nation === 'undefined' &&
+        type === 'prefecture') {
+            hbsOmitted.push([flag.slug, 'location.nation', 1]);
+          }
+          if (typeof flag.location.continent === 'undefined' &&
+        type === 'nation') {
+            hbsOmitted.push([flag.slug, 'location.continent', 1]);
+          }
+        }
+        // Detail
+        if (typeof flag.detail === 'undefined') {
+          hbsOmitted.push([flag.slug, 'detail', 0]);
+        } else {
+          if (typeof flag.detail.flag === 'undefined') {
+            hbsOmitted.push([flag.slug, 'detail.flag', 0]);
+          } else {
+            if (typeof flag.detail.flag.adopted === 'undefined') {
+              hbsOmitted.push([flag.slug, 'detail.flag.adopted', 0]);
+            }
+            if (typeof flag.detail.flag.ratio === 'undefined') {
+              hbsOmitted.push([flag.slug, 'detail.flag.ratio', 0]);
+            }
+            if (typeof flag.detail.flag.designer === 'undefined') {
+              hbsOmitted.push([flag.slug, 'detail.flag.designer', 0]);
+            }
+          }
+          if (typeof flag.detail.other === 'undefined') {
+            hbsOmitted.push([flag.slug, 'detail.other', 0]);
+          } else {
+            if (typeof flag.detail.other.area === 'undefined') {
+              hbsOmitted.push([flag.slug, 'detail.other.area', 0]);
+            }
+            if (typeof flag.detail.other.population === 'undefined') {
+              hbsOmitted.push([flag.slug, 'detail.other.population', 0]);
+            }
+            if (typeof flag.detail.other.density === 'undefined') {
+              hbsOmitted.push([flag.slug, 'detail.other.density', 0]);
+            }
+          }
+        }
+        // Symbolism
+        if (typeof flag.symbolism === 'undefined') {
+          hbsOmitted.push([flag.slug, 'symbolism', 0]);
+        }
+        // About
+        if (typeof flag.about === 'undefined') {
+          hbsOmitted.push([flag.slug, 'about', 0]);
+        }
+        // Updated
+        if (typeof flag.updated === 'undefined') {
+          hbsOmitted.push([flag.slug, 'updated', 1]);
+        }
       };
 
 gulp.task('hbs', callback =>
@@ -142,72 +220,7 @@ gulp.task('hbs:generate', () => {
         _log(2, flag.slug, itemTotal, j);
 
         // Log missing information
-        // Name
-        if (typeof flag.name === 'undefined') {
-          hbsOmitted.push([flag.slug, 'name', 1]);
-        } else if (typeof flag.name.en === 'undefined') {
-          hbsOmitted.push([flag.slug, 'name.en', 1]);
-        }
-        // Location
-        if (typeof flag.location === 'undefined') {
-          hbsOmitted.push([flag.slug, 'location', 1]);
-        } else {
-          if (typeof flag.location.latitude === 'undefined') {
-            hbsOmitted.push([flag.slug, 'location.latitude', 0]);
-          }
-          if (typeof flag.location.longitude === 'undefined') {
-            hbsOmitted.push([flag.slug, 'location.longitude', 0]);
-          }
-          if (typeof flag.location.zoom === 'undefined') {
-            hbsOmitted.push([flag.slug, 'location.zoom', 0]);
-          }
-          if (typeof flag.location.position === 'undefined') {
-            hbsOmitted.push([flag.slug, 'location.position', 0]);
-          }
-          if (typeof flag.location.nation === 'undefined') {
-            hbsOmitted.push([flag.slug, 'location.nation', 1]);
-          }
-        }
-        // Detail
-        if (typeof flag.detail === 'undefined') {
-          hbsOmitted.push([flag.slug, 'detail', 0]);
-        } else {
-          if (typeof flag.detail.flag === 'undefined') {
-            hbsOmitted.push([flag.slug, 'detail.flag', 0]);
-          } else {
-            if (typeof flag.detail.flag.adopted === 'undefined') {
-              hbsOmitted.push([flag.slug, 'detail.flag.adopted', 0]);
-            }
-            if (typeof flag.detail.flag.ratio === 'undefined') {
-              hbsOmitted.push([flag.slug, 'detail.flag.ratio', 0]);
-            }
-            if (typeof flag.detail.flag.designer === 'undefined') {
-              hbsOmitted.push([flag.slug, 'detail.flag.designer', 0]);
-            }
-          }
-          if (typeof flag.detail.other === 'undefined') {
-            hbsOmitted.push([flag.slug, 'detail.other', 0]);
-          } else {
-            if (typeof flag.detail.other.area === 'undefined') {
-              hbsOmitted.push([flag.slug, 'detail.other.area', 0]);
-            }
-            if (typeof flag.detail.other.population === 'undefined') {
-              hbsOmitted.push([flag.slug, 'detail.other.population', 0]);
-            }
-            if (typeof flag.detail.other.density === 'undefined') {
-              hbsOmitted.push([flag.slug, 'detail.other.density', 0]);
-            }
-          }
-        }
-        if (typeof flag.symbolism === 'undefined') {
-          hbsOmitted.push([flag.slug, 'symbolism', 0]);
-        }
-        if (typeof flag.about === 'undefined') {
-          hbsOmitted.push([flag.slug, 'about', 0]);
-        }
-        if (typeof flag.updated === 'undefined') {
-          hbsOmitted.push([flag.slug, 'updated', 1]);
-        }
+        omissions(flag, 'prefecture');
 
         // Generate HTML
         gulp.src('app/templates/flag.hbs')
@@ -225,69 +238,7 @@ gulp.task('hbs:generate', () => {
         _log(2, flag.slug, itemTotal, j);
 
         // Log missing information
-        // Name
-        if (typeof flag.name === 'undefined') {
-          hbsOmitted.push([flag.slug, 'name', 1]);
-        } else if (typeof flag.name.en === 'undefined') {
-          hbsOmitted.push([flag.slug, 'name.en', 1]);
-        }
-        // Location
-        if (typeof flag.location === 'undefined') {
-          hbsOmitted.push([flag.slug, 'location', 1]);
-        } else {
-          if (typeof flag.location.latitude === 'undefined') {
-            hbsOmitted.push([flag.slug, 'location.latitude', 0]);
-          }
-          if (typeof flag.location.longitude === 'undefined') {
-            hbsOmitted.push([flag.slug, 'location.longitude', 0]);
-          }
-          if (typeof flag.location.zoom === 'undefined') {
-            hbsOmitted.push([flag.slug, 'location.zoom', 0]);
-          }
-          if (typeof flag.location.continent === 'undefined') {
-            hbsOmitted.push([flag.slug, 'location.continent', 1]);
-          }
-        }
-        // Detail
-        if (typeof flag.detail === 'undefined') {
-          hbsOmitted.push([flag.slug, 'detail', 0]);
-        } else {
-          if (typeof flag.detail.flag === 'undefined') {
-            hbsOmitted.push([flag.slug, 'detail.flag', 0]);
-          } else {
-            if (typeof flag.detail.flag.adopted === 'undefined') {
-              hbsOmitted.push([flag.slug, 'detail.flag.adopted', 0]);
-            }
-            if (typeof flag.detail.flag.ratio === 'undefined') {
-              hbsOmitted.push([flag.slug, 'detail.flag.ratio', 0]);
-            }
-            if (typeof flag.detail.flag.designer === 'undefined') {
-              hbsOmitted.push([flag.slug, 'detail.flag.designer', 0]);
-            }
-          }
-          if (typeof flag.detail.other === 'undefined') {
-            hbsOmitted.push([flag.slug, 'detail.other', 0]);
-          } else {
-            if (typeof flag.detail.other.area === 'undefined') {
-              hbsOmitted.push([flag.slug, 'detail.other.area', 0]);
-            }
-            if (typeof flag.detail.other.population === 'undefined') {
-              hbsOmitted.push([flag.slug, 'detail.other.population', 0]);
-            }
-            if (typeof flag.detail.other.density === 'undefined') {
-              hbsOmitted.push([flag.slug, 'detail.other.density', 0]);
-            }
-          }
-        }
-        if (typeof flag.symbolism === 'undefined') {
-          hbsOmitted.push([flag.slug, 'symbolism', 0]);
-        }
-        if (typeof flag.about === 'undefined') {
-          hbsOmitted.push([flag.slug, 'about', 0]);
-        }
-        if (typeof flag.updated === 'undefined') {
-          hbsOmitted.push([flag.slug, 'updated', 1]);
-        }
+        omissions(flag, 'nation');
 
         // Generate HTML
         gulp.src('app/templates/flag.hbs')
