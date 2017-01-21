@@ -32,6 +32,8 @@ gulp.task('watch:rebuild', callback =>
   )
 );
 
+gulp.task('w', ['watch']);
+
 // Build, launch local webserver and watch for changes
 gulp.task('watch', callback =>
   runSequence(

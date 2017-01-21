@@ -14,8 +14,8 @@ matrix:
     fast_finish: true
 
 before_install:
-    - chmod +x "./travis/addDailyTag.sh"
-    - "./travis/addDailyTag.sh"
+#   - chmod +x "./travis/addDailyTag.sh"
+#   - "./travis/addDailyTag.sh"
     - npm update && npm prune
     - gem update bundler
 
