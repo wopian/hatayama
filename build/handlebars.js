@@ -281,7 +281,7 @@ gulp.task('hbs:omitted', () => {
   hbsOmitted.forEach((item) => {
     // Compose message
     const flag = ` '${gutil.colors.cyan(item[0])}'`,
-          missing = gutil.colors.black(`missing ${item[1]}`);
+          missing = gutil.colors.black(`${item[1]}`);
     let prefix = gutil.colors.yellow(' Omitted'),
         space = '';
     // Check if omission is critical (1)
