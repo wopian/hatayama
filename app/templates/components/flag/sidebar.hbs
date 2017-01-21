@@ -2,7 +2,10 @@
 <aside>
     <div>
         {{! Flag }}
-        <img src="/assets/img/{{slug}}-large.png">
+        <picture>
+            <source srcset='/assets/img/{{slug}}-large.webp' type='image/webp'>
+            <img src='/assets/img/{{slug}}-large.png'>
+        </picture>
         {{! Details }}
         {{#with detail}}
             {{! Flag details }}
