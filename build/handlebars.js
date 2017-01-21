@@ -280,24 +280,26 @@ gulp.task('hbs:omitted', () => {
   // Loop through each omission
   hbsOmitted.forEach((item) => {
     // Compose message
-    const flag = ` '${gutil.colors.cyan(item[0])}'`,
-          missing = gutil.colors.black(`${item[1]}`);
+    const flag = `'${gutil.colors.cyan(item[0])}'`;
     let prefix = gutil.colors.yellow(' Omitted'),
+        missing = gutil.colors.black(item[1]),
+        width = 39,
         space = '';
     // Check if omission is critical (1)
     if (item[2] === 1) {
       // Set prefix to Critical
       prefix = gutil.colors.red('Critical');
+      missing = gutil.colors.red(item[1]);
       // Toggle critical to true
       critical = true;
     }
     // Align missing information column
-    const width = 38 - stringWidth(prefix + flag);
+    width -= stringWidth(prefix + flag);
     for (let i = 0; i < width; i++) {
-      space = `${space}\u200A`;
+      space += '\u200A';
     }
     // Output message
-    gutil.log(`${prefix}${flag}${space}${missing}`);
+    gutil.log(`${prefix} ${flag}${space}${missing}`);
   });
 
   // Fail Travis and CircleCI builds if there was a critical error
