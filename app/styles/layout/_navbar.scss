@@ -9,6 +9,7 @@ header {
         transition: all 200ms ease-in-out;
     }
 
+    // Make header transparent and links white
     .transparent {
         background: transparent;
         box-shadow: none;
@@ -23,6 +24,7 @@ header {
         }
     }
 
+    // Standard header behaviour
     &:not(.transparent),
     &:hover {
         background: $white;
@@ -30,10 +32,9 @@ header {
         transition: all 100ms ease-in-out;
 
         h1,
-        //h1:hover,
         a {
             color: $metal;
-            transition: all 100ms ease-in-out;
+            transition: color 100ms ease-in-out;
         }
 
         h1 span,

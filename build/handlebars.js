@@ -34,6 +34,11 @@ const gulp            = require('gulp'),                            // Gulp     
           // Formats 1000 into 1,000
           formatNumber(a) {
             return String(a).replace(/(.)(?=(\d{3})+$)/g, '$1,');
+          },
+          // {{#each (limit a 10)}}
+          // Limits each loop to specified number
+          limit(a, limit) {
+            return a.slice(0, limit);
           }
         }
       },

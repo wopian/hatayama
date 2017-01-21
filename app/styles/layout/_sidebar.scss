@@ -6,6 +6,7 @@ aside {
     width: 295px;
 
     div {
+        // Push flag up over map
         position: relative;
         right: 15px;
         top: -99px;
@@ -16,10 +17,11 @@ aside {
             padding-bottom: 5px;
             text-align: right;
 
-            &:not(:nth-of-type(4n)) {
+            &:not(.sidebar-header) {
                 border-bottom: 1px dashed lighten($metal, 85);
             }
 
+            // Left align labels
             span {
                 float: left;
                 text-align: left;
@@ -46,6 +48,7 @@ aside {
     }
 
     &.shrink {
+        // Sticky aside when scrolled below 'aside { top: value }'
         margin-left: calc(295px / 5);
         position: sticky;
         transition: all 100ms;

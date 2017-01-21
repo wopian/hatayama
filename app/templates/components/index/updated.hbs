@@ -1,11 +1,14 @@
 <h2>Recently Updated</h2>
-    <div class='flickity updated'>
-    {{#each updated}}
+<div class='flickity updated'>
+    {{! Iterate over all recently Updated flags }}
+    {{#each (limit updated 20)}}
         <div class='flickity-cell {{slug}}'>
             <a href='/prefecture/{{slug}}'>
+                {{! Flag }}
                 <img data-flickity-lazyload='/assets/img/{{slug}}-large.png'>
                 {{name.en}}
             </a>
+            {{! Last updated }}
             <time datetime='{{updated}}'>
                 <script type='text/javascript' defer='defer'>
                     $(function() {

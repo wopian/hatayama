@@ -1,23 +1,23 @@
 @font-face {
     font-family: 'Noto Sans';
-    src: local('Noto Sans'), local('Noto Sans Regular'), local('NotoSans'),
-        url('/fonts/noto-sans/regular.eot?#iefix') format('embedded-opentype'),
-        url('/fonts/noto-sans/regular.woff2') format('woff2'),
-        url('/fonts/noto-sans/regular.woff') format('woff'),
-        url('/fonts/noto-sans/regular.ttf') format('truetype');
-    font-weight: normal;
     font-style: normal;
+    font-weight: normal;
+    src: local('Noto Sans'), local('Noto Sans Regular'), local('NotoSans'),
+         url('/fonts/noto-sans/regular.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/noto-sans/regular.woff2') format('woff2'),
+         url('/fonts/noto-sans/regular.woff') format('woff'),
+         url('/fonts/noto-sans/regular.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Noto Sans Bold';
-    src: local('Noto Sans'), local('Noto Sans Bold'), local('NotoSans-Bold'),
-        url('/fonts/noto-sans/bold.eot?#iefix') format('embedded-opentype'),
-        url('/fonts/noto-sans/bold.woff2') format('woff2'),
-        url('/fonts/noto-sans/bold.woff') format('woff'),
-        url('/fonts/noto-sans/bold.ttf') format('truetype');
-    font-weight: bold;
     font-style: normal;
+    font-weight: bold;
+    src: local('Noto Sans'), local('Noto Sans Bold'), local('NotoSans-Bold'),
+         url('/fonts/noto-sans/bold.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/noto-sans/bold.woff2') format('woff2'),
+         url('/fonts/noto-sans/bold.woff') format('woff'),
+         url('/fonts/noto-sans/bold.ttf') format('truetype');
 }
 
 @font-face {
@@ -25,7 +25,7 @@
     font-style: normal;
     font-weight: 400;
     src: local('Noto Sans CJK JP'),
-        url('/fonts/noto-sans-jp/regular.otf') format('opentype');
+         url('/fonts/noto-sans-jp/regular.otf') format('opentype');
 }
 
 @font-face {
@@ -33,7 +33,7 @@
     font-style: normal;
     font-weight: 600;
     src: local('Noto Sans CJK JP'),
-        url('/fonts/noto-sans-jp/bold.otf') format('opentype');
+         url('/fonts/noto-sans-jp/bold.otf') format('opentype');
 }
 
 $regular: 'Noto Sans', 'NSJPR', 'Open Sans', sans-serif;

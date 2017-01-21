@@ -12,7 +12,7 @@
     }
 
     // Reduce gutter width
-    [class*="col-"] {
+    [class*='col-'] {
         padding: 0 12px;
     }
 
@@ -36,6 +36,7 @@
             width: 100%;
         }
 
+        // Set heights for proper 3:5 flag ratios
         @media (min-width: 576px) {
             .flag {
                 height: 145.8px;
@@ -60,6 +61,7 @@
             }
         }
 
+        // Show correct flag ratio on hover for non 3:5 flags
         .flag-scale {
             &:hover {
                 object-fit: contain;
@@ -70,14 +72,6 @@
             border-radius: 3px;
             box-shadow: 0 0 1px 0 rgba($metal, .25);
             width: 100%;
-        }
-
-        time {
-            @extend .clearfix;
-            color: rgba($metal, .6);
-            float: right;
-            font-size: .75rem;
-            padding-top: .3rem;
         }
     }
 }

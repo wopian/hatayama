@@ -1,11 +1,14 @@
 <h2>Japanese Flags</h2>
-    <div class='flickity japanese'>
-    {{#each japanese}}
+<div class='flickity japanese'>
+    {{! Iterate over all Japanese flags }}
+    {{#each (limit japanese 20)}}
         <div class='flickity-cell {{slug}}'>
             <a href='/prefecture/{{slug}}'>
+                {{! Flag }}
                 <img data-flickity-lazyload='/assets/img/{{slug}}-large.png'>
                 {{name.en}}
             </a>
+            {{! Last updated }}
             <time datetime='{{updated}}'>
                 <script type='text/javascript' defer='defer'>
                     $(function() {

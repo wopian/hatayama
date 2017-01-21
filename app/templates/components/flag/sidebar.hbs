@@ -1,9 +1,11 @@
 {{! Flag sidebar }}
 <aside>
     <div>
+        {{! Flag }}
         <img src="/assets/img/{{slug}}-large.png">
         {{! Details }}
         {{#with detail}}
+            {{! Flag details }}
             {{#with flag}}
                 <p class="sidebar-header">Flag Specifications</p>
                 {{#if name}}
@@ -22,6 +24,7 @@
                     <p><span>UK Design Code</span>{{UKDesignCode}}</p>
                 {{/if}}
             {{/with}}
+            {{! Other details }}
             {{#with other}}
                 <p class="sidebar-header">Prefecture Details</p>
                 {{#if area}}

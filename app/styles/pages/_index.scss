@@ -5,26 +5,20 @@
         margin-bottom: 1.25rem;
 
         &:not(:first-of-type) {
+            // Space all but the first h2
             margin-top: 1.25rem;
         }
     }
 
     .flickity {
-        //position: absolute;
-        //min-width: 100vw;
-        // width: 100%;
-
         .flickity-viewport {
             @extend .container;
+            // Let flickity cells be visible going on/off sides
             overflow: visible;
         }
 
-        // TODO: Properly align the slider with ## Recently Updated
-        .flickity-slider {
-            width: 100%;
-        }
-
         .flickity-cell {
+            // Set height and spacing
             margin-right: 1.5rem;
             max-height: 14rem;
             min-height: 14rem;
@@ -33,6 +27,7 @@
         }
 
         .flickity-prev-next-button {
+            // Style flickity buttons
             background: rgba($metal, .2);
             border-radius: 0;
             bottom: 0;
@@ -46,6 +41,7 @@
             }
 
             &.previous {
+                // Hide previous button
                 display: none;
             }
 
@@ -54,11 +50,13 @@
             }
 
             &[disabled] {
+                // Hide next button when nothing left to scroll
                 opacity: 0;
             }
 
             .arrow {
-                fill: $white;
+                // Set button arrow to white
+                fill: rgba($white, .6);
             }
         }
 

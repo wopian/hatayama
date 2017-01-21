@@ -1,4 +1,5 @@
 <section class="cover">
+    {{! Google Maps }}
     <div id="map">
     </div>
     <div class="overlay"></div>
@@ -6,15 +7,19 @@
         <div class="cover-info">
             <h2>{{name.en}}</h2>
             {{#with location}}
+                {{! Display prefecture's relative position'}}
                 {{#if position}}
                     <a class='location'>{{position}}</a>
                 {{/if}}
+                {{! Display the prefecture's parent nation }}
                 {{#each nation}}
                     <a class='location'>{{this}}</a>
                 {{/each}}
+                {{! Display the nation's parent continent }}
                 {{#each continent}}
                     <a class='location'>{{this}}</a>
                 {{/each}}
+                {{! Open data source on GitHub }}
                 <div class='edit'>
                     <a href='//github.com/wopian/hatayama/blob/master/app/data/{{#if nation}}prefecture{{/if}}{{#if continent}}nation{{/if}}/{{../slug}}.yml' target='_blank'>Edit</a>
                 </div>

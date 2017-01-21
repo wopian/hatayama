@@ -1,11 +1,14 @@
 <h2>British Flags</h2>
-    <div class='flickity british'>
-    {{#each british}}
+<div class='flickity british'>
+    {{! Iterate over all British flags }}
+    {{#each (limit british 20)}}
         <div class='flickity-cell {{slug}}'>
             <a href='/prefecture/{{slug}}'>
+                {{! Flag }}
                 <img data-flickity-lazyload='/assets/img/{{slug}}-large.png'>
                 {{name.en}}
             </a>
+            {{! Last updated }}
             <time datetime='{{updated}}'>
                 <script type='text/javascript' defer='defer'>
                     $(function() {
