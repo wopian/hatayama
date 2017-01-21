@@ -1,6 +1,6 @@
-module.exports = function(config) {
+module.exports = (config) => {
   config.set({
-    basePath:         './',
+    basePath:         '../',
     frameworks:       ['browserify', 'jasmine-jquery', 'jasmine'],
     colors:           true,
     logLevel:         config.LOG_WARN,
@@ -13,12 +13,9 @@ module.exports = function(config) {
     },
     browserify: {
       debug:     true,
-      // transform: ['brfs']
       transform: ['babelify']
     },
     coverageReporter: {
-      // type:                ['lcovonly', 'cobertura'],
-      // specify a common output directory
       dir:       'coverage/',
       reporters: [
         { type: 'lcovonly' },
@@ -36,10 +33,9 @@ module.exports = function(config) {
       'karma-babel-preprocessor',
       'karma-browserify',
       'karma-coverage'
-      // 'brfs',
     ],
     files: [
-      // Serve html fixtures
+      // Serve HTML fixtures
       { pattern: 'tests/fixtures/*.html', watched: true, included: false, served: true },
       // Dependencies
       'app/vendor/jquery-2.2.0.min.js',
@@ -52,7 +48,7 @@ module.exports = function(config) {
       'tests/helpers/fixtures.js',
       // Code to test
       'app/models/**/*.js',
-      // Test Code
+      // Test code
       'tests/spec/*_spec.*'
     ]
   });

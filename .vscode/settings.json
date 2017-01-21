@@ -13,7 +13,7 @@
     "editor.renderWhitespace": "boundary",
     "editor.renderControlCharacters": true,
     "editor.renderIndentGuides": true,
-    "editor.wordWrap": true,
+    "editor.wordWrap": false,
     "editor.tabSize": 4,
     "editor.insertSpaces": true,
     "editor.detectIndentation": true,
