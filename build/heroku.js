@@ -8,7 +8,7 @@ gulp.task('heroku:production', ['default', 'favicon']);
 gulp.task('heroku:serve', () =>
   connect.server({
     name:       'Heroku App',
-    root:       `${__dirname}/dist`,
+    root:       `${__dirname}/../dist`,
     livereload: false,
     port:       process.env.PORT || 8000
   })

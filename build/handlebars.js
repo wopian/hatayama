@@ -67,7 +67,7 @@ const gulp            = require('gulp'),                            // Gulp     
           g = `${gutil.colors.magenta(c)}`;
           // Find width needed to align progress
           // e.g 40 - 23
-          h = k - (stringWidth(d + e + f + g) + 1);
+          h = k - stringWidth(d + e + f + g);
           // Add hair spaces
           for (i = 0; i < h; i++) {
             j = `${j}\u200A`;
