@@ -277,17 +277,21 @@ gulp.task('hbs:generate', () => {
 gulp.task('hbs:omitted', () => {
   let critical = false;
 
+  // Loop through each omission
   hbsOmitted.forEach((item) => {
-    const message = `'${item[0]}' missing ${item[1]}`;
+    // Compose message
+    const message = `'${gutil.colors.cyan(item[0])}' missing ${item[1]}`;
+    // Check if omission is critical (1)
     if (item[2] === 1) {
       gutil.log(`${gutil.colors.red('Critical')} ${message}`);
+      // Toggle critical to true
       critical = true;
     } else {
       gutil.log(`${gutil.colors.yellow(' Omitted')} ${message}`);
     }
   });
 
-  // Fail the travis build if there were any omissions
+  // Fail Travis and CircleCI builds if there was a critical error
   if (hbsOmitted.length > 0 && critical === true) {
     console.log(
       'Critical information is missing from data sources\n' +
