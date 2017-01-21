@@ -3,8 +3,7 @@ const gulp            = require('gulp'),                            // Gulp
       mkdirp          = require('mkdirp'),                          // Files  -> Create Directory
       fs              = require('fs'),                              // Files  -> File System
       jimp            = require('jimp'),                            // Image  -> Resize
-      imagemin        = require('gulp-imagemin'),                   // Image  -> Minify
-      webp            = require('gulp-webp');
+      imagemin        = require('gulp-imagemin');                   // Image  -> Minify
 
 gulp.task('images', callback =>
   runSequence(
