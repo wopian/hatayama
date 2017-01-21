@@ -1,15 +1,15 @@
-const gulp            = require('gulp'),                            // Gulp                       //
-      requireDir      = require('require-dir'),
-      runSequence     = require('run-sequence');                    // Tasks  -> Queue            //
+const gulp            = require('gulp'),                            // Gulp
+      requireDir      = require('require-dir'),                     // Tasks  -> Require
+      runSequence     = require('run-sequence');                    // Tasks  -> Queue
 
+// Import tasks
 requireDir('./build');
 
-gulp.task('default', callback =>                                    // ╓╌> Build                  //
-  runSequence(                                                      // ║                          //
-    'clean:dist',                                                   // ║   Main task that builds  //
-    'json',
-    ['hbs', 'scss', 'javascript'],                            // ║    the app               //
-    'images',                                     // ║                          //
-    callback                                                        // ║                          //
-  )                                                                 // ║                          //
+gulp.task('default', callback =>
+  runSequence(
+    'clean:dist',
+    ['json', 'scss', 'javascript', 'images'],
+    'hbs',
+    callback
+  )
 );

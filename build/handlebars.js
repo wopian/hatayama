@@ -9,66 +9,94 @@ const gulp            = require('gulp'),                            // Gulp     
       handlebars      = require('gulp-compile-handlebars'),         // HBS    -> HTML             //
       hbs             = [],                                         // HBS    -> Data             //
       hbsOmitted      = [],                                         // HBS   -> Omitted info      //
-      options         = {                                           // HBS    -> Options          //
-        ignorePartials: true,                                       //                            //
-        batch:          ['./app/templates/components'],             // HBS    -> Partials         //
-        helpers:        {                                           // HBS    -> Helpers:         //
-          if_eq(a, b, opts) {                                       // ╓╌> {{#if_eq a 'b'}}       //
-            if (a === b) {                                          // ║   Check if both values   //
-              return opts.fn(this);                                 // ║    are equal             //
-            }                                                       // ║                          //
-            return opts.inverse(this);                              // ║                          //
-          },                                                        // ╨                          //
-          if_not_eq(a, b, opts) {
+      // Handlebars options
+      options         = {
+        ignorePartials: true,
+        batch:          ['./app/templates/components'],
+        helpers:        {
+          // {{#ifEq a 'b'}}
+          // Check if both values are equal
+          ifEq(a, b, opts) {
+            if (a === b) {
+              return opts.fn(this);
+            }
+            return opts.inverse(this);
+          },
+          // {{#ifNotEq a 'b'}}
+          // Check if both values are not equal
+          ifNotEq(a, b, opts) {
             if (a !== b) {
               return opts.fn(this);
             }
             return opts.inverse(this);
           },
-          formatNumber(a) {                                         // ╓╌> {{#formatNumber a}}    //
-            return String(a).replace(/(.)(?=(\d{3})+$)/g, '$1,');   // ║   Convert 5000 to 5,000  //
-          }                                                         // ╨                          //
-        }                                                           //                            //
-      },                                                            //                            //
-      _log = (type, page, total = 1, counter = 0) => {              // CLI Formatter for HBS      //
-        const a = zeroFill(2, counter + 1),                         // Zero fill progress i.e, 01 //
-              b = zeroFill(2, total),                               // Zerp fill total     '   '  //
-              c = `${a}/${b}`,                                      // Format total i.e, |01/02|  //
-              k = 40;                                               //                            //
-        let d,                                                      //                            //
-            e,                                                      //                            //
-            f,                                                      //                            //
-            g,                                                      //                            //
-            h,                                                      //                            //
-            i,                                                      //                            //
-            j = '';                                                 //                            //
-        switch (type) {                                             //                            //
-        case 1: {                                                   // Populate:                  //
-          d = 'Populate ';                                          // Set type                   //
-          e = '';                                                   // Set child delimiter   NULL //
-          f = gutil.colors.cyan(page);                              // Set page + cyan text       //
-          g = `${gutil.colors.magenta(c)}`;                         // Set progress + magenta txt //
-          h = k - stringWidth(d + e + f + g);                       // Set smart tab width        //
-          for (i = 0; i < h; i++) {                                 //                            //
-            j = `${j}\u200A`;                                       //                            //
-          }                                                         //                            //
-          j = `${j}`;                                               //                            //
-          break;                                                    //                            //
-        }                                                           //                            //
-        case 2: {                                                   // Generate:                  //
-          d = 'Generate ';                                          // Set type                   //
-          e = ' ↪ ';                                                // Set child delimiter        //
-          f = gutil.colors.cyan(page);                              // Set page + cyan text       //
-          g = `${gutil.colors.black(c)}`;                           // Set progress + black text  //
-          h = k - stringWidth(d + e + f + g);                       // Set smart tab width        //
-          for (i = 0; i < h; i++) {                                 //                            //
-            j = `${j}\u200A`;                                       //                            //
-          }                                                         //                            //
-          break;                                                    //                            //
-        }                                                           //                            //
-        default: { break; }                                         //                            //
-        }                                                           //                            //
-        return gutil.log(`${d}${e}\'${f}\'${j}${g}`);               // Output formatted string    //
+          // {{#formatNumber a}}
+          // Formats 1000 into 1,000
+          formatNumber(a) {
+            return String(a).replace(/(.)(?=(\d{3})+$)/g, '$1,');
+          }
+        }
+      },
+      // Prettify CLI output for Handlebars generation
+      _log = (type, page, total = 1, current = 0) => {
+              // Zero fill values to 2 digits (i.e 3 to 03)
+              // Current file (+1 otherwise it'll be 00/01)
+        const a = zeroFill(2, current + 1),
+              // Total files
+              b = zeroFill(2, total),
+              // Formats progress (i.e 01/03)
+              c = `${a}/${b}`,
+              // Distance from left progress should be
+              k = 40;
+
+        let d,
+            e = '',
+            f,
+            g,
+            h,
+            i,
+            j = '';
+
+        switch (type) {
+        // 'Populate' layout
+        case 1: {
+          d = 'Populate ';
+          // Set page name as cyan
+          f = gutil.colors.cyan(page);
+          // Set progress as magenta
+          g = `${gutil.colors.magenta(c)}`;
+          // Find width needed to align progress
+          // e.g 40 - 23
+          h = k - stringWidth(d + e + f + g);
+          // Add hair spaces
+          for (i = 0; i < h; i++) {
+            j = `${j}\u200A`;
+          }
+          //j = `${j}`;
+          break;
+        }
+        // 'Generate' layout
+        case 2: {
+          d = 'Generate ';
+          // Set child delimiter
+          e = ' ↪ ';
+          // Set page name as cyan
+          f = gutil.colors.cyan(page);
+          // Set progress as black
+          g = `${gutil.colors.black(c)}`;
+          // Find width needed to align progress
+          // e.g 40 - 23
+          h = k - stringWidth(d + e + f + g);
+          // Add hair spaces
+          for (i = 0; i < h; i++) {
+            j = `${j}\u200A`;
+          }
+          break;
+        }
+        default: { break; }
+        }
+        // Output string
+        return gutil.log(`${d}${e}\'${f}\'${j}${g}`);
       };
 
 gulp.task('hbs', callback =>
