@@ -1,6 +1,6 @@
 {
   "name": "hatayama",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Flags",
   "engines": {
     "node": "7.2.1",
