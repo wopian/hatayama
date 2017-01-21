@@ -1,5 +1,5 @@
 ---
-updated: 2017-01-18T06:43+0000
+updated: 2017-01-21T23:36+0000
 slug: dalmatia
 name:
   en: Dalmatia
@@ -15,6 +15,7 @@ detail:
   flag:
     adopted: 1822
     ratio: '2:3'
+    designer: Traditional
   other:
     area: 4694
     population: 852068
