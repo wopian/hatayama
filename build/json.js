@@ -13,7 +13,7 @@ gulp.task('json', callback =>
     'json:prefecture',
     'json:nation',
     'json:index',
-    'json:list:prefecture',
+    ['json:list:prefecture', 'json:list:nation'],
     callback)
 );
 
@@ -49,6 +49,15 @@ gulp.task('json:list:prefecture', () =>
     .pipe(gulp.dest('tmp/data/list'))
 );
 
+// Generate nation list
+// NOTE: json:index needs to run before this
+gulp.task('json:list:nation', () =>
+  gulp.src(['tmp/data/nation.json', 'tmp/nation.json'])
+    .pipe(jsonConcat('nation.json', data => new Buffer(stringify(data))))
+    .pipe(jsonFormat(2))
+    .pipe(gulp.dest('tmp/data/list'))
+);
+
 
 // Generate index file
 // TODO: Implement sorting for Last updated, nation specific etc
@@ -61,7 +70,9 @@ gulp.task('json:index', () => {
         britishFlagsSmall = [],
         japaneseFlagsSmall = [],
         prefecturePage = [prefecture],
-        prefectureSmall = [];
+        prefectureSmall = [],
+        nationPage = [nation],
+        nationSmall = [];
 
   // TODO: Implement latest update for all flag types
   // all.push(prefecture);
@@ -90,11 +101,15 @@ gulp.task('json:index', () => {
   prefecturePage.forEach((item) => {
     prefectureSmall.push(_.omit(item, ['location', 'detail', 'about', 'symbolism']));
   });
+  nationPage.forEach((item) => {
+    nationSmall.push(_.omit(item, ['location', 'detail', 'about', 'symbolism']));
+  });
 
   fs.writeFileSync('./tmp/data/index/updated.json', stringify(lastUpdatedSmall.reverse()));
   fs.writeFileSync('./tmp/data/index/british.json', stringify(britishFlagsSmall));
   fs.writeFileSync('./tmp/data/index/japanese.json', stringify(japaneseFlagsSmall));
   fs.writeFileSync('./tmp/prefecture.json', JSON.stringify(prefectureSmall));
+  fs.writeFileSync('./tmp/nation.json', JSON.stringify(nationSmall));
 
   // gutil.log(lastUpdatedSmall);
   // gutil.log(britishFlagsSmall);

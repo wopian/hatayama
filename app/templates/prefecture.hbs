@@ -5,10 +5,10 @@
     {{#each prefecture}}
         <div class='row'>
             {{#each this}}
-                <div class='col-lg-4'>
+                <div class='col-lg-4 col-sm-6'>
                     <a href='/prefecture/{{slug}}'>
-                        <div class='flag {{#ifNotEq detail.flag.ratio '3:5'}}flag-scale{{/ifNotEq}}' 
-                            style='background-image: url(/assets/img/{{slug}}-large.png)'></div>
+                            <img class='flag {{#ifNotEq detail.flag.ratio '3:5'}}flag-scale{{/ifNotEq}}'
+                                 src='/assets/img/{{slug}}-large.png'>
                         <p>{{name.en}}</p>
                     </a>
                 </div>

@@ -263,6 +263,17 @@ gulp.task('hbs:generate', () => {
       stream: true
     }));
 
+  // Generate nation list
+  gulp.src('app/templates/nation.hbs')
+    .pipe(handlebars(
+      JSON.parse(fs.readFileSync('./tmp/data/list/nation.json', 'utf8')),
+      options))
+    .pipe(rename('index.html'))
+    .pipe(gulp.dest('dist/nation'))
+    .pipe(browserSync.reload({
+      stream: true
+    }));
+
   // Generate feedback
   gulp.src('app/templates/feedback.hbs')
     .pipe(handlebars('', options))

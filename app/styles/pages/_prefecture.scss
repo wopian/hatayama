@@ -22,7 +22,7 @@
 
         a {
             color: rgba($metal, .8);
-            font-family: 'NSJPB';
+            font-family: $bold;
             font-size: 1rem;
             text-decoration: none;
         }
@@ -32,19 +32,37 @@
         }
 
         .flag {
-            // Ratio for 3:5 flags
-            min-height: 212px;
-            min-width: 354px;
-            background-size: cover;
-            //background-size: 100% 100%;
-            background-position: 50% 50%;
-            background-position: center;
-            transition: background-size 2s ease-in-out;
+            object-fit: cover;
+            width: 100%;
         }
+
+        @media (min-width: 576px) {
+            .flag {
+                height: 145.8px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .flag {
+                height: 199.8px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .flag {
+                height: 176.4px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .flag {
+                height: 212px;
+            }
+        }
+
         .flag-scale {
             &:hover {
-                background-size: contain;
-                background-repeat: no-repeat;
+                object-fit: contain;
             }
         }
 

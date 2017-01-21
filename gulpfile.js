@@ -8,7 +8,7 @@ requireDir('./build');
 gulp.task('default', callback =>
   runSequence(
     'clean:dist',
-    ['json', 'scss', 'javascript', 'images'],
+    ['json', 'scss', 'javascript', 'images', 'favicon', 'fonts'],
     'hbs',
     callback
   )
