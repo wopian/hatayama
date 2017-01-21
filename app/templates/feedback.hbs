@@ -3,20 +3,109 @@
 <main class='feedback'>
     <h2>Feedback</h2>
 
-    <form>
-        <div class="form-group row">
-            <label for="name" class="col-sm-2 col-form-label">Name</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="name" placeholder="Name">
+    <form action='//formspree.io/hatayama@wopian.me' method='post'>
+        <div class='form-group row'>
+            <label for='name' class='col-sm-2 col-form-label'>Name</label>
+            <div class='col-sm-4'>
+                <input type='text' class='form-control' id='name' placeholder='Name' name='name'>
             </div>
         </div>
-        <div class="form-group row">
-            <label for="email" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input type="email" class="form-control" id="email" placeholder="Email">
+
+        <div class='form-group row'>
+            <label for='email' class='col-sm-2 col-form-label'>Email</label>
+            <div class='col-sm-4'>
+                <input type='email' class='form-control' id='email' placeholder='Email' name='email' required>
             </div>
         </div>
-        <button type="submit" class="btn">Submit</button>
+
+        <p class='col-form-label'>How would you rate the layout of these pages? (1-5)</p>
+        <div class='form-group row'>
+            <label for='layoutIndex' class='col-sm-2 col-form-label'>Index</label>
+            <div class='col-sm-10'>
+                <select class='custom-select' id='layoutIndex' name='layoutIndex'>
+                    <option disabled selected value>Select a rating</option>
+                    <option value='1'>1</option>
+                    <option value='2'>2</option>
+                    <option value='3'>3</option>
+                    <option value='4'>4</option>
+                    <option value='5'>5</option>
+                </select>
+            </div>
+        </div>
+        <div class='form-group row'>
+            <label for='layoutPrefecture' class='col-sm-2 col-form-label'>Prefecture</label>
+            <div class='col-sm-10'>
+                <select class='custom-select' id='layoutPrefecture' name='layoutPrefecture'>
+                    <option disabled selected value>Select a rating</option>
+                    <option value='1'>1</option>
+                    <option value='2'>2</option>
+                    <option value='3'>3</option>
+                    <option value='4'>4</option>
+                    <option value='5'>5</option>
+                </select>
+            </div>
+        </div>
+        <div class='form-group row'>
+            <label for='layoutFlags' class='col-sm-2 col-form-label'>Flags</label>
+            <div class='col-sm-10'>
+                <select class='custom-select' id='layoutFlags' name='layoutFlags'>
+                    <option disabled selected value>Select a rating</option>
+                    <option value='1'>1</option>
+                    <option value='2'>2</option>
+                    <option value='3'>3</option>
+                    <option value='4'>4</option>
+                    <option value='5'>5</option>
+                </select>
+            </div>
+        </div>
+
+        <p class='col-form-label'>How would you rate the design of these pages?</p>
+        <div class='form-group row'>
+            <label for='designIndex' class='col-sm-2 col-form-label'>Index</label>
+            <div class='col-sm-10'>
+                <select class='custom-select' id='designIndex' name='designIndex'>
+                    <option disabled selected value>Select a rating</option>
+                    <option value='1'>1</option>
+                    <option value='2'>2</option>
+                    <option value='3'>3</option>
+                    <option value='4'>4</option>
+                    <option value='5'>5</option>
+                </select>
+            </div>
+        </div>
+        <div class='form-group row'>
+            <label for='designPrefecture' class='col-sm-2 col-form-label'>Prefecture</label>
+            <div class='col-sm-10'>
+                <select class='custom-select' id='designPrefecture' name='designPrefecture'>
+                    <option disabled selected value>Select a rating</option>
+                    <option value='1'>1</option>
+                    <option value='2'>2</option>
+                    <option value='3'>3</option>
+                    <option value='4'>4</option>
+                    <option value='5'>5</option>
+                </select>
+            </div>
+        </div>
+        <div class='form-group row'>
+            <label for='designFlags' class='col-sm-2 col-form-label'>Flags</label>
+            <div class='col-sm-10'>
+                <select class='custom-select' id='designFlags' name='designFlags'>
+                    <option disabled selected value>Select a rating</option>
+                    <option value='1'>1</option>
+                    <option value='2'>2</option>
+                    <option value='3'>3</option>
+                    <option value='4'>4</option>
+                    <option value='5'>5</option>
+                </select>
+            </div>
+        </div>
+
+        <div class='form-group'>
+            <label for='notes'>Notes</label>
+            <textarea class='form-control' id='notes' name='notes' rows='3'></textarea>
+        </div>
+
+        <button type='submit' class='btn'>Submit</button>
     </form>
 </main>
 
