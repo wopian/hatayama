@@ -3,7 +3,7 @@ const gulp            = require('gulp');                            // Gulp
 // Copy fonts folder
 gulp.task('fonts', () =>
   gulp.src('app/fonts/**/*')
-    .pipe(gulp.dest('dist/fonts'))
+    .pipe(gulp.dest('dist/assets/fonts'))
 );
 
 // Copy all files in public/
