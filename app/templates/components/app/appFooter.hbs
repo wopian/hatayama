@@ -5,23 +5,25 @@
         </div>
     </footer>
 
-    <!--<script src='/assets/js/vendor/instantclick.min.js' data-no-instant></script>
-    <script data-no-instant>InstantClick.init();</script>-->
-    <script src='/assets/js/vendor/jquery-2.2.0.min.js'></script>
-    <script src='/assets/js/vendor/tether.min.js'></script>
-    <script src='/assets/js/vendor/bootstrap.min.js'></script>
-    <script src='/assets/js/sidebar.js' data-no-instant></script>
-    <script src='/assets/js/time.js' data-no-instant></script>
+    {{!
+    <script src='/assets/js/vendor/instantclick.min.js'></script>
+    <script data-no-instant>InstantClick.init();</script>
+    }}
+    <script type='text/javascript' src='/assets/js/vendor/jquery-2.2.0.min.js'></script>
+    <script type='text/javascript' src='/assets/js/vendor/tether.min.js'></script>
+    <script type='text/javascript' src='/assets/js/vendor/bootstrap.min.js'></script>
+    <script type='text/javascript' src='/assets/js/sidebar.js'></script>
+    <script type='text/javascript' src='/assets/js/time.js'></script>
     {{#ifEq header 'transparent'}}
-        <script src='/assets/js/nav.js' data-no-instant></script>
+        <script type='text/javascript' src='/assets/js/nav.js'></script>
     {{/ifEq}}
     
     {{! Embed Google Maps on flag pages }}
     {{#if googleMaps}}
-        <script src='/assets/js/map.js' data-no-instant></script>
-        <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCF0qq_0eu2iw2WvUwCheypcjl6pmugNQ4&callback=initialize' data-no-instant></script>
+        <script type='text/javascript' src='/assets/js/map.js'></script>
+        <script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCF0qq_0eu2iw2WvUwCheypcjl6pmugNQ4&callback=initialize'></script>
         {{#if latitude}}
-            <script data-no-instant>
+            <script type='text/javascript' data-cfasync='false'>
                 // Initialise Google Maps
                 google.maps.event.addDomListener(
                     window,
@@ -34,8 +36,8 @@
 
     {{! Load flickity on index }}
     {{#if index}}
-        <script src='/assets/js/vendor/flickity.pkgd.min.js'></script>
-        <script src='/assets/js/flickityOptions.js'></script>
+        <script type='text/javascript' src='/assets/js/vendor/flickity.pkgd.min.js'></script>
+        <script type='text/javascript' src='/assets/js/flickityOptions.js'></script>
     {{/if}}
 </body>
 </html>
