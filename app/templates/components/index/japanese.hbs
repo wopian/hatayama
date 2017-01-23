@@ -10,7 +10,7 @@
             </a>
             {{! Last updated }}
             <time datetime='{{updated}}'>
-                <script type='text/javascript' data-cfasync='false' defer='defer'>
+                <script type='text/javascript' defer='defer'>
                     $(function() {
                         $('.japanese .{{slug}}>time').html(humanTime('{{updated}}'));
                     });
