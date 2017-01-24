@@ -1,4 +1,6 @@
 # ハタヤマ
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/wopian/hatayama.svg)](https://greenkeeper.io/)
 [![Website]][2]
 [![Heroku]][8]
 
