@@ -5,3 +5,8 @@ aside {
         width: 99.99999%;
     }
 }
+// Prevent flickity sliders from causing the page to expand on mobile devices
+// and creating a horizontal scrollbar on desktops
+body {
+    overflow-x: hidden;
+}
