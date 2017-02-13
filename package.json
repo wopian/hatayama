@@ -62,7 +62,7 @@
     "zero-fill": "2.2.3"
   },
   "devDependencies": {
-    "browser-sync": "2.18.6",
+    "browser-sync": "2.18.8",
     "browserify": "13.3.0",
     "eslint": "3.14.0",
     "eslint-config-airbnb-base": "11.0.1",
