@@ -65,7 +65,7 @@
     "browser-sync": "2.18.8",
     "browserify": "14.1.0",
     "eslint": "3.16.1",
-    "eslint-config-airbnb-base": "11.1.0",
+    "eslint-config-airbnb-base": "11.1.1",
     "eslint-plugin-import": "2.2.0",
     "eslint-plugin-jasmine": "2.2.0",
     "eslint-plugin-jasmine-jquery": "1.0.0",
