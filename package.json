@@ -71,7 +71,7 @@
     "eslint-plugin-import": "2.2.0",
     "eslint-plugin-jasmine": "2.2.0",
     "eslint-plugin-jasmine-jquery": "1.0.0",
-    "jasmine-core": "2.6.0",
+    "jasmine-core": "2.6.1",
     "jasmine-jquery": "2.1.1",
     "karma": "1.6.0",
     "karma-babel-preprocessor": "6.0.1",
