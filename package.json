@@ -73,7 +73,7 @@
     "eslint-plugin-jasmine-jquery": "1.0.0",
     "jasmine-core": "2.6.1",
     "jasmine-jquery": "2.1.1",
-    "karma": "1.6.0",
+    "karma": "1.7.0",
     "karma-babel-preprocessor": "6.0.1",
     "karma-browserify": "5.1.1",
     "karma-coverage": "1.1.1",
