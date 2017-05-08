@@ -36,7 +36,7 @@
     "del": "2.2.2",
     "gulp": "3.9.1",
     "gulp-archiver": "1.0.0",
-    "gulp-autoprefixer": "3.1.1",
+    "gulp-autoprefixer": "4.0.0",
     "gulp-cache": "0.4.6",
     "gulp-compile-handlebars": "0.6.1",
     "gulp-connect": "5.0.0",
