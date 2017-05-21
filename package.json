@@ -53,7 +53,7 @@
     "gulp-scss-lint-stylish": "1.0.1",
     "gulp-util": "3.0.8",
     "gulp-yaml": "1.0.1",
-    "jimp": "0.2.27",
+    "jimp": "0.2.28",
     "json-stable-stringify": "1.0.1",
     "lodash": "4.17.4",
     "mkdirp": "0.5.1",
