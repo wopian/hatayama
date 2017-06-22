@@ -68,7 +68,7 @@
     "browserify": "14.4.0",
     "eslint": "3.19.0",
     "eslint-config-airbnb-base": "11.2.0",
-    "eslint-plugin-import": "2.4.0",
+    "eslint-plugin-import": "2.5.0",
     "eslint-plugin-jasmine": "2.5.0",
     "eslint-plugin-jasmine-jquery": "1.0.0",
     "jasmine-core": "2.6.4",
