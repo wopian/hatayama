@@ -2,7 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     rake (11.3.0)
-    sass (3.4.24)
+    sass (3.4.25)
     scss_lint (0.50.3)
       rake (>= 0.9, < 12)
       sass (~> 3.4.20)
